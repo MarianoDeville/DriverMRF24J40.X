@@ -28,7 +28,7 @@
  *	 0		 0		 0		 0  	SPI Master mode, clock = FOSC/4
  ******************************************************************************
  */
-void spi_init(void) {
+void SPIInit(void) {
     
     SPI_SCK_IO = SALIDA;
     SPI_SDO_IO = SALIDA;
@@ -51,10 +51,25 @@ void spi_init(void) {
  * @param  Dato a enviar por el puerto - 1 byte
  * @retval None
  */
-void SPI_write(u_int_8 dato) {
+void SPIWriteByte(u_int_8 dato) {
     
     PIR1bits.SSPIF = 0;
     SSPBUF = dato;
+    while(!PIR1bits.SSPIF);
+    return;
+}
+
+/**
+ * @brief  Escritura de dos bytes en el puerto SPI
+ * @param  Dato a enviar por el puerto - 2 bytes
+ * @retval None
+ */
+void SPIWrite2Byte(u_int_16 dato) {
+    
+    PIR1bits.SSPIF = 0;
+    SSPBUF = (u_int_16) (dato >> 8);
+    while(!PIR1bits.SSPIF);
+    SSPBUF = (u_int_16) dato;
     while(!PIR1bits.SSPIF);
     return;
 }
@@ -64,7 +79,7 @@ void SPI_write(u_int_8 dato) {
  * @param  None
  * @retval Valor leido en el bufer de entrada del puerto - 1 byte
  */
-u_int_8 SPI_read(void) {
+u_int_8 SPIRead(void) {
     
     SSPCON1bits.WCOL = 0;
     SSPBUF = 0x00;

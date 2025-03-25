@@ -23,6 +23,7 @@ void SetCSPin(booleano estado);
 void SetWakePin(booleano estado);
 void SetResetPin(booleano estado);
 void WriteByteSPIPort(u_int_8 dato);
+void Write2ByteSPIPort(u_int_16 dato);
 u_int_8 ReadByteSPIPort(void);
 
 #endif

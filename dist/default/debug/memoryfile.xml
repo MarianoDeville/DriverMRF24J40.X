@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <executable name="dist/default/production\DriverMRF24J40.X.production.hex">
+  <executable name="dist/default/debug\DriverMRF24J40.X.debug.hex">
     <memory name="program">
       <units>bytes</units>
       <length>65536</length>
-      <used>1628</used>
-      <free>63908</free>
+      <used>1574</used>
+      <free>63962</free>
     </memory>
     <memory name="data">
       <units>bytes</units>
       <length>3936</length>
-      <used>105</used>
-      <free>3831</free>
+      <used>103</used>
+      <free>3833</free>
     </memory>
   </executable>
 </project>

@@ -70,7 +70,18 @@ void SetResetPin(booleano estado){
  */
 void WriteByteSPIPort(u_int_8 dato){
     
-    SPI_write(dato);
+    SPIWriteByte(dato);
+    return;
+}
+
+/**
+ * @brief  Escribo en el puerto SPI
+ * @param  Dato - 1 byte
+ * @retval None
+ */
+void Write2ByteSPIPort(u_int_16 dato){
+    
+    SPIWrite2Byte(dato);
     return;
 }
 
@@ -81,7 +92,7 @@ void WriteByteSPIPort(u_int_8 dato){
  */
 u_int_8 ReadByteSPIPort(void){
     
-    return SPI_read();
+    return SPIRead();
 }
 
 

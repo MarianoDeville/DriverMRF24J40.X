@@ -18,7 +18,7 @@
  * @param  None
  * @retval None
  */
-void board_init(void) {
+void BoardInit(void) {
     
     PORTA = 0;
     PORTB = 0;
@@ -52,6 +52,6 @@ void board_init(void) {
     OSCTUNE = 0b11011111;
     
     /* Inicializo periféricos ------------------------------------------------*/
-    spi_init();
+    SPIInit();
     return;
 }

@@ -22,7 +22,7 @@
  */
 void main(void) {
     
-    board_init();
+    BoardInit();
     MRF24J40Init();
     
     while(1){

@@ -48,9 +48,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "27
 [; ;drivers/scr/../inc/drv_mrf24j40_port.h: 27: u_int_8 ReadByteSPIPort(void);
 [v _ReadByteSPIPort `(uc ~T0 @X0 0 ef ]
-"26
-[; ;drivers/scr/../inc/drv_mrf24j40_port.h: 26: void Write2ByteSPIPort(u_int_16 dato);
-[v _Write2ByteSPIPort `(v ~T0 @X0 0 ef1`ui ]
 "54 C:/Users/maria/.mchp_packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc\pic18f46k20.h
 [; ;C:/Users/maria/.mchp_packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc\pic18f46k20.h: 54: __asm("SSPMSK equ 0F77h");
 [; <" SSPMSK equ 0F77h ;# ">
@@ -827,9 +824,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "366
 [; ;drivers/scr/drv_mrf24j40.c: 366:     SetCSPin(0);
 [e ( _SetCSPin (1 -> -> 0 `i `a ]
-"369
-[; ;drivers/scr/drv_mrf24j40.c: 369: Write2ByteSPIPort(reg_address);
-[e ( _Write2ByteSPIPort (1 _reg_address ]
+"367
+[; ;drivers/scr/drv_mrf24j40.c: 367:  WriteByteSPIPort((u_int_8) (reg_address >> 8));
+[e ( _WriteByteSPIPort (1 -> >> _reg_address -> 8 `i `uc ]
+"368
+[; ;drivers/scr/drv_mrf24j40.c: 368:  WriteByteSPIPort((u_int_8) reg_address );
+[e ( _WriteByteSPIPort (1 -> _reg_address `uc ]
 "370
 [; ;drivers/scr/drv_mrf24j40.c: 370:  WriteByteSPIPort(value);
 [e ( _WriteByteSPIPort (1 _value ]
@@ -859,9 +859,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "384
 [; ;drivers/scr/drv_mrf24j40.c: 384:     SetCSPin(0);
 [e ( _SetCSPin (1 -> -> 0 `i `a ]
-"387
-[; ;drivers/scr/drv_mrf24j40.c: 387: Write2ByteSPIPort(reg_address);
-[e ( _Write2ByteSPIPort (1 _reg_address ]
+"385
+[; ;drivers/scr/drv_mrf24j40.c: 385:     WriteByteSPIPort((u_int_8) (reg_address >> 8));
+[e ( _WriteByteSPIPort (1 -> >> _reg_address -> 8 `i `uc ]
+"386
+[; ;drivers/scr/drv_mrf24j40.c: 386:  WriteByteSPIPort((u_int_8) reg_address );
+[e ( _WriteByteSPIPort (1 -> _reg_address `uc ]
 "388
 [; ;drivers/scr/drv_mrf24j40.c: 388:  toReturn = ReadByteSPIPort();
 [e = _toReturn ( _ReadByteSPIPort ..  ]

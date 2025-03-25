@@ -1,4 +1,4 @@
-# 1 "drivers/scr/drv_mrf24j40_port.c"
+# 1 "drivers/scr/drv_mrf24j40.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,12 +6,87 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "drivers/scr/drv_mrf24j40_port.c" 2
-# 13 "drivers/scr/drv_mrf24j40_port.c"
-# 1 "drivers/scr/../inc/drv_mrf24j40_port.h" 1
-# 17 "drivers/scr/../inc/drv_mrf24j40_port.h"
-# 1 "drivers/scr/../inc/drv_mspi_port.h" 1
-# 18 "drivers/scr/../inc/drv_mspi_port.h"
+# 1 "drivers/scr/drv_mrf24j40.c" 2
+# 13 "drivers/scr/drv_mrf24j40.c"
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\string.h" 1 3
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\musl_xc8.h" 1 3
+# 5 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\string.h" 2 3
+
+
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\features.h" 1 3
+# 11 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\string.h" 2 3
+# 25 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\string.h" 3
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\bits/alltypes.h" 1 3
+# 128 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef unsigned size_t;
+# 174 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef __int24 int24_t;
+# 210 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef __uint24 uint24_t;
+# 421 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef struct __locale_struct * locale_t;
+# 26 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\string.h" 2 3
+
+void *memcpy (void *restrict, const void *restrict, size_t);
+void *memmove (void *, const void *, size_t);
+void *memset (void *, int, size_t);
+int memcmp (const void *, const void *, size_t);
+void *memchr (const void *, int, size_t);
+
+char *strcpy (char *restrict, const char *restrict);
+char *strncpy (char *restrict, const char *restrict, size_t);
+
+char *strcat (char *restrict, const char *restrict);
+char *strncat (char *restrict, const char *restrict, size_t);
+
+int strcmp (const char *, const char *);
+int strncmp (const char *, const char *, size_t);
+
+int strcoll (const char *, const char *);
+size_t strxfrm (char *restrict, const char *restrict, size_t);
+
+char *strchr (const char *, int);
+char *strrchr (const char *, int);
+
+size_t strcspn (const char *, const char *);
+size_t strspn (const char *, const char *);
+char *strpbrk (const char *, const char *);
+char *strstr (const char *, const char *);
+char *strtok (char *restrict, const char *restrict);
+
+size_t strlen (const char *);
+
+char *strerror (int);
+
+
+
+
+char *strtok_r (char *restrict, const char *restrict, char **restrict);
+int strerror_r (int, char *, size_t);
+char *stpcpy(char *restrict, const char *restrict);
+char *stpncpy(char *restrict, const char *restrict, size_t);
+size_t strnlen (const char *, size_t);
+char *strdup (const char *);
+char *strndup (const char *, size_t);
+char *strsignal(int);
+char *strerror_l (int, locale_t);
+int strcoll_l (const char *, const char *, locale_t);
+size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
+
+
+
+
+void *memccpy (void *restrict, const void *restrict, int, size_t);
+# 13 "drivers/scr/drv_mrf24j40.c" 2
+
+# 1 "drivers/scr/../inc/drv_mrf24j40.h" 1
+# 18 "drivers/scr/../inc/drv_mrf24j40.h"
 # 1 "drivers/scr/../inc/../../redef_var.h" 1
 # 17 "drivers/scr/../inc/../../redef_var.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\stdbool.h" 1 3
@@ -32,28 +107,10 @@ extern double __fpnormalize(double);
 
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\stdlib.h" 1 3
-
-
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\musl_xc8.h" 1 3
-# 5 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\stdlib.h" 2 3
-
-
-
-
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\features.h" 1 3
-# 11 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\stdlib.h" 2 3
 # 21 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\stdlib.h" 3
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\bits/alltypes.h" 1 3
 # 24 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\bits/alltypes.h" 3
 typedef long int wchar_t;
-# 128 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef unsigned size_t;
-# 174 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef __int24 int24_t;
-# 210 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef __uint24 uint24_t;
 # 22 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\stdlib.h" 2 3
 
 int atoi (const char *);
@@ -4998,10 +5055,22 @@ typedef int int_16;
 typedef unsigned int u_int_16;
 typedef long int_32;
 typedef unsigned long u_int_32;
-# 18 "drivers/scr/../inc/drv_mspi_port.h" 2
+# 18 "drivers/scr/../inc/drv_mrf24j40.h" 2
 
 
 
+void MRF24J40Init();
+void EnviarDato(void);
+void EnviarComando();
+void EnviarDatoEncriptado(void);
+void ReciboPaquete(void);
+void BuscarDispositivos(void);
+# 14 "drivers/scr/drv_mrf24j40.c" 2
+
+# 1 "drivers/scr/../inc/drv_mrf24j40_port.h" 1
+# 17 "drivers/scr/../inc/drv_mrf24j40_port.h"
+# 1 "drivers/scr/../inc/drv_mspi_port.h" 1
+# 21 "drivers/scr/../inc/drv_mspi_port.h"
 void SPIInit(void);
 void SPIWriteByte(u_int_8 dato);
 void SPIWrite2Byte(u_int_16 dato);
@@ -5018,7 +5087,124 @@ void SetResetPin(booleano estado);
 void WriteByteSPIPort(u_int_8 dato);
 void Write2ByteSPIPort(u_int_16 dato);
 u_int_8 ReadByteSPIPort(void);
-# 13 "drivers/scr/drv_mrf24j40_port.c" 2
+# 15 "drivers/scr/drv_mrf24j40.c" 2
+# 24 "drivers/scr/drv_mrf24j40.c"
+static const u_int_8 default_mac_address[] = {0x11,
+                                             0x28,
+                                             0x35,
+                                             0x44,
+                                             0x56,
+                                             0x66,
+                                             0x77,
+                                             0x01};
+
+
+static const u_int_8 default_security_key[] = {0x00,
+                                               0x10,
+                                               0x25,
+                                               0x37,
+                                               0x04,
+                                               0x55,
+                                               0x06,
+                                               0x79,
+                                               0x08,
+                                               0x09,
+                                               0x10,
+                                               0x11,
+                                               0x12,
+                                               0x13,
+                                               0x14,
+                                               0x15};
+
+
+static struct {
+
+    booleano get_new_msg;
+    booleano put_new_msg;
+    u_int_8 sequence_number;
+    u_int_8 my_channel;
+    u_int_8 security_key[16];
+    u_int_8 my_mac[8];
+    u_int_16 my_panid;
+    u_int_16 my_address;
+    u_int_16 intervalo;
+    u_char buffer_entrada[50];
+}mrf24_data_config;
+
+
+static struct {
+
+    u_int_16 destinity_panid;
+    u_int_16 destinity_address;
+    u_int_8 tamano_mensaje;
+    const u_char * buffer_salida;
+}mrf24_data_out;
+
+
+typedef enum {
+
+    CH_11 = 0x03,
+    CH_12 = 0x13,
+    CH_13 = 0x23,
+ CH_14 = 0x33,
+ CH_15 = 0x43,
+ CH_16 = 0x53,
+ CH_17 = 0x63,
+ CH_18 = 0x73,
+ CH_19 = 0x83,
+ CH_20 = 0x93,
+ CH_21 = 0xA3,
+ CH_22 = 0xB3,
+ CH_23 = 0xC3,
+ CH_24 = 0xD3,
+ CH_25 = 0xE3,
+ CH_26 = 0xF3
+}channel_list;
+# 249 "drivers/scr/drv_mrf24j40.c"
+static void InicializoVariables(void);
+static void SetShortAddr(u_int_8 reg_address, u_int_8 value);
+static void SetLongAddr(u_int_16 reg_address, u_int_8 value);
+static u_int_8 GetShortAddr(u_int_8 reg_address);
+static u_int_8 GetLongAddr(u_int_16 reg_address);
+static void SetDeviceAddress();
+static void SetChannel(void);
+static void SetDeviceMACAddress(void);
+
+
+
+
+
+
+void MRF24J40Init(void) {
+
+    InicializoVariables();
+    InicializoPines();
+  _delay((unsigned long)((50)*(16000000/4000.0)));;
+    SetResetPin(1);
+ _delay((unsigned long)((500)*(16000000/4000.0)));;
+    SetShortAddr((0x18), 0x98);
+    SetShortAddr((0x2E), 0x95);
+    SetLongAddr((0x200), 0x03);
+ SetLongAddr((0x201), 0x01);
+ SetLongAddr((0x202), 0x80);
+ SetLongAddr((0x206), 0x90);
+ SetLongAddr((0x207), 0x80);
+ SetLongAddr((0x208), 0x10);
+ SetLongAddr((0x220), 0x21);
+    SetShortAddr((0x3A), 0x80);
+    SetShortAddr((0x3F), 0x60);
+    SetShortAddr((0x3E), 0x40);
+    SetShortAddr((0x32), 0xF6);
+    SetChannel();
+ SetShortAddr((0x0D), 0x01);
+ SetDeviceAddress();
+    SetDeviceMACAddress();
+ SetShortAddr((0x2E), 0x95);
+ SetShortAddr((0x12), 0xB9);
+# 297 "drivers/scr/drv_mrf24j40.c"
+ SetShortAddr((0x00),0x00);
+ return;
+}
 
 
 
@@ -5026,17 +5212,39 @@ u_int_8 ReadByteSPIPort(void);
 
 
 
+static void InicializoVariables(void) {
 
-void InicializoPines(void){
+    for(int i = 0; i < 16; i++){
 
-    TRISBbits.TRISB0 = 1;
-    TRISCbits.TRISC6 = 0;
-    TRISCbits.TRISC7 = 0;
-    TRISDbits.TRISD4 = 0;
+        if(i < 8)
+            mrf24_data_config.my_mac[i] = default_mac_address[i];
+        mrf24_data_config.security_key[i] = default_security_key[i];
+    }
+    mrf24_data_config.sequence_number = 0x68;
+    mrf24_data_config.my_channel = CH_11;
+    mrf24_data_config.get_new_msg = 0;
+    mrf24_data_config.put_new_msg = 0;
+    mrf24_data_config.my_panid = 0x1234;
+    mrf24_data_config.my_address = 0x0001;
+    mrf24_data_config.intervalo = 0x2222;
+    mrf24_data_config.buffer_entrada[0] = 0;
+
+    return;
+}
+
+
+
+
+
+
+static void SetShortAddr(u_int_8 reg_address, u_int_8 value) {
+
+    reg_address = (u_int_8) (reg_address << 1) | 0x01;
+    SetCSPin(0);
+ WriteByteSPIPort(reg_address);
+ WriteByteSPIPort(value);
     SetCSPin(1);
-    SetWakePin(1);
-    SetResetPin(0);
-    return;
+ return;
 }
 
 
@@ -5044,10 +5252,15 @@ void InicializoPines(void){
 
 
 
-void SetCSPin(booleano estado){
+static u_int_8 GetShortAddr(u_int_8 reg_address) {
 
-    LATCbits.LATC6 = estado;
-    return;
+    u_int_8 leido_spi = 0;
+    reg_address = (u_int_8) (reg_address << 1) & 0x7E;
+    SetCSPin(0);
+    WriteByteSPIPort(reg_address);
+    leido_spi = ReadByteSPIPort();
+    SetCSPin(1);
+ return leido_spi;
 }
 
 
@@ -5055,10 +5268,16 @@ void SetCSPin(booleano estado){
 
 
 
-void SetWakePin(booleano estado){
+static void SetLongAddr(u_int_16 reg_address, u_int_8 value) {
 
-    LATCbits.LATC7 = estado;
-    return;
+    reg_address = (reg_address << 5) | 0x8010;
+    SetCSPin(0);
+ WriteByteSPIPort((u_int_8) (reg_address >> 8));
+ WriteByteSPIPort((u_int_8) reg_address );
+
+ WriteByteSPIPort(value);
+    SetCSPin(1);
+ return;
 }
 
 
@@ -5066,10 +5285,17 @@ void SetWakePin(booleano estado){
 
 
 
-void SetResetPin(booleano estado){
+static u_int_8 GetLongAddr(u_int_16 reg_address) {
 
-    LATDbits.LATD4 = estado;
-    return;
+ u_int_8 toReturn;
+    reg_address = (reg_address << 5) | 0x8000;
+    SetCSPin(0);
+    WriteByteSPIPort((u_int_8) (reg_address >> 8));
+ WriteByteSPIPort((u_int_8) reg_address );
+
+ toReturn = ReadByteSPIPort();
+    SetCSPin(1);
+ return toReturn;
 }
 
 
@@ -5077,10 +5303,20 @@ void SetResetPin(booleano estado){
 
 
 
-void WriteByteSPIPort(u_int_8 dato){
+static void SetChannel(void) {
 
-    SPIWriteByte(dato);
-    return;
+    u_int_8 aux = 0;
+ SetLongAddr((0x200), mrf24_data_config.my_channel);
+    SetLongAddr((0x203), (0XC0) | (0X38));
+ SetShortAddr((0x36), 0x04);
+ SetShortAddr((0x36), 0x00);
+ _delay((unsigned long)((192)*(16000000/4000000.0)));;
+
+    do {
+
+  aux = GetLongAddr((0x20f));
+ }while((aux & 0xA0) != 0xA0);
+ return;
 }
 
 
@@ -5088,10 +5324,13 @@ void WriteByteSPIPort(u_int_8 dato){
 
 
 
-void Write2ByteSPIPort(u_int_16 dato){
+static void SetDeviceAddress(void) {
 
-    SPIWrite2Byte(dato);
-    return;
+ SetShortAddr((0x04), (u_int_8) (mrf24_data_config.my_address >> 8));
+ SetShortAddr((0x03), (u_int_8) (mrf24_data_config.my_address));
+ SetShortAddr((0x02), (u_int_8) (mrf24_data_config.my_panid >> 8));
+ SetShortAddr((0x01), (u_int_8) (mrf24_data_config.my_panid));
+ return;
 }
 
 
@@ -5099,7 +5338,141 @@ void Write2ByteSPIPort(u_int_16 dato){
 
 
 
-u_int_8 ReadByteSPIPort(void){
+static void SetDeviceMACAddress(void) {
 
-    return SPIRead();
+ SetShortAddr((0x05), mrf24_data_config.my_mac[0]);
+ SetShortAddr((0x06), mrf24_data_config.my_mac[1]);
+ SetShortAddr((0x07), mrf24_data_config.my_mac[2]);
+ SetShortAddr((0x08), mrf24_data_config.my_mac[3]);
+ SetShortAddr((0x09), mrf24_data_config.my_mac[4]);
+ SetShortAddr((0x0A), mrf24_data_config.my_mac[5]);
+ SetShortAddr((0x0B), mrf24_data_config.my_mac[6]);
+ SetShortAddr((0x0C), mrf24_data_config.my_mac[7]);
+ return;
+}
+# 459 "drivers/scr/drv_mrf24j40.c"
+void EnviarDatoEncriptado(void) {
+
+ u_int_16 pos = 0;
+ SetLongAddr(pos++, 0X15);
+ SetLongAddr(pos++, 0X15 + 0X0B + 5);
+ SetLongAddr(pos++, 0x69);
+ SetLongAddr(pos++, 0xcc);
+ SetLongAddr(pos++, mrf24_data_config.sequence_number++);
+ SetLongAddr(pos++, (u_int_8) (mrf24_data_config.my_panid));
+ SetLongAddr(pos++, (u_int_8) (mrf24_data_config.my_panid >> 8));
+
+ for(u_int_16 i = 0; i < 8; i++) {
+
+  SetLongAddr(pos++, mrf24_data_config.my_mac[i]);
+ }
+
+ for(u_int_16 i = 0; i < 8; i++) {
+
+  SetLongAddr(pos++, mrf24_data_config.my_mac[i]);
+ }
+ SetLongAddr(pos++, 0x01);
+ SetLongAddr(pos++, 0x00);
+ SetLongAddr(pos++, 0x00);
+ SetLongAddr(pos++, 0x00);
+ SetLongAddr(pos++, 0x00);
+
+ for(u_int_16 i = 0; i < 16; i++) {
+
+  SetLongAddr((0x280) + i, mrf24_data_config.security_key[i + 1]);
+ }
+ SetLongAddr((0x2C), 0x04);
+
+ for(u_int_16 i = 0; i < (mrf24_data_out.tamano_mensaje + 1); i++) {
+
+  SetLongAddr(pos++, *mrf24_data_out.buffer_salida++);
+ }
+ SetShortAddr((0x1B), 0x07);
+ return;
+}
+# 511 "drivers/scr/drv_mrf24j40.c"
+void EnviarDato(void) {
+
+
+
+
+ u_int_8 pos = 0;
+ u_int_8 i = 0x0f;
+
+ SetLongAddr(pos++, i);
+ SetLongAddr(pos++, mrf24_data_out.tamano_mensaje + i);
+ SetLongAddr(pos++, (0X01)|(0X20)|(0X40));
+ SetLongAddr(pos++, (0XC0)|(0X08));
+ SetLongAddr(pos++, mrf24_data_config.sequence_number++);
+ SetLongAddr(pos++, (u_int_8) mrf24_data_out.destinity_panid);
+ SetLongAddr(pos++, (u_int_8) (mrf24_data_out.destinity_panid >> 8));
+ SetLongAddr(pos++, (u_int_8) mrf24_data_out.destinity_address);
+ SetLongAddr(pos++, (u_int_8) (mrf24_data_out.destinity_address >> 8));
+ for(i = 0; i < 8; i++)
+ {
+  SetLongAddr(pos++, mrf24_data_config.my_mac[i]);
+ }
+ for(i = 0; i < mrf24_data_out.tamano_mensaje; i++)
+ {
+  SetLongAddr(pos++, mrf24_data_out.buffer_salida[i]);
+ }
+ SetShortAddr((0x1B), 1 | (0X04));
+ return;
+}
+# 552 "drivers/scr/drv_mrf24j40.c"
+void EnviarComando(void) {
+
+ u_int_8 pos = 0;
+ u_int_16 i;
+ SetLongAddr(pos++, 0x0f);
+ SetLongAddr(pos++, 0x13);
+ SetLongAddr(pos++, 0x43);
+ SetLongAddr(pos++, 0xc8);
+ SetLongAddr(pos++, mrf24_data_config.sequence_number++);
+ SetLongAddr(pos++, (u_int_8) mrf24_data_out.destinity_panid);
+ SetLongAddr(pos++, (u_int_8) (mrf24_data_out.destinity_panid >> 8));
+ SetLongAddr(pos++, (u_int_8) mrf24_data_out.destinity_address);
+ SetLongAddr(pos++, (u_int_8) (mrf24_data_out.destinity_address >> 8));
+ for(i = 0; i < 8; i++)
+ {
+  SetLongAddr(pos++, mrf24_data_config.my_mac[i]);
+ }
+ SetLongAddr(pos++, 0x81);
+ SetLongAddr(pos++, 0x18);
+ SetLongAddr(pos++, 0x09);
+ SetLongAddr(pos++, 0x01);
+
+ SetShortAddr((0x1B), 1 | (0X04));
+ return;
+}
+
+
+
+
+
+
+void ReciboPaquete(void) {
+
+ u_int_8 i;
+ u_int_8 rssi,final;
+ final = GetLongAddr((0x300));
+ for(i = 0; i < final - 17; i++)
+ {
+  mrf24_data_config.buffer_entrada[i] = GetLongAddr((0x300) + i + 16);
+ }
+ mrf24_data_config.buffer_entrada[i] = 0;
+ rssi = GetLongAddr((0x210));
+ return;
+}
+
+
+
+
+
+
+void BuscarDispositivos(void) {
+
+
+
+ return;
 }

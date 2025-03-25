@@ -18,8 +18,9 @@
 #include "../../redef_var.h"
 
 /* Prototipo de funciones públicas -------------------------------------------*/
-void spi_init(void);
-void SPI_write(u_int_8 dato);
-u_int_8 SPI_read(void);
+void SPIInit(void);
+void SPIWriteByte(u_int_8 dato);
+void SPIWrite2Byte(u_int_16 dato);
+u_int_8 SPIRead(void);
 
 #endif

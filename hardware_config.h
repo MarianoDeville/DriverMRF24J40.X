@@ -75,7 +75,7 @@
 #pragma config EBTRB = OFF      // Boot Block Table Read Protection bit
 
 /* Prototipo de funciones públicas -------------------------------------------*/
-void board_init(void);
+void BoardInit(void);
 
 #endif
 
