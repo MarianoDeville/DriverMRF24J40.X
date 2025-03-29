@@ -4989,22 +4989,15 @@ void BoardInit(void);
 
 
 
-typedef _Bool booleano;
-typedef unsigned char u_char;
-typedef char int_8;
-typedef unsigned char u_int_8;
-typedef int int_16;
-typedef unsigned int u_int_16;
-typedef long int_32;
-typedef unsigned long u_int_32;
+typedef _Bool bool_t;
 # 18 "./drivers/inc//drv_mspi_port.h" 2
 
 
 
 void SPIInit(void);
-void SPIWriteByte(u_int_8 dato);
-void SPIWrite2Byte(u_int_16 dato);
-u_int_8 SPIRead(void);
+void SPIWriteByte(uint8_t dato);
+void SPIWrite2Byte(uint16_t dato);
+uint8_t SPIRead(void);
 # 14 "hardware_config.c" 2
 
 

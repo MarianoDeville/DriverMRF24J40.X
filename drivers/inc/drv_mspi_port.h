@@ -19,8 +19,8 @@
 
 /* Prototipo de funciones públicas -------------------------------------------*/
 void SPIInit(void);
-void SPIWriteByte(u_int_8 dato);
-void SPIWrite2Byte(u_int_16 dato);
-u_int_8 SPIRead(void);
+void SPIWriteByte(uint8_t dato);
+void SPIWrite2Byte(uint16_t dato);
+uint8_t SPIRead(void);
 
 #endif

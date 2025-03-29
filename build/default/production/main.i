@@ -5144,14 +5144,7 @@ void BoardInit(void);
 
 
 
-typedef _Bool booleano;
-typedef unsigned char u_char;
-typedef char int_8;
-typedef unsigned char u_int_8;
-typedef int int_16;
-typedef unsigned int u_int_16;
-typedef long int_32;
-typedef unsigned long u_int_32;
+typedef _Bool bool_t;
 # 15 "main.c" 2
 
 # 1 "./drivers/inc/drv_mrf24j40.h" 1

@@ -4990,34 +4990,27 @@ void BoardInit(void);
 
 
 
-typedef _Bool booleano;
-typedef unsigned char u_char;
-typedef char int_8;
-typedef unsigned char u_int_8;
-typedef int int_16;
-typedef unsigned int u_int_16;
-typedef long int_32;
-typedef unsigned long u_int_32;
+typedef _Bool bool_t;
 # 18 "drivers/scr/../inc/drv_mspi_port.h" 2
 
 
 
 void SPIInit(void);
-void SPIWriteByte(u_int_8 dato);
-void SPIWrite2Byte(u_int_16 dato);
-u_int_8 SPIRead(void);
+void SPIWriteByte(uint8_t dato);
+void SPIWrite2Byte(uint16_t dato);
+uint8_t SPIRead(void);
 # 17 "drivers/scr/../inc/drv_mrf24j40_port.h" 2
 
 
 
 
 void InicializoPines(void);
-void SetCSPin(booleano estado);
-void SetWakePin(booleano estado);
-void SetResetPin(booleano estado);
-void WriteByteSPIPort(u_int_8 dato);
-void Write2ByteSPIPort(u_int_16 dato);
-u_int_8 ReadByteSPIPort(void);
+void SetCSPin(bool_t estado);
+void SetWakePin(bool_t estado);
+void SetResetPin(bool_t estado);
+void WriteByteSPIPort(uint8_t dato);
+void Write2ByteSPIPort(uint16_t dato);
+uint8_t ReadByteSPIPort(void);
 # 13 "drivers/scr/drv_mrf24j40_port.c" 2
 
 
@@ -5044,7 +5037,7 @@ void InicializoPines(void){
 
 
 
-void SetCSPin(booleano estado){
+void SetCSPin(bool_t estado){
 
     LATCbits.LATC6 = estado;
     return;
@@ -5055,7 +5048,7 @@ void SetCSPin(booleano estado){
 
 
 
-void SetWakePin(booleano estado){
+void SetWakePin(bool_t estado){
 
     LATCbits.LATC7 = estado;
     return;
@@ -5066,7 +5059,7 @@ void SetWakePin(booleano estado){
 
 
 
-void SetResetPin(booleano estado){
+void SetResetPin(bool_t estado){
 
     LATDbits.LATD4 = estado;
     return;
@@ -5077,7 +5070,7 @@ void SetResetPin(booleano estado){
 
 
 
-void WriteByteSPIPort(u_int_8 dato){
+void WriteByteSPIPort(uint8_t dato){
 
     SPIWriteByte(dato);
     return;
@@ -5088,7 +5081,7 @@ void WriteByteSPIPort(u_int_8 dato){
 
 
 
-void Write2ByteSPIPort(u_int_16 dato){
+void Write2ByteSPIPort(uint16_t dato){
 
     SPIWrite2Byte(dato);
     return;
@@ -5099,7 +5092,7 @@ void Write2ByteSPIPort(u_int_16 dato){
 
 
 
-u_int_8 ReadByteSPIPort(void){
+uint8_t ReadByteSPIPort(void){
 
     return SPIRead();
 }

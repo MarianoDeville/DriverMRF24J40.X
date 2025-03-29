@@ -35,7 +35,7 @@ void InicializoPines(void){
  * @param  Estado de salida - booleano
  * @retval None
  */
-void SetCSPin(booleano estado){
+void SetCSPin(bool_t estado){
     
     MRF24_CS = estado;
     return;
@@ -46,7 +46,7 @@ void SetCSPin(booleano estado){
  * @param  Estado de salida - booleano
  * @retval None
  */
-void SetWakePin(booleano estado){
+void SetWakePin(bool_t estado){
     
     MRF24_WAKE = estado;
     return;
@@ -57,7 +57,7 @@ void SetWakePin(booleano estado){
  * @param  Estado de salida - booleano
  * @retval None
  */
-void SetResetPin(booleano estado){
+void SetResetPin(bool_t estado){
     
     MRF24_RESET = estado;
     return;
@@ -68,7 +68,7 @@ void SetResetPin(booleano estado){
  * @param  Dato - 1 byte
  * @retval None
  */
-void WriteByteSPIPort(u_int_8 dato){
+void WriteByteSPIPort(uint8_t dato){
     
     SPIWriteByte(dato);
     return;
@@ -79,7 +79,7 @@ void WriteByteSPIPort(u_int_8 dato){
  * @param  Dato - 1 byte
  * @retval None
  */
-void Write2ByteSPIPort(u_int_16 dato){
+void Write2ByteSPIPort(uint16_t dato){
     
     SPIWrite2Byte(dato);
     return;
@@ -90,7 +90,7 @@ void Write2ByteSPIPort(u_int_16 dato){
  * @param  None
  * @retval Dato - 1 byte
  */
-u_int_8 ReadByteSPIPort(void){
+uint8_t ReadByteSPIPort(void){
     
     return SPIRead();
 }

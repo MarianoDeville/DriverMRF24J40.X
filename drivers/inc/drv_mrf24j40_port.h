@@ -19,12 +19,12 @@
 
 /* Prototipo de funciones públicas -------------------------------------------*/
 void InicializoPines(void);
-void SetCSPin(booleano estado);
-void SetWakePin(booleano estado);
-void SetResetPin(booleano estado);
-void WriteByteSPIPort(u_int_8 dato);
-void Write2ByteSPIPort(u_int_16 dato);
-u_int_8 ReadByteSPIPort(void);
+void SetCSPin(bool_t estado);
+void SetWakePin(bool_t estado);
+void SetResetPin(bool_t estado);
+void WriteByteSPIPort(uint8_t dato);
+void Write2ByteSPIPort(uint16_t dato);
+uint8_t ReadByteSPIPort(void);
 
 #endif
 

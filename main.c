@@ -29,11 +29,11 @@ void main(void) {
         
         CLRWDT();
         LED_ROJO = !LED_ROJO;
-        DelayDrvMRF24j40ms(250);
+        delayms_t(250);
         LED_AMARILLO = !LED_AMARILLO;
-        DelayDrvMRF24j40ms(250);
+        delayms_t(250);
         LED_VERDE = !LED_VERDE;
-        DelayDrvMRF24j40ms(250);
+        delayms_t(250);
         
         EnviarDato();
     }

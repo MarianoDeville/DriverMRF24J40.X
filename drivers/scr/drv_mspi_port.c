@@ -51,7 +51,7 @@ void SPIInit(void) {
  * @param  Dato a enviar por el puerto - 1 byte
  * @retval None
  */
-void SPIWriteByte(u_int_8 dato) {
+void SPIWriteByte(uint8_t dato) {
     
     PIR1bits.SSPIF = 0;
     SSPBUF = dato;
@@ -64,12 +64,12 @@ void SPIWriteByte(u_int_8 dato) {
  * @param  Dato a enviar por el puerto - 2 bytes
  * @retval None
  */
-void SPIWrite2Byte(u_int_16 dato) {
+void SPIWrite2Byte(uint16_t dato) {
     
     PIR1bits.SSPIF = 0;
-    SSPBUF = (u_int_16) (dato >> 8);
+    SSPBUF = (uint16_t) (dato >> 8);
     while(!PIR1bits.SSPIF);
-    SSPBUF = (u_int_16) dato;
+    SSPBUF = (uint16_t) dato;
     while(!PIR1bits.SSPIF);
     return;
 }
@@ -79,7 +79,7 @@ void SPIWrite2Byte(u_int_16 dato) {
  * @param  None
  * @retval Valor leido en el bufer de entrada del puerto - 1 byte
  */
-u_int_8 SPIRead(void) {
+uint8_t SPIRead(void) {
     
     SSPCON1bits.WCOL = 0;
     SSPBUF = 0x00;

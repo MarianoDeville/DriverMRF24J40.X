@@ -45,13 +45,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:/Users/maria/.mchp_packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc\pic18f46k20.h: 2730: extern volatile TRISDbits_t TRISDbits __attribute__((address(0xF95)));
 [v _TRISDbits `VS101 ~T0 @X0 0 e@3989 ]
 "22 drivers/scr/../inc/drv_mrf24j40_port.h
-[; ;drivers/scr/../inc/drv_mrf24j40_port.h: 22: void SetCSPin(booleano estado);
+[; ;drivers/scr/../inc/drv_mrf24j40_port.h: 22: void SetCSPin(bool_t estado);
 [v _SetCSPin `(v ~T0 @X0 0 ef1`a ]
 "23
-[; ;drivers/scr/../inc/drv_mrf24j40_port.h: 23: void SetWakePin(booleano estado);
+[; ;drivers/scr/../inc/drv_mrf24j40_port.h: 23: void SetWakePin(bool_t estado);
 [v _SetWakePin `(v ~T0 @X0 0 ef1`a ]
 "24
-[; ;drivers/scr/../inc/drv_mrf24j40_port.h: 24: void SetResetPin(booleano estado);
+[; ;drivers/scr/../inc/drv_mrf24j40_port.h: 24: void SetResetPin(bool_t estado);
 [v _SetResetPin `(v ~T0 @X0 0 ef1`a ]
 "1762 C:/Users/maria/.mchp_packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc\pic18f46k20.h
 [; ;C:/Users/maria/.mchp_packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc\pic18f46k20.h: 1762:     struct {
@@ -84,13 +84,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:/Users/maria/.mchp_packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc\pic18f46k20.h: 1895: extern volatile LATDbits_t LATDbits __attribute__((address(0xF8C)));
 [v _LATDbits `VS77 ~T0 @X0 0 e@3980 ]
 "22 drivers/scr/../inc/drv_mspi_port.h
-[; ;drivers/scr/../inc/drv_mspi_port.h: 22: void SPIWriteByte(u_int_8 dato);
+[; ;drivers/scr/../inc/drv_mspi_port.h: 22: void SPIWriteByte(uint8_t dato);
 [v _SPIWriteByte `(v ~T0 @X0 0 ef1`uc ]
 "23
-[; ;drivers/scr/../inc/drv_mspi_port.h: 23: void SPIWrite2Byte(u_int_16 dato);
-[v _SPIWrite2Byte `(v ~T0 @X0 0 ef1`ui ]
+[; ;drivers/scr/../inc/drv_mspi_port.h: 23: void SPIWrite2Byte(uint16_t dato);
+[v _SPIWrite2Byte `(v ~T0 @X0 0 ef1`us ]
 "24
-[; ;drivers/scr/../inc/drv_mspi_port.h: 24: u_int_8 SPIRead(void);
+[; ;drivers/scr/../inc/drv_mspi_port.h: 24: uint8_t SPIRead(void);
 [v _SPIRead `(uc ~T0 @X0 0 ef ]
 "54 C:/Users/maria/.mchp_packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc\pic18f46k20.h
 [; ;C:/Users/maria/.mchp_packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc\pic18f46k20.h: 54: __asm("SSPMSK equ 0F77h");
@@ -630,7 +630,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 303 ]
 }
 "38
-[; ;drivers/scr/drv_mrf24j40_port.c: 38: void SetCSPin(booleano estado){
+[; ;drivers/scr/drv_mrf24j40_port.c: 38: void SetCSPin(bool_t estado){
 [v _SetCSPin `(v ~T0 @X0 1 ef1`a ]
 {
 [e :U _SetCSPin ]
@@ -647,7 +647,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 304 ]
 }
 "49
-[; ;drivers/scr/drv_mrf24j40_port.c: 49: void SetWakePin(booleano estado){
+[; ;drivers/scr/drv_mrf24j40_port.c: 49: void SetWakePin(bool_t estado){
 [v _SetWakePin `(v ~T0 @X0 1 ef1`a ]
 {
 [e :U _SetWakePin ]
@@ -664,7 +664,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 305 ]
 }
 "60
-[; ;drivers/scr/drv_mrf24j40_port.c: 60: void SetResetPin(booleano estado){
+[; ;drivers/scr/drv_mrf24j40_port.c: 60: void SetResetPin(bool_t estado){
 [v _SetResetPin `(v ~T0 @X0 1 ef1`a ]
 {
 [e :U _SetResetPin ]
@@ -681,7 +681,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 306 ]
 }
 "71
-[; ;drivers/scr/drv_mrf24j40_port.c: 71: void WriteByteSPIPort(u_int_8 dato){
+[; ;drivers/scr/drv_mrf24j40_port.c: 71: void WriteByteSPIPort(uint8_t dato){
 [v _WriteByteSPIPort `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _WriteByteSPIPort ]
@@ -698,11 +698,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 307 ]
 }
 "82
-[; ;drivers/scr/drv_mrf24j40_port.c: 82: void Write2ByteSPIPort(u_int_16 dato){
-[v _Write2ByteSPIPort `(v ~T0 @X0 1 ef1`ui ]
+[; ;drivers/scr/drv_mrf24j40_port.c: 82: void Write2ByteSPIPort(uint16_t dato){
+[v _Write2ByteSPIPort `(v ~T0 @X0 1 ef1`us ]
 {
 [e :U _Write2ByteSPIPort ]
-[v _dato `ui ~T0 @X0 1 r1 ]
+[v _dato `us ~T0 @X0 1 r1 ]
 [f ]
 "84
 [; ;drivers/scr/drv_mrf24j40_port.c: 84:     SPIWrite2Byte(dato);
@@ -715,7 +715,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 308 ]
 }
 "93
-[; ;drivers/scr/drv_mrf24j40_port.c: 93: u_int_8 ReadByteSPIPort(void){
+[; ;drivers/scr/drv_mrf24j40_port.c: 93: uint8_t ReadByteSPIPort(void){
 [v _ReadByteSPIPort `(uc ~T0 @X0 1 ef ]
 {
 [e :U _ReadByteSPIPort ]

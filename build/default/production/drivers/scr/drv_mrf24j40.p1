@@ -1,14 +1,22 @@
 Version 4.0 HI-TECH Software Intermediate Code
 "52 drivers/scr/drv_mrf24j40.c
 [; ;drivers/scr/drv_mrf24j40.c: 52: static struct {
-[s S304 `a 1 `a 1 `uc 1 `uc 1 `uc -> 16 `i `uc -> 8 `i `ui 1 `ui 1 `ui 1 `uc -> 50 `i ]
-[n S304 . get_new_msg put_new_msg sequence_number my_channel security_key my_mac my_panid my_address intervalo buffer_entrada ]
-"67
-[; ;drivers/scr/drv_mrf24j40.c: 67: static struct {
-[s S305 `ui 1 `ui 1 `uc 1 `*Cuc 1 ]
+[s S304 `a 1 `a 1 `uc 1 `uc 1 `uc -> 16 `i `uc -> 8 `i `us 1 `us 1 `us 1 ]
+[n S304 . get_new_msg put_new_msg sequence_number my_channel security_key my_mac my_panid my_address intervalo ]
+"66
+[; ;drivers/scr/drv_mrf24j40.c: 66: static struct {
+[s S305 `us 1 `us 1 `uc 1 `*Cuc 1 ]
 [n S305 . destinity_panid destinity_address tamano_mensaje buffer_salida ]
-"249
-[; ;drivers/scr/drv_mrf24j40.c: 249: static void InicializoVariables(void);
+"75
+[; ;drivers/scr/drv_mrf24j40.c: 75: static struct {
+[s S306 `us 1 `us 1 `uc 1 `uc -> 50 `i ]
+[n S306 . source_panid source_address tamano_mensaje buffer_entrada ]
+"113
+[; ;drivers/scr/drv_mrf24j40.c: 113: } my_default_mac_address;
+[c E2971 5 6 7 8 9 10 11 12 .. ]
+[n E2971 . EADR0 EADR1 EADR2 EADR3 EADR4 EADR5 EADR6 EADR7  ]
+"260
+[; ;drivers/scr/drv_mrf24j40.c: 260: static void InicializoVariables(void);
 [v _InicializoVariables `(v ~T0 @X0 0 sf ]
 "21 drivers/scr/../inc/drv_mrf24j40_port.h
 [; ;drivers/scr/../inc/drv_mrf24j40_port.h: 21: void InicializoPines(void);
@@ -18,39 +26,36 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v __delay `JF372 ~T0 @X0 0 e ]
 [p i __delay ]
 "24 drivers/scr/../inc/drv_mrf24j40_port.h
-[; ;drivers/scr/../inc/drv_mrf24j40_port.h: 24: void SetResetPin(booleano estado);
+[; ;drivers/scr/../inc/drv_mrf24j40_port.h: 24: void SetResetPin(bool_t estado);
 [v _SetResetPin `(v ~T0 @X0 0 ef1`a ]
-"250 drivers/scr/drv_mrf24j40.c
-[; ;drivers/scr/drv_mrf24j40.c: 250: static void SetShortAddr(u_int_8 reg_address, u_int_8 value);
+"261 drivers/scr/drv_mrf24j40.c
+[; ;drivers/scr/drv_mrf24j40.c: 261: static void SetShortAddr(uint8_t reg_address, uint8_t value);
 [v _SetShortAddr `(v ~T0 @X0 0 sf2`uc`uc ]
-"251
-[; ;drivers/scr/drv_mrf24j40.c: 251: static void SetLongAddr(u_int_16 reg_address, u_int_8 value);
-[v _SetLongAddr `(v ~T0 @X0 0 sf2`ui`uc ]
-"255
-[; ;drivers/scr/drv_mrf24j40.c: 255: static void SetChannel(void);
+"262
+[; ;drivers/scr/drv_mrf24j40.c: 262: static void SetLongAddr(uint16_t reg_address, uint8_t value);
+[v _SetLongAddr `(v ~T0 @X0 0 sf2`us`uc ]
+"266
+[; ;drivers/scr/drv_mrf24j40.c: 266: static void SetChannel(void);
 [v _SetChannel `(v ~T0 @X0 0 sf ]
-"254
-[; ;drivers/scr/drv_mrf24j40.c: 254: static void SetDeviceAddress();
+"265
+[; ;drivers/scr/drv_mrf24j40.c: 265: static void SetDeviceAddress();
 [v _SetDeviceAddress `(v ~T0 @X0 0 s? ]
-"256
-[; ;drivers/scr/drv_mrf24j40.c: 256: static void SetDeviceMACAddress(void);
+"267
+[; ;drivers/scr/drv_mrf24j40.c: 267: static void SetDeviceMACAddress(void);
 [v _SetDeviceMACAddress `(v ~T0 @X0 0 sf ]
-"316
-[; ;drivers/scr/drv_mrf24j40.c: 316:     mrf24_data_config.my_channel = CH_11;
-[c E2955 3 19 35 51 67 83 99 115 131 147 163 179 195 211 227 243 .. ]
-[n E2955 . CH_11 CH_12 CH_13 CH_14 CH_15 CH_16 CH_17 CH_18 CH_19 CH_20 CH_21 CH_22 CH_23 CH_24 CH_25 CH_26  ]
+"327
+[; ;drivers/scr/drv_mrf24j40.c: 327:     mrf24_data_config.my_channel = CH_11;
+[c E2953 3 19 35 51 67 83 99 115 131 147 163 179 195 211 227 243 .. ]
+[n E2953 . CH_11 CH_12 CH_13 CH_14 CH_15 CH_16 CH_17 CH_18 CH_19 CH_20 CH_21 CH_22 CH_23 CH_24 CH_25 CH_26  ]
 "22 drivers/scr/../inc/drv_mrf24j40_port.h
-[; ;drivers/scr/../inc/drv_mrf24j40_port.h: 22: void SetCSPin(booleano estado);
+[; ;drivers/scr/../inc/drv_mrf24j40_port.h: 22: void SetCSPin(bool_t estado);
 [v _SetCSPin `(v ~T0 @X0 0 ef1`a ]
 "25
-[; ;drivers/scr/../inc/drv_mrf24j40_port.h: 25: void WriteByteSPIPort(u_int_8 dato);
+[; ;drivers/scr/../inc/drv_mrf24j40_port.h: 25: void WriteByteSPIPort(uint8_t dato);
 [v _WriteByteSPIPort `(v ~T0 @X0 0 ef1`uc ]
 "27
-[; ;drivers/scr/../inc/drv_mrf24j40_port.h: 27: u_int_8 ReadByteSPIPort(void);
+[; ;drivers/scr/../inc/drv_mrf24j40_port.h: 27: uint8_t ReadByteSPIPort(void);
 [v _ReadByteSPIPort `(uc ~T0 @X0 0 ef ]
-"26
-[; ;drivers/scr/../inc/drv_mrf24j40_port.h: 26: void Write2ByteSPIPort(u_int_16 dato);
-[v _Write2ByteSPIPort `(v ~T0 @X0 0 ef1`ui ]
 "54 C:/Users/maria/.mchp_packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc\pic18f46k20.h
 [; ;C:/Users/maria/.mchp_packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc\pic18f46k20.h: 54: __asm("SSPMSK equ 0F77h");
 [; <" SSPMSK equ 0F77h ;# ">
@@ -555,7 +560,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "75
 [p x EBTRB  =  OFF       ]
 "24 drivers/scr/drv_mrf24j40.c
-[; ;drivers/scr/drv_mrf24j40.c: 24: static const u_int_8 default_mac_address[] = {0x11,
+[; ;drivers/scr/drv_mrf24j40.c: 24: static const uint8_t default_mac_address[] = {0x11,
 [v _default_mac_address `Cuc ~T0 @X0 -> 8 `i s ]
 [i _default_mac_address
 :U ..
@@ -570,7 +575,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 "34
-[; ;drivers/scr/drv_mrf24j40.c: 34: static const u_int_8 default_security_key[] = {0x00,
+[; ;drivers/scr/drv_mrf24j40.c: 34: static const uint8_t default_security_key[] = {0x00,
 [v _default_security_key `Cuc ~T0 @X0 -> 16 `i s ]
 [i _default_security_key
 :U ..
@@ -592,763 +597,782 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 21 `i `uc
 ..
 ]
-"64
-[; ;drivers/scr/drv_mrf24j40.c: 64: }mrf24_data_config;
+"63
+[; ;drivers/scr/drv_mrf24j40.c: 63: }mrf24_data_config;
 [v _mrf24_data_config `S304 ~T0 @X0 1 s ]
-"73
-[; ;drivers/scr/drv_mrf24j40.c: 73: }mrf24_data_out;
+"72
+[; ;drivers/scr/drv_mrf24j40.c: 72: }mrf24_data_out;
 [v _mrf24_data_out `S305 ~T0 @X0 1 s ]
-"263
-[; ;drivers/scr/drv_mrf24j40.c: 263: void MRF24J40Init(void) {
+"81
+[; ;drivers/scr/drv_mrf24j40.c: 81: }mrf24_data_in;
+[v _mrf24_data_in `S306 ~T0 @X0 1 s ]
+"113
+[; ;drivers/scr/drv_mrf24j40.c: 113: } my_default_mac_address;
+[v _my_default_mac_address `E2971 ~T0 @X0 1 e ]
+"274
+[; ;drivers/scr/drv_mrf24j40.c: 274: void MRF24J40Init(void) {
 [v _MRF24J40Init `(v ~T0 @X0 1 ef ]
 {
 [e :U _MRF24J40Init ]
 [f ]
-"265
-[; ;drivers/scr/drv_mrf24j40.c: 265:     InicializoVariables();
-[e ( _InicializoVariables ..  ]
-"266
-[; ;drivers/scr/drv_mrf24j40.c: 266:     InicializoPines();
-[e ( _InicializoPines ..  ]
-"267
-[; ;drivers/scr/drv_mrf24j40.c: 267:   _delay((unsigned long)((50)*(16000000/4000.0)));;
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"268
-[; ;drivers/scr/drv_mrf24j40.c: 268:     SetResetPin(1);
-[e ( _SetResetPin (1 -> -> 1 `i `a ]
-"269
-[; ;drivers/scr/drv_mrf24j40.c: 269:  _delay((unsigned long)((500)*(16000000/4000.0)));;
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"270
-[; ;drivers/scr/drv_mrf24j40.c: 270:     SetShortAddr((0x18), 0x98);
-[e ( _SetShortAddr (2 , -> -> 24 `i `uc -> -> 152 `i `uc ]
-"271
-[; ;drivers/scr/drv_mrf24j40.c: 271:     SetShortAddr((0x2E), 0x95);
-[e ( _SetShortAddr (2 , -> -> 46 `i `uc -> -> 149 `i `uc ]
-"272
-[; ;drivers/scr/drv_mrf24j40.c: 272:     SetLongAddr((0x200), 0x03);
-[e ( _SetLongAddr (2 , -> -> 512 `i `ui -> -> 3 `i `uc ]
-"273
-[; ;drivers/scr/drv_mrf24j40.c: 273:  SetLongAddr((0x201), 0x01);
-[e ( _SetLongAddr (2 , -> -> 513 `i `ui -> -> 1 `i `uc ]
-"274
-[; ;drivers/scr/drv_mrf24j40.c: 274:  SetLongAddr((0x202), 0x80);
-[e ( _SetLongAddr (2 , -> -> 514 `i `ui -> -> 128 `i `uc ]
-"275
-[; ;drivers/scr/drv_mrf24j40.c: 275:  SetLongAddr((0x206), 0x90);
-[e ( _SetLongAddr (2 , -> -> 518 `i `ui -> -> 144 `i `uc ]
 "276
-[; ;drivers/scr/drv_mrf24j40.c: 276:  SetLongAddr((0x207), 0x80);
-[e ( _SetLongAddr (2 , -> -> 519 `i `ui -> -> 128 `i `uc ]
+[; ;drivers/scr/drv_mrf24j40.c: 276:     InicializoVariables();
+[e ( _InicializoVariables ..  ]
 "277
-[; ;drivers/scr/drv_mrf24j40.c: 277:  SetLongAddr((0x208), 0x10);
-[e ( _SetLongAddr (2 , -> -> 520 `i `ui -> -> 16 `i `uc ]
+[; ;drivers/scr/drv_mrf24j40.c: 277:     InicializoPines();
+[e ( _InicializoPines ..  ]
 "278
-[; ;drivers/scr/drv_mrf24j40.c: 278:  SetLongAddr((0x220), 0x21);
-[e ( _SetLongAddr (2 , -> -> 544 `i `ui -> -> 33 `i `uc ]
+[; ;drivers/scr/drv_mrf24j40.c: 278:   _delay((unsigned long)((50)*(16000000/4000.0)));;
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "279
-[; ;drivers/scr/drv_mrf24j40.c: 279:     SetShortAddr((0x3A), 0x80);
-[e ( _SetShortAddr (2 , -> -> 58 `i `uc -> -> 128 `i `uc ]
+[; ;drivers/scr/drv_mrf24j40.c: 279:     SetResetPin(1);
+[e ( _SetResetPin (1 -> -> 1 `i `a ]
 "280
-[; ;drivers/scr/drv_mrf24j40.c: 280:     SetShortAddr((0x3F), 0x60);
-[e ( _SetShortAddr (2 , -> -> 63 `i `uc -> -> 96 `i `uc ]
+[; ;drivers/scr/drv_mrf24j40.c: 280:  _delay((unsigned long)((500)*(16000000/4000.0)));;
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "281
-[; ;drivers/scr/drv_mrf24j40.c: 281:     SetShortAddr((0x3E), 0x40);
-[e ( _SetShortAddr (2 , -> -> 62 `i `uc -> -> 64 `i `uc ]
+[; ;drivers/scr/drv_mrf24j40.c: 281:     SetShortAddr((0x18), 0x98);
+[e ( _SetShortAddr (2 , -> -> 24 `i `uc -> -> 152 `i `uc ]
 "282
-[; ;drivers/scr/drv_mrf24j40.c: 282:     SetShortAddr((0x32), 0xF6);
-[e ( _SetShortAddr (2 , -> -> 50 `i `uc -> -> 246 `i `uc ]
-"283
-[; ;drivers/scr/drv_mrf24j40.c: 283:     SetChannel();
-[e ( _SetChannel ..  ]
-"284
-[; ;drivers/scr/drv_mrf24j40.c: 284:  SetShortAddr((0x0D), 0x01);
-[e ( _SetShortAddr (2 , -> -> 13 `i `uc -> -> 1 `i `uc ]
-"285
-[; ;drivers/scr/drv_mrf24j40.c: 285:  SetDeviceAddress();
-[e ( _SetDeviceAddress ..  ]
-"286
-[; ;drivers/scr/drv_mrf24j40.c: 286:     SetDeviceMACAddress();
-[e ( _SetDeviceMACAddress ..  ]
-"287
-[; ;drivers/scr/drv_mrf24j40.c: 287:  SetShortAddr((0x2E), 0x95);
+[; ;drivers/scr/drv_mrf24j40.c: 282:     SetShortAddr((0x2E), 0x95);
 [e ( _SetShortAddr (2 , -> -> 46 `i `uc -> -> 149 `i `uc ]
+"283
+[; ;drivers/scr/drv_mrf24j40.c: 283:     SetLongAddr((0x200), 0x03);
+[e ( _SetLongAddr (2 , -> -> 512 `i `us -> -> 3 `i `uc ]
+"284
+[; ;drivers/scr/drv_mrf24j40.c: 284:  SetLongAddr((0x201), 0x01);
+[e ( _SetLongAddr (2 , -> -> 513 `i `us -> -> 1 `i `uc ]
+"285
+[; ;drivers/scr/drv_mrf24j40.c: 285:  SetLongAddr((0x202), 0x80);
+[e ( _SetLongAddr (2 , -> -> 514 `i `us -> -> 128 `i `uc ]
+"286
+[; ;drivers/scr/drv_mrf24j40.c: 286:  SetLongAddr((0x206), 0x90);
+[e ( _SetLongAddr (2 , -> -> 518 `i `us -> -> 144 `i `uc ]
+"287
+[; ;drivers/scr/drv_mrf24j40.c: 287:  SetLongAddr((0x207), 0x80);
+[e ( _SetLongAddr (2 , -> -> 519 `i `us -> -> 128 `i `uc ]
 "288
-[; ;drivers/scr/drv_mrf24j40.c: 288:  SetShortAddr((0x12), 0xB9);
-[e ( _SetShortAddr (2 , -> -> 18 `i `uc -> -> 185 `i `uc ]
+[; ;drivers/scr/drv_mrf24j40.c: 288:  SetLongAddr((0x208), 0x10);
+[e ( _SetLongAddr (2 , -> -> 520 `i `us -> -> 16 `i `uc ]
+"289
+[; ;drivers/scr/drv_mrf24j40.c: 289:  SetLongAddr((0x220), 0x21);
+[e ( _SetLongAddr (2 , -> -> 544 `i `us -> -> 33 `i `uc ]
+"290
+[; ;drivers/scr/drv_mrf24j40.c: 290:     SetShortAddr((0x3A), 0x80);
+[e ( _SetShortAddr (2 , -> -> 58 `i `uc -> -> 128 `i `uc ]
+"291
+[; ;drivers/scr/drv_mrf24j40.c: 291:     SetShortAddr((0x3F), 0x60);
+[e ( _SetShortAddr (2 , -> -> 63 `i `uc -> -> 96 `i `uc ]
+"292
+[; ;drivers/scr/drv_mrf24j40.c: 292:     SetShortAddr((0x3E), 0x40);
+[e ( _SetShortAddr (2 , -> -> 62 `i `uc -> -> 64 `i `uc ]
+"293
+[; ;drivers/scr/drv_mrf24j40.c: 293:     SetShortAddr((0x32), 0xF6);
+[e ( _SetShortAddr (2 , -> -> 50 `i `uc -> -> 246 `i `uc ]
+"294
+[; ;drivers/scr/drv_mrf24j40.c: 294:     SetChannel();
+[e ( _SetChannel ..  ]
+"295
+[; ;drivers/scr/drv_mrf24j40.c: 295:  SetShortAddr((0x0D), 0x01);
+[e ( _SetShortAddr (2 , -> -> 13 `i `uc -> -> 1 `i `uc ]
+"296
+[; ;drivers/scr/drv_mrf24j40.c: 296:  SetDeviceAddress();
+[e ( _SetDeviceAddress ..  ]
 "297
-[; ;drivers/scr/drv_mrf24j40.c: 297:  SetShortAddr((0x00),0x00);
-[e ( _SetShortAddr (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
+[; ;drivers/scr/drv_mrf24j40.c: 297:     SetDeviceMACAddress();
+[e ( _SetDeviceMACAddress ..  ]
 "298
-[; ;drivers/scr/drv_mrf24j40.c: 298:  return;
-[e $UE 306  ]
+[; ;drivers/scr/drv_mrf24j40.c: 298:  SetShortAddr((0x2E), 0x95);
+[e ( _SetShortAddr (2 , -> -> 46 `i `uc -> -> 149 `i `uc ]
 "299
-[; ;drivers/scr/drv_mrf24j40.c: 299: }
-[e :UE 306 ]
+[; ;drivers/scr/drv_mrf24j40.c: 299:  SetShortAddr((0x12), 0xB9);
+[e ( _SetShortAddr (2 , -> -> 18 `i `uc -> -> 185 `i `uc ]
+"308
+[; ;drivers/scr/drv_mrf24j40.c: 308:  SetShortAddr((0x00),0x00);
+[e ( _SetShortAddr (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
+"309
+[; ;drivers/scr/drv_mrf24j40.c: 309:  return;
+[e $UE 307  ]
+"310
+[; ;drivers/scr/drv_mrf24j40.c: 310: }
+[e :UE 307 ]
 }
-"307
-[; ;drivers/scr/drv_mrf24j40.c: 307: static void InicializoVariables(void) {
+"318
+[; ;drivers/scr/drv_mrf24j40.c: 318: static void InicializoVariables(void) {
 [v _InicializoVariables `(v ~T0 @X0 1 sf ]
 {
 [e :U _InicializoVariables ]
 [f ]
-"309
-[; ;drivers/scr/drv_mrf24j40.c: 309:     for(int i = 0; i < 16; i++){
+"320
+[; ;drivers/scr/drv_mrf24j40.c: 320:     for(int i = 0; i < 16; i++){
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $ < _i -> 16 `i 308  ]
-[e $U 309  ]
-[e :U 308 ]
+[e $ < _i -> 16 `i 309  ]
+[e $U 310  ]
+[e :U 309 ]
 {
-"311
-[; ;drivers/scr/drv_mrf24j40.c: 311:         if(i < 8)
-[e $ ! < _i -> 8 `i 311  ]
-"312
-[; ;drivers/scr/drv_mrf24j40.c: 312:             mrf24_data_config.my_mac[i] = default_mac_address[i];
+"322
+[; ;drivers/scr/drv_mrf24j40.c: 322:         if(i < 8)
+[e $ ! < _i -> 8 `i 312  ]
+"323
+[; ;drivers/scr/drv_mrf24j40.c: 323:             mrf24_data_config.my_mac[i] = default_mac_address[i];
 [e = *U + &U . _mrf24_data_config 5 * -> -> _i `ui `ux -> -> # *U &U . _mrf24_data_config 5 `ui `ux *U + &U _default_mac_address * -> -> _i `ui `ux -> -> # *U &U _default_mac_address `ui `ux ]
-[e :U 311 ]
-"313
-[; ;drivers/scr/drv_mrf24j40.c: 313:         mrf24_data_config.security_key[i] = default_security_key[i];
+[e :U 312 ]
+"324
+[; ;drivers/scr/drv_mrf24j40.c: 324:         mrf24_data_config.security_key[i] = default_security_key[i];
 [e = *U + &U . _mrf24_data_config 4 * -> -> _i `ui `ux -> -> # *U &U . _mrf24_data_config 4 `ui `ux *U + &U _default_security_key * -> -> _i `ui `ux -> -> # *U &U _default_security_key `ui `ux ]
-"314
-[; ;drivers/scr/drv_mrf24j40.c: 314:     }
+"325
+[; ;drivers/scr/drv_mrf24j40.c: 325:     }
 }
 [e ++ _i -> 1 `i ]
-[e $ < _i -> 16 `i 308  ]
-[e :U 309 ]
+[e $ < _i -> 16 `i 309  ]
+[e :U 310 ]
 }
-"315
-[; ;drivers/scr/drv_mrf24j40.c: 315:     mrf24_data_config.sequence_number = 0x68;
+"326
+[; ;drivers/scr/drv_mrf24j40.c: 326:     mrf24_data_config.sequence_number = 0x68;
 [e = . _mrf24_data_config 2 -> -> 104 `i `uc ]
-"316
-[; ;drivers/scr/drv_mrf24j40.c: 316:     mrf24_data_config.my_channel = CH_11;
-[e = . _mrf24_data_config 3 -> . `E2955 0 `uc ]
-"317
-[; ;drivers/scr/drv_mrf24j40.c: 317:     mrf24_data_config.get_new_msg = 0;
+"327
+[; ;drivers/scr/drv_mrf24j40.c: 327:     mrf24_data_config.my_channel = CH_11;
+[e = . _mrf24_data_config 3 -> . `E2953 0 `uc ]
+"328
+[; ;drivers/scr/drv_mrf24j40.c: 328:     mrf24_data_config.get_new_msg = 0;
 [e = . _mrf24_data_config 0 -> -> 0 `i `a ]
-"318
-[; ;drivers/scr/drv_mrf24j40.c: 318:     mrf24_data_config.put_new_msg = 0;
+"329
+[; ;drivers/scr/drv_mrf24j40.c: 329:     mrf24_data_config.put_new_msg = 0;
 [e = . _mrf24_data_config 1 -> -> 0 `i `a ]
-"319
-[; ;drivers/scr/drv_mrf24j40.c: 319:     mrf24_data_config.my_panid = 0x1234;
-[e = . _mrf24_data_config 6 -> -> 4660 `i `ui ]
-"320
-[; ;drivers/scr/drv_mrf24j40.c: 320:     mrf24_data_config.my_address = 0x0001;
-[e = . _mrf24_data_config 7 -> -> 1 `i `ui ]
-"321
-[; ;drivers/scr/drv_mrf24j40.c: 321:     mrf24_data_config.intervalo = 0x2222;
-[e = . _mrf24_data_config 8 -> -> 8738 `i `ui ]
-"322
-[; ;drivers/scr/drv_mrf24j40.c: 322:     mrf24_data_config.buffer_entrada[0] = 0;
-[e = *U + &U . _mrf24_data_config 9 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _mrf24_data_config 9 `ui `ux -> -> 0 `i `uc ]
-"324
-[; ;drivers/scr/drv_mrf24j40.c: 324:     return;
-[e $UE 307  ]
-"325
-[; ;drivers/scr/drv_mrf24j40.c: 325: }
-[e :UE 307 ]
-}
+"330
+[; ;drivers/scr/drv_mrf24j40.c: 330:     mrf24_data_config.my_panid = 0x1234;
+[e = . _mrf24_data_config 6 -> -> 4660 `i `us ]
+"331
+[; ;drivers/scr/drv_mrf24j40.c: 331:     mrf24_data_config.my_address = 0x0001;
+[e = . _mrf24_data_config 7 -> -> 1 `i `us ]
 "332
-[; ;drivers/scr/drv_mrf24j40.c: 332: static void SetShortAddr(u_int_8 reg_address, u_int_8 value) {
+[; ;drivers/scr/drv_mrf24j40.c: 332:     mrf24_data_config.intervalo = 0x2222;
+[e = . _mrf24_data_config 8 -> -> 8738 `i `us ]
+"333
+[; ;drivers/scr/drv_mrf24j40.c: 333:     mrf24_data_in.source_address = 0;
+[e = . _mrf24_data_in 1 -> -> 0 `i `us ]
+"334
+[; ;drivers/scr/drv_mrf24j40.c: 334:     mrf24_data_in.source_panid = 0;
+[e = . _mrf24_data_in 0 -> -> 0 `i `us ]
+"335
+[; ;drivers/scr/drv_mrf24j40.c: 335:     mrf24_data_in.tamano_mensaje = 0;
+[e = . _mrf24_data_in 2 -> -> 0 `i `uc ]
+"336
+[; ;drivers/scr/drv_mrf24j40.c: 336:     mrf24_data_in.buffer_entrada[0] = 0;
+[e = *U + &U . _mrf24_data_in 3 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _mrf24_data_in 3 `ui `ux -> -> 0 `i `uc ]
+"338
+[; ;drivers/scr/drv_mrf24j40.c: 338:     return;
+[e $UE 308  ]
+"339
+[; ;drivers/scr/drv_mrf24j40.c: 339: }
+[e :UE 308 ]
+}
+"346
+[; ;drivers/scr/drv_mrf24j40.c: 346: static void SetShortAddr(uint8_t reg_address, uint8_t value) {
 [v _SetShortAddr `(v ~T0 @X0 1 sf2`uc`uc ]
 {
 [e :U _SetShortAddr ]
 [v _reg_address `uc ~T0 @X0 1 r1 ]
 [v _value `uc ~T0 @X0 1 r2 ]
 [f ]
-"334
-[; ;drivers/scr/drv_mrf24j40.c: 334:     reg_address = (u_int_8) (reg_address << 1) | 0x01;
+"348
+[; ;drivers/scr/drv_mrf24j40.c: 348:     reg_address = (uint8_t) (reg_address << 1) | 0x01;
 [e = _reg_address -> | -> -> << -> _reg_address `i -> 1 `i `uc `i -> 1 `i `uc ]
-"335
-[; ;drivers/scr/drv_mrf24j40.c: 335:     SetCSPin(0);
+"349
+[; ;drivers/scr/drv_mrf24j40.c: 349:     SetCSPin(0);
 [e ( _SetCSPin (1 -> -> 0 `i `a ]
-"336
-[; ;drivers/scr/drv_mrf24j40.c: 336:  WriteByteSPIPort(reg_address);
+"350
+[; ;drivers/scr/drv_mrf24j40.c: 350:  WriteByteSPIPort(reg_address);
 [e ( _WriteByteSPIPort (1 _reg_address ]
-"337
-[; ;drivers/scr/drv_mrf24j40.c: 337:  WriteByteSPIPort(value);
+"351
+[; ;drivers/scr/drv_mrf24j40.c: 351:  WriteByteSPIPort(value);
 [e ( _WriteByteSPIPort (1 _value ]
-"338
-[; ;drivers/scr/drv_mrf24j40.c: 338:     SetCSPin(1);
+"352
+[; ;drivers/scr/drv_mrf24j40.c: 352:     SetCSPin(1);
 [e ( _SetCSPin (1 -> -> 1 `i `a ]
-"339
-[; ;drivers/scr/drv_mrf24j40.c: 339:  return;
-[e $UE 312  ]
-"340
-[; ;drivers/scr/drv_mrf24j40.c: 340: }
-[e :UE 312 ]
+"353
+[; ;drivers/scr/drv_mrf24j40.c: 353:  return;
+[e $UE 313  ]
+"354
+[; ;drivers/scr/drv_mrf24j40.c: 354: }
+[e :UE 313 ]
 }
-"347
-[; ;drivers/scr/drv_mrf24j40.c: 347: static u_int_8 GetShortAddr(u_int_8 reg_address) {
+"361
+[; ;drivers/scr/drv_mrf24j40.c: 361: static uint8_t GetShortAddr(uint8_t reg_address) {
 [v _GetShortAddr `(uc ~T0 @X0 1 sf1`uc ]
 {
 [e :U _GetShortAddr ]
 [v _reg_address `uc ~T0 @X0 1 r1 ]
 [f ]
-"349
-[; ;drivers/scr/drv_mrf24j40.c: 349:     u_int_8 leido_spi = 0;
+"363
+[; ;drivers/scr/drv_mrf24j40.c: 363:     uint8_t leido_spi = 0;
 [v _leido_spi `uc ~T0 @X0 1 a ]
 [e = _leido_spi -> -> 0 `i `uc ]
-"350
-[; ;drivers/scr/drv_mrf24j40.c: 350:     reg_address = (u_int_8) (reg_address << 1) & 0x7E;
+"364
+[; ;drivers/scr/drv_mrf24j40.c: 364:     reg_address = (uint8_t) (reg_address << 1) & 0x7E;
 [e = _reg_address -> & -> -> << -> _reg_address `i -> 1 `i `uc `i -> 126 `i `uc ]
-"351
-[; ;drivers/scr/drv_mrf24j40.c: 351:     SetCSPin(0);
-[e ( _SetCSPin (1 -> -> 0 `i `a ]
-"352
-[; ;drivers/scr/drv_mrf24j40.c: 352:     WriteByteSPIPort(reg_address);
-[e ( _WriteByteSPIPort (1 _reg_address ]
-"353
-[; ;drivers/scr/drv_mrf24j40.c: 353:     leido_spi = ReadByteSPIPort();
-[e = _leido_spi ( _ReadByteSPIPort ..  ]
-"354
-[; ;drivers/scr/drv_mrf24j40.c: 354:     SetCSPin(1);
-[e ( _SetCSPin (1 -> -> 1 `i `a ]
-"355
-[; ;drivers/scr/drv_mrf24j40.c: 355:  return leido_spi;
-[e ) _leido_spi ]
-[e $UE 313  ]
-"356
-[; ;drivers/scr/drv_mrf24j40.c: 356: }
-[e :UE 313 ]
-}
-"363
-[; ;drivers/scr/drv_mrf24j40.c: 363: static void SetLongAddr(u_int_16 reg_address, u_int_8 value) {
-[v _SetLongAddr `(v ~T0 @X0 1 sf2`ui`uc ]
-{
-[e :U _SetLongAddr ]
-[v _reg_address `ui ~T0 @X0 1 r1 ]
-[v _value `uc ~T0 @X0 1 r2 ]
-[f ]
 "365
-[; ;drivers/scr/drv_mrf24j40.c: 365:     reg_address = (reg_address << 5) | 0x8010;
-[e = _reg_address | << _reg_address -> 5 `i -> 32784 `ui ]
-"366
-[; ;drivers/scr/drv_mrf24j40.c: 366:     SetCSPin(0);
+[; ;drivers/scr/drv_mrf24j40.c: 365:     SetCSPin(0);
 [e ( _SetCSPin (1 -> -> 0 `i `a ]
-"369
-[; ;drivers/scr/drv_mrf24j40.c: 369: Write2ByteSPIPort(reg_address);
-[e ( _Write2ByteSPIPort (1 _reg_address ]
-"370
-[; ;drivers/scr/drv_mrf24j40.c: 370:  WriteByteSPIPort(value);
-[e ( _WriteByteSPIPort (1 _value ]
-"371
-[; ;drivers/scr/drv_mrf24j40.c: 371:     SetCSPin(1);
+"366
+[; ;drivers/scr/drv_mrf24j40.c: 366:     WriteByteSPIPort(reg_address);
+[e ( _WriteByteSPIPort (1 _reg_address ]
+"367
+[; ;drivers/scr/drv_mrf24j40.c: 367:     leido_spi = ReadByteSPIPort();
+[e = _leido_spi ( _ReadByteSPIPort ..  ]
+"368
+[; ;drivers/scr/drv_mrf24j40.c: 368:     SetCSPin(1);
 [e ( _SetCSPin (1 -> -> 1 `i `a ]
-"372
-[; ;drivers/scr/drv_mrf24j40.c: 372:  return;
+"369
+[; ;drivers/scr/drv_mrf24j40.c: 369:  return leido_spi;
+[e ) _leido_spi ]
 [e $UE 314  ]
-"373
-[; ;drivers/scr/drv_mrf24j40.c: 373: }
+"370
+[; ;drivers/scr/drv_mrf24j40.c: 370: }
 [e :UE 314 ]
 }
-"380
-[; ;drivers/scr/drv_mrf24j40.c: 380: static u_int_8 GetLongAddr(u_int_16 reg_address) {
-[v _GetLongAddr `(uc ~T0 @X0 1 sf1`ui ]
+"377
+[; ;drivers/scr/drv_mrf24j40.c: 377: static void SetLongAddr(uint16_t reg_address, uint8_t value) {
+[v _SetLongAddr `(v ~T0 @X0 1 sf2`us`uc ]
 {
-[e :U _GetLongAddr ]
-[v _reg_address `ui ~T0 @X0 1 r1 ]
+[e :U _SetLongAddr ]
+[v _reg_address `us ~T0 @X0 1 r1 ]
+[v _value `uc ~T0 @X0 1 r2 ]
 [f ]
-"382
-[; ;drivers/scr/drv_mrf24j40.c: 382:  u_int_8 toReturn;
-[v _toReturn `uc ~T0 @X0 1 a ]
-"383
-[; ;drivers/scr/drv_mrf24j40.c: 383:     reg_address = (reg_address << 5) | 0x8000;
-[e = _reg_address | << _reg_address -> 5 `i -> 32768 `ui ]
-"384
-[; ;drivers/scr/drv_mrf24j40.c: 384:     SetCSPin(0);
+"379
+[; ;drivers/scr/drv_mrf24j40.c: 379:     reg_address = (reg_address << 5) | 0x8010;
+[e = _reg_address -> | << -> _reg_address `ui -> 5 `i -> 32784 `ui `us ]
+"380
+[; ;drivers/scr/drv_mrf24j40.c: 380:     SetCSPin(0);
 [e ( _SetCSPin (1 -> -> 0 `i `a ]
-"387
-[; ;drivers/scr/drv_mrf24j40.c: 387: Write2ByteSPIPort(reg_address);
-[e ( _Write2ByteSPIPort (1 _reg_address ]
-"388
-[; ;drivers/scr/drv_mrf24j40.c: 388:  toReturn = ReadByteSPIPort();
-[e = _toReturn ( _ReadByteSPIPort ..  ]
-"389
-[; ;drivers/scr/drv_mrf24j40.c: 389:     SetCSPin(1);
+"381
+[; ;drivers/scr/drv_mrf24j40.c: 381:  WriteByteSPIPort((uint8_t) (reg_address >> 8));
+[e ( _WriteByteSPIPort (1 -> >> -> _reg_address `ui -> 8 `i `uc ]
+"382
+[; ;drivers/scr/drv_mrf24j40.c: 382:  WriteByteSPIPort((uint8_t) reg_address );
+[e ( _WriteByteSPIPort (1 -> _reg_address `uc ]
+"384
+[; ;drivers/scr/drv_mrf24j40.c: 384:  WriteByteSPIPort(value);
+[e ( _WriteByteSPIPort (1 _value ]
+"385
+[; ;drivers/scr/drv_mrf24j40.c: 385:     SetCSPin(1);
 [e ( _SetCSPin (1 -> -> 1 `i `a ]
-"390
-[; ;drivers/scr/drv_mrf24j40.c: 390:  return toReturn;
-[e ) _toReturn ]
+"386
+[; ;drivers/scr/drv_mrf24j40.c: 386:  return;
 [e $UE 315  ]
-"391
-[; ;drivers/scr/drv_mrf24j40.c: 391: }
+"387
+[; ;drivers/scr/drv_mrf24j40.c: 387: }
 [e :UE 315 ]
 }
+"394
+[; ;drivers/scr/drv_mrf24j40.c: 394: static uint8_t GetLongAddr(uint16_t reg_address) {
+[v _GetLongAddr `(uc ~T0 @X0 1 sf1`us ]
+{
+[e :U _GetLongAddr ]
+[v _reg_address `us ~T0 @X0 1 r1 ]
+[f ]
+"396
+[; ;drivers/scr/drv_mrf24j40.c: 396:  uint8_t toReturn;
+[v _toReturn `uc ~T0 @X0 1 a ]
+"397
+[; ;drivers/scr/drv_mrf24j40.c: 397:     reg_address = (reg_address << 5) | 0x8000;
+[e = _reg_address -> | << -> _reg_address `ui -> 5 `i -> 32768 `ui `us ]
 "398
-[; ;drivers/scr/drv_mrf24j40.c: 398: static void SetChannel(void) {
+[; ;drivers/scr/drv_mrf24j40.c: 398:     SetCSPin(0);
+[e ( _SetCSPin (1 -> -> 0 `i `a ]
+"399
+[; ;drivers/scr/drv_mrf24j40.c: 399:     WriteByteSPIPort((uint8_t) (reg_address >> 8));
+[e ( _WriteByteSPIPort (1 -> >> -> _reg_address `ui -> 8 `i `uc ]
+"400
+[; ;drivers/scr/drv_mrf24j40.c: 400:  WriteByteSPIPort((uint8_t) reg_address );
+[e ( _WriteByteSPIPort (1 -> _reg_address `uc ]
+"402
+[; ;drivers/scr/drv_mrf24j40.c: 402:  toReturn = ReadByteSPIPort();
+[e = _toReturn ( _ReadByteSPIPort ..  ]
+"403
+[; ;drivers/scr/drv_mrf24j40.c: 403:     SetCSPin(1);
+[e ( _SetCSPin (1 -> -> 1 `i `a ]
+"404
+[; ;drivers/scr/drv_mrf24j40.c: 404:  return toReturn;
+[e ) _toReturn ]
+[e $UE 316  ]
+"405
+[; ;drivers/scr/drv_mrf24j40.c: 405: }
+[e :UE 316 ]
+}
+"412
+[; ;drivers/scr/drv_mrf24j40.c: 412: static void SetChannel(void) {
 [v _SetChannel `(v ~T0 @X0 1 sf ]
 {
 [e :U _SetChannel ]
 [f ]
-"400
-[; ;drivers/scr/drv_mrf24j40.c: 400:     u_int_8 aux = 0;
+"414
+[; ;drivers/scr/drv_mrf24j40.c: 414:     uint8_t aux = 0;
 [v _aux `uc ~T0 @X0 1 a ]
 [e = _aux -> -> 0 `i `uc ]
-"401
-[; ;drivers/scr/drv_mrf24j40.c: 401:  SetLongAddr((0x200), mrf24_data_config.my_channel);
-[e ( _SetLongAddr (2 , -> -> 512 `i `ui . _mrf24_data_config 3 ]
-"402
-[; ;drivers/scr/drv_mrf24j40.c: 402:     SetLongAddr((0x203), (0XC0) | (0X38));
-[e ( _SetLongAddr (2 , -> -> 515 `i `ui -> | -> 192 `i -> 56 `i `uc ]
-"403
-[; ;drivers/scr/drv_mrf24j40.c: 403:  SetShortAddr((0x36), 0x04);
+"415
+[; ;drivers/scr/drv_mrf24j40.c: 415:  SetLongAddr((0x200), mrf24_data_config.my_channel);
+[e ( _SetLongAddr (2 , -> -> 512 `i `us . _mrf24_data_config 3 ]
+"416
+[; ;drivers/scr/drv_mrf24j40.c: 416:     SetLongAddr((0x203), (0XC0) | (0X38));
+[e ( _SetLongAddr (2 , -> -> 515 `i `us -> | -> 192 `i -> 56 `i `uc ]
+"417
+[; ;drivers/scr/drv_mrf24j40.c: 417:  SetShortAddr((0x36), 0x04);
 [e ( _SetShortAddr (2 , -> -> 54 `i `uc -> -> 4 `i `uc ]
-"404
-[; ;drivers/scr/drv_mrf24j40.c: 404:  SetShortAddr((0x36), 0x00);
+"418
+[; ;drivers/scr/drv_mrf24j40.c: 418:  SetShortAddr((0x36), 0x00);
 [e ( _SetShortAddr (2 , -> -> 54 `i `uc -> -> 0 `i `uc ]
-"405
-[; ;drivers/scr/drv_mrf24j40.c: 405:  _delay((unsigned long)((192)*(16000000/4000000.0)));;
-[e ( __delay (1 -> * -> -> 192 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
-"407
-[; ;drivers/scr/drv_mrf24j40.c: 407:     do {
-[e :U 319 ]
-{
-"409
-[; ;drivers/scr/drv_mrf24j40.c: 409:   aux = GetLongAddr((0x20f));
-[e = _aux ( _GetLongAddr (1 -> -> 527 `i `ui ]
-"410
-[; ;drivers/scr/drv_mrf24j40.c: 410:  }while((aux & 0xA0) != 0xA0);
-}
-[e $ != & -> _aux `i -> 160 `i -> 160 `i 319  ]
-[e :U 318 ]
-"411
-[; ;drivers/scr/drv_mrf24j40.c: 411:  return;
-[e $UE 316  ]
-"412
-[; ;drivers/scr/drv_mrf24j40.c: 412: }
-[e :UE 316 ]
-}
 "419
-[; ;drivers/scr/drv_mrf24j40.c: 419: static void SetDeviceAddress(void) {
+[; ;drivers/scr/drv_mrf24j40.c: 419:  _delay((unsigned long)((192)*(16000000/4000000.0)));;
+[e ( __delay (1 -> * -> -> 192 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
+"421
+[; ;drivers/scr/drv_mrf24j40.c: 421:     do {
+[e :U 320 ]
+{
+"423
+[; ;drivers/scr/drv_mrf24j40.c: 423:   aux = GetLongAddr((0x20f));
+[e = _aux ( _GetLongAddr (1 -> -> 527 `i `us ]
+"424
+[; ;drivers/scr/drv_mrf24j40.c: 424:  }while((aux & 0xA0) != 0xA0);
+}
+[e $ != & -> _aux `i -> 160 `i -> 160 `i 320  ]
+[e :U 319 ]
+"425
+[; ;drivers/scr/drv_mrf24j40.c: 425:  return;
+[e $UE 317  ]
+"426
+[; ;drivers/scr/drv_mrf24j40.c: 426: }
+[e :UE 317 ]
+}
+"433
+[; ;drivers/scr/drv_mrf24j40.c: 433: static void SetDeviceAddress(void) {
 [v _SetDeviceAddress `(v ~T0 @X0 1 sf ]
 {
 [e :U _SetDeviceAddress ]
 [f ]
-"421
-[; ;drivers/scr/drv_mrf24j40.c: 421:  SetShortAddr((0x04), (u_int_8) (mrf24_data_config.my_address >> 8));
-[e ( _SetShortAddr (2 , -> -> 4 `i `uc -> >> . _mrf24_data_config 7 -> 8 `i `uc ]
-"422
-[; ;drivers/scr/drv_mrf24j40.c: 422:  SetShortAddr((0x03), (u_int_8) (mrf24_data_config.my_address));
+"435
+[; ;drivers/scr/drv_mrf24j40.c: 435:  SetShortAddr((0x04), (uint8_t) (mrf24_data_config.my_address >> 8));
+[e ( _SetShortAddr (2 , -> -> 4 `i `uc -> >> -> . _mrf24_data_config 7 `ui -> 8 `i `uc ]
+"436
+[; ;drivers/scr/drv_mrf24j40.c: 436:  SetShortAddr((0x03), (uint8_t) (mrf24_data_config.my_address));
 [e ( _SetShortAddr (2 , -> -> 3 `i `uc -> . _mrf24_data_config 7 `uc ]
-"423
-[; ;drivers/scr/drv_mrf24j40.c: 423:  SetShortAddr((0x02), (u_int_8) (mrf24_data_config.my_panid >> 8));
-[e ( _SetShortAddr (2 , -> -> 2 `i `uc -> >> . _mrf24_data_config 6 -> 8 `i `uc ]
-"424
-[; ;drivers/scr/drv_mrf24j40.c: 424:  SetShortAddr((0x01), (u_int_8) (mrf24_data_config.my_panid));
+"437
+[; ;drivers/scr/drv_mrf24j40.c: 437:  SetShortAddr((0x02), (uint8_t) (mrf24_data_config.my_panid >> 8));
+[e ( _SetShortAddr (2 , -> -> 2 `i `uc -> >> -> . _mrf24_data_config 6 `ui -> 8 `i `uc ]
+"438
+[; ;drivers/scr/drv_mrf24j40.c: 438:  SetShortAddr((0x01), (uint8_t) (mrf24_data_config.my_panid));
 [e ( _SetShortAddr (2 , -> -> 1 `i `uc -> . _mrf24_data_config 6 `uc ]
-"425
-[; ;drivers/scr/drv_mrf24j40.c: 425:  return;
-[e $UE 320  ]
-"426
-[; ;drivers/scr/drv_mrf24j40.c: 426: }
-[e :UE 320 ]
+"439
+[; ;drivers/scr/drv_mrf24j40.c: 439:  return;
+[e $UE 321  ]
+"440
+[; ;drivers/scr/drv_mrf24j40.c: 440: }
+[e :UE 321 ]
 }
-"433
-[; ;drivers/scr/drv_mrf24j40.c: 433: static void SetDeviceMACAddress(void) {
+"447
+[; ;drivers/scr/drv_mrf24j40.c: 447: static void SetDeviceMACAddress(void) {
 [v _SetDeviceMACAddress `(v ~T0 @X0 1 sf ]
 {
 [e :U _SetDeviceMACAddress ]
 [f ]
-"435
-[; ;drivers/scr/drv_mrf24j40.c: 435:  SetShortAddr((0x05), mrf24_data_config.my_mac[0]);
-[e ( _SetShortAddr (2 , -> -> 5 `i `uc *U + &U . _mrf24_data_config 5 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _mrf24_data_config 5 `ui `ux ]
-"436
-[; ;drivers/scr/drv_mrf24j40.c: 436:  SetShortAddr((0x06), mrf24_data_config.my_mac[1]);
-[e ( _SetShortAddr (2 , -> -> 6 `i `uc *U + &U . _mrf24_data_config 5 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _mrf24_data_config 5 `ui `ux ]
-"437
-[; ;drivers/scr/drv_mrf24j40.c: 437:  SetShortAddr((0x07), mrf24_data_config.my_mac[2]);
-[e ( _SetShortAddr (2 , -> -> 7 `i `uc *U + &U . _mrf24_data_config 5 * -> -> -> 2 `i `ui `ux -> -> # *U &U . _mrf24_data_config 5 `ui `ux ]
-"438
-[; ;drivers/scr/drv_mrf24j40.c: 438:  SetShortAddr((0x08), mrf24_data_config.my_mac[3]);
-[e ( _SetShortAddr (2 , -> -> 8 `i `uc *U + &U . _mrf24_data_config 5 * -> -> -> 3 `i `ui `ux -> -> # *U &U . _mrf24_data_config 5 `ui `ux ]
-"439
-[; ;drivers/scr/drv_mrf24j40.c: 439:  SetShortAddr((0x09), mrf24_data_config.my_mac[4]);
-[e ( _SetShortAddr (2 , -> -> 9 `i `uc *U + &U . _mrf24_data_config 5 * -> -> -> 4 `i `ui `ux -> -> # *U &U . _mrf24_data_config 5 `ui `ux ]
-"440
-[; ;drivers/scr/drv_mrf24j40.c: 440:  SetShortAddr((0x0A), mrf24_data_config.my_mac[5]);
-[e ( _SetShortAddr (2 , -> -> 10 `i `uc *U + &U . _mrf24_data_config 5 * -> -> -> 5 `i `ui `ux -> -> # *U &U . _mrf24_data_config 5 `ui `ux ]
-"441
-[; ;drivers/scr/drv_mrf24j40.c: 441:  SetShortAddr((0x0B), mrf24_data_config.my_mac[6]);
-[e ( _SetShortAddr (2 , -> -> 11 `i `uc *U + &U . _mrf24_data_config 5 * -> -> -> 6 `i `ui `ux -> -> # *U &U . _mrf24_data_config 5 `ui `ux ]
-"442
-[; ;drivers/scr/drv_mrf24j40.c: 442:  SetShortAddr((0x0C), mrf24_data_config.my_mac[7]);
-[e ( _SetShortAddr (2 , -> -> 12 `i `uc *U + &U . _mrf24_data_config 5 * -> -> -> 7 `i `ui `ux -> -> # *U &U . _mrf24_data_config 5 `ui `ux ]
-"443
-[; ;drivers/scr/drv_mrf24j40.c: 443:  return;
-[e $UE 321  ]
-"444
-[; ;drivers/scr/drv_mrf24j40.c: 444: }
-[e :UE 321 ]
+"449
+[; ;drivers/scr/drv_mrf24j40.c: 449:     my_default_mac_address = EADR0;
+[e = _my_default_mac_address . `E2971 0 ]
+"451
+[; ;drivers/scr/drv_mrf24j40.c: 451:     for(int i = 0; i < 8; i++) {
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 8 `i 323  ]
+[e $U 324  ]
+[e :U 323 ]
+{
+"453
+[; ;drivers/scr/drv_mrf24j40.c: 453:         SetShortAddr(my_default_mac_address++, mrf24_data_config.my_mac[i]);
+[e ( _SetShortAddr (2 , -> ++ _my_default_mac_address -> -> 1 `i `E2971 `uc *U + &U . _mrf24_data_config 5 * -> -> _i `ui `ux -> -> # *U &U . _mrf24_data_config 5 `ui `ux ]
+"454
+[; ;drivers/scr/drv_mrf24j40.c: 454:     }
 }
-"459
-[; ;drivers/scr/drv_mrf24j40.c: 459: void EnviarDatoEncriptado(void) {
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 8 `i 323  ]
+[e :U 324 ]
+}
+"455
+[; ;drivers/scr/drv_mrf24j40.c: 455:  return;
+[e $UE 322  ]
+"456
+[; ;drivers/scr/drv_mrf24j40.c: 456: }
+[e :UE 322 ]
+}
+"471
+[; ;drivers/scr/drv_mrf24j40.c: 471: void EnviarDatoEncriptado(void) {
 [v _EnviarDatoEncriptado `(v ~T0 @X0 1 ef ]
 {
 [e :U _EnviarDatoEncriptado ]
 [f ]
-"461
-[; ;drivers/scr/drv_mrf24j40.c: 461:  u_int_16 pos = 0;
-[v _pos `ui ~T0 @X0 1 a ]
-[e = _pos -> -> 0 `i `ui ]
-"462
-[; ;drivers/scr/drv_mrf24j40.c: 462:  SetLongAddr(pos++, 0X15);
-[e ( _SetLongAddr (2 , ++ _pos -> -> 1 `i `ui -> -> 21 `i `uc ]
-"463
-[; ;drivers/scr/drv_mrf24j40.c: 463:  SetLongAddr(pos++, 0X15 + 0X0B + 5);
-[e ( _SetLongAddr (2 , ++ _pos -> -> 1 `i `ui -> + + -> 21 `i -> 11 `i -> 5 `i `uc ]
-"464
-[; ;drivers/scr/drv_mrf24j40.c: 464:  SetLongAddr(pos++, 0x69);
-[e ( _SetLongAddr (2 , ++ _pos -> -> 1 `i `ui -> -> 105 `i `uc ]
-"465
-[; ;drivers/scr/drv_mrf24j40.c: 465:  SetLongAddr(pos++, 0xcc);
-[e ( _SetLongAddr (2 , ++ _pos -> -> 1 `i `ui -> -> 204 `i `uc ]
-"466
-[; ;drivers/scr/drv_mrf24j40.c: 466:  SetLongAddr(pos++, mrf24_data_config.sequence_number++);
-[e ( _SetLongAddr (2 , ++ _pos -> -> 1 `i `ui ++ . _mrf24_data_config 2 -> -> 1 `i `uc ]
-"467
-[; ;drivers/scr/drv_mrf24j40.c: 467:  SetLongAddr(pos++, (u_int_8) (mrf24_data_config.my_panid));
-[e ( _SetLongAddr (2 , ++ _pos -> -> 1 `i `ui -> . _mrf24_data_config 6 `uc ]
-"468
-[; ;drivers/scr/drv_mrf24j40.c: 468:  SetLongAddr(pos++, (u_int_8) (mrf24_data_config.my_panid >> 8));
-[e ( _SetLongAddr (2 , ++ _pos -> -> 1 `i `ui -> >> . _mrf24_data_config 6 -> 8 `i `uc ]
-"470
-[; ;drivers/scr/drv_mrf24j40.c: 470:  for(u_int_16 i = 0; i < 8; i++) {
-{
-[v _i `ui ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `ui ]
-[e $ < _i -> -> 8 `i `ui 323  ]
-[e $U 324  ]
-[e :U 323 ]
-{
-"472
-[; ;drivers/scr/drv_mrf24j40.c: 472:   SetLongAddr(pos++, mrf24_data_config.my_mac[i]);
-[e ( _SetLongAddr (2 , ++ _pos -> -> 1 `i `ui *U + &U . _mrf24_data_config 5 * -> _i `ux -> -> # *U &U . _mrf24_data_config 5 `ui `ux ]
 "473
-[; ;drivers/scr/drv_mrf24j40.c: 473:  }
-}
-[e ++ _i -> -> 1 `i `ui ]
-[e $ < _i -> -> 8 `i `ui 323  ]
-[e :U 324 ]
-}
+[; ;drivers/scr/drv_mrf24j40.c: 473:  uint16_t pos = 0;
+[v _pos `us ~T0 @X0 1 a ]
+[e = _pos -> -> 0 `i `us ]
+"474
+[; ;drivers/scr/drv_mrf24j40.c: 474:  SetLongAddr(pos++, 0X15);
+[e ( _SetLongAddr (2 , ++ _pos -> -> 1 `i `us -> -> 21 `i `uc ]
 "475
-[; ;drivers/scr/drv_mrf24j40.c: 475:  for(u_int_16 i = 0; i < 8; i++) {
-{
-[v _i `ui ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `ui ]
-[e $ < _i -> -> 8 `i `ui 326  ]
-[e $U 327  ]
-[e :U 326 ]
-{
+[; ;drivers/scr/drv_mrf24j40.c: 475:  SetLongAddr(pos++, 0X15 + 0X0B + 5);
+[e ( _SetLongAddr (2 , ++ _pos -> -> 1 `i `us -> + + -> 21 `i -> 11 `i -> 5 `i `uc ]
+"476
+[; ;drivers/scr/drv_mrf24j40.c: 476:  SetLongAddr(pos++, 0x69);
+[e ( _SetLongAddr (2 , ++ _pos -> -> 1 `i `us -> -> 105 `i `uc ]
 "477
-[; ;drivers/scr/drv_mrf24j40.c: 477:   SetLongAddr(pos++, mrf24_data_config.my_mac[i]);
-[e ( _SetLongAddr (2 , ++ _pos -> -> 1 `i `ui *U + &U . _mrf24_data_config 5 * -> _i `ux -> -> # *U &U . _mrf24_data_config 5 `ui `ux ]
+[; ;drivers/scr/drv_mrf24j40.c: 477:  SetLongAddr(pos++, 0xcc);
+[e ( _SetLongAddr (2 , ++ _pos -> -> 1 `i `us -> -> 204 `i `uc ]
 "478
-[; ;drivers/scr/drv_mrf24j40.c: 478:  }
-}
-[e ++ _i -> -> 1 `i `ui ]
-[e $ < _i -> -> 8 `i `ui 326  ]
-[e :U 327 ]
-}
+[; ;drivers/scr/drv_mrf24j40.c: 478:  SetLongAddr(pos++, mrf24_data_config.sequence_number++);
+[e ( _SetLongAddr (2 , ++ _pos -> -> 1 `i `us ++ . _mrf24_data_config 2 -> -> 1 `i `uc ]
 "479
-[; ;drivers/scr/drv_mrf24j40.c: 479:  SetLongAddr(pos++, 0x01);
-[e ( _SetLongAddr (2 , ++ _pos -> -> 1 `i `ui -> -> 1 `i `uc ]
+[; ;drivers/scr/drv_mrf24j40.c: 479:  SetLongAddr(pos++, (uint8_t) (mrf24_data_config.my_panid));
+[e ( _SetLongAddr (2 , ++ _pos -> -> 1 `i `us -> . _mrf24_data_config 6 `uc ]
 "480
-[; ;drivers/scr/drv_mrf24j40.c: 480:  SetLongAddr(pos++, 0x00);
-[e ( _SetLongAddr (2 , ++ _pos -> -> 1 `i `ui -> -> 0 `i `uc ]
-"481
-[; ;drivers/scr/drv_mrf24j40.c: 481:  SetLongAddr(pos++, 0x00);
-[e ( _SetLongAddr (2 , ++ _pos -> -> 1 `i `ui -> -> 0 `i `uc ]
+[; ;drivers/scr/drv_mrf24j40.c: 480:  SetLongAddr(pos++, (uint8_t) (mrf24_data_config.my_panid >> 8));
+[e ( _SetLongAddr (2 , ++ _pos -> -> 1 `i `us -> >> -> . _mrf24_data_config 6 `ui -> 8 `i `uc ]
 "482
-[; ;drivers/scr/drv_mrf24j40.c: 482:  SetLongAddr(pos++, 0x00);
-[e ( _SetLongAddr (2 , ++ _pos -> -> 1 `i `ui -> -> 0 `i `uc ]
-"483
-[; ;drivers/scr/drv_mrf24j40.c: 483:  SetLongAddr(pos++, 0x00);
-[e ( _SetLongAddr (2 , ++ _pos -> -> 1 `i `ui -> -> 0 `i `uc ]
+[; ;drivers/scr/drv_mrf24j40.c: 482:  for(uint16_t i = 0; i < 8; i++) {
+{
+[v _i `us ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `us ]
+[e $ < -> _i `ui -> -> 8 `i `ui 327  ]
+[e $U 328  ]
+[e :U 327 ]
+{
+"484
+[; ;drivers/scr/drv_mrf24j40.c: 484:   SetLongAddr(pos++, mrf24_data_config.my_mac[i]);
+[e ( _SetLongAddr (2 , ++ _pos -> -> 1 `i `us *U + &U . _mrf24_data_config 5 * -> _i `ux -> -> # *U &U . _mrf24_data_config 5 `ui `ux ]
 "485
-[; ;drivers/scr/drv_mrf24j40.c: 485:  for(u_int_16 i = 0; i < 16; i++) {
-{
-[v _i `ui ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `ui ]
-[e $ < _i -> -> 16 `i `ui 329  ]
-[e $U 330  ]
-[e :U 329 ]
-{
+[; ;drivers/scr/drv_mrf24j40.c: 485:  }
+}
+[e ++ _i -> -> 1 `i `us ]
+[e $ < -> _i `ui -> -> 8 `i `ui 327  ]
+[e :U 328 ]
+}
 "487
-[; ;drivers/scr/drv_mrf24j40.c: 487:   SetLongAddr((0x280) + i, mrf24_data_config.security_key[i + 1]);
-[e ( _SetLongAddr (2 , + -> -> 640 `i `ui _i *U + &U . _mrf24_data_config 4 * -> + _i -> -> 1 `i `ui `ux -> -> # *U &U . _mrf24_data_config 4 `ui `ux ]
-"488
-[; ;drivers/scr/drv_mrf24j40.c: 488:  }
-}
-[e ++ _i -> -> 1 `i `ui ]
-[e $ < _i -> -> 16 `i `ui 329  ]
+[; ;drivers/scr/drv_mrf24j40.c: 487:  for(uint16_t i = 0; i < 8; i++) {
+{
+[v _i `us ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `us ]
+[e $ < -> _i `ui -> -> 8 `i `ui 330  ]
+[e $U 331  ]
 [e :U 330 ]
-}
+{
 "489
-[; ;drivers/scr/drv_mrf24j40.c: 489:  SetLongAddr((0x2C), 0x04);
-[e ( _SetLongAddr (2 , -> -> 44 `i `ui -> -> 4 `i `uc ]
+[; ;drivers/scr/drv_mrf24j40.c: 489:   SetLongAddr(pos++, mrf24_data_config.my_mac[i]);
+[e ( _SetLongAddr (2 , ++ _pos -> -> 1 `i `us *U + &U . _mrf24_data_config 5 * -> _i `ux -> -> # *U &U . _mrf24_data_config 5 `ui `ux ]
+"490
+[; ;drivers/scr/drv_mrf24j40.c: 490:  }
+}
+[e ++ _i -> -> 1 `i `us ]
+[e $ < -> _i `ui -> -> 8 `i `ui 330  ]
+[e :U 331 ]
+}
 "491
-[; ;drivers/scr/drv_mrf24j40.c: 491:  for(u_int_16 i = 0; i < (mrf24_data_out.tamano_mensaje + 1); i++) {
-{
-[v _i `ui ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `ui ]
-[e $U 335  ]
-[e :U 332 ]
-{
+[; ;drivers/scr/drv_mrf24j40.c: 491:  SetLongAddr(pos++, 0x01);
+[e ( _SetLongAddr (2 , ++ _pos -> -> 1 `i `us -> -> 1 `i `uc ]
+"492
+[; ;drivers/scr/drv_mrf24j40.c: 492:  SetLongAddr(pos++, 0x00);
+[e ( _SetLongAddr (2 , ++ _pos -> -> 1 `i `us -> -> 0 `i `uc ]
 "493
-[; ;drivers/scr/drv_mrf24j40.c: 493:   SetLongAddr(pos++, *mrf24_data_out.buffer_salida++);
-[e ( _SetLongAddr (2 , ++ _pos -> -> 1 `i `ui *U ++ . _mrf24_data_out 3 * -> -> 1 `i `x -> -> # *U . _mrf24_data_out 3 `i `x ]
+[; ;drivers/scr/drv_mrf24j40.c: 493:  SetLongAddr(pos++, 0x00);
+[e ( _SetLongAddr (2 , ++ _pos -> -> 1 `i `us -> -> 0 `i `uc ]
 "494
-[; ;drivers/scr/drv_mrf24j40.c: 494:  }
-}
-[e ++ _i -> -> 1 `i `ui ]
-[e :U 335 ]
-[e $ < _i -> + -> . _mrf24_data_out 2 `i -> 1 `i `ui 332  ]
-[e :U 333 ]
-}
+[; ;drivers/scr/drv_mrf24j40.c: 494:  SetLongAddr(pos++, 0x00);
+[e ( _SetLongAddr (2 , ++ _pos -> -> 1 `i `us -> -> 0 `i `uc ]
 "495
-[; ;drivers/scr/drv_mrf24j40.c: 495:  SetShortAddr((0x1B), 0x07);
-[e ( _SetShortAddr (2 , -> -> 27 `i `uc -> -> 7 `i `uc ]
-"496
-[; ;drivers/scr/drv_mrf24j40.c: 496:  return;
-[e $UE 322  ]
+[; ;drivers/scr/drv_mrf24j40.c: 495:  SetLongAddr(pos++, 0x00);
+[e ( _SetLongAddr (2 , ++ _pos -> -> 1 `i `us -> -> 0 `i `uc ]
 "497
-[; ;drivers/scr/drv_mrf24j40.c: 497: }
-[e :UE 322 ]
+[; ;drivers/scr/drv_mrf24j40.c: 497:  for(uint16_t i = 0; i < 16; i++) {
+{
+[v _i `us ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `us ]
+[e $ < -> _i `ui -> -> 16 `i `ui 333  ]
+[e $U 334  ]
+[e :U 333 ]
+{
+"499
+[; ;drivers/scr/drv_mrf24j40.c: 499:   SetLongAddr((0x280) + i, mrf24_data_config.security_key[i + 1]);
+[e ( _SetLongAddr (2 , -> + -> -> 640 `i `ui -> _i `ui `us *U + &U . _mrf24_data_config 4 * -> + -> _i `ui -> -> 1 `i `ui `ux -> -> # *U &U . _mrf24_data_config 4 `ui `ux ]
+"500
+[; ;drivers/scr/drv_mrf24j40.c: 500:  }
 }
-"511
-[; ;drivers/scr/drv_mrf24j40.c: 511: void EnviarDato(void) {
+[e ++ _i -> -> 1 `i `us ]
+[e $ < -> _i `ui -> -> 16 `i `ui 333  ]
+[e :U 334 ]
+}
+"501
+[; ;drivers/scr/drv_mrf24j40.c: 501:  SetLongAddr((0x2C), 0x04);
+[e ( _SetLongAddr (2 , -> -> 44 `i `us -> -> 4 `i `uc ]
+"503
+[; ;drivers/scr/drv_mrf24j40.c: 503:  for(uint16_t i = 0; i < (mrf24_data_out.tamano_mensaje + 1); i++) {
+{
+[v _i `us ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `us ]
+[e $U 339  ]
+[e :U 336 ]
+{
+"505
+[; ;drivers/scr/drv_mrf24j40.c: 505:   SetLongAddr(pos++, *mrf24_data_out.buffer_salida++);
+[e ( _SetLongAddr (2 , ++ _pos -> -> 1 `i `us *U ++ . _mrf24_data_out 3 * -> -> 1 `i `x -> -> # *U . _mrf24_data_out 3 `i `x ]
+"506
+[; ;drivers/scr/drv_mrf24j40.c: 506:  }
+}
+[e ++ _i -> -> 1 `i `us ]
+[e :U 339 ]
+[e $ < -> _i `ui -> + -> . _mrf24_data_out 2 `i -> 1 `i `ui 336  ]
+[e :U 337 ]
+}
+"507
+[; ;drivers/scr/drv_mrf24j40.c: 507:  SetShortAddr((0x1B), 0x07);
+[e ( _SetShortAddr (2 , -> -> 27 `i `uc -> -> 7 `i `uc ]
+"508
+[; ;drivers/scr/drv_mrf24j40.c: 508:  return;
+[e $UE 326  ]
+"509
+[; ;drivers/scr/drv_mrf24j40.c: 509: }
+[e :UE 326 ]
+}
+"523
+[; ;drivers/scr/drv_mrf24j40.c: 523: void EnviarDato(void) {
 [v _EnviarDato `(v ~T0 @X0 1 ef ]
 {
 [e :U _EnviarDato ]
 [f ]
-"516
-[; ;drivers/scr/drv_mrf24j40.c: 516:  u_int_8 pos = 0;
+"528
+[; ;drivers/scr/drv_mrf24j40.c: 528:  uint8_t pos = 0;
 [v _pos `uc ~T0 @X0 1 a ]
 [e = _pos -> -> 0 `i `uc ]
-"517
-[; ;drivers/scr/drv_mrf24j40.c: 517:  u_int_8 i = 0x0f;
+"529
+[; ;drivers/scr/drv_mrf24j40.c: 529:  uint8_t i = 0x0f;
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 15 `i `uc ]
-"519
-[; ;drivers/scr/drv_mrf24j40.c: 519:  SetLongAddr(pos++, i);
-[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `ui _i ]
-"520
-[; ;drivers/scr/drv_mrf24j40.c: 520:  SetLongAddr(pos++, mrf24_data_out.tamano_mensaje + i);
-[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `ui -> + -> . _mrf24_data_out 2 `i -> _i `i `uc ]
-"521
-[; ;drivers/scr/drv_mrf24j40.c: 521:  SetLongAddr(pos++, (0X01)|(0X20)|(0X40));
-[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `ui -> | | -> 1 `i -> 32 `i -> 64 `i `uc ]
-"522
-[; ;drivers/scr/drv_mrf24j40.c: 522:  SetLongAddr(pos++, (0XC0)|(0X08));
-[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `ui -> | -> 192 `i -> 8 `i `uc ]
-"523
-[; ;drivers/scr/drv_mrf24j40.c: 523:  SetLongAddr(pos++, mrf24_data_config.sequence_number++);
-[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `ui ++ . _mrf24_data_config 2 -> -> 1 `i `uc ]
-"524
-[; ;drivers/scr/drv_mrf24j40.c: 524:  SetLongAddr(pos++, (u_int_8) mrf24_data_out.destinity_panid);
-[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `ui -> . _mrf24_data_out 0 `uc ]
-"525
-[; ;drivers/scr/drv_mrf24j40.c: 525:  SetLongAddr(pos++, (u_int_8) (mrf24_data_out.destinity_panid >> 8));
-[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `ui -> >> . _mrf24_data_out 0 -> 8 `i `uc ]
-"526
-[; ;drivers/scr/drv_mrf24j40.c: 526:  SetLongAddr(pos++, (u_int_8) mrf24_data_out.destinity_address);
-[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `ui -> . _mrf24_data_out 1 `uc ]
-"527
-[; ;drivers/scr/drv_mrf24j40.c: 527:  SetLongAddr(pos++, (u_int_8) (mrf24_data_out.destinity_address >> 8));
-[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `ui -> >> . _mrf24_data_out 1 -> 8 `i `uc ]
-"528
-[; ;drivers/scr/drv_mrf24j40.c: 528:  for(i = 0; i < 8; i++)
-{
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 8 `i 337  ]
-[e $U 338  ]
-[e :U 337 ]
-"529
-[; ;drivers/scr/drv_mrf24j40.c: 529:  {
-{
-"530
-[; ;drivers/scr/drv_mrf24j40.c: 530:   SetLongAddr(pos++, mrf24_data_config.my_mac[i]);
-[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `ui *U + &U . _mrf24_data_config 5 * -> _i `ux -> -> # *U &U . _mrf24_data_config 5 `ui `ux ]
 "531
-[; ;drivers/scr/drv_mrf24j40.c: 531:  }
-}
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 8 `i 337  ]
-[e :U 338 ]
-}
+[; ;drivers/scr/drv_mrf24j40.c: 531:  SetLongAddr(pos++, i);
+[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `us _i ]
 "532
-[; ;drivers/scr/drv_mrf24j40.c: 532:  for(i = 0; i < mrf24_data_out.tamano_mensaje; i++)
+[; ;drivers/scr/drv_mrf24j40.c: 532:  SetLongAddr(pos++, mrf24_data_out.tamano_mensaje + i);
+[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `us -> + -> . _mrf24_data_out 2 `i -> _i `i `uc ]
+"533
+[; ;drivers/scr/drv_mrf24j40.c: 533:  SetLongAddr(pos++, (0X01)|(0X20)|(0X40));
+[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `us -> | | -> 1 `i -> 32 `i -> 64 `i `uc ]
+"534
+[; ;drivers/scr/drv_mrf24j40.c: 534:  SetLongAddr(pos++, (0XC0)|(0X08));
+[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `us -> | -> 192 `i -> 8 `i `uc ]
+"535
+[; ;drivers/scr/drv_mrf24j40.c: 535:  SetLongAddr(pos++, mrf24_data_config.sequence_number++);
+[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `us ++ . _mrf24_data_config 2 -> -> 1 `i `uc ]
+"536
+[; ;drivers/scr/drv_mrf24j40.c: 536:  SetLongAddr(pos++, (uint8_t) mrf24_data_out.destinity_panid);
+[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `us -> . _mrf24_data_out 0 `uc ]
+"537
+[; ;drivers/scr/drv_mrf24j40.c: 537:  SetLongAddr(pos++, (uint8_t) (mrf24_data_out.destinity_panid >> 8));
+[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `us -> >> -> . _mrf24_data_out 0 `ui -> 8 `i `uc ]
+"538
+[; ;drivers/scr/drv_mrf24j40.c: 538:  SetLongAddr(pos++, (uint8_t) mrf24_data_out.destinity_address);
+[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `us -> . _mrf24_data_out 1 `uc ]
+"539
+[; ;drivers/scr/drv_mrf24j40.c: 539:  SetLongAddr(pos++, (uint8_t) (mrf24_data_out.destinity_address >> 8));
+[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `us -> >> -> . _mrf24_data_out 1 `ui -> 8 `i `uc ]
+"540
+[; ;drivers/scr/drv_mrf24j40.c: 540:  for(i = 0; i < 8; i++)
 {
 [e = _i -> -> 0 `i `uc ]
-[e $U 343  ]
-[e :U 340 ]
-"533
-[; ;drivers/scr/drv_mrf24j40.c: 533:  {
+[e $ < -> _i `i -> 8 `i 341  ]
+[e $U 342  ]
+[e :U 341 ]
+"541
+[; ;drivers/scr/drv_mrf24j40.c: 541:  {
 {
-"534
-[; ;drivers/scr/drv_mrf24j40.c: 534:   SetLongAddr(pos++, mrf24_data_out.buffer_salida[i]);
-[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `ui *U + . _mrf24_data_out 3 * -> _i `ux -> -> # *U . _mrf24_data_out 3 `ui `ux ]
-"535
-[; ;drivers/scr/drv_mrf24j40.c: 535:  }
+"542
+[; ;drivers/scr/drv_mrf24j40.c: 542:   SetLongAddr(pos++, mrf24_data_config.my_mac[i]);
+[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `us *U + &U . _mrf24_data_config 5 * -> _i `ux -> -> # *U &U . _mrf24_data_config 5 `ui `ux ]
+"543
+[; ;drivers/scr/drv_mrf24j40.c: 543:  }
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e :U 343 ]
-[e $ < -> _i `i -> . _mrf24_data_out 2 `i 340  ]
-[e :U 341 ]
+[e $ < -> _i `i -> 8 `i 341  ]
+[e :U 342 ]
 }
-"536
-[; ;drivers/scr/drv_mrf24j40.c: 536:  SetShortAddr((0x1B), 1 | (0X04));
+"544
+[; ;drivers/scr/drv_mrf24j40.c: 544:  for(i = 0; i < mrf24_data_out.tamano_mensaje; i++)
+{
+[e = _i -> -> 0 `i `uc ]
+[e $U 347  ]
+[e :U 344 ]
+"545
+[; ;drivers/scr/drv_mrf24j40.c: 545:  {
+{
+"546
+[; ;drivers/scr/drv_mrf24j40.c: 546:   SetLongAddr(pos++, mrf24_data_out.buffer_salida[i]);
+[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `us *U + . _mrf24_data_out 3 * -> _i `ux -> -> # *U . _mrf24_data_out 3 `ui `ux ]
+"547
+[; ;drivers/scr/drv_mrf24j40.c: 547:  }
+}
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 347 ]
+[e $ < -> _i `i -> . _mrf24_data_out 2 `i 344  ]
+[e :U 345 ]
+}
+"548
+[; ;drivers/scr/drv_mrf24j40.c: 548:  SetShortAddr((0x1B), 1 | (0X04));
 [e ( _SetShortAddr (2 , -> -> 27 `i `uc -> | -> 1 `i -> 4 `i `uc ]
-"537
-[; ;drivers/scr/drv_mrf24j40.c: 537:  return;
-[e $UE 336  ]
-"538
-[; ;drivers/scr/drv_mrf24j40.c: 538: }
-[e :UE 336 ]
+"549
+[; ;drivers/scr/drv_mrf24j40.c: 549:  return;
+[e $UE 340  ]
+"550
+[; ;drivers/scr/drv_mrf24j40.c: 550: }
+[e :UE 340 ]
 }
-"552
-[; ;drivers/scr/drv_mrf24j40.c: 552: void EnviarComando(void) {
+"564
+[; ;drivers/scr/drv_mrf24j40.c: 564: void EnviarComando(void) {
 [v _EnviarComando `(v ~T0 @X0 1 ef ]
 {
 [e :U _EnviarComando ]
 [f ]
-"554
-[; ;drivers/scr/drv_mrf24j40.c: 554:  u_int_8 pos = 0;
+"566
+[; ;drivers/scr/drv_mrf24j40.c: 566:  uint8_t pos = 0;
 [v _pos `uc ~T0 @X0 1 a ]
 [e = _pos -> -> 0 `i `uc ]
-"555
-[; ;drivers/scr/drv_mrf24j40.c: 555:  u_int_16 i;
-[v _i `ui ~T0 @X0 1 a ]
-"556
-[; ;drivers/scr/drv_mrf24j40.c: 556:  SetLongAddr(pos++, 0x0f);
-[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `ui -> -> 15 `i `uc ]
-"557
-[; ;drivers/scr/drv_mrf24j40.c: 557:  SetLongAddr(pos++, 0x13);
-[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `ui -> -> 19 `i `uc ]
-"558
-[; ;drivers/scr/drv_mrf24j40.c: 558:  SetLongAddr(pos++, 0x43);
-[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `ui -> -> 67 `i `uc ]
-"559
-[; ;drivers/scr/drv_mrf24j40.c: 559:  SetLongAddr(pos++, 0xc8);
-[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `ui -> -> 200 `i `uc ]
-"560
-[; ;drivers/scr/drv_mrf24j40.c: 560:  SetLongAddr(pos++, mrf24_data_config.sequence_number++);
-[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `ui ++ . _mrf24_data_config 2 -> -> 1 `i `uc ]
-"561
-[; ;drivers/scr/drv_mrf24j40.c: 561:  SetLongAddr(pos++, (u_int_8) mrf24_data_out.destinity_panid);
-[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `ui -> . _mrf24_data_out 0 `uc ]
-"562
-[; ;drivers/scr/drv_mrf24j40.c: 562:  SetLongAddr(pos++, (u_int_8) (mrf24_data_out.destinity_panid >> 8));
-[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `ui -> >> . _mrf24_data_out 0 -> 8 `i `uc ]
-"563
-[; ;drivers/scr/drv_mrf24j40.c: 563:  SetLongAddr(pos++, (u_int_8) mrf24_data_out.destinity_address);
-[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `ui -> . _mrf24_data_out 1 `uc ]
-"564
-[; ;drivers/scr/drv_mrf24j40.c: 564:  SetLongAddr(pos++, (u_int_8) (mrf24_data_out.destinity_address >> 8));
-[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `ui -> >> . _mrf24_data_out 1 -> 8 `i `uc ]
-"565
-[; ;drivers/scr/drv_mrf24j40.c: 565:  for(i = 0; i < 8; i++)
-{
-[e = _i -> -> 0 `i `ui ]
-[e $ < _i -> -> 8 `i `ui 345  ]
-[e $U 346  ]
-[e :U 345 ]
-"566
-[; ;drivers/scr/drv_mrf24j40.c: 566:  {
-{
 "567
-[; ;drivers/scr/drv_mrf24j40.c: 567:   SetLongAddr(pos++, mrf24_data_config.my_mac[i]);
-[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `ui *U + &U . _mrf24_data_config 5 * -> _i `ux -> -> # *U &U . _mrf24_data_config 5 `ui `ux ]
+[; ;drivers/scr/drv_mrf24j40.c: 567:  uint16_t i;
+[v _i `us ~T0 @X0 1 a ]
 "568
-[; ;drivers/scr/drv_mrf24j40.c: 568:  }
-}
-[e ++ _i -> -> 1 `i `ui ]
-[e $ < _i -> -> 8 `i `ui 345  ]
-[e :U 346 ]
-}
+[; ;drivers/scr/drv_mrf24j40.c: 568:  SetLongAddr(pos++, 0x0f);
+[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `us -> -> 15 `i `uc ]
 "569
-[; ;drivers/scr/drv_mrf24j40.c: 569:  SetLongAddr(pos++, 0x81);
-[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `ui -> -> 129 `i `uc ]
+[; ;drivers/scr/drv_mrf24j40.c: 569:  SetLongAddr(pos++, 0x13);
+[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `us -> -> 19 `i `uc ]
 "570
-[; ;drivers/scr/drv_mrf24j40.c: 570:  SetLongAddr(pos++, 0x18);
-[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `ui -> -> 24 `i `uc ]
+[; ;drivers/scr/drv_mrf24j40.c: 570:  SetLongAddr(pos++, 0x43);
+[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `us -> -> 67 `i `uc ]
 "571
-[; ;drivers/scr/drv_mrf24j40.c: 571:  SetLongAddr(pos++, 0x09);
-[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `ui -> -> 9 `i `uc ]
+[; ;drivers/scr/drv_mrf24j40.c: 571:  SetLongAddr(pos++, 0xc8);
+[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `us -> -> 200 `i `uc ]
 "572
-[; ;drivers/scr/drv_mrf24j40.c: 572:  SetLongAddr(pos++, 0x01);
-[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `ui -> -> 1 `i `uc ]
+[; ;drivers/scr/drv_mrf24j40.c: 572:  SetLongAddr(pos++, mrf24_data_config.sequence_number++);
+[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `us ++ . _mrf24_data_config 2 -> -> 1 `i `uc ]
+"573
+[; ;drivers/scr/drv_mrf24j40.c: 573:  SetLongAddr(pos++, (uint8_t) mrf24_data_out.destinity_panid);
+[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `us -> . _mrf24_data_out 0 `uc ]
 "574
-[; ;drivers/scr/drv_mrf24j40.c: 574:  SetShortAddr((0x1B), 1 | (0X04));
-[e ( _SetShortAddr (2 , -> -> 27 `i `uc -> | -> 1 `i -> 4 `i `uc ]
+[; ;drivers/scr/drv_mrf24j40.c: 574:  SetLongAddr(pos++, (uint8_t) (mrf24_data_out.destinity_panid >> 8));
+[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `us -> >> -> . _mrf24_data_out 0 `ui -> 8 `i `uc ]
 "575
-[; ;drivers/scr/drv_mrf24j40.c: 575:  return;
-[e $UE 344  ]
+[; ;drivers/scr/drv_mrf24j40.c: 575:  SetLongAddr(pos++, (uint8_t) mrf24_data_out.destinity_address);
+[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `us -> . _mrf24_data_out 1 `uc ]
 "576
-[; ;drivers/scr/drv_mrf24j40.c: 576: }
-[e :UE 344 ]
+[; ;drivers/scr/drv_mrf24j40.c: 576:  SetLongAddr(pos++, (uint8_t) (mrf24_data_out.destinity_address >> 8));
+[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `us -> >> -> . _mrf24_data_out 1 `ui -> 8 `i `uc ]
+"577
+[; ;drivers/scr/drv_mrf24j40.c: 577:  for(i = 0; i < 8; i++)
+{
+[e = _i -> -> 0 `i `us ]
+[e $ < -> _i `ui -> -> 8 `i `ui 349  ]
+[e $U 350  ]
+[e :U 349 ]
+"578
+[; ;drivers/scr/drv_mrf24j40.c: 578:  {
+{
+"579
+[; ;drivers/scr/drv_mrf24j40.c: 579:   SetLongAddr(pos++, mrf24_data_config.my_mac[i]);
+[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `us *U + &U . _mrf24_data_config 5 * -> _i `ux -> -> # *U &U . _mrf24_data_config 5 `ui `ux ]
+"580
+[; ;drivers/scr/drv_mrf24j40.c: 580:  }
 }
+[e ++ _i -> -> 1 `i `us ]
+[e $ < -> _i `ui -> -> 8 `i `ui 349  ]
+[e :U 350 ]
+}
+"581
+[; ;drivers/scr/drv_mrf24j40.c: 581:  SetLongAddr(pos++, 0x81);
+[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `us -> -> 129 `i `uc ]
+"582
+[; ;drivers/scr/drv_mrf24j40.c: 582:  SetLongAddr(pos++, 0x18);
+[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `us -> -> 24 `i `uc ]
 "583
-[; ;drivers/scr/drv_mrf24j40.c: 583: void ReciboPaquete(void) {
+[; ;drivers/scr/drv_mrf24j40.c: 583:  SetLongAddr(pos++, 0x09);
+[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `us -> -> 9 `i `uc ]
+"584
+[; ;drivers/scr/drv_mrf24j40.c: 584:  SetLongAddr(pos++, 0x01);
+[e ( _SetLongAddr (2 , -> ++ _pos -> -> 1 `i `uc `us -> -> 1 `i `uc ]
+"586
+[; ;drivers/scr/drv_mrf24j40.c: 586:  SetShortAddr((0x1B), 1 | (0X04));
+[e ( _SetShortAddr (2 , -> -> 27 `i `uc -> | -> 1 `i -> 4 `i `uc ]
+"587
+[; ;drivers/scr/drv_mrf24j40.c: 587:  return;
+[e $UE 348  ]
+"588
+[; ;drivers/scr/drv_mrf24j40.c: 588: }
+[e :UE 348 ]
+}
+"595
+[; ;drivers/scr/drv_mrf24j40.c: 595: void ReciboPaquete(void) {
 [v _ReciboPaquete `(v ~T0 @X0 1 ef ]
 {
 [e :U _ReciboPaquete ]
 [f ]
-"585
-[; ;drivers/scr/drv_mrf24j40.c: 585:  u_int_8 i;
+"597
+[; ;drivers/scr/drv_mrf24j40.c: 597:  uint8_t i;
 [v _i `uc ~T0 @X0 1 a ]
-"586
-[; ;drivers/scr/drv_mrf24j40.c: 586:  u_int_8 rssi,final;
+"598
+[; ;drivers/scr/drv_mrf24j40.c: 598:  uint8_t rssi,final;
 [v _rssi `uc ~T0 @X0 1 a ]
 [v _final `uc ~T0 @X0 1 a ]
-"587
-[; ;drivers/scr/drv_mrf24j40.c: 587:  final = GetLongAddr((0x300));
-[e = _final ( _GetLongAddr (1 -> -> 768 `i `ui ]
-"588
-[; ;drivers/scr/drv_mrf24j40.c: 588:  for(i = 0; i < final - 17; i++)
+"599
+[; ;drivers/scr/drv_mrf24j40.c: 599:  final = GetLongAddr((0x300));
+[e = _final ( _GetLongAddr (1 -> -> 768 `i `us ]
+"600
+[; ;drivers/scr/drv_mrf24j40.c: 600:  for(i = 0; i < final - 17; i++)
 {
 [e = _i -> -> 0 `i `uc ]
-[e $U 352  ]
-[e :U 349 ]
-"589
-[; ;drivers/scr/drv_mrf24j40.c: 589:  {
+[e $U 356  ]
+[e :U 353 ]
+"601
+[; ;drivers/scr/drv_mrf24j40.c: 601:  {
 {
-"590
-[; ;drivers/scr/drv_mrf24j40.c: 590:   mrf24_data_config.buffer_entrada[i] = GetLongAddr((0x300) + i + 16);
-[e = *U + &U . _mrf24_data_config 9 * -> _i `ux -> -> # *U &U . _mrf24_data_config 9 `ui `ux ( _GetLongAddr (1 -> + + -> 768 `i -> _i `i -> 16 `i `ui ]
-"591
-[; ;drivers/scr/drv_mrf24j40.c: 591:  }
+"602
+[; ;drivers/scr/drv_mrf24j40.c: 602:   mrf24_data_in.buffer_entrada[i] = GetLongAddr((0x300) + i + 16);
+[e = *U + &U . _mrf24_data_in 3 * -> _i `ux -> -> # *U &U . _mrf24_data_in 3 `ui `ux ( _GetLongAddr (1 -> + + -> 768 `i -> _i `i -> 16 `i `us ]
+"603
+[; ;drivers/scr/drv_mrf24j40.c: 603:  }
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e :U 352 ]
-[e $ < -> _i `i - -> _final `i -> 17 `i 349  ]
-[e :U 350 ]
+[e :U 356 ]
+[e $ < -> _i `i - -> _final `i -> 17 `i 353  ]
+[e :U 354 ]
 }
-"592
-[; ;drivers/scr/drv_mrf24j40.c: 592:  mrf24_data_config.buffer_entrada[i] = 0;
-[e = *U + &U . _mrf24_data_config 9 * -> _i `ux -> -> # *U &U . _mrf24_data_config 9 `ui `ux -> -> 0 `i `uc ]
-"593
-[; ;drivers/scr/drv_mrf24j40.c: 593:  rssi = GetLongAddr((0x210));
-[e = _rssi ( _GetLongAddr (1 -> -> 528 `i `ui ]
-"594
-[; ;drivers/scr/drv_mrf24j40.c: 594:  return;
-[e $UE 348  ]
-"595
-[; ;drivers/scr/drv_mrf24j40.c: 595: }
-[e :UE 348 ]
+"604
+[; ;drivers/scr/drv_mrf24j40.c: 604:  mrf24_data_in.buffer_entrada[i] = 0;
+[e = *U + &U . _mrf24_data_in 3 * -> _i `ux -> -> # *U &U . _mrf24_data_in 3 `ui `ux -> -> 0 `i `uc ]
+"605
+[; ;drivers/scr/drv_mrf24j40.c: 605:  rssi = GetLongAddr((0x210));
+[e = _rssi ( _GetLongAddr (1 -> -> 528 `i `us ]
+"606
+[; ;drivers/scr/drv_mrf24j40.c: 606:  return;
+[e $UE 352  ]
+"607
+[; ;drivers/scr/drv_mrf24j40.c: 607: }
+[e :UE 352 ]
 }
-"602
-[; ;drivers/scr/drv_mrf24j40.c: 602: void BuscarDispositivos(void) {
+"614
+[; ;drivers/scr/drv_mrf24j40.c: 614: void BuscarDispositivos(void) {
 [v _BuscarDispositivos `(v ~T0 @X0 1 ef ]
 {
 [e :U _BuscarDispositivos ]
 [f ]
-"606
-[; ;drivers/scr/drv_mrf24j40.c: 606:  return;
-[e $UE 353  ]
-"607
-[; ;drivers/scr/drv_mrf24j40.c: 607: }
-[e :UE 353 ]
+"618
+[; ;drivers/scr/drv_mrf24j40.c: 618:  return;
+[e $UE 357  ]
+"619
+[; ;drivers/scr/drv_mrf24j40.c: 619: }
+[e :UE 357 ]
 }

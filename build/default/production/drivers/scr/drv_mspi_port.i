@@ -4989,22 +4989,15 @@ void BoardInit(void);
 
 
 
-typedef _Bool booleano;
-typedef unsigned char u_char;
-typedef char int_8;
-typedef unsigned char u_int_8;
-typedef int int_16;
-typedef unsigned int u_int_16;
-typedef long int_32;
-typedef unsigned long u_int_32;
+typedef _Bool bool_t;
 # 18 "drivers/scr/../inc/drv_mspi_port.h" 2
 
 
 
 void SPIInit(void);
-void SPIWriteByte(u_int_8 dato);
-void SPIWrite2Byte(u_int_16 dato);
-u_int_8 SPIRead(void);
+void SPIWriteByte(uint8_t dato);
+void SPIWrite2Byte(uint16_t dato);
+uint8_t SPIRead(void);
 # 14 "drivers/scr/drv_mspi_port.c" 2
 # 31 "drivers/scr/drv_mspi_port.c"
 void SPIInit(void) {
@@ -5030,7 +5023,7 @@ void SPIInit(void) {
 
 
 
-void SPIWriteByte(u_int_8 dato) {
+void SPIWriteByte(uint8_t dato) {
 
     PIR1bits.SSPIF = 0;
     SSPBUF = dato;
@@ -5043,12 +5036,12 @@ void SPIWriteByte(u_int_8 dato) {
 
 
 
-void SPIWrite2Byte(u_int_16 dato) {
+void SPIWrite2Byte(uint16_t dato) {
 
     PIR1bits.SSPIF = 0;
-    SSPBUF = (u_int_16) (dato >> 8);
+    SSPBUF = (uint16_t) (dato >> 8);
     while(!PIR1bits.SSPIF);
-    SSPBUF = (u_int_16) dato;
+    SSPBUF = (uint16_t) dato;
     while(!PIR1bits.SSPIF);
     return;
 }
@@ -5058,7 +5051,7 @@ void SPIWrite2Byte(u_int_16 dato) {
 
 
 
-u_int_8 SPIRead(void) {
+uint8_t SPIRead(void) {
 
     SSPCON1bits.WCOL = 0;
     SSPBUF = 0x00;

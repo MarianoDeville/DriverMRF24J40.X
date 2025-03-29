@@ -5047,14 +5047,7 @@ void BoardInit(void);
 
 
 
-typedef _Bool booleano;
-typedef unsigned char u_char;
-typedef char int_8;
-typedef unsigned char u_int_8;
-typedef int int_16;
-typedef unsigned int u_int_16;
-typedef long int_32;
-typedef unsigned long u_int_32;
+typedef _Bool bool_t;
 # 18 "drivers/scr/../inc/drv_mrf24j40.h" 2
 
 
@@ -5072,24 +5065,24 @@ void BuscarDispositivos(void);
 # 1 "drivers/scr/../inc/drv_mspi_port.h" 1
 # 21 "drivers/scr/../inc/drv_mspi_port.h"
 void SPIInit(void);
-void SPIWriteByte(u_int_8 dato);
-void SPIWrite2Byte(u_int_16 dato);
-u_int_8 SPIRead(void);
+void SPIWriteByte(uint8_t dato);
+void SPIWrite2Byte(uint16_t dato);
+uint8_t SPIRead(void);
 # 17 "drivers/scr/../inc/drv_mrf24j40_port.h" 2
 
 
 
 
 void InicializoPines(void);
-void SetCSPin(booleano estado);
-void SetWakePin(booleano estado);
-void SetResetPin(booleano estado);
-void WriteByteSPIPort(u_int_8 dato);
-void Write2ByteSPIPort(u_int_16 dato);
-u_int_8 ReadByteSPIPort(void);
+void SetCSPin(bool_t estado);
+void SetWakePin(bool_t estado);
+void SetResetPin(bool_t estado);
+void WriteByteSPIPort(uint8_t dato);
+void Write2ByteSPIPort(uint16_t dato);
+uint8_t ReadByteSPIPort(void);
 # 15 "drivers/scr/drv_mrf24j40.c" 2
 # 24 "drivers/scr/drv_mrf24j40.c"
-static const u_int_8 default_mac_address[] = {0x11,
+static const uint8_t default_mac_address[] = {0x11,
                                              0x28,
                                              0x35,
                                              0x44,
@@ -5099,7 +5092,7 @@ static const u_int_8 default_mac_address[] = {0x11,
                                              0x01};
 
 
-static const u_int_8 default_security_key[] = {0x00,
+static const uint8_t default_security_key[] = {0x00,
                                                0x10,
                                                0x25,
                                                0x37,
@@ -5119,26 +5112,34 @@ static const u_int_8 default_security_key[] = {0x00,
 
 static struct {
 
-    booleano get_new_msg;
-    booleano put_new_msg;
-    u_int_8 sequence_number;
-    u_int_8 my_channel;
-    u_int_8 security_key[16];
-    u_int_8 my_mac[8];
-    u_int_16 my_panid;
-    u_int_16 my_address;
-    u_int_16 intervalo;
-    u_char buffer_entrada[50];
+    bool_t get_new_msg;
+    bool_t put_new_msg;
+    uint8_t sequence_number;
+    uint8_t my_channel;
+    uint8_t security_key[16];
+    uint8_t my_mac[8];
+    uint16_t my_panid;
+    uint16_t my_address;
+    uint16_t intervalo;
 }mrf24_data_config;
 
 
 static struct {
 
-    u_int_16 destinity_panid;
-    u_int_16 destinity_address;
-    u_int_8 tamano_mensaje;
-    const u_char * buffer_salida;
+    uint16_t destinity_panid;
+    uint16_t destinity_address;
+    uint8_t tamano_mensaje;
+    const unsigned char * buffer_salida;
 }mrf24_data_out;
+
+
+static struct {
+
+    uint16_t source_panid;
+    uint16_t source_address;
+    uint8_t tamano_mensaje;
+    unsigned char buffer_entrada[50];
+}mrf24_data_in;
 
 
 typedef enum {
@@ -5160,12 +5161,23 @@ typedef enum {
  CH_25 = 0xE3,
  CH_26 = 0xF3
 }channel_list;
-# 249 "drivers/scr/drv_mrf24j40.c"
+
+enum {
+    EADR0 = 0x05,
+    EADR1,
+    EADR2,
+    EADR3,
+    EADR4,
+    EADR5,
+    EADR6,
+    EADR7,
+} my_default_mac_address;
+# 260 "drivers/scr/drv_mrf24j40.c"
 static void InicializoVariables(void);
-static void SetShortAddr(u_int_8 reg_address, u_int_8 value);
-static void SetLongAddr(u_int_16 reg_address, u_int_8 value);
-static u_int_8 GetShortAddr(u_int_8 reg_address);
-static u_int_8 GetLongAddr(u_int_16 reg_address);
+static void SetShortAddr(uint8_t reg_address, uint8_t value);
+static void SetLongAddr(uint16_t reg_address, uint8_t value);
+static uint8_t GetShortAddr(uint8_t reg_address);
+static uint8_t GetLongAddr(uint16_t reg_address);
 static void SetDeviceAddress();
 static void SetChannel(void);
 static void SetDeviceMACAddress(void);
@@ -5201,7 +5213,7 @@ void MRF24J40Init(void) {
     SetDeviceMACAddress();
  SetShortAddr((0x2E), 0x95);
  SetShortAddr((0x12), 0xB9);
-# 297 "drivers/scr/drv_mrf24j40.c"
+# 308 "drivers/scr/drv_mrf24j40.c"
  SetShortAddr((0x00),0x00);
  return;
 }
@@ -5227,7 +5239,10 @@ static void InicializoVariables(void) {
     mrf24_data_config.my_panid = 0x1234;
     mrf24_data_config.my_address = 0x0001;
     mrf24_data_config.intervalo = 0x2222;
-    mrf24_data_config.buffer_entrada[0] = 0;
+    mrf24_data_in.source_address = 0;
+    mrf24_data_in.source_panid = 0;
+    mrf24_data_in.tamano_mensaje = 0;
+    mrf24_data_in.buffer_entrada[0] = 0;
 
     return;
 }
@@ -5237,9 +5252,9 @@ static void InicializoVariables(void) {
 
 
 
-static void SetShortAddr(u_int_8 reg_address, u_int_8 value) {
+static void SetShortAddr(uint8_t reg_address, uint8_t value) {
 
-    reg_address = (u_int_8) (reg_address << 1) | 0x01;
+    reg_address = (uint8_t) (reg_address << 1) | 0x01;
     SetCSPin(0);
  WriteByteSPIPort(reg_address);
  WriteByteSPIPort(value);
@@ -5252,10 +5267,10 @@ static void SetShortAddr(u_int_8 reg_address, u_int_8 value) {
 
 
 
-static u_int_8 GetShortAddr(u_int_8 reg_address) {
+static uint8_t GetShortAddr(uint8_t reg_address) {
 
-    u_int_8 leido_spi = 0;
-    reg_address = (u_int_8) (reg_address << 1) & 0x7E;
+    uint8_t leido_spi = 0;
+    reg_address = (uint8_t) (reg_address << 1) & 0x7E;
     SetCSPin(0);
     WriteByteSPIPort(reg_address);
     leido_spi = ReadByteSPIPort();
@@ -5268,12 +5283,12 @@ static u_int_8 GetShortAddr(u_int_8 reg_address) {
 
 
 
-static void SetLongAddr(u_int_16 reg_address, u_int_8 value) {
+static void SetLongAddr(uint16_t reg_address, uint8_t value) {
 
     reg_address = (reg_address << 5) | 0x8010;
     SetCSPin(0);
- WriteByteSPIPort((u_int_8) (reg_address >> 8));
- WriteByteSPIPort((u_int_8) reg_address );
+ WriteByteSPIPort((uint8_t) (reg_address >> 8));
+ WriteByteSPIPort((uint8_t) reg_address );
 
  WriteByteSPIPort(value);
     SetCSPin(1);
@@ -5285,13 +5300,13 @@ static void SetLongAddr(u_int_16 reg_address, u_int_8 value) {
 
 
 
-static u_int_8 GetLongAddr(u_int_16 reg_address) {
+static uint8_t GetLongAddr(uint16_t reg_address) {
 
- u_int_8 toReturn;
+ uint8_t toReturn;
     reg_address = (reg_address << 5) | 0x8000;
     SetCSPin(0);
-    WriteByteSPIPort((u_int_8) (reg_address >> 8));
- WriteByteSPIPort((u_int_8) reg_address );
+    WriteByteSPIPort((uint8_t) (reg_address >> 8));
+ WriteByteSPIPort((uint8_t) reg_address );
 
  toReturn = ReadByteSPIPort();
     SetCSPin(1);
@@ -5305,7 +5320,7 @@ static u_int_8 GetLongAddr(u_int_16 reg_address) {
 
 static void SetChannel(void) {
 
-    u_int_8 aux = 0;
+    uint8_t aux = 0;
  SetLongAddr((0x200), mrf24_data_config.my_channel);
     SetLongAddr((0x203), (0XC0) | (0X38));
  SetShortAddr((0x36), 0x04);
@@ -5326,10 +5341,10 @@ static void SetChannel(void) {
 
 static void SetDeviceAddress(void) {
 
- SetShortAddr((0x04), (u_int_8) (mrf24_data_config.my_address >> 8));
- SetShortAddr((0x03), (u_int_8) (mrf24_data_config.my_address));
- SetShortAddr((0x02), (u_int_8) (mrf24_data_config.my_panid >> 8));
- SetShortAddr((0x01), (u_int_8) (mrf24_data_config.my_panid));
+ SetShortAddr((0x04), (uint8_t) (mrf24_data_config.my_address >> 8));
+ SetShortAddr((0x03), (uint8_t) (mrf24_data_config.my_address));
+ SetShortAddr((0x02), (uint8_t) (mrf24_data_config.my_panid >> 8));
+ SetShortAddr((0x01), (uint8_t) (mrf24_data_config.my_panid));
  return;
 }
 
@@ -5340,34 +5355,32 @@ static void SetDeviceAddress(void) {
 
 static void SetDeviceMACAddress(void) {
 
- SetShortAddr((0x05), mrf24_data_config.my_mac[0]);
- SetShortAddr((0x06), mrf24_data_config.my_mac[1]);
- SetShortAddr((0x07), mrf24_data_config.my_mac[2]);
- SetShortAddr((0x08), mrf24_data_config.my_mac[3]);
- SetShortAddr((0x09), mrf24_data_config.my_mac[4]);
- SetShortAddr((0x0A), mrf24_data_config.my_mac[5]);
- SetShortAddr((0x0B), mrf24_data_config.my_mac[6]);
- SetShortAddr((0x0C), mrf24_data_config.my_mac[7]);
+    my_default_mac_address = EADR0;
+
+    for(int i = 0; i < 8; i++) {
+
+        SetShortAddr(my_default_mac_address++, mrf24_data_config.my_mac[i]);
+    }
  return;
 }
-# 459 "drivers/scr/drv_mrf24j40.c"
+# 471 "drivers/scr/drv_mrf24j40.c"
 void EnviarDatoEncriptado(void) {
 
- u_int_16 pos = 0;
+ uint16_t pos = 0;
  SetLongAddr(pos++, 0X15);
  SetLongAddr(pos++, 0X15 + 0X0B + 5);
  SetLongAddr(pos++, 0x69);
  SetLongAddr(pos++, 0xcc);
  SetLongAddr(pos++, mrf24_data_config.sequence_number++);
- SetLongAddr(pos++, (u_int_8) (mrf24_data_config.my_panid));
- SetLongAddr(pos++, (u_int_8) (mrf24_data_config.my_panid >> 8));
+ SetLongAddr(pos++, (uint8_t) (mrf24_data_config.my_panid));
+ SetLongAddr(pos++, (uint8_t) (mrf24_data_config.my_panid >> 8));
 
- for(u_int_16 i = 0; i < 8; i++) {
+ for(uint16_t i = 0; i < 8; i++) {
 
   SetLongAddr(pos++, mrf24_data_config.my_mac[i]);
  }
 
- for(u_int_16 i = 0; i < 8; i++) {
+ for(uint16_t i = 0; i < 8; i++) {
 
   SetLongAddr(pos++, mrf24_data_config.my_mac[i]);
  }
@@ -5377,37 +5390,37 @@ void EnviarDatoEncriptado(void) {
  SetLongAddr(pos++, 0x00);
  SetLongAddr(pos++, 0x00);
 
- for(u_int_16 i = 0; i < 16; i++) {
+ for(uint16_t i = 0; i < 16; i++) {
 
   SetLongAddr((0x280) + i, mrf24_data_config.security_key[i + 1]);
  }
  SetLongAddr((0x2C), 0x04);
 
- for(u_int_16 i = 0; i < (mrf24_data_out.tamano_mensaje + 1); i++) {
+ for(uint16_t i = 0; i < (mrf24_data_out.tamano_mensaje + 1); i++) {
 
   SetLongAddr(pos++, *mrf24_data_out.buffer_salida++);
  }
  SetShortAddr((0x1B), 0x07);
  return;
 }
-# 511 "drivers/scr/drv_mrf24j40.c"
+# 523 "drivers/scr/drv_mrf24j40.c"
 void EnviarDato(void) {
 
 
 
 
- u_int_8 pos = 0;
- u_int_8 i = 0x0f;
+ uint8_t pos = 0;
+ uint8_t i = 0x0f;
 
  SetLongAddr(pos++, i);
  SetLongAddr(pos++, mrf24_data_out.tamano_mensaje + i);
  SetLongAddr(pos++, (0X01)|(0X20)|(0X40));
  SetLongAddr(pos++, (0XC0)|(0X08));
  SetLongAddr(pos++, mrf24_data_config.sequence_number++);
- SetLongAddr(pos++, (u_int_8) mrf24_data_out.destinity_panid);
- SetLongAddr(pos++, (u_int_8) (mrf24_data_out.destinity_panid >> 8));
- SetLongAddr(pos++, (u_int_8) mrf24_data_out.destinity_address);
- SetLongAddr(pos++, (u_int_8) (mrf24_data_out.destinity_address >> 8));
+ SetLongAddr(pos++, (uint8_t) mrf24_data_out.destinity_panid);
+ SetLongAddr(pos++, (uint8_t) (mrf24_data_out.destinity_panid >> 8));
+ SetLongAddr(pos++, (uint8_t) mrf24_data_out.destinity_address);
+ SetLongAddr(pos++, (uint8_t) (mrf24_data_out.destinity_address >> 8));
  for(i = 0; i < 8; i++)
  {
   SetLongAddr(pos++, mrf24_data_config.my_mac[i]);
@@ -5419,20 +5432,20 @@ void EnviarDato(void) {
  SetShortAddr((0x1B), 1 | (0X04));
  return;
 }
-# 552 "drivers/scr/drv_mrf24j40.c"
+# 564 "drivers/scr/drv_mrf24j40.c"
 void EnviarComando(void) {
 
- u_int_8 pos = 0;
- u_int_16 i;
+ uint8_t pos = 0;
+ uint16_t i;
  SetLongAddr(pos++, 0x0f);
  SetLongAddr(pos++, 0x13);
  SetLongAddr(pos++, 0x43);
  SetLongAddr(pos++, 0xc8);
  SetLongAddr(pos++, mrf24_data_config.sequence_number++);
- SetLongAddr(pos++, (u_int_8) mrf24_data_out.destinity_panid);
- SetLongAddr(pos++, (u_int_8) (mrf24_data_out.destinity_panid >> 8));
- SetLongAddr(pos++, (u_int_8) mrf24_data_out.destinity_address);
- SetLongAddr(pos++, (u_int_8) (mrf24_data_out.destinity_address >> 8));
+ SetLongAddr(pos++, (uint8_t) mrf24_data_out.destinity_panid);
+ SetLongAddr(pos++, (uint8_t) (mrf24_data_out.destinity_panid >> 8));
+ SetLongAddr(pos++, (uint8_t) mrf24_data_out.destinity_address);
+ SetLongAddr(pos++, (uint8_t) (mrf24_data_out.destinity_address >> 8));
  for(i = 0; i < 8; i++)
  {
   SetLongAddr(pos++, mrf24_data_config.my_mac[i]);
@@ -5453,14 +5466,14 @@ void EnviarComando(void) {
 
 void ReciboPaquete(void) {
 
- u_int_8 i;
- u_int_8 rssi,final;
+ uint8_t i;
+ uint8_t rssi,final;
  final = GetLongAddr((0x300));
  for(i = 0; i < final - 17; i++)
  {
-  mrf24_data_config.buffer_entrada[i] = GetLongAddr((0x300) + i + 16);
+  mrf24_data_in.buffer_entrada[i] = GetLongAddr((0x300) + i + 16);
  }
- mrf24_data_config.buffer_entrada[i] = 0;
+ mrf24_data_in.buffer_entrada[i] = 0;
  rssi = GetLongAddr((0x210));
  return;
 }

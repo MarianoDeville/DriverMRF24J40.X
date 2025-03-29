@@ -3,8 +3,19 @@
 [d edition pro ]
 [d chip 18F46K20 ]
 [d frameptr 4065 ]
-"316 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mrf24j40.c
-[e E2955 . `uc
+"113 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mrf24j40.c
+[e E2971 . `uc
+EADR0 5
+EADR1 6
+EADR2 7
+EADR3 8
+EADR4 9
+EADR5 10
+EADR6 11
+EADR7 12
+]
+"327
+[e E2953 . `uc
 CH_11 3
 CH_12 19
 CH_13 35
@@ -46,23 +57,23 @@ CH_26 243
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
-"263 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mrf24j40.c
+"274 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mrf24j40.c
 [v _MRF24J40Init MRF24J40Init `(v  1 e 1 0 ]
-"307
+"318
 [v _InicializoVariables InicializoVariables `(v  1 s 1 InicializoVariables ]
-"332
+"346
 [v _SetShortAddr SetShortAddr `(v  1 s 1 SetShortAddr ]
-"363
+"377
 [v _SetLongAddr SetLongAddr `(v  1 s 1 SetLongAddr ]
-"380
+"394
 [v _GetLongAddr GetLongAddr `(uc  1 s 1 GetLongAddr ]
-"398
+"412
 [v _SetChannel SetChannel `(v  1 s 1 SetChannel ]
-"419
-[v _SetDeviceAddress SetDeviceAddress `(v  1 s 1 SetDeviceAddress ]
 "433
+[v _SetDeviceAddress SetDeviceAddress `(v  1 s 1 SetDeviceAddress ]
+"447
 [v _SetDeviceMACAddress SetDeviceMACAddress `(v  1 s 1 SetDeviceMACAddress ]
-"511
+"523
 [v _EnviarDato EnviarDato `(v  1 e 1 0 ]
 "21 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mrf24j40_port.c
 [v _InicializoPines InicializoPines `(v  1 e 1 0 ]
@@ -74,8 +85,6 @@ CH_26 243
 [v _SetResetPin SetResetPin `(v  1 e 1 0 ]
 "71
 [v _WriteByteSPIPort WriteByteSPIPort `(v  1 e 1 0 ]
-"82
-[v _Write2ByteSPIPort Write2ByteSPIPort `(v  1 e 1 0 ]
 "93
 [v _ReadByteSPIPort ReadByteSPIPort `(uc  1 e 1 0 ]
 "31 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mspi_port.c
@@ -100,7 +109,7 @@ CH_26 243
 [v _PORTD PORTD `VEuc  1 e 1 @3971 ]
 "1326
 [v _PORTE PORTE `VEuc  1 e 1 @3972 ]
-[s S301 . 1 `uc 1 LATC0 1 0 :1:0 
+[s S315 . 1 `uc 1 LATC0 1 0 :1:0 
 `uc 1 LATC1 1 0 :1:1 
 `uc 1 LATC2 1 0 :1:2 
 `uc 1 LATC3 1 0 :1:3 
@@ -110,7 +119,7 @@ CH_26 243
 `uc 1 LATC7 1 0 :1:7 
 ]
 "1783
-[s S310 . 1 `uc 1 LC0 1 0 :1:0 
+[s S324 . 1 `uc 1 LC0 1 0 :1:0 
 `uc 1 LC1 1 0 :1:1 
 `uc 1 LC2 1 0 :1:2 
 `uc 1 LC3 1 0 :1:3 
@@ -119,9 +128,9 @@ CH_26 243
 `uc 1 LC6 1 0 :1:6 
 `uc 1 LC7 1 0 :1:7 
 ]
-[u S319 . 1 `S301 1 . 1 0 `S310 1 . 1 0 ]
-[v _LATCbits LATCbits `VES319  1 e 1 @3979 ]
-[s S341 . 1 `uc 1 LATD0 1 0 :1:0 
+[u S333 . 1 `S315 1 . 1 0 `S324 1 . 1 0 ]
+[v _LATCbits LATCbits `VES333  1 e 1 @3979 ]
+[s S355 . 1 `uc 1 LATD0 1 0 :1:0 
 `uc 1 LATD1 1 0 :1:1 
 `uc 1 LATD2 1 0 :1:2 
 `uc 1 LATD3 1 0 :1:3 
@@ -131,7 +140,7 @@ CH_26 243
 `uc 1 LATD7 1 0 :1:7 
 ]
 "1895
-[s S350 . 1 `uc 1 LD0 1 0 :1:0 
+[s S364 . 1 `uc 1 LD0 1 0 :1:0 
 `uc 1 LD1 1 0 :1:1 
 `uc 1 LD2 1 0 :1:2 
 `uc 1 LD3 1 0 :1:3 
@@ -140,20 +149,20 @@ CH_26 243
 `uc 1 LD6 1 0 :1:6 
 `uc 1 LD7 1 0 :1:7 
 ]
-[u S359 . 1 `S341 1 . 1 0 `S350 1 . 1 0 ]
-[v _LATDbits LATDbits `VES359  1 e 1 @3980 ]
-[s S697 . 1 `uc 1 LATE0 1 0 :1:0 
+[u S373 . 1 `S355 1 . 1 0 `S364 1 . 1 0 ]
+[v _LATDbits LATDbits `VES373  1 e 1 @3980 ]
+[s S711 . 1 `uc 1 LATE0 1 0 :1:0 
 `uc 1 LATE1 1 0 :1:1 
 `uc 1 LATE2 1 0 :1:2 
 ]
 "1997
-[s S701 . 1 `uc 1 LE0 1 0 :1:0 
+[s S715 . 1 `uc 1 LE0 1 0 :1:0 
 `uc 1 LE1 1 0 :1:1 
 `uc 1 LE2 1 0 :1:2 
 ]
-[u S705 . 1 `S697 1 . 1 0 `S701 1 . 1 0 ]
-[v _LATEbits LATEbits `VES705  1 e 1 @3981 ]
-[s S174 . 1 `uc 1 TRISB0 1 0 :1:0 
+[u S719 . 1 `S711 1 . 1 0 `S715 1 . 1 0 ]
+[v _LATEbits LATEbits `VES719  1 e 1 @3981 ]
+[s S188 . 1 `uc 1 TRISB0 1 0 :1:0 
 `uc 1 TRISB1 1 0 :1:1 
 `uc 1 TRISB2 1 0 :1:2 
 `uc 1 TRISB3 1 0 :1:3 
@@ -163,7 +172,7 @@ CH_26 243
 `uc 1 TRISB7 1 0 :1:7 
 ]
 "2286
-[s S183 . 1 `uc 1 RB0 1 0 :1:0 
+[s S197 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -172,9 +181,9 @@ CH_26 243
 `uc 1 RB6 1 0 :1:6 
 `uc 1 RB7 1 0 :1:7 
 ]
-[u S192 . 1 `S174 1 . 1 0 `S183 1 . 1 0 ]
-[v _TRISBbits TRISBbits `VES192  1 e 1 @3987 ]
-[s S214 . 1 `uc 1 TRISC0 1 0 :1:0 
+[u S206 . 1 `S188 1 . 1 0 `S197 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES206  1 e 1 @3987 ]
+[s S228 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -184,7 +193,7 @@ CH_26 243
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "2508
-[s S223 . 1 `uc 1 RC0 1 0 :1:0 
+[s S237 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -193,9 +202,9 @@ CH_26 243
 `uc 1 RC6 1 0 :1:6 
 `uc 1 RC7 1 0 :1:7 
 ]
-[u S232 . 1 `S214 1 . 1 0 `S223 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES232  1 e 1 @3988 ]
-[s S254 . 1 `uc 1 TRISD0 1 0 :1:0 
+[u S246 . 1 `S228 1 . 1 0 `S237 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES246  1 e 1 @3988 ]
+[s S268 . 1 `uc 1 TRISD0 1 0 :1:0 
 `uc 1 TRISD1 1 0 :1:1 
 `uc 1 TRISD2 1 0 :1:2 
 `uc 1 TRISD3 1 0 :1:3 
@@ -205,7 +214,7 @@ CH_26 243
 `uc 1 TRISD7 1 0 :1:7 
 ]
 "2730
-[s S263 . 1 `uc 1 RD0 1 0 :1:0 
+[s S277 . 1 `uc 1 RD0 1 0 :1:0 
 `uc 1 RD1 1 0 :1:1 
 `uc 1 RD2 1 0 :1:2 
 `uc 1 RD3 1 0 :1:3 
@@ -214,9 +223,9 @@ CH_26 243
 `uc 1 RD6 1 0 :1:6 
 `uc 1 RD7 1 0 :1:7 
 ]
-[u S272 . 1 `S254 1 . 1 0 `S263 1 . 1 0 ]
-[v _TRISDbits TRISDbits `VES272  1 e 1 @3989 ]
-[s S757 . 1 `uc 1 TRISE0 1 0 :1:0 
+[u S286 . 1 `S268 1 . 1 0 `S277 1 . 1 0 ]
+[v _TRISDbits TRISDbits `VES286  1 e 1 @3989 ]
+[s S771 . 1 `uc 1 TRISE0 1 0 :1:0 
 `uc 1 TRISE1 1 0 :1:1 
 `uc 1 TRISE2 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -226,15 +235,15 @@ CH_26 243
 `uc 1 IBF 1 0 :1:7 
 ]
 "2947
-[s S766 . 1 `uc 1 RE0 1 0 :1:0 
+[s S780 . 1 `uc 1 RE0 1 0 :1:0 
 `uc 1 RE1 1 0 :1:1 
 `uc 1 RE2 1 0 :1:2 
 ]
-[u S770 . 1 `S757 1 . 1 0 `S766 1 . 1 0 ]
-[v _TRISEbits TRISEbits `VES770  1 e 1 @3990 ]
+[u S784 . 1 `S771 1 . 1 0 `S780 1 . 1 0 ]
+[v _TRISEbits TRISEbits `VES784  1 e 1 @3990 ]
 "3072
 [v _OSCTUNE OSCTUNE `VEuc  1 e 1 @3995 ]
-[s S630 . 1 `uc 1 TMR1IF 1 0 :1:0 
+[s S644 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 CCP1IF 1 0 :1:2 
 `uc 1 SSPIF 1 0 :1:3 
@@ -244,34 +253,34 @@ CH_26 243
 `uc 1 PSPIF 1 0 :1:7 
 ]
 "3241
-[s S639 . 1 `uc 1 . 1 0 :4:0 
+[s S653 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 TX1IF 1 0 :1:4 
 `uc 1 RC1IF 1 0 :1:5 
 ]
-[u S643 . 1 `S630 1 . 1 0 `S639 1 . 1 0 ]
-[v _PIR1bits PIR1bits `VES643  1 e 1 @3998 ]
-[s S604 . 1 `uc 1 SSPM 1 0 :4:0 
+[u S657 . 1 `S644 1 . 1 0 `S653 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES657  1 e 1 @3998 ]
+[s S618 . 1 `uc 1 SSPM 1 0 :4:0 
 `uc 1 CKP 1 0 :1:4 
 `uc 1 SSPEN 1 0 :1:5 
 `uc 1 SSPOV 1 0 :1:6 
 `uc 1 WCOL 1 0 :1:7 
 ]
 "5423
-[s S610 . 1 `uc 1 SSPM0 1 0 :1:0 
+[s S624 . 1 `uc 1 SSPM0 1 0 :1:0 
 `uc 1 SSPM1 1 0 :1:1 
 `uc 1 SSPM2 1 0 :1:2 
 `uc 1 SSPM3 1 0 :1:3 
 ]
-[u S615 . 1 `S604 1 . 1 0 `S610 1 . 1 0 ]
-[v _SSPCON1bits SSPCON1bits `VES615  1 e 1 @4038 ]
-[s S469 . 1 `uc 1 . 1 0 :2:0 
+[u S629 . 1 `S618 1 . 1 0 `S624 1 . 1 0 ]
+[v _SSPCON1bits SSPCON1bits `VES629  1 e 1 @4038 ]
+[s S483 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_NOT_W 1 0 :1:2 
 ]
 "5553
-[s S472 . 1 `uc 1 . 1 0 :5:0 
+[s S486 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 D_NOT_A 1 0 :1:5 
 ]
-[s S475 . 1 `uc 1 BF 1 0 :1:0 
+[s S489 . 1 `uc 1 BF 1 0 :1:0 
 `uc 1 UA 1 0 :1:1 
 `uc 1 R_nW 1 0 :1:2 
 `uc 1 S 1 0 :1:3 
@@ -280,53 +289,53 @@ CH_26 243
 `uc 1 CKE 1 0 :1:6 
 `uc 1 SMP 1 0 :1:7 
 ]
-[s S484 . 1 `uc 1 . 1 0 :2:0 
+[s S498 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D 1 0 :1:5 
 ]
-[s S489 . 1 `uc 1 . 1 0 :2:0 
+[s S503 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 A 1 0 :1:5 
 ]
-[s S494 . 1 `uc 1 . 1 0 :2:0 
+[s S508 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA 1 0 :1:5 
 ]
-[s S499 . 1 `uc 1 . 1 0 :2:0 
+[s S513 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A 1 0 :1:5 
 ]
-[s S504 . 1 `uc 1 . 1 0 :2:0 
+[s S518 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_WRITE 1 0 :1:2 
 ]
-[s S507 . 1 `uc 1 . 1 0 :5:0 
+[s S521 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 NOT_ADDRESS 1 0 :1:5 
 ]
-[s S510 . 1 `uc 1 . 1 0 :2:0 
+[s S524 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS 1 0 :1:5 
 ]
-[s S515 . 1 `uc 1 . 1 0 :3:0 
+[s S529 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 START 1 0 :1:3 
 `uc 1 STOP 1 0 :1:4 
 ]
-[s S519 . 1 `uc 1 . 1 0 :2:0 
+[s S533 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 RW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 DA 1 0 :1:5 
 ]
-[s S524 . 1 `uc 1 . 1 0 :2:0 
+[s S538 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 NOT_A 1 0 :1:5 
 ]
-[u S529 . 1 `S469 1 . 1 0 `S472 1 . 1 0 `S475 1 . 1 0 `S484 1 . 1 0 `S489 1 . 1 0 `S494 1 . 1 0 `S499 1 . 1 0 `S504 1 . 1 0 `S507 1 . 1 0 `S510 1 . 1 0 `S515 1 . 1 0 `S519 1 . 1 0 `S524 1 . 1 0 ]
-[v _SSPSTATbits SSPSTATbits `VES529  1 e 1 @4039 ]
+[u S543 . 1 `S483 1 . 1 0 `S486 1 . 1 0 `S489 1 . 1 0 `S498 1 . 1 0 `S503 1 . 1 0 `S508 1 . 1 0 `S513 1 . 1 0 `S518 1 . 1 0 `S521 1 . 1 0 `S524 1 . 1 0 `S529 1 . 1 0 `S533 1 . 1 0 `S538 1 . 1 0 ]
+[v _SSPSTATbits SSPSTATbits `VES543  1 e 1 @4039 ]
 "5705
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @4041 ]
 "6455
@@ -361,47 +370,54 @@ CH_26 243
 [v _default_mac_address default_mac_address `C[8]uc  1 s 8 default_mac_address ]
 "34
 [v _default_security_key default_security_key `C[16]uc  1 s 16 default_security_key ]
-[s S24 . 84 `a 1 get_new_msg 1 0 `a 1 put_new_msg 1 1 `uc 1 sequence_number 1 2 `uc 1 my_channel 1 3 `[16]uc 1 security_key 16 4 `[8]uc 1 my_mac 8 20 `ui 1 my_panid 2 28 `ui 1 my_address 2 30 `ui 1 intervalo 2 32 `[50]uc 1 buffer_entrada 50 34 ]
-"64
-[v _mrf24_data_config mrf24_data_config `S24  1 s 84 mrf24_data_config ]
-[s S35 . 7 `ui 1 destinity_panid 2 0 `ui 1 destinity_address 2 2 `uc 1 tamano_mensaje 1 4 `*.39Cuc 1 buffer_salida 2 5 ]
-"73
-[v _mrf24_data_out mrf24_data_out `S35  1 s 7 mrf24_data_out ]
+[s S24 . 34 `a 1 get_new_msg 1 0 `a 1 put_new_msg 1 1 `uc 1 sequence_number 1 2 `uc 1 my_channel 1 3 `[16]uc 1 security_key 16 4 `[8]uc 1 my_mac 8 20 `us 1 my_panid 2 28 `us 1 my_address 2 30 `us 1 intervalo 2 32 ]
+"63
+[v _mrf24_data_config mrf24_data_config `S24  1 s 34 mrf24_data_config ]
+[s S34 . 7 `us 1 destinity_panid 2 0 `us 1 destinity_address 2 2 `uc 1 tamano_mensaje 1 4 `*.39Cuc 1 buffer_salida 2 5 ]
+"72
+[v _mrf24_data_out mrf24_data_out `S34  1 s 7 mrf24_data_out ]
+[s S39 . 55 `us 1 source_panid 2 0 `us 1 source_address 2 2 `uc 1 tamano_mensaje 1 4 `[50]uc 1 buffer_entrada 50 5 ]
+"81
+[v _mrf24_data_in mrf24_data_in `S39  1 s 55 mrf24_data_in ]
+"113
+[v _my_default_mac_address my_default_mac_address `E2971  1 e 1 0 ]
 "23 E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
 "40
 } 0
-"263 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mrf24j40.c
+"274 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mrf24j40.c
 [v _MRF24J40Init MRF24J40Init `(v  1 e 1 0 ]
 {
-"299
+"310
 } 0
-"433
+"447
 [v _SetDeviceMACAddress SetDeviceMACAddress `(v  1 s 1 SetDeviceMACAddress ]
 {
-"444
+"451
+[v SetDeviceMACAddress@i i `i  1 a 2 4 ]
+"456
 } 0
-"419
+"433
 [v _SetDeviceAddress SetDeviceAddress `(v  1 s 1 SetDeviceAddress ]
 {
-"426
+"440
 } 0
-"398
+"412
 [v _SetChannel SetChannel `(v  1 s 1 SetChannel ]
 {
-"400
-[v SetChannel@aux aux `uc  1 a 1 9 ]
-"412
+"414
+[v SetChannel@aux aux `uc  1 a 1 7 ]
+"426
 } 0
-"380
+"394
 [v _GetLongAddr GetLongAddr `(uc  1 s 1 GetLongAddr ]
 {
-"382
-[v GetLongAddr@toReturn toReturn `uc  1 a 1 8 ]
-"380
-[v GetLongAddr@reg_address reg_address `ui  1 p 2 4 ]
-"391
+"396
+[v GetLongAddr@toReturn toReturn `uc  1 a 1 6 ]
+"394
+[v GetLongAddr@reg_address reg_address `us  1 p 2 2 ]
+"405
 } 0
 "93 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mrf24j40_port.c
 [v _ReadByteSPIPort ReadByteSPIPort `(uc  1 e 1 0 ]
@@ -413,12 +429,12 @@ CH_26 243
 {
 "88
 } 0
-"307 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mrf24j40.c
+"318 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mrf24j40.c
 [v _InicializoVariables InicializoVariables `(v  1 s 1 InicializoVariables ]
 {
-"309
+"320
 [v InicializoVariables@i i `i  1 a 2 1 ]
-"325
+"339
 } 0
 "21 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mrf24j40_port.c
 [v _InicializoPines InicializoPines `(v  1 e 1 0 ]
@@ -443,31 +459,31 @@ CH_26 243
 [v SetResetPin@estado estado `a  1 p 1 0 ]
 "64
 } 0
-"511 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mrf24j40.c
+"523 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mrf24j40.c
 [v _EnviarDato EnviarDato `(v  1 e 1 0 ]
 {
-"516
-[v EnviarDato@pos pos `uc  1 a 1 10 ]
-"517
-[v EnviarDato@i i `uc  1 a 1 9 ]
-"538
+"528
+[v EnviarDato@pos pos `uc  1 a 1 8 ]
+"529
+[v EnviarDato@i i `uc  1 a 1 7 ]
+"550
 } 0
-"332
+"346
 [v _SetShortAddr SetShortAddr `(v  1 s 1 SetShortAddr ]
 {
 [v SetShortAddr@reg_address reg_address `uc  1 p 1 wreg ]
 [v SetShortAddr@reg_address reg_address `uc  1 p 1 wreg ]
 [v SetShortAddr@value value `uc  1 p 1 2 ]
-"334
+"348
 [v SetShortAddr@reg_address reg_address `uc  1 p 1 3 ]
-"340
+"354
 } 0
-"363
+"377
 [v _SetLongAddr SetLongAddr `(v  1 s 1 SetLongAddr ]
 {
-[v SetLongAddr@reg_address reg_address `ui  1 p 2 4 ]
-[v SetLongAddr@value value `uc  1 p 1 6 ]
-"373
+[v SetLongAddr@reg_address reg_address `us  1 p 2 2 ]
+[v SetLongAddr@value value `uc  1 p 1 4 ]
+"387
 } 0
 "71 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mrf24j40_port.c
 [v _WriteByteSPIPort WriteByteSPIPort `(v  1 e 1 0 ]
@@ -486,18 +502,6 @@ CH_26 243
 "56
 [v SPIWriteByte@dato dato `uc  1 p 1 0 ]
 "60
-} 0
-"82 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mrf24j40_port.c
-[v _Write2ByteSPIPort Write2ByteSPIPort `(v  1 e 1 0 ]
-{
-[v Write2ByteSPIPort@dato dato `ui  1 p 2 2 ]
-"86
-} 0
-"67 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mspi_port.c
-[v _SPIWrite2Byte SPIWrite2Byte `(v  1 e 1 0 ]
-{
-[v SPIWrite2Byte@dato dato `ui  1 p 2 0 ]
-"75
 } 0
 "38 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mrf24j40_port.c
 [v _SetCSPin SetCSPin `(v  1 e 1 0 ]

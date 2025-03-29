@@ -662,7 +662,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 303 ]
 }
 "54
-[; ;drivers/scr/drv_mspi_port.c: 54: void SPIWriteByte(u_int_8 dato) {
+[; ;drivers/scr/drv_mspi_port.c: 54: void SPIWriteByte(uint8_t dato) {
 [v _SPIWriteByte `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _SPIWriteByte ]
@@ -689,18 +689,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 304 ]
 }
 "67
-[; ;drivers/scr/drv_mspi_port.c: 67: void SPIWrite2Byte(u_int_16 dato) {
-[v _SPIWrite2Byte `(v ~T0 @X0 1 ef1`ui ]
+[; ;drivers/scr/drv_mspi_port.c: 67: void SPIWrite2Byte(uint16_t dato) {
+[v _SPIWrite2Byte `(v ~T0 @X0 1 ef1`us ]
 {
 [e :U _SPIWrite2Byte ]
-[v _dato `ui ~T0 @X0 1 r1 ]
+[v _dato `us ~T0 @X0 1 r1 ]
 [f ]
 "69
 [; ;drivers/scr/drv_mspi_port.c: 69:     PIR1bits.SSPIF = 0;
 [e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
 "70
-[; ;drivers/scr/drv_mspi_port.c: 70:     SSPBUF = (u_int_16) (dato >> 8);
-[e = _SSPBUF -> >> _dato -> 8 `i `uc ]
+[; ;drivers/scr/drv_mspi_port.c: 70:     SSPBUF = (uint16_t) (dato >> 8);
+[e = _SSPBUF -> -> >> -> _dato `ui -> 8 `i `us `uc ]
 "71
 [; ;drivers/scr/drv_mspi_port.c: 71:     while(!PIR1bits.SSPIF);
 [e $U 309  ]
@@ -709,7 +709,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! != -> . . _PIR1bits 0 3 `i -> 0 `i 310  ]
 [e :U 311 ]
 "72
-[; ;drivers/scr/drv_mspi_port.c: 72:     SSPBUF = (u_int_16) dato;
+[; ;drivers/scr/drv_mspi_port.c: 72:     SSPBUF = (uint16_t) dato;
 [e = _SSPBUF -> _dato `uc ]
 "73
 [; ;drivers/scr/drv_mspi_port.c: 73:     while(!PIR1bits.SSPIF);
@@ -726,7 +726,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 308 ]
 }
 "82
-[; ;drivers/scr/drv_mspi_port.c: 82: u_int_8 SPIRead(void) {
+[; ;drivers/scr/drv_mspi_port.c: 82: uint8_t SPIRead(void) {
 [v _SPIRead `(uc ~T0 @X0 1 ef ]
 {
 [e :U _SPIRead ]
