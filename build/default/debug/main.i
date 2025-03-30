@@ -5155,6 +5155,7 @@ void EnviarComando();
 void EnviarDatoEncriptado(void);
 void ReciboPaquete(void);
 void BuscarDispositivos(void);
+void SetMensajeSalida(const char * mensaje);
 # 16 "main.c" 2
 
 
@@ -5168,7 +5169,10 @@ void main(void) {
     BoardInit();
     MRF24J40Init();
 
+    SetMensajeSalida("hola mundo. carajo");
+
     while(1){
+
 
         __asm(" clrwdt");
         LATEbits.LATE2 = !LATEbits.LATE2;

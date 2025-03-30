@@ -11,6 +11,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include <string.h>
+#include <stdio.h>
 #include "../inc/drv_mrf24j40.h"
 #include "../inc/drv_mrf24j40_port.h"
 
@@ -48,6 +49,8 @@ static const uint8_t default_security_key[] = {0x00,
                                                0x14,
                                                0x15};
 
+
+
 /* Estructura con la información del dispositivo */
 static struct {
 
@@ -68,7 +71,7 @@ static struct {
     uint16_t destinity_panid;
     uint16_t destinity_address;
     uint8_t tamano_mensaje;
-    const unsigned char * buffer_salida;
+    const char * buffer_salida;
 }mrf24_data_out;
 
 /* Estructura con la información de recepción */
@@ -273,30 +276,41 @@ static void SetDeviceMACAddress(void);
  */
 void MRF24J40Init(void) {
 
+    uint8_t lectura;
     InicializoVariables();
     InicializoPines();
- 	delayms_t(50);
+ 	delayms_t(5);///////////////////////////////////////////////////////////////// ver la oja de datos los tiempos
     SetResetPin(1);
-	delayms_t(500);
-    SetShortAddr(PACON2, 0x98);
-    SetShortAddr(TXSTBL, 0x95);
-    SetLongAddr(RFCON0, 0x03);
-	SetLongAddr(RFCON1, 0x01);
-	SetLongAddr(RFCON2, 0x80);
+	delayms_t(5);///////////////////////////////////////////////////////////////// ver la oja de datos los tiempos
+    SetShortAddr(SOFTRST,0x07);
+
+    do {
+        lectura = GetShortAddr(SOFTRST);
+    }while((lectura&0x07) != 0x00);   
+    delayms_t(10);///////////////////////////////////////////////////////////////// ver la oja de datos los tiempos
+    SetShortAddr(RXFLUSH, 0x01);
+    SetDeviceAddress();
+    SetDeviceMACAddress();
+    SetLongAddr(RFCON2, 0x80);
+    SetLongAddr(RFCON3, P30dBm | P6_3dBm);
 	SetLongAddr(RFCON6, 0x90);
 	SetLongAddr(RFCON7, 0x80);
 	SetLongAddr(RFCON8, 0x10);
 	SetLongAddr(SLPCON1, 0x21);
     SetShortAddr(BBREG2, 0x80);
-    SetShortAddr(CCAEDTH, 0x60);
     SetShortAddr(BBREG6, 0x40);
-    SetShortAddr(MRFINTCON, 0xF6);
-    SetChannel();
-	SetShortAddr(RXFLUSH, 0x01);
-	SetDeviceAddress();
-    SetDeviceMACAddress();
-	SetShortAddr(TXSTBL, 0x95);
+    SetShortAddr(CCAEDTH, 0x60);
+    SetShortAddr(PACON2, 0x98);
+    SetShortAddr(TXSTBL, 0x95);
+
+    do {        
+		lectura = GetLongAddr(RFSTATE);
+	}while((lectura & 0xA0) != 0xA0);
+    SetShortAddr(MRFINTCON, 0xE6);    
 	SetShortAddr(ACKTMOUT, 0xB9);
+    SetLongAddr(RFCON0, 0x03);
+	SetLongAddr(RFCON1, 0x02);    
+	SetChannel();    
     /* TURBO_MODE si es necesario mayor ancho de banda, máximo 625 Kbps */
 #ifdef TURBO_MODE
 	SetShortAddr(BBREG0,0x01);
@@ -411,17 +425,10 @@ static uint8_t GetLongAddr(uint16_t reg_address) {
  */
 static void SetChannel(void) {
     
-    uint8_t aux = 0;
 	SetLongAddr(RFCON0, mrf24_data_config.my_channel);
-    SetLongAddr(RFCON3, P30dBm | P6_3dBm);
 	SetShortAddr(RFCTL, 0x04);
 	SetShortAddr(RFCTL, 0x00);
 	delayus_t(192);
-
-    do {
-        
-		aux = GetLongAddr(RFSTATE);
-	}while((aux & 0xA0) != 0xA0);
 	return;
 }
 
@@ -455,7 +462,12 @@ static void SetDeviceMACAddress(void) {
 	return;    
 }
 
+
+
+
 /* Funciones públicas --------------------------------------------------------*/
+
+
 /**
  * @brief  Envío la información almacenada en la estructura de salida encriptada
  * @param  None
@@ -499,7 +511,7 @@ void EnviarDatoEncriptado(void) {
 		SetLongAddr(TX_SEC_KEY + i, mrf24_data_config.security_key[i + 1]);
 	}
 	SetLongAddr(SECCON0, 0x04);			// Suit de encriptación.
-    
+
 	for(uint16_t i = 0; i < (mrf24_data_out.tamano_mensaje + 1); i++) {
 
 		SetLongAddr(pos++, *mrf24_data_out.buffer_salida++);
@@ -520,11 +532,8 @@ void EnviarDatoEncriptado(void) {
  *	SHORT_D_ADD | LONG_D_ADD | SHORT_S_ADD | LONG_S_ADD
   ******************************************************************************
  */
-void EnviarDato(void) {
-    
-    
-    
-    
+void EnviarDato(void) {//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
 	uint8_t pos = 0;
 	uint8_t i = 0x0f;
     
@@ -537,13 +546,15 @@ void EnviarDato(void) {
 	SetLongAddr(pos++, (uint8_t) (mrf24_data_out.destinity_panid >> 8));
 	SetLongAddr(pos++, (uint8_t) mrf24_data_out.destinity_address);
 	SetLongAddr(pos++, (uint8_t) (mrf24_data_out.destinity_address >> 8));
-	for(i = 0; i < 8; i++)                              // MAC address de origen.
-	{
+    
+	for(i = 0; i < 8; i++) {
+        
 		SetLongAddr(pos++, mrf24_data_config.my_mac[i]);
 	}
-	for(i = 0; i < mrf24_data_out.tamano_mensaje; i++)					// Mensaje.
-	{
-		SetLongAddr(pos++, mrf24_data_out.buffer_salida[i]);
+    
+	while(*mrf24_data_out.buffer_salida) {
+        
+		SetLongAddr(pos++, *mrf24_data_out.buffer_salida++);
 	}
 	SetShortAddr(TXNCON, 1 | ESPERO_ACK);	// Realizo el envio.
 	return;
@@ -618,7 +629,14 @@ void BuscarDispositivos(void) {                                                 
 	return;
 }
 
+void SetMensajeSalida(const char * mensaje) {
+    
+    
+mrf24_data_out.buffer_salida = mensaje;
+mrf24_data_out.tamano_mensaje = (uint8_t) strlen(mensaje);
 
+
+}
 
 
 

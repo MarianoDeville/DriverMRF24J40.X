@@ -24,5 +24,5 @@ void EnviarComando();
 void EnviarDatoEncriptado(void);
 void ReciboPaquete(void);
 void BuscarDispositivos(void);
-
+void SetMensajeSalida(const char * mensaje);
 #endif

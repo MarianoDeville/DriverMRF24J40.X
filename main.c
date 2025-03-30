@@ -25,7 +25,10 @@ void main(void) {
     BoardInit();
     MRF24J40Init();
     
+    SetMensajeSalida("hola mundo. carajo");
+    
     while(1){
+        
         
         CLRWDT();
         LED_ROJO = !LED_ROJO;

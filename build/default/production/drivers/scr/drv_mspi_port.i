@@ -5039,9 +5039,9 @@ void SPIWriteByte(uint8_t dato) {
 void SPIWrite2Byte(uint16_t dato) {
 
     PIR1bits.SSPIF = 0;
-    SSPBUF = (uint16_t) (dato >> 8);
+    SSPBUF = (uint8_t) (dato >> 8);
     while(!PIR1bits.SSPIF);
-    SSPBUF = (uint16_t) dato;
+    SSPBUF = (uint8_t) dato;
     while(!PIR1bits.SSPIF);
     return;
 }

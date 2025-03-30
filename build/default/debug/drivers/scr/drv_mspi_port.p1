@@ -699,8 +699,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;drivers/scr/drv_mspi_port.c: 69:     PIR1bits.SSPIF = 0;
 [e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
 "70
-[; ;drivers/scr/drv_mspi_port.c: 70:     SSPBUF = (uint16_t) (dato >> 8);
-[e = _SSPBUF -> -> >> -> _dato `ui -> 8 `i `us `uc ]
+[; ;drivers/scr/drv_mspi_port.c: 70:     SSPBUF = (uint8_t) (dato >> 8);
+[e = _SSPBUF -> >> -> _dato `ui -> 8 `i `uc ]
 "71
 [; ;drivers/scr/drv_mspi_port.c: 71:     while(!PIR1bits.SSPIF);
 [e $U 309  ]
@@ -709,7 +709,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! != -> . . _PIR1bits 0 3 `i -> 0 `i 310  ]
 [e :U 311 ]
 "72
-[; ;drivers/scr/drv_mspi_port.c: 72:     SSPBUF = (uint16_t) dato;
+[; ;drivers/scr/drv_mspi_port.c: 72:     SSPBUF = (uint8_t) dato;
 [e = _SSPBUF -> _dato `uc ]
 "73
 [; ;drivers/scr/drv_mspi_port.c: 73:     while(!PIR1bits.SSPIF);
