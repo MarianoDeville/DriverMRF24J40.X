@@ -547,7 +547,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 26:     MRF24J40Init();
 [e ( _MRF24J40Init ..  ]
 "28
-[; ;main.c: 28:     SetMensajeSalida("hola mundo. carajo");
+[; ;main.c: 28:     SetMensajeSalida("hola mundo. carajo, otra vez!!!");
 [e ( _SetMensajeSalida (1 :s 1C ]
 "30
 [; ;main.c: 30:     while(1){
@@ -587,4 +587,4 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 43: }
 [e :UE 305 ]
 }
-[a 1C 104 111 108 97 32 109 117 110 100 111 46 32 99 97 114 97 106 111 0 ]
+[a 1C 104 111 108 97 32 109 117 110 100 111 46 32 99 97 114 97 106 111 44 32 111 116 114 97 32 118 101 122 33 33 33 0 ]

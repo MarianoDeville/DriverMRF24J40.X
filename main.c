@@ -25,7 +25,7 @@ void main(void) {
     BoardInit();
     MRF24J40Init();
     
-    SetMensajeSalida("hola mundo. carajo, otra vez");
+    SetMensajeSalida("hola mundo. carajo, otra vez!!!");
     
     while(1){
         
