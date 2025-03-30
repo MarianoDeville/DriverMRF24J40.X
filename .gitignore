@@ -5,6 +5,9 @@
 *.lst
 *.hxl
 *.sym
+*.xml
+*.sdb
+*.rlf
 
 # Prerequisites
 *.d
