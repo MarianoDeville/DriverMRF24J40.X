@@ -1,16 +1,3 @@
-# A manopla
-*.p1
-*.i
-*.cmf
-*.lst
-*.hxl
-*.sym
-*.xml
-*.sdb
-*.rlf
-.debug/
-.build/
-
 # Prerequisites
 *.d
 
@@ -63,3 +50,5 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+/build
+/dist
