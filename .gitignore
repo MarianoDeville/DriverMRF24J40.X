@@ -1,3 +1,11 @@
+# A manopla
+*.p1
+*.i
+*.cmf
+*.lst
+*.hxl
+*.sym
+
 # Prerequisites
 *.d
 
