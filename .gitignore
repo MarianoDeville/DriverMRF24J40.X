@@ -56,3 +56,12 @@ dkms.conf
 /dist/default/production
 /build/default
 /build/default/production
+*.i
+*.p1
+*.cmf
+*.hxl
+*.lst
+*.mum
+*.rlf
+*.sym
+*.xml
