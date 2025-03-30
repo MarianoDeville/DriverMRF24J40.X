@@ -8,6 +8,8 @@
 *.xml
 *.sdb
 *.rlf
+.debug/
+.build/
 
 # Prerequisites
 *.d
