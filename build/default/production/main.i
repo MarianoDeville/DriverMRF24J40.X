@@ -5149,13 +5149,15 @@ typedef _Bool bool_t;
 
 # 1 "./drivers/inc/drv_mrf24j40.h" 1
 # 21 "./drivers/inc/drv_mrf24j40.h"
-void MRF24J40Init();
+void MRF24J40Init(void);
 void EnviarDato(void);
 void EnviarComando();
 void EnviarDatoEncriptado(void);
 void ReciboPaquete(void);
 void BuscarDispositivos(void);
 void SetMensajeSalida(const char * mensaje);
+void SetDireccionDestino(uint16_t direccion);
+void SetPANIDDestino(uint16_t panid);
 # 16 "main.c" 2
 
 
@@ -5169,19 +5171,15 @@ void main(void) {
     BoardInit();
     MRF24J40Init();
 
-    SetMensajeSalida("hola mundo. carajo, otra vez!!!!");
+    SetMensajeSalida("Hola mundo.");
+    SetDireccionDestino(0XFFFF);
+    SetPANIDDestino(0X1234);
 
     while(1){
 
-
         __asm(" clrwdt");
-        LATEbits.LATE2 = !LATEbits.LATE2;
-        _delay((unsigned long)((250)*(16000000/4000.0)));;
-        LATEbits.LATE1 = !LATEbits.LATE1;
-        _delay((unsigned long)((250)*(16000000/4000.0)));;
         LATEbits.LATE0 = !LATEbits.LATE0;
-        _delay((unsigned long)((250)*(16000000/4000.0)));;
-
+        _delay((unsigned long)((750)*(16000000/4000.0)));;
         EnviarDato();
     }
 }

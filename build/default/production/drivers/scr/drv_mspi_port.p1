@@ -73,6 +73,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "5553
 [; ;C:/Users/maria/.mchp_packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc\pic18f46k20.h: 5553: extern volatile SSPSTATbits_t SSPSTATbits __attribute__((address(0xFC7)));
 [v _SSPSTATbits `VS225 ~T0 @X0 0 e@4039 ]
+"5403
+[; ;C:/Users/maria/.mchp_packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc\pic18f46k20.h: 5403: extern volatile unsigned char SSPCON1 __attribute__((address(0xFC6)));
+[v _SSPCON1 `Vuc ~T0 @X0 0 e@4038 ]
 "5409
 [; ;C:/Users/maria/.mchp_packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc\pic18f46k20.h: 5409:     struct {
 [s S223 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -609,24 +612,30 @@ Version 4.0 HI-TECH Software Intermediate Code
 [p x WRTD  =  OFF        ]
 "75
 [p x EBTRB  =  OFF       ]
-"31 drivers/scr/drv_mspi_port.c
-[; ;drivers/scr/drv_mspi_port.c: 31: void SPIInit(void) {
+"29 drivers/scr/drv_mspi_port.c
+[; ;drivers/scr/drv_mspi_port.c: 29: void SPIInit(void) {
 [v _SPIInit `(v ~T0 @X0 1 ef ]
 {
 [e :U _SPIInit ]
 [f ]
-"33
-[; ;drivers/scr/drv_mspi_port.c: 33:     TRISCbits.TRISC3 = 0;
+"31
+[; ;drivers/scr/drv_mspi_port.c: 31:     TRISCbits.TRISC3 = 0;
 [e = . . _TRISCbits 0 3 -> -> 0 `i `uc ]
-"34
-[; ;drivers/scr/drv_mspi_port.c: 34:     TRISCbits.TRISC5 = 0;
+"32
+[; ;drivers/scr/drv_mspi_port.c: 32:     TRISCbits.TRISC5 = 0;
 [e = . . _TRISCbits 0 5 -> -> 0 `i `uc ]
-"35
-[; ;drivers/scr/drv_mspi_port.c: 35:     TRISCbits.TRISC4 = 1;
+"33
+[; ;drivers/scr/drv_mspi_port.c: 33:     TRISCbits.TRISC4 = 1;
 [e = . . _TRISCbits 0 4 -> -> 1 `i `uc ]
-"36
-[; ;drivers/scr/drv_mspi_port.c: 36:  SSPSTATbits.CKE = 1;
+"34
+[; ;drivers/scr/drv_mspi_port.c: 34:     SSPSTATbits.SMP = 1;
+[e = . . _SSPSTATbits 2 7 -> -> 1 `i `uc ]
+"35
+[; ;drivers/scr/drv_mspi_port.c: 35:  SSPSTATbits.CKE = 1;
 [e = . . _SSPSTATbits 2 6 -> -> 1 `i `uc ]
+"36
+[; ;drivers/scr/drv_mspi_port.c: 36:     SSPCON1 = 0X00 | 0X01;
+[e = _SSPCON1 -> | -> 0 `i -> 1 `i `uc ]
 "37
 [; ;drivers/scr/drv_mspi_port.c: 37:  SSPCON1bits.WCOL = 1;
 [e = . . _SSPCON1bits 0 4 -> -> 1 `i `uc ]
@@ -640,115 +649,83 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;drivers/scr/drv_mspi_port.c: 40:  SSPCON1bits.CKP = 0;
 [e = . . _SSPCON1bits 0 1 -> -> 0 `i `uc ]
 "41
-[; ;drivers/scr/drv_mspi_port.c: 41:  SSPSTATbits.SMP = 1;
-[e = . . _SSPSTATbits 2 7 -> -> 1 `i `uc ]
-"42
-[; ;drivers/scr/drv_mspi_port.c: 42:  SSPCON1bits.SSPM3 = 0;
-[e = . . _SSPCON1bits 1 3 -> -> 0 `i `uc ]
-"43
-[; ;drivers/scr/drv_mspi_port.c: 43:  SSPCON1bits.SSPM2 = 0;
-[e = . . _SSPCON1bits 1 2 -> -> 0 `i `uc ]
-"44
-[; ;drivers/scr/drv_mspi_port.c: 44:  SSPCON1bits.SSPM1 = 0;
-[e = . . _SSPCON1bits 1 1 -> -> 0 `i `uc ]
-"45
-[; ;drivers/scr/drv_mspi_port.c: 45:  SSPCON1bits.SSPM0 = 1;
-[e = . . _SSPCON1bits 1 0 -> -> 1 `i `uc ]
-"46
-[; ;drivers/scr/drv_mspi_port.c: 46:     return;
+[; ;drivers/scr/drv_mspi_port.c: 41:     return;
 [e $UE 303  ]
-"47
-[; ;drivers/scr/drv_mspi_port.c: 47: }
+"42
+[; ;drivers/scr/drv_mspi_port.c: 42: }
 [e :UE 303 ]
 }
-"54
-[; ;drivers/scr/drv_mspi_port.c: 54: void SPIWriteByte(uint8_t dato) {
+"49
+[; ;drivers/scr/drv_mspi_port.c: 49: void SPIWriteByte(uint8_t dato) {
 [v _SPIWriteByte `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _SPIWriteByte ]
 [v _dato `uc ~T0 @X0 1 r1 ]
 [f ]
-"56
-[; ;drivers/scr/drv_mspi_port.c: 56:     PIR1bits.SSPIF = 0;
+"51
+[; ;drivers/scr/drv_mspi_port.c: 51:     PIR1bits.SSPIF = 0;
 [e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
-"57
-[; ;drivers/scr/drv_mspi_port.c: 57:     SSPBUF = dato;
+"52
+[; ;drivers/scr/drv_mspi_port.c: 52:     SSPBUF = dato;
 [e = _SSPBUF _dato ]
-"58
-[; ;drivers/scr/drv_mspi_port.c: 58:     while(!PIR1bits.SSPIF);
+"53
+[; ;drivers/scr/drv_mspi_port.c: 53:     while(!PIR1bits.SSPIF);
 [e $U 305  ]
 [e :U 306 ]
 [e :U 305 ]
 [e $ ! != -> . . _PIR1bits 0 3 `i -> 0 `i 306  ]
 [e :U 307 ]
-"59
-[; ;drivers/scr/drv_mspi_port.c: 59:     return;
+"54
+[; ;drivers/scr/drv_mspi_port.c: 54:     return;
 [e $UE 304  ]
-"60
-[; ;drivers/scr/drv_mspi_port.c: 60: }
+"55
+[; ;drivers/scr/drv_mspi_port.c: 55: }
 [e :UE 304 ]
 }
-"67
-[; ;drivers/scr/drv_mspi_port.c: 67: void SPIWrite2Byte(uint16_t dato) {
+"62
+[; ;drivers/scr/drv_mspi_port.c: 62: void SPIWrite2Byte(uint16_t dato) {
 [v _SPIWrite2Byte `(v ~T0 @X0 1 ef1`us ]
 {
 [e :U _SPIWrite2Byte ]
 [v _dato `us ~T0 @X0 1 r1 ]
 [f ]
-"69
-[; ;drivers/scr/drv_mspi_port.c: 69:     PIR1bits.SSPIF = 0;
-[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
-"70
-[; ;drivers/scr/drv_mspi_port.c: 70:     SSPBUF = (uint8_t) (dato >> 8);
-[e = _SSPBUF -> >> -> _dato `ui -> 8 `i `uc ]
-"71
-[; ;drivers/scr/drv_mspi_port.c: 71:     while(!PIR1bits.SSPIF);
-[e $U 309  ]
-[e :U 310 ]
-[e :U 309 ]
-[e $ ! != -> . . _PIR1bits 0 3 `i -> 0 `i 310  ]
-[e :U 311 ]
-"72
-[; ;drivers/scr/drv_mspi_port.c: 72:     SSPBUF = (uint8_t) dato;
-[e = _SSPBUF -> _dato `uc ]
-"73
-[; ;drivers/scr/drv_mspi_port.c: 73:     while(!PIR1bits.SSPIF);
-[e $U 312  ]
-[e :U 313 ]
-[e :U 312 ]
-[e $ ! != -> . . _PIR1bits 0 3 `i -> 0 `i 313  ]
-[e :U 314 ]
-"74
-[; ;drivers/scr/drv_mspi_port.c: 74:     return;
+"64
+[; ;drivers/scr/drv_mspi_port.c: 64:     SPIWriteByte((uint8_t) (dato >> 8));
+[e ( _SPIWriteByte (1 -> >> -> _dato `ui -> 8 `i `uc ]
+"65
+[; ;drivers/scr/drv_mspi_port.c: 65:     SPIWriteByte((uint8_t) dato);
+[e ( _SPIWriteByte (1 -> _dato `uc ]
+"66
+[; ;drivers/scr/drv_mspi_port.c: 66:     return;
 [e $UE 308  ]
-"75
-[; ;drivers/scr/drv_mspi_port.c: 75: }
+"67
+[; ;drivers/scr/drv_mspi_port.c: 67: }
 [e :UE 308 ]
 }
-"82
-[; ;drivers/scr/drv_mspi_port.c: 82: uint8_t SPIRead(void) {
+"74
+[; ;drivers/scr/drv_mspi_port.c: 74: uint8_t SPIRead(void) {
 [v _SPIRead `(uc ~T0 @X0 1 ef ]
 {
 [e :U _SPIRead ]
 [f ]
-"84
-[; ;drivers/scr/drv_mspi_port.c: 84:     SSPCON1bits.WCOL = 0;
+"76
+[; ;drivers/scr/drv_mspi_port.c: 76:     SSPCON1bits.WCOL = 0;
 [e = . . _SSPCON1bits 0 4 -> -> 0 `i `uc ]
-"85
-[; ;drivers/scr/drv_mspi_port.c: 85:     SSPBUF = 0x00;
+"77
+[; ;drivers/scr/drv_mspi_port.c: 77:     SSPBUF = 0X00;
 [e = _SSPBUF -> -> 0 `i `uc ]
-"86
-[; ;drivers/scr/drv_mspi_port.c: 86:     while(!SSPSTATbits.BF);
-[e $U 316  ]
-[e :U 317 ]
-[e :U 316 ]
-[e $ ! != -> . . _SSPSTATbits 2 0 `i -> 0 `i 317  ]
-[e :U 318 ]
-"87
-[; ;drivers/scr/drv_mspi_port.c: 87:     return SSPBUF;
+"78
+[; ;drivers/scr/drv_mspi_port.c: 78:     while(!SSPSTATbits.BF);
+[e $U 310  ]
+[e :U 311 ]
+[e :U 310 ]
+[e $ ! != -> . . _SSPSTATbits 2 0 `i -> 0 `i 311  ]
+[e :U 312 ]
+"79
+[; ;drivers/scr/drv_mspi_port.c: 79:     return SSPBUF;
 [e ) _SSPBUF ]
-[e $UE 315  ]
-"88
-[; ;drivers/scr/drv_mspi_port.c: 88: }
-[e :UE 315 ]
+[e $UE 309  ]
+"80
+[; ;drivers/scr/drv_mspi_port.c: 80: }
+[e :UE 309 ]
 }

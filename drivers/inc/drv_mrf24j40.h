@@ -18,11 +18,14 @@
 #include "../../redef_var.h"
 
 /* Prototipo de funciones públicas -------------------------------------------*/
-void MRF24J40Init();
+void MRF24J40Init(void);
 void EnviarDato(void);
 void EnviarComando();
 void EnviarDatoEncriptado(void);
 void ReciboPaquete(void);
 void BuscarDispositivos(void);
 void SetMensajeSalida(const char * mensaje);
+void SetDireccionDestino(uint16_t direccion);
+void SetPANIDDestino(uint16_t panid);
+
 #endif

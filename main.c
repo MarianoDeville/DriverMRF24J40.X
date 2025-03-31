@@ -25,19 +25,15 @@ void main(void) {
     BoardInit();
     MRF24J40Init();
     
-    SetMensajeSalida("hola mundo. carajo, otra vez!!!!");
+    SetMensajeSalida("Hola mundo.");
+    SetDireccionDestino(0XFFFF);
+    SetPANIDDestino(0X1234);
     
     while(1){
-        
-        
+
         CLRWDT();
-        LED_ROJO = !LED_ROJO;
-        delayms_t(250);
-        LED_AMARILLO = !LED_AMARILLO;
-        delayms_t(250);
         LED_VERDE = !LED_VERDE;
-        delayms_t(250);
-        
+        delayms_t(750);
         EnviarDato();
     }
 }

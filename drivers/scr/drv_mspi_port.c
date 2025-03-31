@@ -13,36 +13,31 @@
 #include "../../hardware_config.h"
 #include "../inc/drv_mspi_port.h"
 
+/* Definiciones de las velocidades del puerto --------------------------------*/
+#define MASTER_FOSC_4   0X00
+#define MASTER_FOSC_16  0X01
+#define MASTER_FOSC_64  0X02
+#define MASTER_TRM2_2   0X03
+#define SLAVE_SS_E      0X04
+#define SLAVE_SS_D      0X05
+
 /**
  * @brief  Inicialización del periférico de comunicación SPI
  * @param  None
  * @retval None
-  ******************************************************************************
- * @attention
- * SSPM3	SSPM2	SSPM1   SSPM0	Synchronous Serial Port Mode Select
- *   0		 1		 0       1		SPI Slave, SS pin control disabled.
- *	 0		 1		 0		 0  	SPI Slave, SS pin control enabled
- *	 0		 0		 1		 1  	SPI Master mode, clock = TMR2 output/2
- *	 0		 0		 1		 0  	SPI Master mode, clock = FOSC/64
- *	 0		 0		 0		 1  	SPI Master mode, clock = FOSC/16
- *	 0		 0		 0		 0  	SPI Master mode, clock = FOSC/4
- ******************************************************************************
  */
 void SPIInit(void) {
     
     SPI_SCK_IO = SALIDA;
     SPI_SDO_IO = SALIDA;
     SPI_SDI_IO = ENTRADA;
-	SSPSTATbits.CKE = 1;
-	SSPCON1bits.WCOL = 1;
-	SSPCON1bits.SSPOV = 0;
-	SSPCON1bits.SSPEN = 1;
-	SSPCON1bits.CKP = 0;
-	SSPSTATbits.SMP = 1;
-	SSPCON1bits.SSPM3 = 0;
-	SSPCON1bits.SSPM2 = 0;
-	SSPCON1bits.SSPM1 = 0;
-	SSPCON1bits.SSPM0 = 1;
+    SSPSTATbits.SMP = true;
+	SSPSTATbits.CKE = true;
+    SSPCON1 = 0X00 | MASTER_FOSC_16;
+	SSPCON1bits.WCOL = true;
+	SSPCON1bits.SSPOV = false;
+	SSPCON1bits.SSPEN = true;
+	SSPCON1bits.CKP = false;
     return;
 }
 
@@ -53,7 +48,7 @@ void SPIInit(void) {
  */
 void SPIWriteByte(uint8_t dato) {
     
-    PIR1bits.SSPIF = 0;
+    PIR1bits.SSPIF = false;
     SSPBUF = dato;
     while(!PIR1bits.SSPIF);
     return;
@@ -66,11 +61,8 @@ void SPIWriteByte(uint8_t dato) {
  */
 void SPIWrite2Byte(uint16_t dato) {
     
-    PIR1bits.SSPIF = 0;
-    SSPBUF = (uint8_t) (dato >> 8);
-    while(!PIR1bits.SSPIF);
-    SSPBUF = (uint8_t) dato;
-    while(!PIR1bits.SSPIF);
+    SPIWriteByte((uint8_t) (dato >> 8));
+    SPIWriteByte((uint8_t) dato);
     return;
 }
 
@@ -81,9 +73,8 @@ void SPIWrite2Byte(uint16_t dato) {
  */
 uint8_t SPIRead(void) {
     
-    SSPCON1bits.WCOL = 0;
-    SSPBUF = 0x00;
+    SSPCON1bits.WCOL = false;
+    SSPBUF = VACIO;
     while(!SSPSTATbits.BF);
     return SSPBUF;
 }
-

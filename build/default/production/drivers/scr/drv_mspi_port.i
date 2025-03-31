@@ -4999,22 +4999,19 @@ void SPIWriteByte(uint8_t dato);
 void SPIWrite2Byte(uint16_t dato);
 uint8_t SPIRead(void);
 # 14 "drivers/scr/drv_mspi_port.c" 2
-# 31 "drivers/scr/drv_mspi_port.c"
+# 29 "drivers/scr/drv_mspi_port.c"
 void SPIInit(void) {
 
     TRISCbits.TRISC3 = 0;
     TRISCbits.TRISC5 = 0;
     TRISCbits.TRISC4 = 1;
+    SSPSTATbits.SMP = 1;
  SSPSTATbits.CKE = 1;
+    SSPCON1 = 0X00 | 0X01;
  SSPCON1bits.WCOL = 1;
  SSPCON1bits.SSPOV = 0;
  SSPCON1bits.SSPEN = 1;
  SSPCON1bits.CKP = 0;
- SSPSTATbits.SMP = 1;
- SSPCON1bits.SSPM3 = 0;
- SSPCON1bits.SSPM2 = 0;
- SSPCON1bits.SSPM1 = 0;
- SSPCON1bits.SSPM0 = 1;
     return;
 }
 
@@ -5038,11 +5035,8 @@ void SPIWriteByte(uint8_t dato) {
 
 void SPIWrite2Byte(uint16_t dato) {
 
-    PIR1bits.SSPIF = 0;
-    SSPBUF = (uint8_t) (dato >> 8);
-    while(!PIR1bits.SSPIF);
-    SSPBUF = (uint8_t) dato;
-    while(!PIR1bits.SSPIF);
+    SPIWriteByte((uint8_t) (dato >> 8));
+    SPIWriteByte((uint8_t) dato);
     return;
 }
 
@@ -5054,7 +5048,7 @@ void SPIWrite2Byte(uint16_t dato) {
 uint8_t SPIRead(void) {
 
     SSPCON1bits.WCOL = 0;
-    SSPBUF = 0x00;
+    SSPBUF = 0X00;
     while(!SSPSTATbits.BF);
     return SSPBUF;
 }
