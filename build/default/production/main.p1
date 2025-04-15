@@ -2,17 +2,17 @@ Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
 "78 ./hardware_config.h
 [v _BoardInit `(v ~T0 @X0 0 ef ]
-"21 ./drivers/inc/drv_mrf24j40.h
-[; ;./drivers/inc/drv_mrf24j40.h: 21: void MRF24J40Init(void);
+"28 ./drivers/inc/drv_mrf24j40.h
+[; ;./drivers/inc/drv_mrf24j40.h: 28: void MRF24J40Init(void);
 [v _MRF24J40Init `(v ~T0 @X0 0 ef ]
-"27
-[; ;./drivers/inc/drv_mrf24j40.h: 27: void SetMensajeSalida(const char * mensaje);
+"34
+[; ;./drivers/inc/drv_mrf24j40.h: 34: void SetMensajeSalida(const char * mensaje);
 [v _SetMensajeSalida `(v ~T0 @X0 0 ef1`*Cuc ]
-"28
-[; ;./drivers/inc/drv_mrf24j40.h: 28: void SetDireccionDestino(uint16_t direccion);
+"35
+[; ;./drivers/inc/drv_mrf24j40.h: 35: void SetDireccionDestino(uint16_t direccion);
 [v _SetDireccionDestino `(v ~T0 @X0 0 ef1`us ]
-"29
-[; ;./drivers/inc/drv_mrf24j40.h: 29: void SetPANIDDestino(uint16_t panid);
+"36
+[; ;./drivers/inc/drv_mrf24j40.h: 36: void SetPANIDDestino(uint16_t panid);
 [v _SetPANIDDestino `(v ~T0 @X0 0 ef1`us ]
 "1986 C:/Users/maria/.mchp_packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc\pic18f46k20.h
 [; ;C:/Users/maria/.mchp_packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc\pic18f46k20.h: 1986:     struct {
@@ -33,8 +33,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "20 C:\Program Files\Microchip\xc8\v2.50\pic\include\builtins.h
 [v __delay `JF526 ~T0 @X0 0 e ]
 [p i __delay ]
-"22 ./drivers/inc/drv_mrf24j40.h
-[; ;./drivers/inc/drv_mrf24j40.h: 22: void EnviarDato(void);
+"29 ./drivers/inc/drv_mrf24j40.h
+[; ;./drivers/inc/drv_mrf24j40.h: 29: void EnviarDato(void);
 [v _EnviarDato `(v ~T0 @X0 0 ef ]
 "54 C:/Users/maria/.mchp_packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc\pic18f46k20.h
 [; ;C:/Users/maria/.mchp_packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc\pic18f46k20.h: 54: __asm("SSPMSK equ 0F77h");
@@ -502,7 +502,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "56
 [p x HFOFST  =  OFF      ]
 "57
-[p x MCLRE  =  ON        ]
+[p x MCLRE  =  OFF        ]
 "58
 [p x STVREN  =  OFF      ]
 "59
@@ -510,7 +510,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "60
 [p x XINST  =  OFF       ]
 "61
-[p x DEBUG  =  ON        ]
+[p x DEBUG  =  OFF        ]
 "62
 [p x CP0  =  OFF         ]
 "63
@@ -552,39 +552,39 @@ Version 4.0 HI-TECH Software Intermediate Code
 "26
 [; ;main.c: 26:     MRF24J40Init();
 [e ( _MRF24J40Init ..  ]
-"28
-[; ;main.c: 28:     SetMensajeSalida("Hola mundo.");
+"27
+[; ;main.c: 27:     SetMensajeSalida("Hola mundo.");
 [e ( _SetMensajeSalida (1 :s 1C ]
-"29
-[; ;main.c: 29:     SetDireccionDestino(0XFFFF);
+"28
+[; ;main.c: 28:     SetDireccionDestino((0xFFFF));
 [e ( _SetDireccionDestino (1 -> -> 65535 `ui `us ]
-"30
-[; ;main.c: 30:     SetPANIDDestino(0X1234);
+"29
+[; ;main.c: 29:     SetPANIDDestino(0X1234);
 [e ( _SetPANIDDestino (1 -> -> 4660 `i `us ]
-"32
-[; ;main.c: 32:     while(1){
+"31
+[; ;main.c: 31:     while(1) {
 [e :U 307 ]
 {
-"34
-[; ;main.c: 34:         __asm(" clrwdt");
+"33
+[; ;main.c: 33:         __asm(" clrwdt");
 [; <"  clrwdt ;# ">
-"35
-[; ;main.c: 35:         LATEbits.LATE0 = !LATEbits.LATE0;
+"34
+[; ;main.c: 34:         LATEbits.LATE0 = !LATEbits.LATE0;
 [e = . . _LATEbits 0 0 -> -> ! != -> . . _LATEbits 0 0 `i -> 0 `i `i `uc ]
-"36
-[; ;main.c: 36:         _delay((unsigned long)((750)*(16000000/4000.0)));;
+"35
+[; ;main.c: 35:         _delay((unsigned long)((750)*(16000000/4000.0)));;
 [e ( __delay (1 -> * -> -> 750 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"37
-[; ;main.c: 37:         EnviarDato();
+"36
+[; ;main.c: 36:         EnviarDato();
 [e ( _EnviarDato ..  ]
-"38
-[; ;main.c: 38:     }
+"37
+[; ;main.c: 37:     }
 }
 [e :U 306 ]
 [e $U 307  ]
 [e :U 308 ]
-"39
-[; ;main.c: 39: }
+"38
+[; ;main.c: 38: }
 [e :UE 305 ]
 }
 [a 1C 72 111 108 97 32 109 117 110 100 111 46 0 ]

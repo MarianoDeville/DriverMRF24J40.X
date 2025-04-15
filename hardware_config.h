@@ -54,11 +54,11 @@
 #pragma config PBADEN = OFF     // PORTB<4:0> pins are configured as digital I/O
 #pragma config LPT1OSC = OFF    // Low Voltage Programming Enable bit
 #pragma config HFOFST = OFF     // System clock is held off until the HFINTOSC is stable.
-#pragma config MCLRE = ON       // MCLR pin enabled; RE3 input pin disabled
+#pragma config MCLRE = OFF       // MCLR pin enabled; RE3 input pin disabled
 #pragma config STVREN = OFF     // Stack full/underflow will cause Reset
 #pragma config LVP = OFF        // Single-Supply ICSP enabled
 #pragma config XINST = OFF      // Instruction set extension (Legacy mode)
-#pragma config DEBUG = ON       // In-Circuit Debugger Mode bit
+#pragma config DEBUG = OFF       // In-Circuit Debugger Mode bit
 #pragma config CP0 = OFF        // Code Protection bit
 #pragma config CP1 = OFF        // Code Protection bit
 #pragma config CP2 = OFF        // Code Protection bit

@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.50 build 20240725155939 
-                                                                                               Mon Mar 31 03:01:11 2025
+                                                                                               Tue Apr 15 12:08:27 2025
 
 Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1 
      1                           	processor	18F46K20
@@ -951,38 +951,38 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
    937                           ; #config settings
    938                           
    939                           	psect	cinit
-   940   001532                     __pcinit:
+   940   001538                     __pcinit:
    941                           	callstack 0
-   942   001532                     start_initialization:
+   942   001538                     start_initialization:
    943                           	callstack 0
-   944   001532                     __initialization:
+   944   001538                     __initialization:
    945                           	callstack 0
    946                           
    947                           ; Clear objects allocated to BANK0 (55 bytes)
-   948   001532  EE00  F060         	lfsr	0,__pbssBANK0
-   949   001536  0E37               	movlw	55
-   950   001538                     clear_0:
-   951   001538  6AEE               	clrf	postinc0,c
-   952   00153A  06E8               	decf	wreg,f,c
-   953   00153C  E1FD               	bnz	clear_0
+   948   001538  EE00  F060         	lfsr	0,__pbssBANK0
+   949   00153C  0E37               	movlw	55
+   950   00153E                     clear_0:
+   951   00153E  6AEE               	clrf	postinc0,c
+   952   001540  06E8               	decf	wreg,f,c
+   953   001542  E1FD               	bnz	clear_0
    954                           
    955                           ; Clear objects allocated to COMRAM (41 bytes)
-   956   00153E  EE00  F001         	lfsr	0,__pbssCOMRAM
-   957   001542  0E29               	movlw	41
-   958   001544                     clear_1:
-   959   001544  6AEE               	clrf	postinc0,c
-   960   001546  06E8               	decf	wreg,f,c
-   961   001548  E1FD               	bnz	clear_1
-   962   00154A                     end_of_initialization:
+   956   001544  EE00  F001         	lfsr	0,__pbssCOMRAM
+   957   001548  0E29               	movlw	41
+   958   00154A                     clear_1:
+   959   00154A  6AEE               	clrf	postinc0,c
+   960   00154C  06E8               	decf	wreg,f,c
+   961   00154E  E1FD               	bnz	clear_1
+   962   001550                     end_of_initialization:
    963                           	callstack 0
-   964   00154A                     __end_of__initialization:
+   964   001550                     __end_of__initialization:
    965                           	callstack 0
-   966   00154A  0E00               	movlw	low (__Lsmallconst shr (0+16))
-   967   00154C  6EF8               	movwf	tblptru,c
-   968   00154E  0E10               	movlw	high __Lsmallconst
-   969   001550  6EF7               	movwf	tblptrh,c
-   970   001552  0100               	movlb	0
-   971   001554  EF9F  F009         	goto	_main	;jump to C main() function
+   966   001550  0E00               	movlw	low (__Lsmallconst shr (0+16))
+   967   001552  6EF8               	movwf	tblptru,c
+   968   001554  0E10               	movlw	high __Lsmallconst
+   969   001556  6EF7               	movwf	tblptrh,c
+   970   001558  0100               	movlb	0
+   971   00155A  EF9F  F009         	goto	_main	;jump to C main() function
    972                           
    973                           	psect	bssCOMRAM
    974   000001                     __pbssCOMRAM:
@@ -1157,32 +1157,32 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   1138                           	callstack 25
   1139   00133E                     
   1140                           ;main.c: 25:     BoardInit();
-  1141   00133E  EC37  F00A         	call	_BoardInit	;wreg free
+  1141   00133E  ECF5  F009         	call	_BoardInit	;wreg free
   1142   001342                     
   1143                           ;main.c: 26:     MRF24J40Init();
   1144   001342  EC13  F008         	call	_MRF24J40Init	;wreg free
   1145   001346                     
-  1146                           ;main.c: 28:     SetMensajeSalida("Hola mundo.");
+  1146                           ;main.c: 27:     SetMensajeSalida("Hola mundo.");
   1147   001346  0E19               	movlw	low STR_1
   1148   001348  6E2D               	movwf	SetMensajeSalida@mensaje^0,c
-  1149   00134A  EC00  F00B         	call	_SetMensajeSalida	;wreg free
+  1149   00134A  EC03  F00B         	call	_SetMensajeSalida	;wreg free
   1150   00134E                     
-  1151                           ;main.c: 29:     SetDireccionDestino(0XFFFF);
+  1151                           ;main.c: 28:     SetDireccionDestino((0xFFFF));
   1152   00134E  0EFF               	movlw	255
   1153   001350  6E2B               	movwf	(SetDireccionDestino@direccion+1)^0,c
   1154   001352  682A               	setf	SetDireccionDestino@direccion^0,c
-  1155   001354  EC31  F00B         	call	_SetDireccionDestino	;wreg free
+  1155   001354  EC34  F00B         	call	_SetDireccionDestino	;wreg free
   1156   001358                     
-  1157                           ;main.c: 30:     SetPANIDDestino(0X1234);
+  1157                           ;main.c: 29:     SetPANIDDestino(0X1234);
   1158   001358  0E12               	movlw	18
   1159   00135A  6E2B               	movwf	(SetPANIDDestino@panid+1)^0,c
   1160   00135C  0E34               	movlw	52
   1161   00135E  6E2A               	movwf	SetPANIDDestino@panid^0,c
-  1162   001360  EC2C  F00B         	call	_SetPANIDDestino	;wreg free
+  1162   001360  EC2F  F00B         	call	_SetPANIDDestino	;wreg free
   1163   001364                     l211:
   1164   001364  0004               	clrwdt		;# 
   1165   001366                     
-  1166                           ;main.c: 35:         LATEbits.LATE0 = !LATEbits.LATE0;
+  1166                           ;main.c: 34:         LATEbits.LATE0 = !LATEbits.LATE0;
   1167   001366  A08D               	btfss	141,0,c	;volatile
   1168   001368  EFB8  F009         	goto	u371
   1169   00136C  EFBC  F009         	goto	u370
@@ -1199,7 +1199,7 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   1180   001380  183B               	xorwf	??_main^0,w,c
   1181   001382  6E8D               	movwf	141,c	;volatile
   1182   001384                     
-  1183                           ;main.c: 36:         _delay((unsigned long)((750)*(16000000/4000.0)));;
+  1183                           ;main.c: 35:         _delay((unsigned long)((750)*(16000000/4000.0)));;
   1184   001384  0E10               	movlw	16
   1185   001386  6E3C               	movwf	(??_main+1)^0,c
   1186   001388  0E39               	movlw	57
@@ -1213,7 +1213,7 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   1194   001396  2E3C               	decfsz	(??_main+1)^0,f,c
   1195   001398  D7FA               	bra	u397
   1196   00139A                     
-  1197                           ;main.c: 37:         EnviarDato();
+  1197                           ;main.c: 36:         EnviarDato();
   1198   00139A  ECCE  F008         	call	_EnviarDato	;wreg free
   1199   00139E  EFB2  F009         	goto	l211
   1200   0013A2  EF00  F000         	goto	start
@@ -1222,7 +1222,7 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   1203                           
   1204 ;; *************** function _SetPANIDDestino *****************
   1205 ;; Defined at:
-  1206 ;;		line 495 in file "drivers/scr/drv_mrf24j40.c"
+  1206 ;;		line 488 in file "drivers/scr/drv_mrf24j40.c"
   1207 ;; Parameters:    Size  Location     Type
   1208 ;;  panid           2    0[COMRAM] unsigned short 
   1209 ;; Auto vars:     Size  Location     Type
@@ -1255,21 +1255,21 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   1231 ;;
   1232                           
   1233                           	psect	text1
-  1234   001658                     __ptext1:
+  1234   00165E                     __ptext1:
   1235                           	callstack 0
-  1236   001658                     _SetPANIDDestino:
+  1236   00165E                     _SetPANIDDestino:
   1237                           	callstack 30
-  1238   001658                     
-  1239                           ;drivers/scr/drv_mrf24j40.c: 497:     mrf24_data_out.destinity_panid = panid;
-  1240   001658  C02A  F023         	movff	SetPANIDDestino@panid,_mrf24_data_out
-  1241   00165C  C02B  F024         	movff	SetPANIDDestino@panid+1,_mrf24_data_out+1
-  1242   001660  0012               	return		;funcret
-  1243   001662                     __end_of_SetPANIDDestino:
+  1238   00165E                     
+  1239                           ;drivers/scr/drv_mrf24j40.c: 490:     mrf24_data_out.destinity_panid = panid;
+  1240   00165E  C02A  F023         	movff	SetPANIDDestino@panid,_mrf24_data_out
+  1241   001662  C02B  F024         	movff	SetPANIDDestino@panid+1,_mrf24_data_out+1
+  1242   001666  0012               	return		;funcret
+  1243   001668                     __end_of_SetPANIDDestino:
   1244                           	callstack 0
   1245                           
   1246 ;; *************** function _SetMensajeSalida *****************
   1247 ;; Defined at:
-  1248 ;;		line 472 in file "drivers/scr/drv_mrf24j40.c"
+  1248 ;;		line 465 in file "drivers/scr/drv_mrf24j40.c"
   1249 ;; Parameters:    Size  Location     Type
   1250 ;;  mensaje         1    3[COMRAM] PTR const unsigned char 
   1251 ;;		 -> STR_1(12), 
@@ -1304,22 +1304,22 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   1275 ;;
   1276                           
   1277                           	psect	text2
-  1278   001600                     __ptext2:
+  1278   001606                     __ptext2:
   1279                           	callstack 0
-  1280   001600                     _SetMensajeSalida:
+  1280   001606                     _SetMensajeSalida:
   1281                           	callstack 29
-  1282   001600                     
-  1283                           ;drivers/scr/drv_mrf24j40.c: 474:     mrf24_data_out.buffer_salida = mensaje;
-  1284   001600  C02D  F028         	movff	SetMensajeSalida@mensaje,_mrf24_data_out+5
-  1285   001604                     
-  1286                           ;drivers/scr/drv_mrf24j40.c: 475:     mrf24_data_out.largo_mensaje = (uint8_t) strlen(me
+  1282   001606                     
+  1283                           ;drivers/scr/drv_mrf24j40.c: 467:     mrf24_data_out.buffer_salida = mensaje;
+  1284   001606  C02D  F028         	movff	SetMensajeSalida@mensaje,_mrf24_data_out+5
+  1285   00160A                     
+  1286                           ;drivers/scr/drv_mrf24j40.c: 468:     mrf24_data_out.largo_mensaje = (uint8_t) strlen(me
       +                          nsaje);
-  1287   001604  C02D  F02A         	movff	SetMensajeSalida@mensaje,strlen@s
-  1288   001608  EC56  F00A         	call	_strlen	;wreg free
-  1289   00160C  502A               	movf	?_strlen^0,w,c
-  1290   00160E  6E27               	movwf	(_mrf24_data_out+4)^0,c
-  1291   001610  0012               	return		;funcret
-  1292   001612                     __end_of_SetMensajeSalida:
+  1287   00160A  C02D  F02A         	movff	SetMensajeSalida@mensaje,strlen@s
+  1288   00160E  EC59  F00A         	call	_strlen	;wreg free
+  1289   001612  502A               	movf	?_strlen^0,w,c
+  1290   001614  6E27               	movwf	(_mrf24_data_out+4)^0,c
+  1291   001616  0012               	return		;funcret
+  1292   001618                     __end_of_SetMensajeSalida:
   1293                           	callstack 0
   1294                           
   1295 ;; *************** function _strlen *****************
@@ -1359,44 +1359,44 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   1324 ;;
   1325                           
   1326                           	psect	text3
-  1327   0014AC                     __ptext3:
+  1327   0014B2                     __ptext3:
   1328                           	callstack 0
-  1329   0014AC                     _strlen:
+  1329   0014B2                     _strlen:
   1330                           	callstack 29
-  1331   0014AC  C02A  F02C         	movff	strlen@s,strlen@a
-  1332   0014B0  EF5B  F00A         	goto	l1563
-  1333   0014B4                     l1561:
-  1334   0014B4  2A2A               	incf	strlen@s^0,f,c
-  1335   0014B6                     l1563:
-  1336   0014B6  C02A  FFF6         	movff	strlen@s,tblptrl
-  1337   0014BA                     	if	0	;There is only one active tblptr byte
-  1338   0014BA                     	endif
-  1339   0014BA                     	if	0	;tblptru may be non-zero
-  1340   0014BA                     	endif
-  1341   0014BA                     	if	0	;tblptru may be non-zero
-  1342   0014BA                     	endif
-  1343   0014BA  0008               	tblrd		*
-  1344   0014BC  50F5               	movf	tablat,w,c
-  1345   0014BE  0900               	iorlw	0
-  1346   0014C0  A4D8               	btfss	status,2,c
-  1347   0014C2  EF65  F00A         	goto	u291
-  1348   0014C6  EF67  F00A         	goto	u290
-  1349   0014CA                     u291:
-  1350   0014CA  EF5A  F00A         	goto	l1561
-  1351   0014CE                     u290:
-  1352   0014CE  502C               	movf	strlen@a^0,w,c
-  1353   0014D0  5C2A               	subwf	strlen@s^0,w,c
-  1354   0014D2  6E2A               	movwf	?_strlen^0,c
-  1355   0014D4  6A2B               	clrf	(?_strlen+1)^0,c
-  1356   0014D6  BE2A               	btfsc	?_strlen^0,7,c
-  1357   0014D8  062B               	decf	(?_strlen+1)^0,f,c
-  1358   0014DA  0012               	return		;funcret
-  1359   0014DC                     __end_of_strlen:
+  1331   0014B2  C02A  F02C         	movff	strlen@s,strlen@a
+  1332   0014B6  EF5E  F00A         	goto	l1565
+  1333   0014BA                     l1563:
+  1334   0014BA  2A2A               	incf	strlen@s^0,f,c
+  1335   0014BC                     l1565:
+  1336   0014BC  C02A  FFF6         	movff	strlen@s,tblptrl
+  1337   0014C0                     	if	0	;There is only one active tblptr byte
+  1338   0014C0                     	endif
+  1339   0014C0                     	if	0	;tblptru may be non-zero
+  1340   0014C0                     	endif
+  1341   0014C0                     	if	0	;tblptru may be non-zero
+  1342   0014C0                     	endif
+  1343   0014C0  0008               	tblrd		*
+  1344   0014C2  50F5               	movf	tablat,w,c
+  1345   0014C4  0900               	iorlw	0
+  1346   0014C6  A4D8               	btfss	status,2,c
+  1347   0014C8  EF68  F00A         	goto	u291
+  1348   0014CC  EF6A  F00A         	goto	u290
+  1349   0014D0                     u291:
+  1350   0014D0  EF5D  F00A         	goto	l1563
+  1351   0014D4                     u290:
+  1352   0014D4  502C               	movf	strlen@a^0,w,c
+  1353   0014D6  5C2A               	subwf	strlen@s^0,w,c
+  1354   0014D8  6E2A               	movwf	?_strlen^0,c
+  1355   0014DA  6A2B               	clrf	(?_strlen+1)^0,c
+  1356   0014DC  BE2A               	btfsc	?_strlen^0,7,c
+  1357   0014DE  062B               	decf	(?_strlen+1)^0,f,c
+  1358   0014E0  0012               	return		;funcret
+  1359   0014E2                     __end_of_strlen:
   1360                           	callstack 0
   1361                           
   1362 ;; *************** function _SetDireccionDestino *****************
   1363 ;; Defined at:
-  1364 ;;		line 484 in file "drivers/scr/drv_mrf24j40.c"
+  1364 ;;		line 477 in file "drivers/scr/drv_mrf24j40.c"
   1365 ;; Parameters:    Size  Location     Type
   1366 ;;  direccion       2    0[COMRAM] unsigned short 
   1367 ;; Auto vars:     Size  Location     Type
@@ -1429,21 +1429,21 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   1389 ;;
   1390                           
   1391                           	psect	text4
-  1392   001662                     __ptext4:
+  1392   001668                     __ptext4:
   1393                           	callstack 0
-  1394   001662                     _SetDireccionDestino:
+  1394   001668                     _SetDireccionDestino:
   1395                           	callstack 30
-  1396   001662                     
-  1397                           ;drivers/scr/drv_mrf24j40.c: 486:     mrf24_data_out.destinity_address = direccion;
-  1398   001662  C02A  F025         	movff	SetDireccionDestino@direccion,_mrf24_data_out+2
-  1399   001666  C02B  F026         	movff	SetDireccionDestino@direccion+1,_mrf24_data_out+3
-  1400   00166A  0012               	return		;funcret
-  1401   00166C                     __end_of_SetDireccionDestino:
+  1396   001668                     
+  1397                           ;drivers/scr/drv_mrf24j40.c: 479:     mrf24_data_out.destinity_address = direccion;
+  1398   001668  C02A  F025         	movff	SetDireccionDestino@direccion,_mrf24_data_out+2
+  1399   00166C  C02B  F026         	movff	SetDireccionDestino@direccion+1,_mrf24_data_out+3
+  1400   001670  0012               	return		;funcret
+  1401   001672                     __end_of_SetDireccionDestino:
   1402                           	callstack 0
   1403                           
   1404 ;; *************** function _MRF24J40Init *****************
   1405 ;; Defined at:
-  1406 ;;		line 283 in file "drivers/scr/drv_mrf24j40.c"
+  1406 ;;		line 276 in file "drivers/scr/drv_mrf24j40.c"
   1407 ;; Parameters:    Size  Location     Type
   1408 ;;		None
   1409 ;; Auto vars:     Size  Location     Type
@@ -1491,14 +1491,14 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   1446   001026                     _MRF24J40Init:
   1447                           	callstack 25
   1448   001026                     
-  1449                           ;drivers/scr/drv_mrf24j40.c: 285:     uint8_t lectura;;drivers/scr/drv_mrf24j40.c: 286: 
+  1449                           ;drivers/scr/drv_mrf24j40.c: 278:     uint8_t lectura;;drivers/scr/drv_mrf24j40.c: 279: 
       +                              InicializoVariables();
   1450   001026  EC4B  F009         	call	_InicializoVariables	;wreg free
   1451   00102A                     
-  1452                           ;drivers/scr/drv_mrf24j40.c: 287:     InicializoPines();
-  1453   00102A  ECCF  F00A         	call	_InicializoPines	;wreg free
+  1452                           ;drivers/scr/drv_mrf24j40.c: 280:     InicializoPines();
+  1453   00102A  ECD2  F00A         	call	_InicializoPines	;wreg free
   1454   00102E                     
-  1455                           ;drivers/scr/drv_mrf24j40.c: 288:  _delay((unsigned long)((1)*(16000000/4000.0)));;
+  1455                           ;drivers/scr/drv_mrf24j40.c: 281:  _delay((unsigned long)((1)*(16000000/4000.0)));;
   1456   00102E  0E06               	movlw	6
   1457   001030  6E34               	movwf	??_MRF24J40Init^0,c
   1458   001032  0E30               	movlw	48
@@ -1509,11 +1509,11 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   1463   00103A  D7FC               	bra	u407
   1464   00103C  F000 F000          	nop2	
   1465   001040                     
-  1466                           ;drivers/scr/drv_mrf24j40.c: 289:     SetResetPin(1);
+  1466                           ;drivers/scr/drv_mrf24j40.c: 282:     SetResetPin(1);
   1467   001040  0E01               	movlw	1
-  1468   001042  EC10  F00B         	call	_SetResetPin
+  1468   001042  EC13  F00B         	call	_SetResetPin
   1469   001046                     
-  1470                           ;drivers/scr/drv_mrf24j40.c: 290:  _delay((unsigned long)((1)*(16000000/4000.0)));;
+  1470                           ;drivers/scr/drv_mrf24j40.c: 283:  _delay((unsigned long)((1)*(16000000/4000.0)));;
   1471   001046  0E06               	movlw	6
   1472   001048  6E34               	movwf	??_MRF24J40Init^0,c
   1473   00104A  0E30               	movlw	48
@@ -1524,19 +1524,19 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   1478   001052  D7FC               	bra	u417
   1479   001054  F000 F000          	nop2	
   1480   001058                     
-  1481                           ;drivers/scr/drv_mrf24j40.c: 291:     SetShortAddr((0x2A),0x07);
+  1481                           ;drivers/scr/drv_mrf24j40.c: 284:     SetShortAddr((0x2A),0x07);
   1482   001058  0E07               	movlw	7
   1483   00105A  6E2C               	movwf	SetShortAddr@value^0,c
   1484   00105C  0E2A               	movlw	42
-  1485   00105E  ECBF  F00A         	call	_SetShortAddr
-  1486   001062                     l1581:
+  1485   00105E  ECC2  F00A         	call	_SetShortAddr
+  1486   001062                     l1583:
   1487                           
-  1488                           ;drivers/scr/drv_mrf24j40.c: 294:         lectura = GetShortAddr((0x2A));
+  1488                           ;drivers/scr/drv_mrf24j40.c: 287:         lectura = GetShortAddr((0x2A));
   1489   001062  0E2A               	movlw	42
-  1490   001064  ECAC  F00A         	call	_GetShortAddr
+  1490   001064  ECAF  F00A         	call	_GetShortAddr
   1491   001068  6E35               	movwf	MRF24J40Init@lectura^0,c
   1492   00106A                     
-  1493                           ;drivers/scr/drv_mrf24j40.c: 295:     }while((lectura&0x07) != 0X00);
+  1493                           ;drivers/scr/drv_mrf24j40.c: 288:     }while((lectura&0x07) != 0X00);
   1494   00106A  C035  F034         	movff	MRF24J40Init@lectura,??_MRF24J40Init
   1495   00106E  0E07               	movlw	7
   1496   001070  1634               	andwf	??_MRF24J40Init^0,f,c
@@ -1544,10 +1544,10 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   1498   001074  EF3E  F008         	goto	u301
   1499   001078  EF40  F008         	goto	u300
   1500   00107C                     u301:
-  1501   00107C  EF31  F008         	goto	l1581
+  1501   00107C  EF31  F008         	goto	l1583
   1502   001080                     u300:
   1503   001080                     
-  1504                           ;drivers/scr/drv_mrf24j40.c: 296:     _delay((unsigned long)((1)*(16000000/4000.0)));;
+  1504                           ;drivers/scr/drv_mrf24j40.c: 289:     _delay((unsigned long)((1)*(16000000/4000.0)));;
   1505   001080  0E06               	movlw	6
   1506   001082  6E34               	movwf	??_MRF24J40Init^0,c
   1507   001084  0E30               	movlw	48
@@ -1558,104 +1558,104 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   1512   00108C  D7FC               	bra	u427
   1513   00108E  F000 F000          	nop2	
   1514   001092                     
-  1515                           ;drivers/scr/drv_mrf24j40.c: 297:     SetShortAddr((0x0D), 0x01);
+  1515                           ;drivers/scr/drv_mrf24j40.c: 290:     SetShortAddr((0x0D), 0x01);
   1516   001092  0E01               	movlw	1
   1517   001094  6E2C               	movwf	SetShortAddr@value^0,c
   1518   001096  0E0D               	movlw	13
-  1519   001098  ECBF  F00A         	call	_SetShortAddr
+  1519   001098  ECC2  F00A         	call	_SetShortAddr
   1520   00109C                     
-  1521                           ;drivers/scr/drv_mrf24j40.c: 298:     SetDeviceAddress();
-  1522   00109C  EC84  F00A         	call	_SetDeviceAddress	;wreg free
+  1521                           ;drivers/scr/drv_mrf24j40.c: 291:     SetDeviceAddress();
+  1522   00109C  EC87  F00A         	call	_SetDeviceAddress	;wreg free
   1523   0010A0                     
-  1524                           ;drivers/scr/drv_mrf24j40.c: 299:     SetDeviceMACAddress();
-  1525   0010A0  ECF5  F009         	call	_SetDeviceMACAddress	;wreg free
+  1524                           ;drivers/scr/drv_mrf24j40.c: 292:     SetDeviceMACAddress();
+  1525   0010A0  EC17  F00A         	call	_SetDeviceMACAddress	;wreg free
   1526   0010A4                     
-  1527                           ;drivers/scr/drv_mrf24j40.c: 300:     SetLongAddr((0x202), 0x80);
+  1527                           ;drivers/scr/drv_mrf24j40.c: 293:     SetLongAddr((0x202), 0x80);
   1528   0010A4  0E02               	movlw	2
   1529   0010A6  6E30               	movwf	(SetLongAddr@reg_address+1)^0,c
   1530   0010A8  0E02               	movlw	2
   1531   0010AA  6E2F               	movwf	SetLongAddr@reg_address^0,c
   1532   0010AC  0E80               	movlw	128
   1533   0010AE  6E31               	movwf	SetLongAddr@value^0,c
-  1534   0010B0  EC16  F00A         	call	_SetLongAddr	;wreg free
+  1534   0010B0  EC38  F00A         	call	_SetLongAddr	;wreg free
   1535   0010B4                     
-  1536                           ;drivers/scr/drv_mrf24j40.c: 301:     SetLongAddr((0x203), (0XC0) | (0X38));
+  1536                           ;drivers/scr/drv_mrf24j40.c: 294:     SetLongAddr((0x203), (0XC0) | (0X38));
   1537   0010B4  0E02               	movlw	2
   1538   0010B6  6E30               	movwf	(SetLongAddr@reg_address+1)^0,c
   1539   0010B8  0E03               	movlw	3
   1540   0010BA  6E2F               	movwf	SetLongAddr@reg_address^0,c
   1541   0010BC  0EF8               	movlw	248
   1542   0010BE  6E31               	movwf	SetLongAddr@value^0,c
-  1543   0010C0  EC16  F00A         	call	_SetLongAddr	;wreg free
+  1543   0010C0  EC38  F00A         	call	_SetLongAddr	;wreg free
   1544   0010C4                     
-  1545                           ;drivers/scr/drv_mrf24j40.c: 302:  SetLongAddr((0x206), 0x90);
+  1545                           ;drivers/scr/drv_mrf24j40.c: 295:  SetLongAddr((0x206), 0x90);
   1546   0010C4  0E02               	movlw	2
   1547   0010C6  6E30               	movwf	(SetLongAddr@reg_address+1)^0,c
   1548   0010C8  0E06               	movlw	6
   1549   0010CA  6E2F               	movwf	SetLongAddr@reg_address^0,c
   1550   0010CC  0E90               	movlw	144
   1551   0010CE  6E31               	movwf	SetLongAddr@value^0,c
-  1552   0010D0  EC16  F00A         	call	_SetLongAddr	;wreg free
+  1552   0010D0  EC38  F00A         	call	_SetLongAddr	;wreg free
   1553   0010D4                     
-  1554                           ;drivers/scr/drv_mrf24j40.c: 303:  SetLongAddr((0x207), 0x80);
+  1554                           ;drivers/scr/drv_mrf24j40.c: 296:  SetLongAddr((0x207), 0x80);
   1555   0010D4  0E02               	movlw	2
   1556   0010D6  6E30               	movwf	(SetLongAddr@reg_address+1)^0,c
   1557   0010D8  0E07               	movlw	7
   1558   0010DA  6E2F               	movwf	SetLongAddr@reg_address^0,c
   1559   0010DC  0E80               	movlw	128
   1560   0010DE  6E31               	movwf	SetLongAddr@value^0,c
-  1561   0010E0  EC16  F00A         	call	_SetLongAddr	;wreg free
+  1561   0010E0  EC38  F00A         	call	_SetLongAddr	;wreg free
   1562   0010E4                     
-  1563                           ;drivers/scr/drv_mrf24j40.c: 304:  SetLongAddr((0x208), 0x10);
+  1563                           ;drivers/scr/drv_mrf24j40.c: 297:  SetLongAddr((0x208), 0x10);
   1564   0010E4  0E02               	movlw	2
   1565   0010E6  6E30               	movwf	(SetLongAddr@reg_address+1)^0,c
   1566   0010E8  0E08               	movlw	8
   1567   0010EA  6E2F               	movwf	SetLongAddr@reg_address^0,c
   1568   0010EC  0E10               	movlw	16
   1569   0010EE  6E31               	movwf	SetLongAddr@value^0,c
-  1570   0010F0  EC16  F00A         	call	_SetLongAddr	;wreg free
+  1570   0010F0  EC38  F00A         	call	_SetLongAddr	;wreg free
   1571   0010F4                     
-  1572                           ;drivers/scr/drv_mrf24j40.c: 305:  SetLongAddr((0x220), 0x21);
+  1572                           ;drivers/scr/drv_mrf24j40.c: 298:  SetLongAddr((0x220), 0x21);
   1573   0010F4  0E02               	movlw	2
   1574   0010F6  6E30               	movwf	(SetLongAddr@reg_address+1)^0,c
   1575   0010F8  0E20               	movlw	32
   1576   0010FA  6E2F               	movwf	SetLongAddr@reg_address^0,c
   1577   0010FC  0E21               	movlw	33
   1578   0010FE  6E31               	movwf	SetLongAddr@value^0,c
-  1579   001100  EC16  F00A         	call	_SetLongAddr	;wreg free
+  1579   001100  EC38  F00A         	call	_SetLongAddr	;wreg free
   1580   001104                     
-  1581                           ;drivers/scr/drv_mrf24j40.c: 306:     SetShortAddr((0x3A), 0x80);
+  1581                           ;drivers/scr/drv_mrf24j40.c: 299:     SetShortAddr((0x3A), 0x80);
   1582   001104  0E80               	movlw	128
   1583   001106  6E2C               	movwf	SetShortAddr@value^0,c
   1584   001108  0E3A               	movlw	58
-  1585   00110A  ECBF  F00A         	call	_SetShortAddr
+  1585   00110A  ECC2  F00A         	call	_SetShortAddr
   1586   00110E                     
-  1587                           ;drivers/scr/drv_mrf24j40.c: 307:     SetShortAddr((0x3E), 0x40);
+  1587                           ;drivers/scr/drv_mrf24j40.c: 300:     SetShortAddr((0x3E), 0x40);
   1588   00110E  0E40               	movlw	64
   1589   001110  6E2C               	movwf	SetShortAddr@value^0,c
   1590   001112  0E3E               	movlw	62
-  1591   001114  ECBF  F00A         	call	_SetShortAddr
+  1591   001114  ECC2  F00A         	call	_SetShortAddr
   1592   001118                     
-  1593                           ;drivers/scr/drv_mrf24j40.c: 308:     SetShortAddr((0x3F), 0x60);
+  1593                           ;drivers/scr/drv_mrf24j40.c: 301:     SetShortAddr((0x3F), 0x60);
   1594   001118  0E60               	movlw	96
   1595   00111A  6E2C               	movwf	SetShortAddr@value^0,c
   1596   00111C  0E3F               	movlw	63
-  1597   00111E  ECBF  F00A         	call	_SetShortAddr
+  1597   00111E  ECC2  F00A         	call	_SetShortAddr
   1598   001122                     
-  1599                           ;drivers/scr/drv_mrf24j40.c: 309:     SetShortAddr((0x18), 0x98);
+  1599                           ;drivers/scr/drv_mrf24j40.c: 302:     SetShortAddr((0x18), 0x98);
   1600   001122  0E98               	movlw	152
   1601   001124  6E2C               	movwf	SetShortAddr@value^0,c
   1602   001126  0E18               	movlw	24
-  1603   001128  ECBF  F00A         	call	_SetShortAddr
+  1603   001128  ECC2  F00A         	call	_SetShortAddr
   1604   00112C                     
-  1605                           ;drivers/scr/drv_mrf24j40.c: 310:     SetShortAddr((0x2E), 0x95);
+  1605                           ;drivers/scr/drv_mrf24j40.c: 303:     SetShortAddr((0x2E), 0x95);
   1606   00112C  0E95               	movlw	149
   1607   00112E  6E2C               	movwf	SetShortAddr@value^0,c
   1608   001130  0E2E               	movlw	46
-  1609   001132  ECBF  F00A         	call	_SetShortAddr
-  1610   001136                     l1615:
+  1609   001132  ECC2  F00A         	call	_SetShortAddr
+  1610   001136                     l1617:
   1611                           
-  1612                           ;drivers/scr/drv_mrf24j40.c: 313:   lectura = GetLongAddr((0x20f));
+  1612                           ;drivers/scr/drv_mrf24j40.c: 306:   lectura = GetLongAddr((0x20f));
   1613   001136  0E02               	movlw	2
   1614   001138  6E30               	movwf	(GetLongAddr@reg_address+1)^0,c
   1615   00113A  0E0F               	movlw	15
@@ -1663,7 +1663,7 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   1617   00113E  ECD3  F009         	call	_GetLongAddr	;wreg free
   1618   001142  6E35               	movwf	MRF24J40Init@lectura^0,c
   1619   001144                     
-  1620                           ;drivers/scr/drv_mrf24j40.c: 314:  }while((lectura & 0xA0) != 0xA0);
+  1620                           ;drivers/scr/drv_mrf24j40.c: 307:  }while((lectura & 0xA0) != 0xA0);
   1621   001144  5035               	movf	MRF24J40Init@lectura^0,w,c
   1622   001146  0BA0               	andlw	160
   1623   001148  0AA0               	xorlw	160
@@ -1671,54 +1671,54 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   1625   00114C  EFAA  F008         	goto	u311
   1626   001150  EFAC  F008         	goto	u310
   1627   001154                     u311:
-  1628   001154  EF9B  F008         	goto	l1615
+  1628   001154  EF9B  F008         	goto	l1617
   1629   001158                     u310:
   1630   001158                     
-  1631                           ;drivers/scr/drv_mrf24j40.c: 315:     SetShortAddr((0x32), 0xE6);
+  1631                           ;drivers/scr/drv_mrf24j40.c: 308:     SetShortAddr((0x32), 0xE6);
   1632   001158  0EE6               	movlw	230
   1633   00115A  6E2C               	movwf	SetShortAddr@value^0,c
   1634   00115C  0E32               	movlw	50
-  1635   00115E  ECBF  F00A         	call	_SetShortAddr
+  1635   00115E  ECC2  F00A         	call	_SetShortAddr
   1636                           
-  1637                           ;drivers/scr/drv_mrf24j40.c: 316:  SetShortAddr((0x12), 0xB9);
+  1637                           ;drivers/scr/drv_mrf24j40.c: 309:  SetShortAddr((0x12), 0xB9);
   1638   001162  0EB9               	movlw	185
   1639   001164  6E2C               	movwf	SetShortAddr@value^0,c
   1640   001166  0E12               	movlw	18
-  1641   001168  ECBF  F00A         	call	_SetShortAddr
+  1641   001168  ECC2  F00A         	call	_SetShortAddr
   1642                           
-  1643                           ;drivers/scr/drv_mrf24j40.c: 317:     SetLongAddr((0x200), 0x03);
+  1643                           ;drivers/scr/drv_mrf24j40.c: 310:     SetLongAddr((0x200), 0x03);
   1644   00116C  0E02               	movlw	2
   1645   00116E  6E30               	movwf	(SetLongAddr@reg_address+1)^0,c
   1646   001170  0E00               	movlw	0
   1647   001172  6E2F               	movwf	SetLongAddr@reg_address^0,c
   1648   001174  0E03               	movlw	3
   1649   001176  6E31               	movwf	SetLongAddr@value^0,c
-  1650   001178  EC16  F00A         	call	_SetLongAddr	;wreg free
+  1650   001178  EC38  F00A         	call	_SetLongAddr	;wreg free
   1651                           
-  1652                           ;drivers/scr/drv_mrf24j40.c: 318:  SetLongAddr((0x201), 0x02);
+  1652                           ;drivers/scr/drv_mrf24j40.c: 311:  SetLongAddr((0x201), 0x02);
   1653   00117C  0E02               	movlw	2
   1654   00117E  6E30               	movwf	(SetLongAddr@reg_address+1)^0,c
   1655   001180  0E01               	movlw	1
   1656   001182  6E2F               	movwf	SetLongAddr@reg_address^0,c
   1657   001184  0E02               	movlw	2
   1658   001186  6E31               	movwf	SetLongAddr@value^0,c
-  1659   001188  EC16  F00A         	call	_SetLongAddr	;wreg free
+  1659   001188  EC38  F00A         	call	_SetLongAddr	;wreg free
   1660                           
-  1661                           ;drivers/scr/drv_mrf24j40.c: 319:  SetChannel();
-  1662   00118C  EC6E  F00A         	call	_SetChannel	;wreg free
+  1661                           ;drivers/scr/drv_mrf24j40.c: 312:  SetChannel();
+  1662   00118C  EC71  F00A         	call	_SetChannel	;wreg free
   1663                           
-  1664                           ;drivers/scr/drv_mrf24j40.c: 328:  SetShortAddr((0x00),0x00);
+  1664                           ;drivers/scr/drv_mrf24j40.c: 321:  SetShortAddr((0x00),0x00);
   1665   001190  0E00               	movlw	0
   1666   001192  6E2C               	movwf	SetShortAddr@value^0,c
   1667   001194  0E00               	movlw	0
-  1668   001196  ECBF  F00A         	call	_SetShortAddr
+  1668   001196  ECC2  F00A         	call	_SetShortAddr
   1669   00119A  0012               	return		;funcret
   1670   00119C                     __end_of_MRF24J40Init:
   1671                           	callstack 0
   1672                           
   1673 ;; *************** function _SetDeviceMACAddress *****************
   1674 ;; Defined at:
-  1675 ;;		line 454 in file "drivers/scr/drv_mrf24j40.c"
+  1675 ;;		line 447 in file "drivers/scr/drv_mrf24j40.c"
   1676 ;; Parameters:    Size  Location     Type
   1677 ;;		None
   1678 ;; Auto vars:     Size  Location     Type
@@ -1752,56 +1752,56 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   1701 ;;
   1702                           
   1703                           	psect	text6
-  1704   0013EA                     __ptext6:
+  1704   00142E                     __ptext6:
   1705                           	callstack 0
-  1706   0013EA                     _SetDeviceMACAddress:
+  1706   00142E                     _SetDeviceMACAddress:
   1707                           	callstack 26
-  1708   0013EA                     
-  1709                           ;drivers/scr/drv_mrf24j40.c: 456:     my_default_mac_address = EADR0;
-  1710   0013EA  0E05               	movlw	5
-  1711   0013EC  6E29               	movwf	_my_default_mac_address^0,c
+  1708   00142E                     
+  1709                           ;drivers/scr/drv_mrf24j40.c: 449:     my_default_mac_address = EADR0;
+  1710   00142E  0E05               	movlw	5
+  1711   001430  6E29               	movwf	_my_default_mac_address^0,c
   1712                           
-  1713                           ;drivers/scr/drv_mrf24j40.c: 458:     for(int i = 0; i < 8; i++) {
-  1714   0013EE  0E00               	movlw	0
-  1715   0013F0  6E2F               	movwf	(SetDeviceMACAddress@i+1)^0,c
-  1716   0013F2  0E00               	movlw	0
-  1717   0013F4  6E2E               	movwf	SetDeviceMACAddress@i^0,c
-  1718   0013F6                     l1531:
+  1713                           ;drivers/scr/drv_mrf24j40.c: 451:     for(int i = 0; i < 8; i++) {
+  1714   001432  0E00               	movlw	0
+  1715   001434  6E2F               	movwf	(SetDeviceMACAddress@i+1)^0,c
+  1716   001436  0E00               	movlw	0
+  1717   001438  6E2E               	movwf	SetDeviceMACAddress@i^0,c
+  1718   00143A                     l1533:
   1719                           
-  1720                           ;drivers/scr/drv_mrf24j40.c: 460:         SetShortAddr(my_default_mac_address++, mrf24_d
+  1720                           ;drivers/scr/drv_mrf24j40.c: 453:         SetShortAddr(my_default_mac_address++, mrf24_d
       +                          ata_config.my_mac[i]);
-  1721   0013F6  502E               	movf	SetDeviceMACAddress@i^0,w,c
-  1722   0013F8  0F15               	addlw	low (_mrf24_data_config+20)
-  1723   0013FA  6ED9               	movwf	fsr2l,c
-  1724   0013FC  6ADA               	clrf	fsr2h,c
-  1725   0013FE  50DF               	movf	indf2,w,c
-  1726   001400  6E2C               	movwf	SetShortAddr@value^0,c
-  1727   001402  5029               	movf	_my_default_mac_address^0,w,c
-  1728   001404  ECBF  F00A         	call	_SetShortAddr
-  1729   001408  2A29               	incf	_my_default_mac_address^0,f,c
-  1730   00140A                     
-  1731                           ;drivers/scr/drv_mrf24j40.c: 461:     }
-  1732   00140A  4A2E               	infsnz	SetDeviceMACAddress@i^0,f,c
-  1733   00140C  2A2F               	incf	(SetDeviceMACAddress@i+1)^0,f,c
-  1734   00140E  BE2F               	btfsc	(SetDeviceMACAddress@i+1)^0,7,c
-  1735   001410  EF13  F00A         	goto	u271
-  1736   001414  502F               	movf	(SetDeviceMACAddress@i+1)^0,w,c
-  1737   001416  E109               	bnz	u270
-  1738   001418  0E08               	movlw	8
-  1739   00141A  5C2E               	subwf	SetDeviceMACAddress@i^0,w,c
-  1740   00141C  A0D8               	btfss	status,0,c
-  1741   00141E  EF13  F00A         	goto	u271
-  1742   001422  EF15  F00A         	goto	u270
-  1743   001426                     u271:
-  1744   001426  EFFB  F009         	goto	l1531
-  1745   00142A                     u270:
-  1746   00142A  0012               	return		;funcret
-  1747   00142C                     __end_of_SetDeviceMACAddress:
+  1721   00143A  502E               	movf	SetDeviceMACAddress@i^0,w,c
+  1722   00143C  0F15               	addlw	low (_mrf24_data_config+20)
+  1723   00143E  6ED9               	movwf	fsr2l,c
+  1724   001440  6ADA               	clrf	fsr2h,c
+  1725   001442  50DF               	movf	indf2,w,c
+  1726   001444  6E2C               	movwf	SetShortAddr@value^0,c
+  1727   001446  5029               	movf	_my_default_mac_address^0,w,c
+  1728   001448  ECC2  F00A         	call	_SetShortAddr
+  1729   00144C  2A29               	incf	_my_default_mac_address^0,f,c
+  1730   00144E                     
+  1731                           ;drivers/scr/drv_mrf24j40.c: 454:     }
+  1732   00144E  4A2E               	infsnz	SetDeviceMACAddress@i^0,f,c
+  1733   001450  2A2F               	incf	(SetDeviceMACAddress@i+1)^0,f,c
+  1734   001452  BE2F               	btfsc	(SetDeviceMACAddress@i+1)^0,7,c
+  1735   001454  EF35  F00A         	goto	u271
+  1736   001458  502F               	movf	(SetDeviceMACAddress@i+1)^0,w,c
+  1737   00145A  E109               	bnz	u270
+  1738   00145C  0E08               	movlw	8
+  1739   00145E  5C2E               	subwf	SetDeviceMACAddress@i^0,w,c
+  1740   001460  A0D8               	btfss	status,0,c
+  1741   001462  EF35  F00A         	goto	u271
+  1742   001466  EF37  F00A         	goto	u270
+  1743   00146A                     u271:
+  1744   00146A  EF1D  F00A         	goto	l1533
+  1745   00146E                     u270:
+  1746   00146E  0012               	return		;funcret
+  1747   001470                     __end_of_SetDeviceMACAddress:
   1748                           	callstack 0
   1749                           
   1750 ;; *************** function _SetDeviceAddress *****************
   1751 ;; Defined at:
-  1752 ;;		line 440 in file "drivers/scr/drv_mrf24j40.c"
+  1752 ;;		line 433 in file "drivers/scr/drv_mrf24j40.c"
   1753 ;; Parameters:    Size  Location     Type
   1754 ;;		None
   1755 ;; Auto vars:     Size  Location     Type
@@ -1835,43 +1835,43 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   1778 ;;
   1779                           
   1780                           	psect	text7
-  1781   001508                     __ptext7:
+  1781   00150E                     __ptext7:
   1782                           	callstack 0
-  1783   001508                     _SetDeviceAddress:
+  1783   00150E                     _SetDeviceAddress:
   1784                           	callstack 26
-  1785   001508                     
-  1786                           ;drivers/scr/drv_mrf24j40.c: 442:  SetShortAddr((0x04), (uint8_t) (mrf24_data_config.my_
+  1785   00150E                     
+  1786                           ;drivers/scr/drv_mrf24j40.c: 435:  SetShortAddr((0x04), (uint8_t) (mrf24_data_config.my_
       +                          address >> 8));
-  1787   001508  5020               	movf	(_mrf24_data_config+31)^0,w,c
-  1788   00150A  6E2C               	movwf	SetShortAddr@value^0,c
-  1789   00150C  0E04               	movlw	4
-  1790   00150E  ECBF  F00A         	call	_SetShortAddr
+  1787   00150E  5020               	movf	(_mrf24_data_config+31)^0,w,c
+  1788   001510  6E2C               	movwf	SetShortAddr@value^0,c
+  1789   001512  0E04               	movlw	4
+  1790   001514  ECC2  F00A         	call	_SetShortAddr
   1791                           
-  1792                           ;drivers/scr/drv_mrf24j40.c: 443:  SetShortAddr((0x03), (uint8_t) (mrf24_data_config.my_
+  1792                           ;drivers/scr/drv_mrf24j40.c: 436:  SetShortAddr((0x03), (uint8_t) (mrf24_data_config.my_
       +                          address));
-  1793   001512  C01F  F02C         	movff	_mrf24_data_config+30,SetShortAddr@value
-  1794   001516  0E03               	movlw	3
-  1795   001518  ECBF  F00A         	call	_SetShortAddr
+  1793   001518  C01F  F02C         	movff	_mrf24_data_config+30,SetShortAddr@value
+  1794   00151C  0E03               	movlw	3
+  1795   00151E  ECC2  F00A         	call	_SetShortAddr
   1796                           
-  1797                           ;drivers/scr/drv_mrf24j40.c: 444:  SetShortAddr((0x02), (uint8_t) (mrf24_data_config.my_
+  1797                           ;drivers/scr/drv_mrf24j40.c: 437:  SetShortAddr((0x02), (uint8_t) (mrf24_data_config.my_
       +                          panid >> 8));
-  1798   00151C  501E               	movf	(_mrf24_data_config+29)^0,w,c
-  1799   00151E  6E2C               	movwf	SetShortAddr@value^0,c
-  1800   001520  0E02               	movlw	2
-  1801   001522  ECBF  F00A         	call	_SetShortAddr
+  1798   001522  501E               	movf	(_mrf24_data_config+29)^0,w,c
+  1799   001524  6E2C               	movwf	SetShortAddr@value^0,c
+  1800   001526  0E02               	movlw	2
+  1801   001528  ECC2  F00A         	call	_SetShortAddr
   1802                           
-  1803                           ;drivers/scr/drv_mrf24j40.c: 445:  SetShortAddr((0x01), (uint8_t) (mrf24_data_config.my_
+  1803                           ;drivers/scr/drv_mrf24j40.c: 438:  SetShortAddr((0x01), (uint8_t) (mrf24_data_config.my_
       +                          panid));
-  1804   001526  C01D  F02C         	movff	_mrf24_data_config+28,SetShortAddr@value
-  1805   00152A  0E01               	movlw	1
-  1806   00152C  ECBF  F00A         	call	_SetShortAddr
-  1807   001530  0012               	return		;funcret
-  1808   001532                     __end_of_SetDeviceAddress:
+  1804   00152C  C01D  F02C         	movff	_mrf24_data_config+28,SetShortAddr@value
+  1805   001530  0E01               	movlw	1
+  1806   001532  ECC2  F00A         	call	_SetShortAddr
+  1807   001536  0012               	return		;funcret
+  1808   001538                     __end_of_SetDeviceAddress:
   1809                           	callstack 0
   1810                           
   1811 ;; *************** function _SetChannel *****************
   1812 ;; Defined at:
-  1813 ;;		line 426 in file "drivers/scr/drv_mrf24j40.c"
+  1813 ;;		line 419 in file "drivers/scr/drv_mrf24j40.c"
   1814 ;; Parameters:    Size  Location     Type
   1815 ;;		None
   1816 ;; Auto vars:     Size  Location     Type
@@ -1906,43 +1906,43 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   1840 ;;
   1841                           
   1842                           	psect	text8
-  1843   0014DC                     __ptext8:
+  1843   0014E2                     __ptext8:
   1844                           	callstack 0
-  1845   0014DC                     _SetChannel:
+  1845   0014E2                     _SetChannel:
   1846                           	callstack 25
-  1847   0014DC                     
-  1848                           ;drivers/scr/drv_mrf24j40.c: 428:  SetLongAddr((0x200), mrf24_data_config.my_channel);
-  1849   0014DC  0E02               	movlw	2
-  1850   0014DE  6E30               	movwf	(SetLongAddr@reg_address+1)^0,c
-  1851   0014E0  0E00               	movlw	0
-  1852   0014E2  6E2F               	movwf	SetLongAddr@reg_address^0,c
-  1853   0014E4  C004  F031         	movff	_mrf24_data_config+3,SetLongAddr@value
-  1854   0014E8  EC16  F00A         	call	_SetLongAddr	;wreg free
+  1847   0014E2                     
+  1848                           ;drivers/scr/drv_mrf24j40.c: 421:  SetLongAddr((0x200), mrf24_data_config.my_channel);
+  1849   0014E2  0E02               	movlw	2
+  1850   0014E4  6E30               	movwf	(SetLongAddr@reg_address+1)^0,c
+  1851   0014E6  0E00               	movlw	0
+  1852   0014E8  6E2F               	movwf	SetLongAddr@reg_address^0,c
+  1853   0014EA  C004  F031         	movff	_mrf24_data_config+3,SetLongAddr@value
+  1854   0014EE  EC38  F00A         	call	_SetLongAddr	;wreg free
   1855                           
-  1856                           ;drivers/scr/drv_mrf24j40.c: 429:  SetShortAddr((0x36), 0x04);
-  1857   0014EC  0E04               	movlw	4
-  1858   0014EE  6E2C               	movwf	SetShortAddr@value^0,c
-  1859   0014F0  0E36               	movlw	54
-  1860   0014F2  ECBF  F00A         	call	_SetShortAddr
+  1856                           ;drivers/scr/drv_mrf24j40.c: 422:  SetShortAddr((0x36), 0x04);
+  1857   0014F2  0E04               	movlw	4
+  1858   0014F4  6E2C               	movwf	SetShortAddr@value^0,c
+  1859   0014F6  0E36               	movlw	54
+  1860   0014F8  ECC2  F00A         	call	_SetShortAddr
   1861                           
-  1862                           ;drivers/scr/drv_mrf24j40.c: 430:  SetShortAddr((0x36), 0x00);
-  1863   0014F6  0E00               	movlw	0
-  1864   0014F8  6E2C               	movwf	SetShortAddr@value^0,c
-  1865   0014FA  0E36               	movlw	54
-  1866   0014FC  ECBF  F00A         	call	_SetShortAddr
-  1867   001500                     
-  1868                           ;drivers/scr/drv_mrf24j40.c: 431:  _delay((unsigned long)((192)*(16000000/4000000.0)));;
-  1869   001500  0E00               	movlw	0
-  1870   001502                     u437:
-  1871   001502  2EE8               	decfsz	wreg,f,c
-  1872   001504  D7FE               	bra	u437
-  1873   001506  0012               	return		;funcret
-  1874   001508                     __end_of_SetChannel:
+  1862                           ;drivers/scr/drv_mrf24j40.c: 423:  SetShortAddr((0x36), 0x00);
+  1863   0014FC  0E00               	movlw	0
+  1864   0014FE  6E2C               	movwf	SetShortAddr@value^0,c
+  1865   001500  0E36               	movlw	54
+  1866   001502  ECC2  F00A         	call	_SetShortAddr
+  1867   001506                     
+  1868                           ;drivers/scr/drv_mrf24j40.c: 424:  _delay((unsigned long)((192)*(16000000/4000000.0)));;
+  1869   001506  0E00               	movlw	0
+  1870   001508                     u437:
+  1871   001508  2EE8               	decfsz	wreg,f,c
+  1872   00150A  D7FE               	bra	u437
+  1873   00150C  0012               	return		;funcret
+  1874   00150E                     __end_of_SetChannel:
   1875                           	callstack 0
   1876                           
   1877 ;; *************** function _InicializoVariables *****************
   1878 ;; Defined at:
-  1879 ;;		line 338 in file "drivers/scr/drv_mrf24j40.c"
+  1879 ;;		line 331 in file "drivers/scr/drv_mrf24j40.c"
   1880 ;; Parameters:    Size  Location     Type
   1881 ;;		None
   1882 ;; Auto vars:     Size  Location     Type
@@ -1980,14 +1980,14 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   1909   001296                     _InicializoVariables:
   1910                           	callstack 29
   1911   001296                     
-  1912                           ;drivers/scr/drv_mrf24j40.c: 340:     for(int i = 0; i < 16; i++){
+  1912                           ;drivers/scr/drv_mrf24j40.c: 333:     for(int i = 0; i < 16; i++){
   1913   001296  0E00               	movlw	0
   1914   001298  6E2C               	movwf	(InicializoVariables@i+1)^0,c
   1915   00129A  0E00               	movlw	0
   1916   00129C  6E2B               	movwf	InicializoVariables@i^0,c
-  1917   00129E                     l1479:
+  1917   00129E                     l1481:
   1918                           
-  1919                           ;drivers/scr/drv_mrf24j40.c: 342:         if(i < 8)
+  1919                           ;drivers/scr/drv_mrf24j40.c: 335:         if(i < 8)
   1920   00129E  BE2C               	btfsc	(InicializoVariables@i+1)^0,7,c
   1921   0012A0  EF5D  F009         	goto	u250
   1922   0012A4  502C               	movf	(InicializoVariables@i+1)^0,w,c
@@ -2001,7 +2001,7 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   1930   0012B6  EF69  F009         	goto	l56
   1931   0012BA                     u250:
   1932   0012BA                     
-  1933                           ;drivers/scr/drv_mrf24j40.c: 343:             mrf24_data_config.my_mac[i] = default_mac_
+  1933                           ;drivers/scr/drv_mrf24j40.c: 336:             mrf24_data_config.my_mac[i] = default_mac_
       +                          address[i];
   1934   0012BA  502B               	movf	InicializoVariables@i^0,w,c
   1935   0012BC  0F11               	addlw	low _default_mac_address
@@ -2021,7 +2021,7 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   1949   0012CE  CFF5 FFDF          	movff	tablat,indf2
   1950   0012D2                     l56:
   1951                           
-  1952                           ;drivers/scr/drv_mrf24j40.c: 344:         mrf24_data_config.security_key[i] = default_se
+  1952                           ;drivers/scr/drv_mrf24j40.c: 337:         mrf24_data_config.security_key[i] = default_se
       +                          curity_key[i];
   1953   0012D2  502B               	movf	InicializoVariables@i^0,w,c
   1954   0012D4  0F01               	addlw	low _default_security_key
@@ -2040,7 +2040,7 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   1967   0012E4  0008               	tblrd		*
   1968   0012E6  CFF5 FFDF          	movff	tablat,indf2
   1969   0012EA                     
-  1970                           ;drivers/scr/drv_mrf24j40.c: 345:     }
+  1970                           ;drivers/scr/drv_mrf24j40.c: 338:     }
   1971   0012EA  4A2B               	infsnz	InicializoVariables@i^0,f,c
   1972   0012EC  2A2C               	incf	(InicializoVariables@i+1)^0,f,c
   1973   0012EE  BE2C               	btfsc	(InicializoVariables@i+1)^0,7,c
@@ -2053,54 +2053,54 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   1980   0012FE  EF83  F009         	goto	u261
   1981   001302  EF85  F009         	goto	u260
   1982   001306                     u261:
-  1983   001306  EF4F  F009         	goto	l1479
+  1983   001306  EF4F  F009         	goto	l1481
   1984   00130A                     u260:
   1985   00130A                     
-  1986                           ;drivers/scr/drv_mrf24j40.c: 346:     mrf24_data_config.sequence_number = 0X01;
+  1986                           ;drivers/scr/drv_mrf24j40.c: 339:     mrf24_data_config.sequence_number = 0X01;
   1987   00130A  0E01               	movlw	1
   1988   00130C  6E03               	movwf	(_mrf24_data_config+2)^0,c
   1989                           
-  1990                           ;drivers/scr/drv_mrf24j40.c: 347:     mrf24_data_config.my_channel = CH_11;
+  1990                           ;drivers/scr/drv_mrf24j40.c: 340:     mrf24_data_config.my_channel = CH_11;
   1991   00130E  0E03               	movlw	3
   1992   001310  6E04               	movwf	(_mrf24_data_config+3)^0,c
   1993   001312                     
-  1994                           ;drivers/scr/drv_mrf24j40.c: 348:     mrf24_data_config.get_new_msg = 0;
+  1994                           ;drivers/scr/drv_mrf24j40.c: 341:     mrf24_data_config.get_new_msg = 0;
   1995   001312  6A01               	clrf	_mrf24_data_config^0,c
   1996   001314                     
-  1997                           ;drivers/scr/drv_mrf24j40.c: 349:     mrf24_data_config.put_new_msg = 0;
+  1997                           ;drivers/scr/drv_mrf24j40.c: 342:     mrf24_data_config.put_new_msg = 0;
   1998   001314  6A02               	clrf	(_mrf24_data_config+1)^0,c
   1999                           
-  2000                           ;drivers/scr/drv_mrf24j40.c: 350:     mrf24_data_config.my_panid = 0x1234;
+  2000                           ;drivers/scr/drv_mrf24j40.c: 343:     mrf24_data_config.my_panid = 0x1234;
   2001   001316  0E12               	movlw	18
   2002   001318  6E1E               	movwf	(_mrf24_data_config+29)^0,c
   2003   00131A  0E34               	movlw	52
   2004   00131C  6E1D               	movwf	(_mrf24_data_config+28)^0,c
   2005                           
-  2006                           ;drivers/scr/drv_mrf24j40.c: 351:     mrf24_data_config.my_address = 0xDE11;
+  2006                           ;drivers/scr/drv_mrf24j40.c: 344:     mrf24_data_config.my_address = 0xDE11;
   2007   00131E  0EDE               	movlw	222
   2008   001320  6E20               	movwf	(_mrf24_data_config+31)^0,c
   2009   001322  0E11               	movlw	17
   2010   001324  6E1F               	movwf	(_mrf24_data_config+30)^0,c
   2011                           
-  2012                           ;drivers/scr/drv_mrf24j40.c: 352:     mrf24_data_in.source_address = 0X00;
+  2012                           ;drivers/scr/drv_mrf24j40.c: 345:     mrf24_data_in.source_address = 0X00;
   2013   001326  0E00               	movlw	0
   2014   001328  0100               	movlb	0	; () banked
   2015   00132A  6F63               	movwf	(_mrf24_data_in+3)& (0+255),b
   2016   00132C  0E00               	movlw	0
   2017   00132E  6F62               	movwf	(_mrf24_data_in+2)& (0+255),b
   2018                           
-  2019                           ;drivers/scr/drv_mrf24j40.c: 353:     mrf24_data_in.source_panid = 0X00;
+  2019                           ;drivers/scr/drv_mrf24j40.c: 346:     mrf24_data_in.source_panid = 0X00;
   2020   001330  0E00               	movlw	0
   2021   001332  6F61               	movwf	(_mrf24_data_in+1)& (0+255),b
   2022   001334  0E00               	movlw	0
   2023   001336  6F60               	movwf	_mrf24_data_in& (0+255),b
   2024   001338                     
   2025                           ; BSR set to: 0
-  2026                           ;drivers/scr/drv_mrf24j40.c: 354:     mrf24_data_in.tamano_mensaje = 0X00;
+  2026                           ;drivers/scr/drv_mrf24j40.c: 347:     mrf24_data_in.tamano_mensaje = 0X00;
   2027   001338  6B64               	clrf	(_mrf24_data_in+4)& (0+255),b
   2028   00133A                     
   2029                           ; BSR set to: 0
-  2030                           ;drivers/scr/drv_mrf24j40.c: 355:     mrf24_data_in.buffer_entrada[0] = 0X00;
+  2030                           ;drivers/scr/drv_mrf24j40.c: 348:     mrf24_data_in.buffer_entrada[0] = 0X00;
   2031   00133A  6B65               	clrf	(_mrf24_data_in+5)& (0+255),b
   2032   00133C                     
   2033                           ; BSR set to: 0
@@ -2146,36 +2146,36 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   2068 ;;
   2069                           
   2070                           	psect	text10
-  2071   00159E                     __ptext10:
+  2071   0015A4                     __ptext10:
   2072                           	callstack 0
-  2073   00159E                     _InicializoPines:
+  2073   0015A4                     _InicializoPines:
   2074                           	callstack 28
-  2075   00159E                     
+  2075   0015A4                     
   2076                           ;drivers/scr/drv_mrf24j40_port.c: 23:     TRISBbits.TRISB0 = 1;
-  2077   00159E  8093               	bsf	147,0,c	;volatile
+  2077   0015A4  8093               	bsf	147,0,c	;volatile
   2078                           
   2079                           ;drivers/scr/drv_mrf24j40_port.c: 24:     TRISCbits.TRISC6 = 0;
-  2080   0015A0  9C94               	bcf	148,6,c	;volatile
+  2080   0015A6  9C94               	bcf	148,6,c	;volatile
   2081                           
   2082                           ;drivers/scr/drv_mrf24j40_port.c: 25:     TRISCbits.TRISC7 = 0;
-  2083   0015A2  9E94               	bcf	148,7,c	;volatile
+  2083   0015A8  9E94               	bcf	148,7,c	;volatile
   2084                           
   2085                           ;drivers/scr/drv_mrf24j40_port.c: 26:     TRISDbits.TRISD4 = 0;
-  2086   0015A4  9895               	bcf	149,4,c	;volatile
-  2087   0015A6                     
+  2086   0015AA  9895               	bcf	149,4,c	;volatile
+  2087   0015AC                     
   2088                           ;drivers/scr/drv_mrf24j40_port.c: 27:     SetCSPin(1);
-  2089   0015A6  0E01               	movlw	1
-  2090   0015A8  EC25  F00B         	call	_SetCSPin
+  2089   0015AC  0E01               	movlw	1
+  2090   0015AE  EC28  F00B         	call	_SetCSPin
   2091                           
   2092                           ;drivers/scr/drv_mrf24j40_port.c: 28:     SetWakePin(1);
-  2093   0015AC  0E01               	movlw	1
-  2094   0015AE  EC09  F00B         	call	_SetWakePin
+  2093   0015B2  0E01               	movlw	1
+  2094   0015B4  EC0C  F00B         	call	_SetWakePin
   2095                           
   2096                           ;drivers/scr/drv_mrf24j40_port.c: 29:     SetResetPin(0);
-  2097   0015B2  0E00               	movlw	0
-  2098   0015B4  EC10  F00B         	call	_SetResetPin
-  2099   0015B8  0012               	return		;funcret
-  2100   0015BA                     __end_of_InicializoPines:
+  2097   0015B8  0E00               	movlw	0
+  2098   0015BA  EC13  F00B         	call	_SetResetPin
+  2099   0015BE  0012               	return		;funcret
+  2100   0015C0                     __end_of_InicializoPines:
   2101                           	callstack 0
   2102                           
   2103 ;; *************** function _SetWakePin *****************
@@ -2213,25 +2213,25 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   2130 ;;
   2131                           
   2132                           	psect	text11
-  2133   001612                     __ptext11:
+  2133   001618                     __ptext11:
   2134                           	callstack 0
-  2135   001612                     _SetWakePin:
+  2135   001618                     _SetWakePin:
   2136                           	callstack 28
   2137                           
   2138                           ;incstack = 0
   2139                           ;SetWakePin@estado stored from wreg
-  2140   001612  6E2A               	movwf	SetWakePin@estado^0,c
-  2141   001614                     
+  2140   001618  6E2A               	movwf	SetWakePin@estado^0,c
+  2141   00161A                     
   2142                           ;drivers/scr/drv_mrf24j40_port.c: 51:     LATCbits.LATC7 = estado;
-  2143   001614  B02A               	btfsc	SetWakePin@estado^0,0,c
-  2144   001616  D002               	bra	u65
-  2145   001618  9E8B               	bcf	139,7,c	;volatile
-  2146   00161A  D001               	bra	u66
-  2147   00161C                     u65:
-  2148   00161C  8E8B               	bsf	139,7,c	;volatile
-  2149   00161E                     u66:
-  2150   00161E  0012               	return		;funcret
-  2151   001620                     __end_of_SetWakePin:
+  2143   00161A  B02A               	btfsc	SetWakePin@estado^0,0,c
+  2144   00161C  D002               	bra	u65
+  2145   00161E  9E8B               	bcf	139,7,c	;volatile
+  2146   001620  D001               	bra	u66
+  2147   001622                     u65:
+  2148   001622  8E8B               	bsf	139,7,c	;volatile
+  2149   001624                     u66:
+  2150   001624  0012               	return		;funcret
+  2151   001626                     __end_of_SetWakePin:
   2152                           	callstack 0
   2153                           
   2154 ;; *************** function _SetResetPin *****************
@@ -2270,30 +2270,30 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   2182 ;;
   2183                           
   2184                           	psect	text12
-  2185   001620                     __ptext12:
+  2185   001626                     __ptext12:
   2186                           	callstack 0
-  2187   001620                     _SetResetPin:
+  2187   001626                     _SetResetPin:
   2188                           	callstack 29
   2189                           
   2190                           ;incstack = 0
   2191                           ;SetResetPin@estado stored from wreg
-  2192   001620  6E2A               	movwf	SetResetPin@estado^0,c
-  2193   001622                     
+  2192   001626  6E2A               	movwf	SetResetPin@estado^0,c
+  2193   001628                     
   2194                           ;drivers/scr/drv_mrf24j40_port.c: 62:     LATDbits.LATD4 = estado;
-  2195   001622  B02A               	btfsc	SetResetPin@estado^0,0,c
-  2196   001624  D002               	bra	u45
-  2197   001626  988C               	bcf	140,4,c	;volatile
-  2198   001628  D001               	bra	u46
-  2199   00162A                     u45:
-  2200   00162A  888C               	bsf	140,4,c	;volatile
-  2201   00162C                     u46:
-  2202   00162C  0012               	return		;funcret
-  2203   00162E                     __end_of_SetResetPin:
+  2195   001628  B02A               	btfsc	SetResetPin@estado^0,0,c
+  2196   00162A  D002               	bra	u45
+  2197   00162C  988C               	bcf	140,4,c	;volatile
+  2198   00162E  D001               	bra	u46
+  2199   001630                     u45:
+  2200   001630  888C               	bsf	140,4,c	;volatile
+  2201   001632                     u46:
+  2202   001632  0012               	return		;funcret
+  2203   001634                     __end_of_SetResetPin:
   2204                           	callstack 0
   2205                           
   2206 ;; *************** function _GetShortAddr *****************
   2207 ;; Defined at:
-  2208 ;;		line 379 in file "drivers/scr/drv_mrf24j40.c"
+  2208 ;;		line 372 in file "drivers/scr/drv_mrf24j40.c"
   2209 ;; Parameters:    Size  Location     Type
   2210 ;;  reg_address     1    wreg     unsigned char 
   2211 ;; Auto vars:     Size  Location     Type
@@ -2330,46 +2330,46 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   2237 ;;
   2238                           
   2239                           	psect	text13
-  2240   001558                     __ptext13:
+  2240   00155E                     __ptext13:
   2241                           	callstack 0
-  2242   001558                     _GetShortAddr:
+  2242   00155E                     _GetShortAddr:
   2243                           	callstack 27
   2244                           
   2245                           ;incstack = 0
   2246                           ;GetShortAddr@reg_address stored from wreg
-  2247   001558  6E2D               	movwf	GetShortAddr@reg_address^0,c
-  2248   00155A                     
-  2249                           ;drivers/scr/drv_mrf24j40.c: 382:     reg_address = (uint8_t) (reg_address << 1) & 0x7E;
-  2250   00155A  502D               	movf	GetShortAddr@reg_address^0,w,c
-  2251   00155C  242D               	addwf	GetShortAddr@reg_address^0,w,c
-  2252   00155E  0B7E               	andlw	126
-  2253   001560  6E2D               	movwf	GetShortAddr@reg_address^0,c
-  2254   001562                     
-  2255                           ;drivers/scr/drv_mrf24j40.c: 383:     SetCSPin(0);
-  2256   001562  0E00               	movlw	0
-  2257   001564  EC25  F00B         	call	_SetCSPin
-  2258   001568                     
-  2259                           ;drivers/scr/drv_mrf24j40.c: 384:     WriteByteSPIPort(reg_address);
-  2260   001568  502D               	movf	GetShortAddr@reg_address^0,w,c
-  2261   00156A  EC36  F00B         	call	_WriteByteSPIPort
-  2262   00156E                     
-  2263                           ;drivers/scr/drv_mrf24j40.c: 385:     leido_spi = ReadByteSPIPort();
-  2264   00156E  EC3B  F00B         	call	_ReadByteSPIPort	;wreg free
-  2265   001572  6E2C               	movwf	GetShortAddr@leido_spi^0,c
-  2266   001574                     
-  2267                           ;drivers/scr/drv_mrf24j40.c: 386:     SetCSPin(1);
-  2268   001574  0E01               	movlw	1
-  2269   001576  EC25  F00B         	call	_SetCSPin
-  2270   00157A                     
-  2271                           ;drivers/scr/drv_mrf24j40.c: 387:  return leido_spi;
-  2272   00157A  502C               	movf	GetShortAddr@leido_spi^0,w,c
-  2273   00157C  0012               	return		;funcret
-  2274   00157E                     __end_of_GetShortAddr:
+  2247   00155E  6E2D               	movwf	GetShortAddr@reg_address^0,c
+  2248   001560                     
+  2249                           ;drivers/scr/drv_mrf24j40.c: 375:     reg_address = (uint8_t) (reg_address << 1) & 0x7E;
+  2250   001560  502D               	movf	GetShortAddr@reg_address^0,w,c
+  2251   001562  242D               	addwf	GetShortAddr@reg_address^0,w,c
+  2252   001564  0B7E               	andlw	126
+  2253   001566  6E2D               	movwf	GetShortAddr@reg_address^0,c
+  2254   001568                     
+  2255                           ;drivers/scr/drv_mrf24j40.c: 376:     SetCSPin(0);
+  2256   001568  0E00               	movlw	0
+  2257   00156A  EC28  F00B         	call	_SetCSPin
+  2258   00156E                     
+  2259                           ;drivers/scr/drv_mrf24j40.c: 377:     WriteByteSPIPort(reg_address);
+  2260   00156E  502D               	movf	GetShortAddr@reg_address^0,w,c
+  2261   001570  EC39  F00B         	call	_WriteByteSPIPort
+  2262   001574                     
+  2263                           ;drivers/scr/drv_mrf24j40.c: 378:     leido_spi = ReadByteSPIPort();
+  2264   001574  EC3E  F00B         	call	_ReadByteSPIPort	;wreg free
+  2265   001578  6E2C               	movwf	GetShortAddr@leido_spi^0,c
+  2266   00157A                     
+  2267                           ;drivers/scr/drv_mrf24j40.c: 379:     SetCSPin(1);
+  2268   00157A  0E01               	movlw	1
+  2269   00157C  EC28  F00B         	call	_SetCSPin
+  2270   001580                     
+  2271                           ;drivers/scr/drv_mrf24j40.c: 380:  return leido_spi;
+  2272   001580  502C               	movf	GetShortAddr@leido_spi^0,w,c
+  2273   001582  0012               	return		;funcret
+  2274   001584                     __end_of_GetShortAddr:
   2275                           	callstack 0
   2276                           
   2277 ;; *************** function _GetLongAddr *****************
   2278 ;; Defined at:
-  2279 ;;		line 410 in file "drivers/scr/drv_mrf24j40.c"
+  2279 ;;		line 403 in file "drivers/scr/drv_mrf24j40.c"
   2280 ;; Parameters:    Size  Location     Type
   2281 ;;  reg_address     2    5[COMRAM] unsigned short 
   2282 ;; Auto vars:     Size  Location     Type
@@ -2411,7 +2411,7 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   2313   0013A6                     _GetLongAddr:
   2314                           	callstack 26
   2315   0013A6                     
-  2316                           ;drivers/scr/drv_mrf24j40.c: 412:  uint8_t respuesta;;drivers/scr/drv_mrf24j40.c: 413:  
+  2316                           ;drivers/scr/drv_mrf24j40.c: 405:  uint8_t respuesta;;drivers/scr/drv_mrf24j40.c: 406:  
       +                             reg_address = (reg_address << 5) | 0X8000;
   2317   0013A6  C02F  F031         	movff	GetLongAddr@reg_address,??_GetLongAddr
   2318   0013AA  C030  F032         	movff	GetLongAddr@reg_address+1,??_GetLongAddr+1
@@ -2429,24 +2429,24 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   2330   0013C4  1032               	iorwf	(??_GetLongAddr+1)^0,w,c
   2331   0013C6  6E30               	movwf	(GetLongAddr@reg_address+1)^0,c
   2332   0013C8                     
-  2333                           ;drivers/scr/drv_mrf24j40.c: 414:     SetCSPin(0);
+  2333                           ;drivers/scr/drv_mrf24j40.c: 407:     SetCSPin(0);
   2334   0013C8  0E00               	movlw	0
-  2335   0013CA  EC25  F00B         	call	_SetCSPin
+  2335   0013CA  EC28  F00B         	call	_SetCSPin
   2336   0013CE                     
-  2337                           ;drivers/scr/drv_mrf24j40.c: 415:     Write2ByteSPIPort(reg_address);
+  2337                           ;drivers/scr/drv_mrf24j40.c: 408:     Write2ByteSPIPort(reg_address);
   2338   0013CE  C02F  F02D         	movff	GetLongAddr@reg_address,Write2ByteSPIPort@dato
   2339   0013D2  C030  F02E         	movff	GetLongAddr@reg_address+1,Write2ByteSPIPort@dato+1
-  2340   0013D6  EC17  F00B         	call	_Write2ByteSPIPort	;wreg free
+  2340   0013D6  EC1A  F00B         	call	_Write2ByteSPIPort	;wreg free
   2341   0013DA                     
-  2342                           ;drivers/scr/drv_mrf24j40.c: 416:  respuesta = ReadByteSPIPort();
-  2343   0013DA  EC3B  F00B         	call	_ReadByteSPIPort	;wreg free
+  2342                           ;drivers/scr/drv_mrf24j40.c: 409:  respuesta = ReadByteSPIPort();
+  2343   0013DA  EC3E  F00B         	call	_ReadByteSPIPort	;wreg free
   2344   0013DE  6E33               	movwf	GetLongAddr@respuesta^0,c
   2345   0013E0                     
-  2346                           ;drivers/scr/drv_mrf24j40.c: 417:     SetCSPin(1);
+  2346                           ;drivers/scr/drv_mrf24j40.c: 410:     SetCSPin(1);
   2347   0013E0  0E01               	movlw	1
-  2348   0013E2  EC25  F00B         	call	_SetCSPin
+  2348   0013E2  EC28  F00B         	call	_SetCSPin
   2349   0013E6                     
-  2350                           ;drivers/scr/drv_mrf24j40.c: 418:  return respuesta;
+  2350                           ;drivers/scr/drv_mrf24j40.c: 411:  return respuesta;
   2351   0013E6  5033               	movf	GetLongAddr@respuesta^0,w,c
   2352   0013E8  0012               	return		;funcret
   2353   0013EA                     __end_of_GetLongAddr:
@@ -2489,15 +2489,15 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   2385 ;;
   2386                           
   2387                           	psect	text15
-  2388   001676                     __ptext15:
+  2388   00167C                     __ptext15:
   2389                           	callstack 0
-  2390   001676                     _ReadByteSPIPort:
+  2390   00167C                     _ReadByteSPIPort:
   2391                           	callstack 27
-  2392   001676                     
+  2392   00167C                     
   2393                           ;drivers/scr/drv_mrf24j40_port.c: 95:     return SPIRead();
-  2394   001676  ECF5  F00A         	call	_SPIRead	;wreg free
-  2395   00167A  0012               	return		;funcret
-  2396   00167C                     __end_of_ReadByteSPIPort:
+  2394   00167C  ECF8  F00A         	call	_SPIRead	;wreg free
+  2395   001680  0012               	return		;funcret
+  2396   001682                     __end_of_ReadByteSPIPort:
   2397                           	callstack 0
   2398                           
   2399 ;; *************** function _SPIRead *****************
@@ -2535,33 +2535,33 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   2426 ;;
   2427                           
   2428                           	psect	text16
-  2429   0015EA                     __ptext16:
+  2429   0015F0                     __ptext16:
   2430                           	callstack 0
-  2431   0015EA                     _SPIRead:
+  2431   0015F0                     _SPIRead:
   2432                           	callstack 27
-  2433   0015EA                     
+  2433   0015F0                     
   2434                           ;drivers/scr/drv_mspi_port.c: 76:     SSPCON1bits.WCOL = 0;
-  2435   0015EA  9EC6               	bcf	198,7,c	;volatile
+  2435   0015F0  9EC6               	bcf	198,7,c	;volatile
   2436                           
   2437                           ;drivers/scr/drv_mspi_port.c: 77:     SSPBUF = 0X00;
-  2438   0015EC  6AC9               	clrf	201,c	;volatile
-  2439   0015EE                     l187:
-  2440   0015EE  A0C7               	btfss	199,0,c	;volatile
-  2441   0015F0  EFFC  F00A         	goto	u231
-  2442   0015F4  EFFE  F00A         	goto	u230
-  2443   0015F8                     u231:
-  2444   0015F8  EFF7  F00A         	goto	l187
-  2445   0015FC                     u230:
-  2446   0015FC                     
+  2438   0015F2  6AC9               	clrf	201,c	;volatile
+  2439   0015F4                     l187:
+  2440   0015F4  A0C7               	btfss	199,0,c	;volatile
+  2441   0015F6  EFFF  F00A         	goto	u231
+  2442   0015FA  EF01  F00B         	goto	u230
+  2443   0015FE                     u231:
+  2444   0015FE  EFFA  F00A         	goto	l187
+  2445   001602                     u230:
+  2446   001602                     
   2447                           ;drivers/scr/drv_mspi_port.c: 79:     return SSPBUF;
-  2448   0015FC  50C9               	movf	201,w,c	;volatile
-  2449   0015FE  0012               	return		;funcret
-  2450   001600                     __end_of_SPIRead:
+  2448   001602  50C9               	movf	201,w,c	;volatile
+  2449   001604  0012               	return		;funcret
+  2450   001606                     __end_of_SPIRead:
   2451                           	callstack 0
   2452                           
   2453 ;; *************** function _EnviarDato *****************
   2454 ;; Defined at:
-  2455 ;;		line 506 in file "drivers/scr/drv_mrf24j40.c"
+  2455 ;;		line 499 in file "drivers/scr/drv_mrf24j40.c"
   2456 ;; Parameters:    Size  Location     Type
   2457 ;;		None
   2458 ;; Auto vars:     Size  Location     Type
@@ -2603,46 +2603,46 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   2489   00119C                     _EnviarDato:
   2490                           	callstack 26
   2491   00119C                     
-  2492                           ;drivers/scr/drv_mrf24j40.c: 508:  uint8_t pos_memoria = 0;
+  2492                           ;drivers/scr/drv_mrf24j40.c: 501:  uint8_t pos_memoria = 0;
   2493   00119C  6A3A               	clrf	EnviarDato@pos_memoria^0,c
   2494   00119E                     
-  2495                           ;drivers/scr/drv_mrf24j40.c: 510:  SetLongAddr(pos_memoria++, largo_cabecera);
+  2495                           ;drivers/scr/drv_mrf24j40.c: 503:  SetLongAddr(pos_memoria++, largo_cabecera);
   2496   00119E  0E00               	movlw	0
   2497   0011A0  6E30               	movwf	(SetLongAddr@reg_address+1)^0,c
   2498   0011A2  0E00               	movlw	0
   2499   0011A4  6E2F               	movwf	SetLongAddr@reg_address^0,c
   2500   0011A6  0E0E               	movlw	14
   2501   0011A8  6E31               	movwf	SetLongAddr@value^0,c
-  2502   0011AA  EC16  F00A         	call	_SetLongAddr	;wreg free
+  2502   0011AA  EC38  F00A         	call	_SetLongAddr	;wreg free
   2503   0011AE  2A3A               	incf	EnviarDato@pos_memoria^0,f,c
   2504   0011B0                     
-  2505                           ;drivers/scr/drv_mrf24j40.c: 511:  SetLongAddr(pos_memoria++, mrf24_data_out.largo_mensa
+  2505                           ;drivers/scr/drv_mrf24j40.c: 504:  SetLongAddr(pos_memoria++, mrf24_data_out.largo_mensa
       +                          je + largo_cabecera);
   2506   0011B0  C03A  F02F         	movff	EnviarDato@pos_memoria,SetLongAddr@reg_address
   2507   0011B4  6A30               	clrf	(SetLongAddr@reg_address+1)^0,c
   2508   0011B6  5027               	movf	(_mrf24_data_out+4)^0,w,c
   2509   0011B8  0F0E               	addlw	14
   2510   0011BA  6E31               	movwf	SetLongAddr@value^0,c
-  2511   0011BC  EC16  F00A         	call	_SetLongAddr	;wreg free
+  2511   0011BC  EC38  F00A         	call	_SetLongAddr	;wreg free
   2512   0011C0  2A3A               	incf	EnviarDato@pos_memoria^0,f,c
   2513   0011C2                     
-  2514                           ;drivers/scr/drv_mrf24j40.c: 512:  SetLongAddr(pos_memoria++, (0X01)|(0X20)|(0X40));
+  2514                           ;drivers/scr/drv_mrf24j40.c: 505:  SetLongAddr(pos_memoria++, (0X01)|(0X20)|(0X40));
   2515   0011C2  C03A  F02F         	movff	EnviarDato@pos_memoria,SetLongAddr@reg_address
   2516   0011C6  6A30               	clrf	(SetLongAddr@reg_address+1)^0,c
   2517   0011C8  0E61               	movlw	97
   2518   0011CA  6E31               	movwf	SetLongAddr@value^0,c
-  2519   0011CC  EC16  F00A         	call	_SetLongAddr	;wreg free
+  2519   0011CC  EC38  F00A         	call	_SetLongAddr	;wreg free
   2520   0011D0  2A3A               	incf	EnviarDato@pos_memoria^0,f,c
   2521   0011D2                     
-  2522                           ;drivers/scr/drv_mrf24j40.c: 513:  SetLongAddr(pos_memoria++, (0XC0)|(0X08));
+  2522                           ;drivers/scr/drv_mrf24j40.c: 506:  SetLongAddr(pos_memoria++, (0XC0)|(0X08));
   2523   0011D2  C03A  F02F         	movff	EnviarDato@pos_memoria,SetLongAddr@reg_address
   2524   0011D6  6A30               	clrf	(SetLongAddr@reg_address+1)^0,c
   2525   0011D8  0EC8               	movlw	200
   2526   0011DA  6E31               	movwf	SetLongAddr@value^0,c
-  2527   0011DC  EC16  F00A         	call	_SetLongAddr	;wreg free
+  2527   0011DC  EC38  F00A         	call	_SetLongAddr	;wreg free
   2528   0011E0  2A3A               	incf	EnviarDato@pos_memoria^0,f,c
   2529   0011E2                     
-  2530                           ;drivers/scr/drv_mrf24j40.c: 514:  SetLongAddr(pos_memoria++, mrf24_data_config.sequence
+  2530                           ;drivers/scr/drv_mrf24j40.c: 507:  SetLongAddr(pos_memoria++, mrf24_data_config.sequence
       +                          _number++);
   2531   0011E2  C03A  F02F         	movff	EnviarDato@pos_memoria,SetLongAddr@reg_address
   2532   0011E6  6A30               	clrf	(SetLongAddr@reg_address+1)^0,c
@@ -2650,50 +2650,50 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   2534   0011EC  50DF               	movf	indf2,w,c
   2535   0011EE  2ADF               	incf	indf2,f,c
   2536   0011F0  6E31               	movwf	SetLongAddr@value^0,c
-  2537   0011F2  EC16  F00A         	call	_SetLongAddr	;wreg free
+  2537   0011F2  EC38  F00A         	call	_SetLongAddr	;wreg free
   2538   0011F6  2A3A               	incf	EnviarDato@pos_memoria^0,f,c
   2539   0011F8                     
-  2540                           ;drivers/scr/drv_mrf24j40.c: 515:  SetLongAddr(pos_memoria++, (uint8_t) mrf24_data_out.d
+  2540                           ;drivers/scr/drv_mrf24j40.c: 508:  SetLongAddr(pos_memoria++, (uint8_t) mrf24_data_out.d
       +                          estinity_panid);
   2541   0011F8  C03A  F02F         	movff	EnviarDato@pos_memoria,SetLongAddr@reg_address
   2542   0011FC  6A30               	clrf	(SetLongAddr@reg_address+1)^0,c
   2543   0011FE  C023  F031         	movff	_mrf24_data_out,SetLongAddr@value
-  2544   001202  EC16  F00A         	call	_SetLongAddr	;wreg free
+  2544   001202  EC38  F00A         	call	_SetLongAddr	;wreg free
   2545   001206  2A3A               	incf	EnviarDato@pos_memoria^0,f,c
   2546   001208                     
-  2547                           ;drivers/scr/drv_mrf24j40.c: 516:  SetLongAddr(pos_memoria++, (uint8_t) (mrf24_data_out.
+  2547                           ;drivers/scr/drv_mrf24j40.c: 509:  SetLongAddr(pos_memoria++, (uint8_t) (mrf24_data_out.
       +                          destinity_panid >> 8));
   2548   001208  C03A  F02F         	movff	EnviarDato@pos_memoria,SetLongAddr@reg_address
   2549   00120C  6A30               	clrf	(SetLongAddr@reg_address+1)^0,c
   2550   00120E  5024               	movf	(_mrf24_data_out+1)^0,w,c
   2551   001210  6E31               	movwf	SetLongAddr@value^0,c
-  2552   001212  EC16  F00A         	call	_SetLongAddr	;wreg free
+  2552   001212  EC38  F00A         	call	_SetLongAddr	;wreg free
   2553   001216  2A3A               	incf	EnviarDato@pos_memoria^0,f,c
   2554   001218                     
-  2555                           ;drivers/scr/drv_mrf24j40.c: 517:  SetLongAddr(pos_memoria++, (uint8_t) mrf24_data_out.d
+  2555                           ;drivers/scr/drv_mrf24j40.c: 510:  SetLongAddr(pos_memoria++, (uint8_t) mrf24_data_out.d
       +                          estinity_address);
   2556   001218  C03A  F02F         	movff	EnviarDato@pos_memoria,SetLongAddr@reg_address
   2557   00121C  6A30               	clrf	(SetLongAddr@reg_address+1)^0,c
   2558   00121E  C025  F031         	movff	_mrf24_data_out+2,SetLongAddr@value
-  2559   001222  EC16  F00A         	call	_SetLongAddr	;wreg free
+  2559   001222  EC38  F00A         	call	_SetLongAddr	;wreg free
   2560   001226  2A3A               	incf	EnviarDato@pos_memoria^0,f,c
   2561   001228                     
-  2562                           ;drivers/scr/drv_mrf24j40.c: 518:  SetLongAddr(pos_memoria++, (uint8_t) (mrf24_data_out.
+  2562                           ;drivers/scr/drv_mrf24j40.c: 511:  SetLongAddr(pos_memoria++, (uint8_t) (mrf24_data_out.
       +                          destinity_address >> 8));
   2563   001228  C03A  F02F         	movff	EnviarDato@pos_memoria,SetLongAddr@reg_address
   2564   00122C  6A30               	clrf	(SetLongAddr@reg_address+1)^0,c
   2565   00122E  5026               	movf	(_mrf24_data_out+3)^0,w,c
   2566   001230  6E31               	movwf	SetLongAddr@value^0,c
-  2567   001232  EC16  F00A         	call	_SetLongAddr	;wreg free
+  2567   001232  EC38  F00A         	call	_SetLongAddr	;wreg free
   2568   001236  2A3A               	incf	EnviarDato@pos_memoria^0,f,c
   2569   001238                     
-  2570                           ;drivers/scr/drv_mrf24j40.c: 520:     for(int8_t i = 0; i < mrf24_data_out.largo_mensaje
+  2570                           ;drivers/scr/drv_mrf24j40.c: 513:     for(int8_t i = 0; i < mrf24_data_out.largo_mensaje
       +                          ; i++) {
   2571   001238  6A39               	clrf	EnviarDato@i^0,c
-  2572   00123A  EF2E  F009         	goto	l1681
-  2573   00123E                     l1675:
+  2572   00123A  EF2E  F009         	goto	l1683
+  2573   00123E                     l1677:
   2574                           
-  2575                           ;drivers/scr/drv_mrf24j40.c: 522:   SetLongAddr(pos_memoria++, mrf24_data_out.buffer_sal
+  2575                           ;drivers/scr/drv_mrf24j40.c: 515:   SetLongAddr(pos_memoria++, mrf24_data_out.buffer_sal
       +                          ida[i]);
   2576   00123E  C03A  F02F         	movff	EnviarDato@pos_memoria,SetLongAddr@reg_address
   2577   001242  6A30               	clrf	(SetLongAddr@reg_address+1)^0,c
@@ -2709,12 +2709,12 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   2587   00124E                     	endif
   2588   00124E  0008               	tblrd		*
   2589   001250  CFF5 F031          	movff	tablat,SetLongAddr@value
-  2590   001254  EC16  F00A         	call	_SetLongAddr	;wreg free
+  2590   001254  EC38  F00A         	call	_SetLongAddr	;wreg free
   2591   001258  2A3A               	incf	EnviarDato@pos_memoria^0,f,c
   2592   00125A                     
-  2593                           ;drivers/scr/drv_mrf24j40.c: 523:  }
+  2593                           ;drivers/scr/drv_mrf24j40.c: 516:  }
   2594   00125A  2A39               	incf	EnviarDato@i^0,f,c
-  2595   00125C                     l1681:
+  2595   00125C                     l1683:
   2596   00125C  5027               	movf	(_mrf24_data_out+4)^0,w,c
   2597   00125E  6E34               	movwf	??_EnviarDato^0,c
   2598   001260  6A35               	clrf	(??_EnviarDato+1)^0,c
@@ -2734,21 +2734,21 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   2612   00127E  EF43  F009         	goto	u321
   2613   001282  EF45  F009         	goto	u320
   2614   001286                     u321:
-  2615   001286  EF1F  F009         	goto	l1675
+  2615   001286  EF1F  F009         	goto	l1677
   2616   00128A                     u320:
   2617   00128A                     
-  2618                           ;drivers/scr/drv_mrf24j40.c: 524:  SetShortAddr((0x1B), 1 | (0X04));
+  2618                           ;drivers/scr/drv_mrf24j40.c: 517:  SetShortAddr((0x1B), 1 | (0X04));
   2619   00128A  0E05               	movlw	5
   2620   00128C  6E2C               	movwf	SetShortAddr@value^0,c
   2621   00128E  0E1B               	movlw	27
-  2622   001290  ECBF  F00A         	call	_SetShortAddr
+  2622   001290  ECC2  F00A         	call	_SetShortAddr
   2623   001294  0012               	return		;funcret
   2624   001296                     __end_of_EnviarDato:
   2625                           	callstack 0
   2626                           
   2627 ;; *************** function _SetShortAddr *****************
   2628 ;; Defined at:
-  2629 ;;		line 364 in file "drivers/scr/drv_mrf24j40.c"
+  2629 ;;		line 357 in file "drivers/scr/drv_mrf24j40.c"
   2630 ;; Parameters:    Size  Location     Type
   2631 ;;  reg_address     1    wreg     unsigned char 
   2632 ;;  value           1    2[COMRAM] unsigned char 
@@ -2790,41 +2790,41 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   2663 ;;
   2664                           
   2665                           	psect	text18
-  2666   00157E                     __ptext18:
+  2666   001584                     __ptext18:
   2667                           	callstack 0
-  2668   00157E                     _SetShortAddr:
+  2668   001584                     _SetShortAddr:
   2669                           	callstack 27
   2670                           
   2671                           ;incstack = 0
   2672                           ;SetShortAddr@reg_address stored from wreg
-  2673   00157E  6E2D               	movwf	SetShortAddr@reg_address^0,c
-  2674   001580                     
-  2675                           ;drivers/scr/drv_mrf24j40.c: 366:     reg_address = (uint8_t) (reg_address << 1) | 0x01;
-  2676   001580  80D8               	bsf	status,0,c
-  2677   001582  362D               	rlcf	SetShortAddr@reg_address^0,f,c
-  2678   001584                     
-  2679                           ;drivers/scr/drv_mrf24j40.c: 367:     SetCSPin(0);
-  2680   001584  0E00               	movlw	0
-  2681   001586  EC25  F00B         	call	_SetCSPin
-  2682   00158A                     
-  2683                           ;drivers/scr/drv_mrf24j40.c: 368:  WriteByteSPIPort(reg_address);
-  2684   00158A  502D               	movf	SetShortAddr@reg_address^0,w,c
-  2685   00158C  EC36  F00B         	call	_WriteByteSPIPort
-  2686   001590                     
-  2687                           ;drivers/scr/drv_mrf24j40.c: 369:  WriteByteSPIPort(value);
-  2688   001590  502C               	movf	SetShortAddr@value^0,w,c
-  2689   001592  EC36  F00B         	call	_WriteByteSPIPort
-  2690   001596                     
-  2691                           ;drivers/scr/drv_mrf24j40.c: 370:     SetCSPin(1);
-  2692   001596  0E01               	movlw	1
-  2693   001598  EC25  F00B         	call	_SetCSPin
-  2694   00159C  0012               	return		;funcret
-  2695   00159E                     __end_of_SetShortAddr:
+  2673   001584  6E2D               	movwf	SetShortAddr@reg_address^0,c
+  2674   001586                     
+  2675                           ;drivers/scr/drv_mrf24j40.c: 359:     reg_address = (uint8_t) (reg_address << 1) | 0x01;
+  2676   001586  80D8               	bsf	status,0,c
+  2677   001588  362D               	rlcf	SetShortAddr@reg_address^0,f,c
+  2678   00158A                     
+  2679                           ;drivers/scr/drv_mrf24j40.c: 360:     SetCSPin(0);
+  2680   00158A  0E00               	movlw	0
+  2681   00158C  EC28  F00B         	call	_SetCSPin
+  2682   001590                     
+  2683                           ;drivers/scr/drv_mrf24j40.c: 361:  WriteByteSPIPort(reg_address);
+  2684   001590  502D               	movf	SetShortAddr@reg_address^0,w,c
+  2685   001592  EC39  F00B         	call	_WriteByteSPIPort
+  2686   001596                     
+  2687                           ;drivers/scr/drv_mrf24j40.c: 362:  WriteByteSPIPort(value);
+  2688   001596  502C               	movf	SetShortAddr@value^0,w,c
+  2689   001598  EC39  F00B         	call	_WriteByteSPIPort
+  2690   00159C                     
+  2691                           ;drivers/scr/drv_mrf24j40.c: 363:     SetCSPin(1);
+  2692   00159C  0E01               	movlw	1
+  2693   00159E  EC28  F00B         	call	_SetCSPin
+  2694   0015A2  0012               	return		;funcret
+  2695   0015A4                     __end_of_SetShortAddr:
   2696                           	callstack 0
   2697                           
   2698 ;; *************** function _SetLongAddr *****************
   2699 ;; Defined at:
-  2700 ;;		line 395 in file "drivers/scr/drv_mrf24j40.c"
+  2700 ;;		line 388 in file "drivers/scr/drv_mrf24j40.c"
   2701 ;; Parameters:    Size  Location     Type
   2702 ;;  reg_address     2    5[COMRAM] unsigned short 
   2703 ;;  value           1    7[COMRAM] unsigned char 
@@ -2865,46 +2865,46 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   2733 ;;
   2734                           
   2735                           	psect	text19
-  2736   00142C                     __ptext19:
+  2736   001470                     __ptext19:
   2737                           	callstack 0
-  2738   00142C                     _SetLongAddr:
+  2738   001470                     _SetLongAddr:
   2739                           	callstack 26
-  2740   00142C                     
-  2741                           ;drivers/scr/drv_mrf24j40.c: 397:     reg_address = (reg_address << 5) | 0X8010;
-  2742   00142C  C02F  F032         	movff	SetLongAddr@reg_address,??_SetLongAddr
-  2743   001430  C030  F033         	movff	SetLongAddr@reg_address+1,??_SetLongAddr+1
-  2744   001434  0E05               	movlw	5
-  2745   001436                     u245:
-  2746   001436  90D8               	bcf	status,0,c
-  2747   001438  3632               	rlcf	??_SetLongAddr^0,f,c
-  2748   00143A  3633               	rlcf	(??_SetLongAddr+1)^0,f,c
-  2749   00143C  2EE8               	decfsz	wreg,f,c
-  2750   00143E  EF1B  F00A         	goto	u245
-  2751   001442  0E10               	movlw	16
-  2752   001444  1032               	iorwf	??_SetLongAddr^0,w,c
-  2753   001446  6E2F               	movwf	SetLongAddr@reg_address^0,c
-  2754   001448  0E80               	movlw	128
-  2755   00144A  1033               	iorwf	(??_SetLongAddr+1)^0,w,c
-  2756   00144C  6E30               	movwf	(SetLongAddr@reg_address+1)^0,c
-  2757   00144E                     
-  2758                           ;drivers/scr/drv_mrf24j40.c: 398:     SetCSPin(0);
-  2759   00144E  0E00               	movlw	0
-  2760   001450  EC25  F00B         	call	_SetCSPin
-  2761   001454                     
-  2762                           ;drivers/scr/drv_mrf24j40.c: 399:     Write2ByteSPIPort(reg_address);
-  2763   001454  C02F  F02D         	movff	SetLongAddr@reg_address,Write2ByteSPIPort@dato
-  2764   001458  C030  F02E         	movff	SetLongAddr@reg_address+1,Write2ByteSPIPort@dato+1
-  2765   00145C  EC17  F00B         	call	_Write2ByteSPIPort	;wreg free
-  2766   001460                     
-  2767                           ;drivers/scr/drv_mrf24j40.c: 400:  WriteByteSPIPort(value);
-  2768   001460  5031               	movf	SetLongAddr@value^0,w,c
-  2769   001462  EC36  F00B         	call	_WriteByteSPIPort
-  2770   001466                     
-  2771                           ;drivers/scr/drv_mrf24j40.c: 401:     SetCSPin(1);
-  2772   001466  0E01               	movlw	1
-  2773   001468  EC25  F00B         	call	_SetCSPin
-  2774   00146C  0012               	return		;funcret
-  2775   00146E                     __end_of_SetLongAddr:
+  2740   001470                     
+  2741                           ;drivers/scr/drv_mrf24j40.c: 390:     reg_address = (reg_address << 5) | 0X8010;
+  2742   001470  C02F  F032         	movff	SetLongAddr@reg_address,??_SetLongAddr
+  2743   001474  C030  F033         	movff	SetLongAddr@reg_address+1,??_SetLongAddr+1
+  2744   001478  0E05               	movlw	5
+  2745   00147A                     u245:
+  2746   00147A  90D8               	bcf	status,0,c
+  2747   00147C  3632               	rlcf	??_SetLongAddr^0,f,c
+  2748   00147E  3633               	rlcf	(??_SetLongAddr+1)^0,f,c
+  2749   001480  2EE8               	decfsz	wreg,f,c
+  2750   001482  EF3D  F00A         	goto	u245
+  2751   001486  0E10               	movlw	16
+  2752   001488  1032               	iorwf	??_SetLongAddr^0,w,c
+  2753   00148A  6E2F               	movwf	SetLongAddr@reg_address^0,c
+  2754   00148C  0E80               	movlw	128
+  2755   00148E  1033               	iorwf	(??_SetLongAddr+1)^0,w,c
+  2756   001490  6E30               	movwf	(SetLongAddr@reg_address+1)^0,c
+  2757   001492                     
+  2758                           ;drivers/scr/drv_mrf24j40.c: 391:     SetCSPin(0);
+  2759   001492  0E00               	movlw	0
+  2760   001494  EC28  F00B         	call	_SetCSPin
+  2761   001498                     
+  2762                           ;drivers/scr/drv_mrf24j40.c: 392:     Write2ByteSPIPort(reg_address);
+  2763   001498  C02F  F02D         	movff	SetLongAddr@reg_address,Write2ByteSPIPort@dato
+  2764   00149C  C030  F02E         	movff	SetLongAddr@reg_address+1,Write2ByteSPIPort@dato+1
+  2765   0014A0  EC1A  F00B         	call	_Write2ByteSPIPort	;wreg free
+  2766   0014A4                     
+  2767                           ;drivers/scr/drv_mrf24j40.c: 393:  WriteByteSPIPort(value);
+  2768   0014A4  5031               	movf	SetLongAddr@value^0,w,c
+  2769   0014A6  EC39  F00B         	call	_WriteByteSPIPort
+  2770   0014AA                     
+  2771                           ;drivers/scr/drv_mrf24j40.c: 394:     SetCSPin(1);
+  2772   0014AA  0E01               	movlw	1
+  2773   0014AC  EC28  F00B         	call	_SetCSPin
+  2774   0014B0  0012               	return		;funcret
+  2775   0014B2                     __end_of_SetLongAddr:
   2776                           	callstack 0
   2777                           
   2778 ;; *************** function _WriteByteSPIPort *****************
@@ -2945,20 +2945,20 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   2808 ;;
   2809                           
   2810                           	psect	text20
-  2811   00166C                     __ptext20:
+  2811   001672                     __ptext20:
   2812                           	callstack 0
-  2813   00166C                     _WriteByteSPIPort:
+  2813   001672                     _WriteByteSPIPort:
   2814                           	callstack 27
   2815                           
   2816                           ;incstack = 0
   2817                           ;WriteByteSPIPort@dato stored from wreg
-  2818   00166C  6E2B               	movwf	WriteByteSPIPort@dato^0,c
-  2819   00166E                     
+  2818   001672  6E2B               	movwf	WriteByteSPIPort@dato^0,c
+  2819   001674                     
   2820                           ;drivers/scr/drv_mrf24j40_port.c: 73:     SPIWriteByte(dato);
-  2821   00166E  502B               	movf	WriteByteSPIPort@dato^0,w,c
-  2822   001670  ECDD  F00A         	call	_SPIWriteByte
-  2823   001674  0012               	return		;funcret
-  2824   001676                     __end_of_WriteByteSPIPort:
+  2821   001674  502B               	movf	WriteByteSPIPort@dato^0,w,c
+  2822   001676  ECE0  F00A         	call	_SPIWriteByte
+  2823   00167A  0012               	return		;funcret
+  2824   00167C                     __end_of_WriteByteSPIPort:
   2825                           	callstack 0
   2826                           
   2827 ;; *************** function _Write2ByteSPIPort *****************
@@ -2998,17 +2998,17 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   2856 ;;
   2857                           
   2858                           	psect	text21
-  2859   00162E                     __ptext21:
+  2859   001634                     __ptext21:
   2860                           	callstack 0
-  2861   00162E                     _Write2ByteSPIPort:
+  2861   001634                     _Write2ByteSPIPort:
   2862                           	callstack 26
-  2863   00162E                     
+  2863   001634                     
   2864                           ;drivers/scr/drv_mrf24j40_port.c: 84:     SPIWrite2Byte(dato);
-  2865   00162E  C02D  F02B         	movff	Write2ByteSPIPort@dato,SPIWrite2Byte@dato
-  2866   001632  C02E  F02C         	movff	Write2ByteSPIPort@dato+1,SPIWrite2Byte@dato+1
-  2867   001636  EC1E  F00B         	call	_SPIWrite2Byte	;wreg free
-  2868   00163A  0012               	return		;funcret
-  2869   00163C                     __end_of_Write2ByteSPIPort:
+  2865   001634  C02D  F02B         	movff	Write2ByteSPIPort@dato,SPIWrite2Byte@dato
+  2866   001638  C02E  F02C         	movff	Write2ByteSPIPort@dato+1,SPIWrite2Byte@dato+1
+  2867   00163C  EC21  F00B         	call	_SPIWrite2Byte	;wreg free
+  2868   001640  0012               	return		;funcret
+  2869   001642                     __end_of_Write2ByteSPIPort:
   2870                           	callstack 0
   2871                           
   2872 ;; *************** function _SPIWrite2Byte *****************
@@ -3047,20 +3047,20 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   2900 ;;
   2901                           
   2902                           	psect	text22
-  2903   00163C                     __ptext22:
+  2903   001642                     __ptext22:
   2904                           	callstack 0
-  2905   00163C                     _SPIWrite2Byte:
+  2905   001642                     _SPIWrite2Byte:
   2906                           	callstack 26
-  2907   00163C                     
+  2907   001642                     
   2908                           ;drivers/scr/drv_mspi_port.c: 64:     SPIWriteByte((uint8_t) (dato >> 8));
-  2909   00163C  502C               	movf	(SPIWrite2Byte@dato+1)^0,w,c
-  2910   00163E  ECDD  F00A         	call	_SPIWriteByte
+  2909   001642  502C               	movf	(SPIWrite2Byte@dato+1)^0,w,c
+  2910   001644  ECE0  F00A         	call	_SPIWriteByte
   2911                           
   2912                           ;drivers/scr/drv_mspi_port.c: 65:     SPIWriteByte((uint8_t) dato);
-  2913   001642  502B               	movf	SPIWrite2Byte@dato^0,w,c
-  2914   001644  ECDD  F00A         	call	_SPIWriteByte
-  2915   001648  0012               	return		;funcret
-  2916   00164A                     __end_of_SPIWrite2Byte:
+  2913   001648  502B               	movf	SPIWrite2Byte@dato^0,w,c
+  2914   00164A  ECE0  F00A         	call	_SPIWriteByte
+  2915   00164E  0012               	return		;funcret
+  2916   001650                     __end_of_SPIWrite2Byte:
   2917                           	callstack 0
   2918                           
   2919 ;; *************** function _SPIWriteByte *****************
@@ -3099,29 +3099,29 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   2947 ;;
   2948                           
   2949                           	psect	text23
-  2950   0015BA                     __ptext23:
+  2950   0015C0                     __ptext23:
   2951                           	callstack 0
-  2952   0015BA                     _SPIWriteByte:
+  2952   0015C0                     _SPIWriteByte:
   2953                           	callstack 27
   2954                           
   2955                           ;incstack = 0
   2956                           ;SPIWriteByte@dato stored from wreg
-  2957   0015BA  6E2A               	movwf	SPIWriteByte@dato^0,c
-  2958   0015BC                     
+  2957   0015C0  6E2A               	movwf	SPIWriteByte@dato^0,c
+  2958   0015C2                     
   2959                           ;drivers/scr/drv_mspi_port.c: 51:     PIR1bits.SSPIF = 0;
-  2960   0015BC  969E               	bcf	158,3,c	;volatile
-  2961   0015BE                     
+  2960   0015C2  969E               	bcf	158,3,c	;volatile
+  2961   0015C4                     
   2962                           ;drivers/scr/drv_mspi_port.c: 52:     SSPBUF = dato;
-  2963   0015BE  C02A  FFC9         	movff	SPIWriteByte@dato,4041	;volatile
-  2964   0015C2                     l178:
-  2965   0015C2  A69E               	btfss	158,3,c	;volatile
-  2966   0015C4  EFE6  F00A         	goto	u211
-  2967   0015C8  EFE8  F00A         	goto	u210
-  2968   0015CC                     u211:
-  2969   0015CC  EFE1  F00A         	goto	l178
-  2970   0015D0                     u210:
-  2971   0015D0  0012               	return		;funcret
-  2972   0015D2                     __end_of_SPIWriteByte:
+  2963   0015C4  C02A  FFC9         	movff	SPIWriteByte@dato,4041	;volatile
+  2964   0015C8                     l178:
+  2965   0015C8  A69E               	btfss	158,3,c	;volatile
+  2966   0015CA  EFE9  F00A         	goto	u211
+  2967   0015CE  EFEB  F00A         	goto	u210
+  2968   0015D2                     u211:
+  2969   0015D2  EFE4  F00A         	goto	l178
+  2970   0015D6                     u210:
+  2971   0015D6  0012               	return		;funcret
+  2972   0015D8                     __end_of_SPIWriteByte:
   2973                           	callstack 0
   2974                           
   2975 ;; *************** function _SetCSPin *****************
@@ -3163,25 +3163,25 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   3006 ;;
   3007                           
   3008                           	psect	text24
-  3009   00164A                     __ptext24:
+  3009   001650                     __ptext24:
   3010                           	callstack 0
-  3011   00164A                     _SetCSPin:
+  3011   001650                     _SetCSPin:
   3012                           	callstack 28
   3013                           
   3014                           ;incstack = 0
   3015                           ;SetCSPin@estado stored from wreg
-  3016   00164A  6E2A               	movwf	SetCSPin@estado^0,c
-  3017   00164C                     
+  3016   001650  6E2A               	movwf	SetCSPin@estado^0,c
+  3017   001652                     
   3018                           ;drivers/scr/drv_mrf24j40_port.c: 40:     LATCbits.LATC6 = estado;
-  3019   00164C  B02A               	btfsc	SetCSPin@estado^0,0,c
-  3020   00164E  D002               	bra	u225
-  3021   001650  9C8B               	bcf	139,6,c	;volatile
-  3022   001652  D001               	bra	u226
-  3023   001654                     u225:
-  3024   001654  8C8B               	bsf	139,6,c	;volatile
-  3025   001656                     u226:
-  3026   001656  0012               	return		;funcret
-  3027   001658                     __end_of_SetCSPin:
+  3019   001652  B02A               	btfsc	SetCSPin@estado^0,0,c
+  3020   001654  D002               	bra	u225
+  3021   001656  9C8B               	bcf	139,6,c	;volatile
+  3022   001658  D001               	bra	u226
+  3023   00165A                     u225:
+  3024   00165A  8C8B               	bsf	139,6,c	;volatile
+  3025   00165C                     u226:
+  3026   00165C  0012               	return		;funcret
+  3027   00165E                     __end_of_SetCSPin:
   3028                           	callstack 0
   3029                           
   3030 ;; *************** function _BoardInit *****************
@@ -3220,386 +3220,396 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   3058 ;;
   3059                           
   3060                           	psect	text25
-  3061   00146E                     __ptext25:
+  3061   0013EA                     __ptext25:
   3062                           	callstack 0
-  3063   00146E                     _BoardInit:
+  3063   0013EA                     _BoardInit:
   3064                           	callstack 29
-  3065   00146E                     
+  3065   0013EA                     
   3066                           ;hardware_config.c: 23:     PORTA = 0;
-  3067   00146E  6A80               	clrf	128,c	;volatile
+  3067   0013EA  6A80               	clrf	128,c	;volatile
   3068                           
   3069                           ;hardware_config.c: 24:     PORTB = 0;
-  3070   001470  6A81               	clrf	129,c	;volatile
+  3070   0013EC  6A81               	clrf	129,c	;volatile
   3071                           
   3072                           ;hardware_config.c: 25:     PORTC = 0;
-  3073   001472  6A82               	clrf	130,c	;volatile
+  3073   0013EE  6A82               	clrf	130,c	;volatile
   3074                           
   3075                           ;hardware_config.c: 26:     PORTD = 0;
-  3076   001474  6A83               	clrf	131,c	;volatile
+  3076   0013F0  6A83               	clrf	131,c	;volatile
   3077                           
   3078                           ;hardware_config.c: 27:     PORTE = 0;
-  3079   001476  6A84               	clrf	132,c	;volatile
+  3079   0013F2  6A84               	clrf	132,c	;volatile
   3080                           
   3081                           ;hardware_config.c: 30:     TRISBbits.TRISB6 = 1;
-  3082   001478  8C93               	bsf	147,6,c	;volatile
+  3082   0013F4  8C93               	bsf	147,6,c	;volatile
   3083                           
   3084                           ;hardware_config.c: 31:     TRISBbits.TRISB7 = 1;
-  3085   00147A  8E93               	bsf	147,7,c	;volatile
+  3085   0013F6  8E93               	bsf	147,7,c	;volatile
   3086                           
   3087                           ;hardware_config.c: 32:     TRISEbits.TRISE2 = 0;
-  3088   00147C  9496               	bcf	150,2,c	;volatile
+  3088   0013F8  9496               	bcf	150,2,c	;volatile
   3089                           
   3090                           ;hardware_config.c: 33:     TRISEbits.TRISE0 = 0;
-  3091   00147E  9096               	bcf	150,0,c	;volatile
+  3091   0013FA  9096               	bcf	150,0,c	;volatile
   3092                           
   3093                           ;hardware_config.c: 34:     TRISEbits.TRISE1 = 0;
-  3094   001480  9296               	bcf	150,1,c	;volatile
+  3094   0013FC  9296               	bcf	150,1,c	;volatile
   3095                           
-  3096                           ;hardware_config.c: 37:  GIE = 0;
-  3097   001482  9EF2               	bcf	4082,7,c	;volatile
+  3096                           ;hardware_config.c: 35:     LATEbits.LATE2 = 1;
+  3097   0013FE  848D               	bsf	141,2,c	;volatile
   3098                           
-  3099                           ;hardware_config.c: 38:  PEIE = 0;
-  3100   001484  9CF2               	bcf	4082,6,c	;volatile
+  3099                           ;hardware_config.c: 36:     LATEbits.LATE0 = 1;
+  3100   001400  808D               	bsf	141,0,c	;volatile
   3101                           
-  3102                           ;hardware_config.c: 39:  RBIE = 0;
-  3103   001486  96F2               	bcf	4082,3,c	;volatile
+  3102                           ;hardware_config.c: 37:     LATEbits.LATE1 = 1;
+  3103   001402  828D               	bsf	141,1,c	;volatile
   3104                           
-  3105                           ;hardware_config.c: 40:  T0IE = 0;
-  3106   001488  9AF2               	bcf	4082,5,c	;volatile
+  3105                           ;hardware_config.c: 40:  GIE = 0;
+  3106   001404  9EF2               	bcf	4082,7,c	;volatile
   3107                           
-  3108                           ;hardware_config.c: 41:  TMR1IE = 0;
-  3109   00148A  909D               	bcf	3997,0,c	;volatile
+  3108                           ;hardware_config.c: 41:  PEIE = 0;
+  3109   001406  9CF2               	bcf	4082,6,c	;volatile
   3110                           
-  3111                           ;hardware_config.c: 42:  TMR2IE = 0;
-  3112   00148C  929D               	bcf	3997,1,c	;volatile
+  3111                           ;hardware_config.c: 42:  RBIE = 0;
+  3112   001408  96F2               	bcf	4082,3,c	;volatile
   3113                           
-  3114                           ;hardware_config.c: 43:  CCP1IE = 0;
-  3115   00148E  949D               	bcf	3997,2,c	;volatile
+  3114                           ;hardware_config.c: 43:  T0IE = 0;
+  3115   00140A  9AF2               	bcf	4082,5,c	;volatile
   3116                           
-  3117                           ;hardware_config.c: 44:  CCP2IE = 0;
-  3118   001490  90A0               	bcf	4000,0,c	;volatile
+  3117                           ;hardware_config.c: 44:  TMR1IE = 0;
+  3118   00140C  909D               	bcf	3997,0,c	;volatile
   3119                           
-  3120                           ;hardware_config.c: 45:  EEIE = 0;
-  3121   001492  98A0               	bcf	4000,4,c	;volatile
+  3120                           ;hardware_config.c: 45:  TMR2IE = 0;
+  3121   00140E  929D               	bcf	3997,1,c	;volatile
   3122                           
-  3123                           ;hardware_config.c: 46:  SSPIE = 0;
-  3124   001494  969D               	bcf	3997,3,c	;volatile
+  3123                           ;hardware_config.c: 46:  CCP1IE = 0;
+  3124   001410  949D               	bcf	3997,2,c	;volatile
   3125                           
-  3126                           ;hardware_config.c: 47:  BCLIE = 0;
-  3127   001496  96A0               	bcf	4000,3,c	;volatile
+  3126                           ;hardware_config.c: 47:  CCP2IE = 0;
+  3127   001412  90A0               	bcf	4000,0,c	;volatile
   3128                           
-  3129                           ;hardware_config.c: 48:  ADIE = 0;
-  3130   001498  9C9D               	bcf	3997,6,c	;volatile
+  3129                           ;hardware_config.c: 48:  EEIE = 0;
+  3130   001414  98A0               	bcf	4000,4,c	;volatile
   3131                           
-  3132                           ;hardware_config.c: 49:  RBIE = 0;
-  3133   00149A  96F2               	bcf	4082,3,c	;volatile
+  3132                           ;hardware_config.c: 49:  SSPIE = 0;
+  3133   001416  969D               	bcf	3997,3,c	;volatile
   3134                           
-  3135                           ;hardware_config.c: 50:  RCIE = 0;
-  3136   00149C  9A9D               	bcf	3997,5,c	;volatile
-  3137   00149E                     
-  3138                           ;hardware_config.c: 51:     OSCCON = 0b01110010;
-  3139   00149E  0E72               	movlw	114
-  3140   0014A0  6ED3               	movwf	211,c	;volatile
-  3141                           
-  3142                           ;hardware_config.c: 52:     OSCTUNE = 0b11011111;
-  3143   0014A2  0EDF               	movlw	223
-  3144   0014A4  6E9B               	movwf	155,c	;volatile
-  3145   0014A6                     
-  3146                           ;hardware_config.c: 55:     SPIInit();
-  3147   0014A6  ECE9  F00A         	call	_SPIInit	;wreg free
-  3148   0014AA  0012               	return		;funcret
-  3149   0014AC                     __end_of_BoardInit:
-  3150                           	callstack 0
-  3151                           
-  3152 ;; *************** function _SPIInit *****************
-  3153 ;; Defined at:
-  3154 ;;		line 29 in file "drivers/scr/drv_mspi_port.c"
-  3155 ;; Parameters:    Size  Location     Type
-  3156 ;;		None
-  3157 ;; Auto vars:     Size  Location     Type
-  3158 ;;		None
-  3159 ;; Return value:  Size  Location     Type
-  3160 ;;                  1    wreg      void 
-  3161 ;; Registers used:
-  3162 ;;		wreg, status,2
-  3163 ;; Tracked objects:
-  3164 ;;		On entry : 0/0
-  3165 ;;		On exit  : 0/0
-  3166 ;;		Unchanged: 0/0
-  3167 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+  3135                           ;hardware_config.c: 50:  BCLIE = 0;
+  3136   001418  96A0               	bcf	4000,3,c	;volatile
+  3137                           
+  3138                           ;hardware_config.c: 51:  ADIE = 0;
+  3139   00141A  9C9D               	bcf	3997,6,c	;volatile
+  3140                           
+  3141                           ;hardware_config.c: 52:  RBIE = 0;
+  3142   00141C  96F2               	bcf	4082,3,c	;volatile
+  3143                           
+  3144                           ;hardware_config.c: 53:  RCIE = 0;
+  3145   00141E  9A9D               	bcf	3997,5,c	;volatile
+  3146   001420                     
+  3147                           ;hardware_config.c: 54:     OSCCON = 0b01110010;
+  3148   001420  0E72               	movlw	114
+  3149   001422  6ED3               	movwf	211,c	;volatile
+  3150                           
+  3151                           ;hardware_config.c: 55:     OSCTUNE = 0b11011111;
+  3152   001424  0EDF               	movlw	223
+  3153   001426  6E9B               	movwf	155,c	;volatile
+  3154   001428                     
+  3155                           ;hardware_config.c: 58:     SPIInit();
+  3156   001428  ECEC  F00A         	call	_SPIInit	;wreg free
+  3157   00142C  0012               	return		;funcret
+  3158   00142E                     __end_of_BoardInit:
+  3159                           	callstack 0
+  3160                           
+  3161 ;; *************** function _SPIInit *****************
+  3162 ;; Defined at:
+  3163 ;;		line 29 in file "drivers/scr/drv_mspi_port.c"
+  3164 ;; Parameters:    Size  Location     Type
+  3165 ;;		None
+  3166 ;; Auto vars:     Size  Location     Type
+  3167 ;;		None
+  3168 ;; Return value:  Size  Location     Type
+  3169 ;;                  1    wreg      void 
+  3170 ;; Registers used:
+  3171 ;;		wreg, status,2
+  3172 ;; Tracked objects:
+  3173 ;;		On entry : 0/0
+  3174 ;;		On exit  : 0/0
+  3175 ;;		Unchanged: 0/0
+  3176 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15
-  3168 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+  3177 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-  3169 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+  3178 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-  3170 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+  3179 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-  3171 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+  3180 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-  3172 ;;Total ram usage:        0 bytes
-  3173 ;; Hardware stack levels used: 1
-  3174 ;; This function calls:
-  3175 ;;		Nothing
-  3176 ;; This function is called by:
-  3177 ;;		_BoardInit
-  3178 ;; This function uses a non-reentrant model
-  3179 ;;
-  3180                           
-  3181                           	psect	text26
-  3182   0015D2                     __ptext26:
-  3183                           	callstack 0
-  3184   0015D2                     _SPIInit:
-  3185                           	callstack 29
-  3186   0015D2                     
-  3187                           ;drivers/scr/drv_mspi_port.c: 31:     TRISCbits.TRISC3 = 0;
-  3188   0015D2  9694               	bcf	148,3,c	;volatile
+  3181 ;;Total ram usage:        0 bytes
+  3182 ;; Hardware stack levels used: 1
+  3183 ;; This function calls:
+  3184 ;;		Nothing
+  3185 ;; This function is called by:
+  3186 ;;		_BoardInit
+  3187 ;; This function uses a non-reentrant model
+  3188 ;;
   3189                           
-  3190                           ;drivers/scr/drv_mspi_port.c: 32:     TRISCbits.TRISC5 = 0;
-  3191   0015D4  9A94               	bcf	148,5,c	;volatile
-  3192                           
-  3193                           ;drivers/scr/drv_mspi_port.c: 33:     TRISCbits.TRISC4 = 1;
-  3194   0015D6  8894               	bsf	148,4,c	;volatile
-  3195                           
-  3196                           ;drivers/scr/drv_mspi_port.c: 34:     SSPSTATbits.SMP = 1;
-  3197   0015D8  8EC7               	bsf	199,7,c	;volatile
+  3190                           	psect	text26
+  3191   0015D8                     __ptext26:
+  3192                           	callstack 0
+  3193   0015D8                     _SPIInit:
+  3194                           	callstack 29
+  3195   0015D8                     
+  3196                           ;drivers/scr/drv_mspi_port.c: 31:     TRISCbits.TRISC3 = 0;
+  3197   0015D8  9694               	bcf	148,3,c	;volatile
   3198                           
-  3199                           ;drivers/scr/drv_mspi_port.c: 35:  SSPSTATbits.CKE = 1;
-  3200   0015DA  8CC7               	bsf	199,6,c	;volatile
-  3201   0015DC                     
-  3202                           ;drivers/scr/drv_mspi_port.c: 36:     SSPCON1 = 0X00 | 0X01;
-  3203   0015DC  0E01               	movlw	1
-  3204   0015DE  6EC6               	movwf	198,c	;volatile
-  3205   0015E0                     
-  3206                           ;drivers/scr/drv_mspi_port.c: 37:  SSPCON1bits.WCOL = 1;
-  3207   0015E0  8EC6               	bsf	198,7,c	;volatile
-  3208   0015E2                     
-  3209                           ;drivers/scr/drv_mspi_port.c: 38:  SSPCON1bits.SSPOV = 0;
-  3210   0015E2  9CC6               	bcf	198,6,c	;volatile
-  3211   0015E4                     
-  3212                           ;drivers/scr/drv_mspi_port.c: 39:  SSPCON1bits.SSPEN = 1;
-  3213   0015E4  8AC6               	bsf	198,5,c	;volatile
+  3199                           ;drivers/scr/drv_mspi_port.c: 32:     TRISCbits.TRISC5 = 0;
+  3200   0015DA  9A94               	bcf	148,5,c	;volatile
+  3201                           
+  3202                           ;drivers/scr/drv_mspi_port.c: 33:     TRISCbits.TRISC4 = 1;
+  3203   0015DC  8894               	bsf	148,4,c	;volatile
+  3204                           
+  3205                           ;drivers/scr/drv_mspi_port.c: 34:     SSPSTATbits.SMP = 1;
+  3206   0015DE  8EC7               	bsf	199,7,c	;volatile
+  3207                           
+  3208                           ;drivers/scr/drv_mspi_port.c: 35:  SSPSTATbits.CKE = 1;
+  3209   0015E0  8CC7               	bsf	199,6,c	;volatile
+  3210   0015E2                     
+  3211                           ;drivers/scr/drv_mspi_port.c: 36:     SSPCON1 = 0X00 | 0X01;
+  3212   0015E2  0E01               	movlw	1
+  3213   0015E4  6EC6               	movwf	198,c	;volatile
   3214   0015E6                     
-  3215                           ;drivers/scr/drv_mspi_port.c: 40:  SSPCON1bits.CKP = 0;
-  3216   0015E6  98C6               	bcf	198,4,c	;volatile
-  3217   0015E8  0012               	return		;funcret
-  3218   0015EA                     __end_of_SPIInit:
-  3219                           	callstack 0
-  3220                           
-  3221                           	psect	rparam
-  3222   000001                     ___rparam_used  equ	1
-  3223   000000                     ___param_bank   equ	0
-  3224   000000                     __Lparam        equ	__Lrparam
-  3225   000000                     __Hparam        equ	__Hrparam
-  3226                           
-  3227                           	psect	idloc
-  3228                           
-  3229                           ;Config register IDLOC0 @ 0x200000
-  3230                           ;	unspecified, using default values
-  3231   200000                     	org	2097152
-  3232   200000  FF                 	db	255
-  3233                           
-  3234                           ;Config register IDLOC1 @ 0x200001
-  3235                           ;	unspecified, using default values
-  3236   200001                     	org	2097153
-  3237   200001  FF                 	db	255
-  3238                           
-  3239                           ;Config register IDLOC2 @ 0x200002
-  3240                           ;	unspecified, using default values
-  3241   200002                     	org	2097154
-  3242   200002  FF                 	db	255
-  3243                           
-  3244                           ;Config register IDLOC3 @ 0x200003
-  3245                           ;	unspecified, using default values
-  3246   200003                     	org	2097155
-  3247   200003  FF                 	db	255
-  3248                           
-  3249                           ;Config register IDLOC4 @ 0x200004
-  3250                           ;	unspecified, using default values
-  3251   200004                     	org	2097156
-  3252   200004  FF                 	db	255
-  3253                           
-  3254                           ;Config register IDLOC5 @ 0x200005
-  3255                           ;	unspecified, using default values
-  3256   200005                     	org	2097157
-  3257   200005  FF                 	db	255
-  3258                           
-  3259                           ;Config register IDLOC6 @ 0x200006
-  3260                           ;	unspecified, using default values
-  3261   200006                     	org	2097158
-  3262   200006  FF                 	db	255
-  3263                           
-  3264                           ;Config register IDLOC7 @ 0x200007
-  3265                           ;	unspecified, using default values
-  3266   200007                     	org	2097159
-  3267   200007  FF                 	db	255
-  3268                           
-  3269                           	psect	config
-  3270                           
-  3271                           ; Padding undefined space
-  3272   300000                     	org	3145728
-  3273   300000  FF                 	db	255
-  3274                           
-  3275                           ;Config register CONFIG1H @ 0x300001
-  3276                           ;	Oscillator Selection bits
-  3277                           ;	FOSC = INTIO67, Internal oscillator block, port function on RA6 and RA7
-  3278                           ;	Fail-Safe Clock Monitor Enable bit
-  3279                           ;	FCMEN = OFF, Fail-Safe Clock Monitor disabled
-  3280                           ;	Internal/External Oscillator Switchover bit
-  3281                           ;	IESO = OFF, Oscillator Switchover mode disabled
-  3282   300001                     	org	3145729
-  3283   300001  08                 	db	8
-  3284                           
-  3285                           ;Config register CONFIG2L @ 0x300002
-  3286                           ;	Power-up Timer Enable bit
-  3287                           ;	PWRTEN = OFF, PWRT disabled
-  3288                           ;	Brown-out Reset Enable bits
-  3289                           ;	BOREN = OFF, Brown-out Reset disabled in hardware and software
-  3290                           ;	Brown Out Reset Voltage bits
-  3291                           ;	BORV = 22, VBOR set to 2.2 V nominal
-  3292   300002                     	org	3145730
-  3293   300002  11                 	db	17
-  3294                           
-  3295                           ;Config register CONFIG2H @ 0x300003
-  3296                           ;	Watchdog Timer Enable bit
-  3297                           ;	WDTEN = OFF, WDT is controlled by SWDTEN bit of the WDTCON register
-  3298                           ;	Watchdog Timer Postscale Select bits
-  3299                           ;	WDTPS = 8192, 1:8192
-  3300   300003                     	org	3145731
-  3301   300003  1A                 	db	26
-  3302                           
-  3303                           ; Padding undefined space
-  3304   300004                     	org	3145732
-  3305   300004  FF                 	db	255
-  3306                           
-  3307                           ;Config register CONFIG3H @ 0x300005
-  3308                           ;	CCP2 MUX bit
-  3309                           ;	CCP2MX = PORTC, CCP2 input/output is multiplexed with RC1
-  3310                           ;	PORTB A/D Enable bit
-  3311                           ;	PBADEN = OFF, PORTB<4:0> pins are configured as digital I/O on Reset
-  3312                           ;	Low-Power Timer1 Oscillator Enable bit
-  3313                           ;	LPT1OSC = OFF, Timer1 configured for higher power operation
-  3314                           ;	HFINTOSC Fast Start-up
-  3315                           ;	HFOFST = OFF, The system clock is held off until the HFINTOSC is stable.
-  3316                           ;	MCLR Pin Enable bit
-  3317                           ;	MCLRE = ON, MCLR pin enabled; RE3 input pin disabled
-  3318   300005                     	org	3145733
-  3319   300005  81                 	db	129
-  3320                           
-  3321                           ;Config register CONFIG4L @ 0x300006
-  3322                           ;	Stack Full/Underflow Reset Enable bit
-  3323                           ;	STVREN = OFF, Stack full/underflow will not cause Reset
-  3324                           ;	Single-Supply ICSP Enable bit
-  3325                           ;	LVP = OFF, Single-Supply ICSP disabled
-  3326                           ;	Extended Instruction Set Enable bit
-  3327                           ;	XINST = OFF, Instruction set extension and Indexed Addressing mode disabled (Legacy mo
+  3215                           ;drivers/scr/drv_mspi_port.c: 37:  SSPCON1bits.WCOL = 1;
+  3216   0015E6  8EC6               	bsf	198,7,c	;volatile
+  3217   0015E8                     
+  3218                           ;drivers/scr/drv_mspi_port.c: 38:  SSPCON1bits.SSPOV = 0;
+  3219   0015E8  9CC6               	bcf	198,6,c	;volatile
+  3220   0015EA                     
+  3221                           ;drivers/scr/drv_mspi_port.c: 39:  SSPCON1bits.SSPEN = 1;
+  3222   0015EA  8AC6               	bsf	198,5,c	;volatile
+  3223   0015EC                     
+  3224                           ;drivers/scr/drv_mspi_port.c: 40:  SSPCON1bits.CKP = 0;
+  3225   0015EC  98C6               	bcf	198,4,c	;volatile
+  3226   0015EE  0012               	return		;funcret
+  3227   0015F0                     __end_of_SPIInit:
+  3228                           	callstack 0
+  3229                           
+  3230                           	psect	rparam
+  3231   000001                     ___rparam_used  equ	1
+  3232   000000                     ___param_bank   equ	0
+  3233   000000                     __Lparam        equ	__Lrparam
+  3234   000000                     __Hparam        equ	__Hrparam
+  3235                           
+  3236                           	psect	idloc
+  3237                           
+  3238                           ;Config register IDLOC0 @ 0x200000
+  3239                           ;	unspecified, using default values
+  3240   200000                     	org	2097152
+  3241   200000  FF                 	db	255
+  3242                           
+  3243                           ;Config register IDLOC1 @ 0x200001
+  3244                           ;	unspecified, using default values
+  3245   200001                     	org	2097153
+  3246   200001  FF                 	db	255
+  3247                           
+  3248                           ;Config register IDLOC2 @ 0x200002
+  3249                           ;	unspecified, using default values
+  3250   200002                     	org	2097154
+  3251   200002  FF                 	db	255
+  3252                           
+  3253                           ;Config register IDLOC3 @ 0x200003
+  3254                           ;	unspecified, using default values
+  3255   200003                     	org	2097155
+  3256   200003  FF                 	db	255
+  3257                           
+  3258                           ;Config register IDLOC4 @ 0x200004
+  3259                           ;	unspecified, using default values
+  3260   200004                     	org	2097156
+  3261   200004  FF                 	db	255
+  3262                           
+  3263                           ;Config register IDLOC5 @ 0x200005
+  3264                           ;	unspecified, using default values
+  3265   200005                     	org	2097157
+  3266   200005  FF                 	db	255
+  3267                           
+  3268                           ;Config register IDLOC6 @ 0x200006
+  3269                           ;	unspecified, using default values
+  3270   200006                     	org	2097158
+  3271   200006  FF                 	db	255
+  3272                           
+  3273                           ;Config register IDLOC7 @ 0x200007
+  3274                           ;	unspecified, using default values
+  3275   200007                     	org	2097159
+  3276   200007  FF                 	db	255
+  3277                           
+  3278                           	psect	config
+  3279                           
+  3280                           ; Padding undefined space
+  3281   300000                     	org	3145728
+  3282   300000  FF                 	db	255
+  3283                           
+  3284                           ;Config register CONFIG1H @ 0x300001
+  3285                           ;	Oscillator Selection bits
+  3286                           ;	FOSC = INTIO67, Internal oscillator block, port function on RA6 and RA7
+  3287                           ;	Fail-Safe Clock Monitor Enable bit
+  3288                           ;	FCMEN = OFF, Fail-Safe Clock Monitor disabled
+  3289                           ;	Internal/External Oscillator Switchover bit
+  3290                           ;	IESO = OFF, Oscillator Switchover mode disabled
+  3291   300001                     	org	3145729
+  3292   300001  08                 	db	8
+  3293                           
+  3294                           ;Config register CONFIG2L @ 0x300002
+  3295                           ;	Power-up Timer Enable bit
+  3296                           ;	PWRTEN = OFF, PWRT disabled
+  3297                           ;	Brown-out Reset Enable bits
+  3298                           ;	BOREN = OFF, Brown-out Reset disabled in hardware and software
+  3299                           ;	Brown Out Reset Voltage bits
+  3300                           ;	BORV = 22, VBOR set to 2.2 V nominal
+  3301   300002                     	org	3145730
+  3302   300002  11                 	db	17
+  3303                           
+  3304                           ;Config register CONFIG2H @ 0x300003
+  3305                           ;	Watchdog Timer Enable bit
+  3306                           ;	WDTEN = OFF, WDT is controlled by SWDTEN bit of the WDTCON register
+  3307                           ;	Watchdog Timer Postscale Select bits
+  3308                           ;	WDTPS = 8192, 1:8192
+  3309   300003                     	org	3145731
+  3310   300003  1A                 	db	26
+  3311                           
+  3312                           ; Padding undefined space
+  3313   300004                     	org	3145732
+  3314   300004  FF                 	db	255
+  3315                           
+  3316                           ;Config register CONFIG3H @ 0x300005
+  3317                           ;	CCP2 MUX bit
+  3318                           ;	CCP2MX = PORTC, CCP2 input/output is multiplexed with RC1
+  3319                           ;	PORTB A/D Enable bit
+  3320                           ;	PBADEN = OFF, PORTB<4:0> pins are configured as digital I/O on Reset
+  3321                           ;	Low-Power Timer1 Oscillator Enable bit
+  3322                           ;	LPT1OSC = OFF, Timer1 configured for higher power operation
+  3323                           ;	HFINTOSC Fast Start-up
+  3324                           ;	HFOFST = OFF, The system clock is held off until the HFINTOSC is stable.
+  3325                           ;	MCLR Pin Enable bit
+  3326                           ;	MCLRE = OFF, RE3 input pin enabled; MCLR disabled
+  3327   300005                     	org	3145733
+  3328   300005  01                 	db	1
+  3329                           
+  3330                           ;Config register CONFIG4L @ 0x300006
+  3331                           ;	Stack Full/Underflow Reset Enable bit
+  3332                           ;	STVREN = OFF, Stack full/underflow will not cause Reset
+  3333                           ;	Single-Supply ICSP Enable bit
+  3334                           ;	LVP = OFF, Single-Supply ICSP disabled
+  3335                           ;	Extended Instruction Set Enable bit
+  3336                           ;	XINST = OFF, Instruction set extension and Indexed Addressing mode disabled (Legacy mo
       +                          de)
-  3328                           ;	Background Debugger Enable bit
-  3329                           ;	DEBUG = ON, Background debugger enabled, RB6 and RB7 are dedicated to In-Circuit Debug
-  3330   300006                     	org	3145734
-  3331   300006  00                 	db	0
-  3332                           
-  3333                           ; Padding undefined space
-  3334   300007                     	org	3145735
-  3335   300007  FF                 	db	255
-  3336                           
-  3337                           ;Config register CONFIG5L @ 0x300008
-  3338                           ;	Code Protection Block 0
-  3339                           ;	CP0 = OFF, Block 0 (000800-003FFFh) not code-protected
-  3340                           ;	Code Protection Block 1
-  3341                           ;	CP1 = OFF, Block 1 (004000-007FFFh) not code-protected
-  3342                           ;	Code Protection Block 2
-  3343                           ;	CP2 = OFF, Block 2 (008000-00BFFFh) not code-protected
-  3344                           ;	Code Protection Block 3
-  3345                           ;	CP3 = OFF, Block 3 (00C000-00FFFFh) not code-protected
-  3346   300008                     	org	3145736
-  3347   300008  0F                 	db	15
-  3348                           
-  3349                           ;Config register CONFIG5H @ 0x300009
-  3350                           ;	Boot Block Code Protection bit
-  3351                           ;	CPB = OFF, Boot block (000000-0007FFh) not code-protected
-  3352                           ;	Data EEPROM Code Protection bit
-  3353                           ;	CPD = OFF, Data EEPROM not code-protected
-  3354   300009                     	org	3145737
-  3355   300009  C0                 	db	192
-  3356                           
-  3357                           ;Config register CONFIG6L @ 0x30000A
-  3358                           ;	Write Protection Block 0
-  3359                           ;	WRT0 = OFF, Block 0 (000800-003FFFh) not write-protected
-  3360                           ;	Write Protection Block 1
-  3361                           ;	WRT1 = OFF, Block 1 (004000-007FFFh) not write-protected
-  3362                           ;	Write Protection Block 2
-  3363                           ;	WRT2 = OFF, Block 2 (008000-00BFFFh) not write-protected
-  3364                           ;	Write Protection Block 3
-  3365                           ;	WRT3 = OFF, Block 3 (00C000h-00FFFFh) not write-protected
-  3366   30000A                     	org	3145738
-  3367   30000A  0F                 	db	15
-  3368                           
-  3369                           ;Config register CONFIG6H @ 0x30000B
-  3370                           ;	Configuration Register Write Protection bit
-  3371                           ;	WRTC = OFF, Configuration registers (300000-3000FFh) not write-protected
-  3372                           ;	Boot Block Write Protection bit
-  3373                           ;	WRTB = OFF, Boot Block (000000-0007FFh) not write-protected
-  3374                           ;	Data EEPROM Write Protection bit
-  3375                           ;	WRTD = OFF, Data EEPROM not write-protected
-  3376   30000B                     	org	3145739
-  3377   30000B  E0                 	db	224
-  3378                           
-  3379                           ;Config register CONFIG7L @ 0x30000C
-  3380                           ;	unspecified, using default values
-  3381                           ;	Table Read Protection Block 0
-  3382                           ;	EBTR0 = 0x1, unprogrammed default
-  3383                           ;	Table Read Protection Block 1
-  3384                           ;	EBTR1 = 0x1, unprogrammed default
-  3385                           ;	Table Read Protection Block 2
-  3386                           ;	EBTR2 = 0x1, unprogrammed default
-  3387                           ;	Table Read Protection Block 3
-  3388                           ;	EBTR3 = 0x1, unprogrammed default
-  3389   30000C                     	org	3145740
-  3390   30000C  0F                 	db	15
-  3391                           
-  3392                           ;Config register CONFIG7H @ 0x30000D
-  3393                           ;	Boot Block Table Read Protection bit
-  3394                           ;	EBTRB = OFF, Boot Block (000000-0007FFh) not protected from table reads executed in ot
+  3337                           ;	Background Debugger Enable bit
+  3338                           ;	DEBUG = OFF, Background debugger disabled, RB6 and RB7 configured as general purpose I
+      +                          /O pins
+  3339   300006                     	org	3145734
+  3340   300006  80                 	db	128
+  3341                           
+  3342                           ; Padding undefined space
+  3343   300007                     	org	3145735
+  3344   300007  FF                 	db	255
+  3345                           
+  3346                           ;Config register CONFIG5L @ 0x300008
+  3347                           ;	Code Protection Block 0
+  3348                           ;	CP0 = OFF, Block 0 (000800-003FFFh) not code-protected
+  3349                           ;	Code Protection Block 1
+  3350                           ;	CP1 = OFF, Block 1 (004000-007FFFh) not code-protected
+  3351                           ;	Code Protection Block 2
+  3352                           ;	CP2 = OFF, Block 2 (008000-00BFFFh) not code-protected
+  3353                           ;	Code Protection Block 3
+  3354                           ;	CP3 = OFF, Block 3 (00C000-00FFFFh) not code-protected
+  3355   300008                     	org	3145736
+  3356   300008  0F                 	db	15
+  3357                           
+  3358                           ;Config register CONFIG5H @ 0x300009
+  3359                           ;	Boot Block Code Protection bit
+  3360                           ;	CPB = OFF, Boot block (000000-0007FFh) not code-protected
+  3361                           ;	Data EEPROM Code Protection bit
+  3362                           ;	CPD = OFF, Data EEPROM not code-protected
+  3363   300009                     	org	3145737
+  3364   300009  C0                 	db	192
+  3365                           
+  3366                           ;Config register CONFIG6L @ 0x30000A
+  3367                           ;	Write Protection Block 0
+  3368                           ;	WRT0 = OFF, Block 0 (000800-003FFFh) not write-protected
+  3369                           ;	Write Protection Block 1
+  3370                           ;	WRT1 = OFF, Block 1 (004000-007FFFh) not write-protected
+  3371                           ;	Write Protection Block 2
+  3372                           ;	WRT2 = OFF, Block 2 (008000-00BFFFh) not write-protected
+  3373                           ;	Write Protection Block 3
+  3374                           ;	WRT3 = OFF, Block 3 (00C000h-00FFFFh) not write-protected
+  3375   30000A                     	org	3145738
+  3376   30000A  0F                 	db	15
+  3377                           
+  3378                           ;Config register CONFIG6H @ 0x30000B
+  3379                           ;	Configuration Register Write Protection bit
+  3380                           ;	WRTC = OFF, Configuration registers (300000-3000FFh) not write-protected
+  3381                           ;	Boot Block Write Protection bit
+  3382                           ;	WRTB = OFF, Boot Block (000000-0007FFh) not write-protected
+  3383                           ;	Data EEPROM Write Protection bit
+  3384                           ;	WRTD = OFF, Data EEPROM not write-protected
+  3385   30000B                     	org	3145739
+  3386   30000B  E0                 	db	224
+  3387                           
+  3388                           ;Config register CONFIG7L @ 0x30000C
+  3389                           ;	unspecified, using default values
+  3390                           ;	Table Read Protection Block 0
+  3391                           ;	EBTR0 = 0x1, unprogrammed default
+  3392                           ;	Table Read Protection Block 1
+  3393                           ;	EBTR1 = 0x1, unprogrammed default
+  3394                           ;	Table Read Protection Block 2
+  3395                           ;	EBTR2 = 0x1, unprogrammed default
+  3396                           ;	Table Read Protection Block 3
+  3397                           ;	EBTR3 = 0x1, unprogrammed default
+  3398   30000C                     	org	3145740
+  3399   30000C  0F                 	db	15
+  3400                           
+  3401                           ;Config register CONFIG7H @ 0x30000D
+  3402                           ;	Boot Block Table Read Protection bit
+  3403                           ;	EBTRB = OFF, Boot Block (000000-0007FFh) not protected from table reads executed in ot
       +                          her blocks
-  3395   30000D                     	org	3145741
-  3396   30000D  40                 	db	64
-  3397                           tosu	equ	0xFFF
-  3398                           tosh	equ	0xFFE
-  3399                           tosl	equ	0xFFD
-  3400                           stkptr	equ	0xFFC
-  3401                           pclatu	equ	0xFFB
-  3402                           pclath	equ	0xFFA
-  3403                           pcl	equ	0xFF9
-  3404                           tblptru	equ	0xFF8
-  3405                           tblptrh	equ	0xFF7
-  3406                           tblptrl	equ	0xFF6
-  3407                           tablat	equ	0xFF5
-  3408                           prodh	equ	0xFF4
-  3409                           prodl	equ	0xFF3
-  3410                           indf0	equ	0xFEF
-  3411                           postinc0	equ	0xFEE
-  3412                           postdec0	equ	0xFED
-  3413                           preinc0	equ	0xFEC
-  3414                           plusw0	equ	0xFEB
-  3415                           fsr0h	equ	0xFEA
-  3416                           fsr0l	equ	0xFE9
-  3417                           wreg	equ	0xFE8
-  3418                           indf1	equ	0xFE7
-  3419                           postinc1	equ	0xFE6
-  3420                           postdec1	equ	0xFE5
-  3421                           preinc1	equ	0xFE4
-  3422                           plusw1	equ	0xFE3
-  3423                           fsr1h	equ	0xFE2
-  3424                           fsr1l	equ	0xFE1
-  3425                           bsr	equ	0xFE0
-  3426                           indf2	equ	0xFDF
-  3427                           postinc2	equ	0xFDE
-  3428                           postdec2	equ	0xFDD
-  3429                           preinc2	equ	0xFDC
-  3430                           plusw2	equ	0xFDB
-  3431                           fsr2h	equ	0xFDA
-  3432                           fsr2l	equ	0xFD9
-  3433                           status	equ	0xFD8
+  3404   30000D                     	org	3145741
+  3405   30000D  40                 	db	64
+  3406                           tosu	equ	0xFFF
+  3407                           tosh	equ	0xFFE
+  3408                           tosl	equ	0xFFD
+  3409                           stkptr	equ	0xFFC
+  3410                           pclatu	equ	0xFFB
+  3411                           pclath	equ	0xFFA
+  3412                           pcl	equ	0xFF9
+  3413                           tblptru	equ	0xFF8
+  3414                           tblptrh	equ	0xFF7
+  3415                           tblptrl	equ	0xFF6
+  3416                           tablat	equ	0xFF5
+  3417                           prodh	equ	0xFF4
+  3418                           prodl	equ	0xFF3
+  3419                           indf0	equ	0xFEF
+  3420                           postinc0	equ	0xFEE
+  3421                           postdec0	equ	0xFED
+  3422                           preinc0	equ	0xFEC
+  3423                           plusw0	equ	0xFEB
+  3424                           fsr0h	equ	0xFEA
+  3425                           fsr0l	equ	0xFE9
+  3426                           wreg	equ	0xFE8
+  3427                           indf1	equ	0xFE7
+  3428                           postinc1	equ	0xFE6
+  3429                           postdec1	equ	0xFE5
+  3430                           preinc1	equ	0xFE4
+  3431                           plusw1	equ	0xFE3
+  3432                           fsr1h	equ	0xFE2
+  3433                           fsr1l	equ	0xFE1
+  3434                           bsr	equ	0xFE0
+  3435                           indf2	equ	0xFDF
+  3436                           postinc2	equ	0xFDE
+  3437                           postdec2	equ	0xFDD
+  3438                           preinc2	equ	0xFDC
+  3439                           plusw2	equ	0xFDB
+  3440                           fsr2h	equ	0xFDA
+  3441                           fsr2l	equ	0xFD9
+  3442                           status	equ	0xFD8
 
 Data Sizes:
     Strings     12
@@ -3948,149 +3958,149 @@ DATA                 0      0     115      0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.50 build 20240725155939 
-Symbol Table                                                                                   Mon Mar 31 03:01:11 2025
+Symbol Table                                                                                   Tue Apr 15 12:08:27 2025
 
-                 _SSPSTATbits 0FC7                            l51 119A                            l60 159C  
-                          l63 157C                            l56 12D2                            l72 1506  
-                          l80 142A                            l57 133C                            l66 146C  
-                          l75 1530                            l83 1610                            l69 13E8  
-                          l86 166A                            l95 1294                            l89 1660  
-                          u45 162A                            u46 162C                            u65 161C  
-                          u66 161E                 ?_MRF24J40Init 002A                           l211 1364  
-                         l142 15B8                           l151 162C                           l160 167A  
-                         l145 1656                           l154 1674                           l148 161E  
-                         l181 15D0                           l157 163A                           l190 15FE  
-                         l175 15E8                           l263 14AA                           l184 1648  
-                         l178 15C2                           l187 15EE                           l943 14DA  
-                         l971 1622                           _GIE 7F97                           u210 15D0  
-                         u211 15CC                           u300 1080                           u301 107C  
-                         u230 15FC                           u310 1158                           u231 15F8  
-                         u311 1154                           u320 128A                           u225 1654  
-                         u321 1286                           u226 1656                           u250 12BA  
-                         u251 12B6                           u260 130A                           u245 1436  
-                         u261 1306                           u270 142A                           u271 1426  
-                         u407 1034                           u417 104C                           u290 14CE  
-                         u370 1378                           u427 1086                           u291 14CA  
-                         u371 1370                           u285 13B0                           u437 1502  
+                 _SSPSTATbits 0FC7                            l51 119A                            l60 15A2  
+                          l63 1582                            l56 12D2                            l72 150C  
+                          l80 146E                            l57 133C                            l66 14B0  
+                          l75 1536                            l83 1616                            l69 13E8  
+                          l86 1670                            l95 1294                            l89 1666  
+                          u45 1630                            u46 1632                            u65 1622  
+                          u66 1624                 ?_MRF24J40Init 002A                           l211 1364  
+                         l142 15BE                           l151 1632                           l160 1680  
+                         l145 165C                           l154 167A                           l148 1624  
+                         l181 15D6                           l157 1640                           l190 1604  
+                         l175 15EE                           l184 164E                           l265 142C  
+                         l178 15C8                           l187 15F4                           l945 14E0  
+                         l973 1628                           _GIE 7F97                           u210 15D6  
+                         u211 15D2                           u300 1080                           u301 107C  
+                         u230 1602                           u310 1158                           u231 15FE  
+                         u311 1154                           u320 128A                           u225 165A  
+                         u321 1286                           u226 165C                           u250 12BA  
+                         u251 12B6                           u260 130A                           u245 147A  
+                         u261 1306                           u270 146E                           u271 146A  
+                         u407 1034                           u417 104C                           u290 14D4  
+                         u370 1378                           u427 1086                           u291 14D0  
+                         u371 1370                           u285 13B0                           u437 1508  
                          u388 137A                           u397 138E                           wreg 0FE8  
-         __end_of_GetLongAddr 13EA                          l1003 1614                          l1111 15E4  
-                        l1103 15D2                          l1113 15E6                          l1105 15DC  
-                        l1107 15E0                          l1109 15E2                          l1235 146E  
-                        l1237 149E                          l1421 15BE                          l1501 15A6  
-                        l1239 14A6                          l1423 163C                          l1431 166E  
-                        l1511 1568                          l1441 15FC                          l1513 156E  
-                        l1505 155A                          l1521 1508                          l1601 10E4  
-                        l1427 164C                          l1419 15BC                          l1435 162E  
-                        l1451 1590                          l1515 1574                          l1507 155A  
-                        l1531 13F6                          l1611 1122                          l1603 10F4  
-                        l1461 1454                          l1453 1596                          l1445 1580  
-                        l1541 13C8                          l1517 157A                          l1509 1562  
-                        l1533 1408                          l1525 13EA                          l1613 112C  
-                        l1605 1104                          l1463 1460                          l1447 1584  
-                        l1439 15EA                          l1543 13CE                          l1535 140A  
-                        l1615 1136                          l1607 110E                          l1623 1600  
-                        l1631 1658                          l1465 1466                          l1457 142C  
-                        l1449 158A                          l1641 11B0                          l1633 119C  
-                        l1545 13DA                          l1481 12BA                          l1473 1296  
-                        l1553 14DC                          l1537 140E                          l1617 1144  
-                        l1609 1118                          l1561 14B4                          l1625 1604  
-                        l1459 144E                          l1651 11E0                          l1643 11C0  
-                        l1635 119E                          l1547 13E0                          l1539 13A6  
-                        l1491 1314                          l1483 12EA                          l1555 1500  
-                        l1619 1158                          l1571 102A                          l1563 14B6  
-                        l1661 1208                          l1653 11E2                          l1645 11C2  
-                        l1637 119E                          l1469 1676                          l1549 13E6  
-                        l1493 1338                          l1485 12EE                          l1581 1062  
-                        l1573 102E                          l1629 1662                          l1565 14CE  
-                        l1671 1236                          l1663 1216                          l1655 11F6  
-                        l1647 11D0                          l1639 11AE                          l1495 133A  
-                        l1487 130A                          l1479 129E                          l1591 10A0  
-                        l1583 106A                          l1575 1040                          l1559 14AC  
-                        l1681 125C                          l1673 1238                          l1665 1218  
-                        l1657 11F8                          l1649 11D2                          l1489 1312  
-                        l1593 10A4                          l1585 1080                          l1577 1046  
-                        l1569 1026                          l1683 128A                          l1675 123E  
-                        l1667 1226                          l1659 1206                          l1499 159E  
-                        l1595 10B4                          l1587 1092                          l1579 1058  
-                        l1851 134E                          l1677 1258                          l1669 1228  
-                        l1597 10C4                          l1589 109C                          l1853 1358  
-                        l1845 133E                          l1679 125A                          l1599 10D4  
-                        l1855 1366                          l1847 1342                          l1857 1384  
-                        l1849 1346                          l1859 139A                          _ADIE 7CEE  
+         __end_of_GetLongAddr 13EA                          l1005 161A                          l1111 15E8  
+                        l1113 15EA                          l1105 15D8                          l1115 15EC  
+                        l1107 15E2                          l1109 15E6                          l1241 1428  
+                        l1237 13EA                          l1421 15C2                          l1501 15A4  
+                        l1239 1420                          l1423 15C4                          l1511 1568  
+                        l1503 15AC                          l1425 1642                          l1433 1674  
+                        l1441 15F0                          l1513 156E                          l1601 10D4  
+                        l1451 1590                          l1443 1602                          l1515 1574  
+                        l1507 1560                          l1523 150E                          l1611 1118  
+                        l1603 10E4                          l1429 1652                          l1437 1634  
+                        l1461 1492                          l1453 1596                          l1541 13A6  
+                        l1517 157A                          l1509 1560                          l1533 143A  
+                        l1621 1158                          l1613 1122                          l1605 10F4  
+                        l1463 1498                          l1455 159C                          l1447 1586  
+                        l1471 167C                          l1551 13E6                          l1543 13C8  
+                        l1519 1580                          l1535 144C                          l1527 142E  
+                        l1615 112C                          l1607 1104                          l1631 1668  
+                        l1465 14A4                          l1449 158A                          l1641 11AE  
+                        l1545 13CE                          l1481 129E                          l1537 144E  
+                        l1617 1136                          l1609 110E                          l1561 14B2  
+                        l1625 1606                          l1633 165E                          l1467 14AA  
+                        l1459 1470                          l1651 11D2                          l1643 11B0  
+                        l1635 119C                          l1547 13DA                          l1491 1312  
+                        l1483 12BA                          l1475 1296                          l1555 14E2  
+                        l1539 1452                          l1619 1144                          l1571 1026  
+                        l1563 14BA                          l1627 160A                          l1661 1206  
+                        l1653 11E0                          l1645 11C0                          l1637 119E  
+                        l1549 13E0                          l1493 1314                          l1485 12EA  
+                        l1557 1506                          l1581 1058                          l1573 102A  
+                        l1565 14BC                          l1671 1228                          l1663 1208  
+                        l1655 11E2                          l1647 11C2                          l1639 119E  
+                        l1495 1338                          l1487 12EE                          l1591 109C  
+                        l1583 1062                          l1575 102E                          l1567 14D4  
+                        l1681 125A                          l1673 1236                          l1665 1216  
+                        l1657 11F6                          l1649 11D0                          l1497 133A  
+                        l1489 130A                          l1593 10A0                          l1585 106A  
+                        l1577 1040                          l1683 125C                          l1675 1238  
+                        l1667 1218                          l1659 11F8                          l1595 10A4  
+                        l1587 1080                          l1579 1046                          l1851 1346  
+                        l1685 128A                          l1677 123E                          l1669 1226  
+                        l1597 10B4                          l1589 1092                          l1861 139A  
+                        l1853 134E                          l1679 1258                          l1599 10C4  
+                        l1855 1358                          l1847 133E                          l1857 1366  
+                        l1849 1342                          l1859 1384                          _ADIE 7CEE  
                         _EEIE 7D04                          STR_1 1019                          _T0IE 7F95  
                         _PEIE 7F96                          _RBIE 7F93                          _RCIE 7CED  
-                _SPIWriteByte 15BA                          _main 133E               __end_of_SPIInit 15EA  
-             __end_of_SPIRead 1600                          fsr2h 0FDA                          indf2 0FDF  
+                _SPIWriteByte 15C0                          _main 133E               __end_of_SPIInit 15F0  
+             __end_of_SPIRead 1606                          fsr2h 0FDA                          indf2 0FDF  
                         fsr2l 0FD9                   EnviarDato@i 0039       GetShortAddr@reg_address 002D  
                         start 0000                  ___param_bank 0000             ??_ReadByteSPIPort 002A  
-              ??_MRF24J40Init 0034   __end_of_InicializoVariables 133E                 _SPIWrite2Byte 163C  
+              ??_MRF24J40Init 0034   __end_of_InicializoVariables 133E                 _SPIWrite2Byte 1642  
                        ?_main 002A                         _BCLIE 7D03          SetDeviceMACAddress@i 002E  
                        _PORTA 0F80                         _PORTB 0F81                         _PORTC 0F82  
                        _PORTD 0F83                         _PORTE 0F84                         _SSPIE 7CEB  
-        __end_of_GetShortAddr 157E               _InicializoPines 159E       SetShortAddr@reg_address 002D  
+        __end_of_GetShortAddr 1584               _InicializoPines 15A4       SetShortAddr@reg_address 002D  
          MRF24J40Init@lectura 0035                         tablat 0FF5                         status 0FD8  
-                  _EnviarDato 119C           _SetDeviceMACAddress 13EA               __initialization 1532  
-                __end_of_main 13A6                ?_SPIWrite2Byte 002B              __end_of_SetCSPin 1658  
+                  _EnviarDato 119C           _SetDeviceMACAddress 142E               __initialization 1538  
+                __end_of_main 13A6                ?_SPIWrite2Byte 002B              __end_of_SetCSPin 165E  
                  _GetLongAddr 13A6                 ??_SetLongAddr 0032                        ??_main 003B  
                __activetblptr 0001                 ??_SetResetPin 002A          ?_SetDeviceMACAddress 002A  
-                  _SetChannel 14DC             ?_SetDeviceAddress 002A                        _CCP1IE 7CEA  
+                  _SetChannel 14E2             ?_SetDeviceAddress 002A                        _CCP1IE 7CEA  
                       _CCP2IE 7D00                     ??_SPIInit 002A                     ??_SPIRead 002A  
-          ??_SetDeviceAddress 002E                    _SetWakePin 1612                        _OSCCON 0FD3  
+          ??_SetDeviceAddress 002E                    _SetWakePin 1618                        _OSCCON 0FD3  
                       _TMR1IE 7CE8                        _TMR2IE 7CE9  __end_of_default_security_key 1011  
-                      _SSPBUF 0FC9                        clear_0 1538                        clear_1 1544  
-                      isa$std 0001                SetCSPin@estado 002A       __end_of_InicializoPines 15BA  
-                      _strlen 14AC         ??_SetDeviceMACAddress 002E          InicializoVariables@i 002B  
+                      _SSPBUF 0FC9                        clear_0 153E                        clear_1 154A  
+                      isa$std 0001                SetCSPin@estado 002A       __end_of_InicializoPines 15C0  
+                      _strlen 14B2         ??_SetDeviceMACAddress 002E          InicializoVariables@i 002B  
                 __mediumconst 0000             _mrf24_data_config 0001                        tblptrh 0FF7  
-                      tblptrl 0FF6                        tblptru 0FF8           __end_of_SetLongAddr 146E  
-         __end_of_SetResetPin 162E         GetShortAddr@leido_spi 002C          __end_of_MRF24J40Init 119C  
-            _SetMensajeSalida 1600                    __accesstop 0060       __end_of__initialization 154A  
-           __end_of_BoardInit 14AC                   ?_EnviarDato 002A                 ___rparam_used 0001  
+                      tblptrl 0FF6                        tblptru 0FF8           __end_of_SetLongAddr 14B2  
+         __end_of_SetResetPin 1634         GetShortAddr@leido_spi 002C          __end_of_MRF24J40Init 119C  
+            _SetMensajeSalida 1606                    __accesstop 0060       __end_of__initialization 1550  
+           __end_of_BoardInit 142E                   ?_EnviarDato 002A                 ___rparam_used 0001  
             SetWakePin@estado 002A                 ?_SetShortAddr 002C                __pcstackCOMRAM 002A  
              ??_SPIWrite2Byte 002D                   ?_SetChannel 002A                    __pbssBANK0 0060  
- __end_of_SetDireccionDestino 166C                   ?_SetWakePin 002A                     ?_SetCSPin 002A  
-             _ReadByteSPIPort 1676                  _GetShortAddr 1558                ??_SetShortAddr 002D  
-           ??_SetPANIDDestino 002C                   _SetLongAddr 142C                       ?_strlen 002A  
-            ?_InicializoPines 002A          _default_security_key 1001                   _SetResetPin 1620  
-                     _OSCTUNE 0F9B                       _SSPCON1 0FC6                       _SPIInit 15D2  
-                     _SPIRead 15EA                    ??_SetCSPin 002A             SetShortAddr@value 002C  
+ __end_of_SetDireccionDestino 1672                   ?_SetWakePin 002A                     ?_SetCSPin 002A  
+             _ReadByteSPIPort 167C                  _GetShortAddr 155E                ??_SetShortAddr 002D  
+           ??_SetPANIDDestino 002C                   _SetLongAddr 1470                       ?_strlen 002A  
+            ?_InicializoPines 002A          _default_security_key 1001                   _SetResetPin 1626  
+                     _OSCTUNE 0F9B                       _SSPCON1 0FC6                       _SPIInit 15D8  
+                     _SPIRead 15F0                    ??_SetCSPin 002A             SetShortAddr@value 002C  
                      __Hparam 0000                       __Lparam 0000                  __psmallconst 1000  
-                     __pcinit 1532                  ?_GetLongAddr 002F                       __ramtop 1000  
-                     __ptext0 133E                       __ptext1 1658                       __ptext2 1600  
-                     __ptext3 14AC                       __ptext4 1662                       __ptext5 1026  
-                     __ptext6 13EA                       __ptext7 1508                       __ptext8 14DC  
-                     __ptext9 1296         EnviarDato@pos_memoria 003A              _WriteByteSPIPort 166C  
-     __end_of_ReadByteSPIPort 167C          end_of_initialization 154A           _default_mac_address 1011  
+                     __pcinit 1538                  ?_GetLongAddr 002F                       __ramtop 1000  
+                     __ptext0 133E                       __ptext1 165E                       __ptext2 1606  
+                     __ptext3 14B2                       __ptext4 1668                       __ptext5 1026  
+                     __ptext6 142E                       __ptext7 150E                       __ptext8 14E2  
+                     __ptext9 1296         EnviarDato@pos_memoria 003A              _WriteByteSPIPort 1672  
+     __end_of_ReadByteSPIPort 1682          end_of_initialization 1550           _default_mac_address 1011  
                      postinc0 0FEE                       strlen@a 002C                       strlen@s 002A  
-                _MRF24J40Init 1026      __end_of_SetMensajeSalida 1612          WriteByteSPIPort@dato 002B  
+                _MRF24J40Init 1026      __end_of_SetMensajeSalida 1618          WriteByteSPIPort@dato 002B  
                    _TRISBbits 0F93                     _TRISCbits 0F94                     _TRISDbits 0F95  
-                   _TRISEbits 0F96          __end_of_SetShortAddr 159E        _my_default_mac_address 0029  
+                   _TRISEbits 0F96          __end_of_SetShortAddr 15A4        _my_default_mac_address 0029  
        Write2ByteSPIPort@dato 002D          GetLongAddr@respuesta 0033                  ??_EnviarDato 0034  
-                   _BoardInit 146E             _Write2ByteSPIPort 162E   __end_of_SetDeviceMACAddress 142C  
-          ?_Write2ByteSPIPort 002D                __end_of_strlen 14DC                  ??_SetChannel 0034  
-         start_initialization 1532            __end_of_EnviarDato 1296           ??_Write2ByteSPIPort 002F  
-            ?_ReadByteSPIPort 002A          SetPANIDDestino@panid 002A               _SetPANIDDestino 1658  
+                   _BoardInit 13EA             _Write2ByteSPIPort 1634   __end_of_SetDeviceMACAddress 1470  
+          ?_Write2ByteSPIPort 002D                __end_of_strlen 14E2                  ??_SetChannel 0034  
+         start_initialization 1538            __end_of_EnviarDato 1296           ??_Write2ByteSPIPort 002F  
+            ?_ReadByteSPIPort 002A          SetPANIDDestino@panid 002A               _SetPANIDDestino 165E  
                ?_SPIWriteByte 002A                  ??_SetWakePin 002A                    ?_BoardInit 002A  
-   __end_of_Write2ByteSPIPort 163C            __end_of_SetChannel 1508         __end_of_SPIWrite2Byte 164A  
-                ?_SetLongAddr 002F                      ??_strlen 002C            __end_of_SetWakePin 1620  
+   __end_of_Write2ByteSPIPort 1642            __end_of_SetChannel 150E         __end_of_SPIWrite2Byte 1650  
+                ?_SetLongAddr 002F                      ??_strlen 002C            __end_of_SetWakePin 1626  
                 ?_SetResetPin 002A                   __pbssCOMRAM 0001       SetMensajeSalida@mensaje 002D  
                     ?_SPIInit 002A                      ?_SPIRead 002A                ??_SPIWriteByte 002A  
-            SPIWriteByte@dato 002A              _SetDeviceAddress 1508           _InicializoVariables 1296  
-    __end_of_WriteByteSPIPort 1676             SetResetPin@estado 002A                   __smallconst 1000  
-     __end_of_SetPANIDDestino 1662          ?_InicializoVariables 002A              SetLongAddr@value 0031  
+            SPIWriteByte@dato 002A              _SetDeviceAddress 150E           _InicializoVariables 1296  
+    __end_of_WriteByteSPIPort 167C             SetResetPin@estado 002A                   __smallconst 1000  
+     __end_of_SetPANIDDestino 1668          ?_InicializoVariables 002A              SetLongAddr@value 0031  
                     _LATCbits 0F8B                      _LATDbits 0F8C                      _LATEbits 0F8D  
-                 ??_BoardInit 002A                      _PIR1bits 0F9E                  _SetShortAddr 157E  
+                 ??_BoardInit 002A                      _PIR1bits 0F9E                  _SetShortAddr 1584  
            ?_SetMensajeSalida 002D         ??_InicializoVariables 002A            ??_SetMensajeSalida 002E  
-SetDireccionDestino@direccion 002A                _mrf24_data_out 0023                      _SetCSPin 164A  
+SetDireccionDestino@direccion 002A                _mrf24_data_out 0023                      _SetCSPin 1650  
                     __Hrparam 0000                      __Lrparam 0000                  __Lsmallconst 1000  
-        __end_of_SPIWriteByte 15D2              ?_SetPANIDDestino 002A                      __ptext10 159E  
-                    __ptext11 1612                      __ptext20 166C                      __ptext12 1620  
-                    __ptext21 162E                      __ptext13 1558                      __ptext22 163C  
-                    __ptext14 13A6                      __ptext23 15BA                      __ptext15 1676  
-                    __ptext24 164A                      __ptext16 15EA                      __ptext25 146E  
-                    __ptext17 119C                      __ptext26 15D2                      __ptext18 157E  
-                    __ptext19 142C             ??_InicializoPines 002B                 ?_GetShortAddr 002A  
+        __end_of_SPIWriteByte 15D8              ?_SetPANIDDestino 002A                      __ptext10 15A4  
+                    __ptext11 1618                      __ptext20 1672                      __ptext12 1626  
+                    __ptext21 1634                      __ptext13 155E                      __ptext22 1642  
+                    __ptext14 13A6                      __ptext23 15C0                      __ptext15 167C  
+                    __ptext24 1650                      __ptext16 15F0                      __ptext25 13EA  
+                    __ptext17 119C                      __ptext26 15D8                      __ptext18 1584  
+                    __ptext19 1470             ??_InicializoPines 002B                 ?_GetShortAddr 002A  
                     isa$xinst 0000   __end_of_default_mac_address 1019                 _mrf24_data_in 0060  
-    __end_of_SetDeviceAddress 1532           _SetDireccionDestino 1662                ??_GetShortAddr 002C  
+    __end_of_SetDeviceAddress 1538           _SetDireccionDestino 1668                ??_GetShortAddr 002C  
         ?_SetDireccionDestino 002A             ?_WriteByteSPIPort 002A                 ??_GetLongAddr 0031  
           ??_WriteByteSPIPort 002B        GetLongAddr@reg_address 002F                   _SSPCON1bits 0FC6  
            SPIWrite2Byte@dato 002B        SetLongAddr@reg_address 002F         ??_SetDireccionDestino 002C  

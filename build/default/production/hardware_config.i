@@ -4955,11 +4955,11 @@ unsigned char __t3rd16on(void);
 #pragma config PBADEN = OFF
 #pragma config LPT1OSC = OFF
 #pragma config HFOFST = OFF
-#pragma config MCLRE = ON
+#pragma config MCLRE = OFF
 #pragma config STVREN = OFF
 #pragma config LVP = OFF
 #pragma config XINST = OFF
-#pragma config DEBUG = ON
+#pragma config DEBUG = OFF
 #pragma config CP0 = OFF
 #pragma config CP1 = OFF
 #pragma config CP2 = OFF
@@ -5020,6 +5020,9 @@ void BoardInit(void) {
     TRISEbits.TRISE2 = 0;
     TRISEbits.TRISE0 = 0;
     TRISEbits.TRISE1 = 0;
+    LATEbits.LATE2 = 1;
+    LATEbits.LATE0 = 1;
+    LATEbits.LATE1 = 1;
 
 
  GIE = 0;

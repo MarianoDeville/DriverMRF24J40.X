@@ -15,12 +15,6 @@
 #include "../inc/drv_mrf24j40.h"
 #include "../inc/drv_mrf24j40_port.h"
 
-/* Definiciones de la configuración por defecto ------------------------------*/
-#define	DEFAULT_CHANNEL     CH_11
-#define DEFAULT_SEC_NUMBER  0X01
-#define	MY_DEFAULT_PAN_ID	0x1234
-#define	MY_DEFAULT_ADDRESS	0xDE11
-
 #define HEAD_LENGTH         0X0E
 #define WRITE_16_BITS       0X8010
 #define READ_16_BITS        0X8000
@@ -230,7 +224,6 @@ enum {
 #define	TX_SEC_KEY		(0x280)	
 #define RX_SEC_KEY		(0x2B0)	
 /* Configuraciones de la transmisión */
-#define	BROADCAST		(0xFFFF)
 #define SEG_HAB			(0X02)
 #define ESPERO_ACK		(0X04)
 #define	P30dBm			(0XC0)

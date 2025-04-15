@@ -32,6 +32,9 @@ void BoardInit(void) {
     LED_ROJO_IO = SALIDA;
     LED_VERDE_IO = SALIDA;
     LED_AMARILLO_IO = SALIDA;
+    LED_ROJO = 1;
+    LED_VERDE = 1;
+    LED_AMARILLO = 1;
 
     /* Configuración de los registros del PIC --------------------------------*/
 	GIE = 0;

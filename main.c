@@ -24,12 +24,11 @@ void main(void) {
     
     BoardInit();
     MRF24J40Init();
-    
     SetMensajeSalida("Hola mundo.");
-    SetDireccionDestino(0XFFFF);
+    SetDireccionDestino(BROADCAST);
     SetPANIDDestino(0X1234);
     
-    while(1){
+    while(1) {
 
         CLRWDT();
         LED_VERDE = !LED_VERDE;

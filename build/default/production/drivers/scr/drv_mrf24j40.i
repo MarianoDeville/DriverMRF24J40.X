@@ -5175,11 +5175,11 @@ unsigned char __t3rd16on(void);
 #pragma config PBADEN = OFF
 #pragma config LPT1OSC = OFF
 #pragma config HFOFST = OFF
-#pragma config MCLRE = ON
+#pragma config MCLRE = OFF
 #pragma config STVREN = OFF
 #pragma config LVP = OFF
 #pragma config XINST = OFF
-#pragma config DEBUG = ON
+#pragma config DEBUG = OFF
 #pragma config CP0 = OFF
 #pragma config CP1 = OFF
 #pragma config CP2 = OFF
@@ -5203,9 +5203,7 @@ void BoardInit(void);
 
 typedef _Bool bool_t;
 # 18 "drivers/scr/../inc/drv_mrf24j40.h" 2
-
-
-
+# 28 "drivers/scr/../inc/drv_mrf24j40.h"
 void MRF24J40Init(void);
 void EnviarDato(void);
 void EnviarComando();
@@ -5238,7 +5236,7 @@ void WriteByteSPIPort(uint8_t dato);
 void Write2ByteSPIPort(uint16_t dato);
 uint8_t ReadByteSPIPort(void);
 # 16 "drivers/scr/drv_mrf24j40.c" 2
-# 32 "drivers/scr/drv_mrf24j40.c"
+# 26 "drivers/scr/drv_mrf24j40.c"
 static const uint8_t default_mac_address[] = {0x11,
                                              0x28,
                                              0x35,
@@ -5330,7 +5328,7 @@ enum {
     EADR6,
     EADR7,
 } my_default_mac_address;
-# 269 "drivers/scr/drv_mrf24j40.c"
+# 262 "drivers/scr/drv_mrf24j40.c"
 static void InicializoVariables(void);
 static void SetShortAddr(uint8_t reg_address, uint8_t value);
 static void SetLongAddr(uint16_t reg_address, uint8_t value);
@@ -5382,7 +5380,7 @@ void MRF24J40Init(void) {
     SetLongAddr((0x200), 0x03);
  SetLongAddr((0x201), 0x02);
  SetChannel();
-# 328 "drivers/scr/drv_mrf24j40.c"
+# 321 "drivers/scr/drv_mrf24j40.c"
  SetShortAddr((0x00),0x00);
  return;
 }
@@ -5519,7 +5517,7 @@ static void SetDeviceMACAddress(void) {
     }
  return;
 }
-# 472 "drivers/scr/drv_mrf24j40.c"
+# 465 "drivers/scr/drv_mrf24j40.c"
 void SetMensajeSalida(const char * mensaje) {
 
     mrf24_data_out.buffer_salida = mensaje;
@@ -5575,7 +5573,7 @@ void EnviarDato(void) {
  SetShortAddr((0x1B), 1 | (0X04));
  return;
 }
-# 553 "drivers/scr/drv_mrf24j40.c"
+# 546 "drivers/scr/drv_mrf24j40.c"
 void EnviarDatoEncriptado(void) {
 
  uint16_t pos_memoria = 0;
@@ -5606,7 +5604,7 @@ void EnviarDatoEncriptado(void) {
  SetShortAddr((0x1B), 0x07);
  return;
 }
-# 598 "drivers/scr/drv_mrf24j40.c"
+# 591 "drivers/scr/drv_mrf24j40.c"
 void EnviarComando(void) {
 
  uint8_t pos = 0;

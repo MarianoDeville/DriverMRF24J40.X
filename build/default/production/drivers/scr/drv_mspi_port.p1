@@ -575,7 +575,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "56
 [p x HFOFST  =  OFF      ]
 "57
-[p x MCLRE  =  ON        ]
+[p x MCLRE  =  OFF        ]
 "58
 [p x STVREN  =  OFF      ]
 "59
@@ -583,7 +583,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "60
 [p x XINST  =  OFF       ]
 "61
-[p x DEBUG  =  ON        ]
+[p x DEBUG  =  OFF        ]
 "62
 [p x CP0  =  OFF         ]
 "63

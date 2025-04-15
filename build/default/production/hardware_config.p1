@@ -44,6 +44,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2947
 [; ;C:/Users/maria/.mchp_packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc\pic18f46k20.h: 2947: extern volatile TRISEbits_t TRISEbits __attribute__((address(0xF96)));
 [v _TRISEbits `VS107 ~T0 @X0 0 e@3990 ]
+"1986
+[; ;C:/Users/maria/.mchp_packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc\pic18f46k20.h: 1986:     struct {
+[s S81 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S81 . LATE0 LATE1 LATE2 ]
+"1991
+[; ;C:/Users/maria/.mchp_packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc\pic18f46k20.h: 1991:     struct {
+[s S82 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S82 . LE0 LE1 LE2 ]
+"1985
+[; ;C:/Users/maria/.mchp_packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc\pic18f46k20.h: 1985: typedef union {
+[u S80 `S81 1 `S82 1 ]
+[n S80 . . . ]
+"1997
+[; ;C:/Users/maria/.mchp_packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc\pic18f46k20.h: 1997: extern volatile LATEbits_t LATEbits __attribute__((address(0xF8D)));
+[v _LATEbits `VS80 ~T0 @X0 0 e@3981 ]
 "7877
 [; ;C:/Users/maria/.mchp_packs/Microchip/PIC18F-K_DFP/1.14.301/xc8\pic\include\proc\pic18f46k20.h: 7877: extern volatile __bit GIE __attribute__((address(0x7F97)));
 [v _GIE `Vb ~T0 @X0 0 e@32663 ]
@@ -558,7 +573,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "56
 [p x HFOFST  =  OFF      ]
 "57
-[p x MCLRE  =  ON        ]
+[p x MCLRE  =  OFF        ]
 "58
 [p x STVREN  =  OFF      ]
 "59
@@ -566,7 +581,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "60
 [p x XINST  =  OFF       ]
 "61
-[p x DEBUG  =  ON        ]
+[p x DEBUG  =  OFF        ]
 "62
 [p x CP0  =  OFF         ]
 "63
@@ -631,61 +646,70 @@ Version 4.0 HI-TECH Software Intermediate Code
 "34
 [; ;hardware_config.c: 34:     TRISEbits.TRISE1 = 0;
 [e = . . _TRISEbits 0 1 -> -> 0 `i `uc ]
+"35
+[; ;hardware_config.c: 35:     LATEbits.LATE2 = 1;
+[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
+"36
+[; ;hardware_config.c: 36:     LATEbits.LATE0 = 1;
+[e = . . _LATEbits 0 0 -> -> 1 `i `uc ]
 "37
-[; ;hardware_config.c: 37:  GIE = 0;
-[e = _GIE -> -> 0 `i `b ]
-"38
-[; ;hardware_config.c: 38:  PEIE = 0;
-[e = _PEIE -> -> 0 `i `b ]
-"39
-[; ;hardware_config.c: 39:  RBIE = 0;
-[e = _RBIE -> -> 0 `i `b ]
+[; ;hardware_config.c: 37:     LATEbits.LATE1 = 1;
+[e = . . _LATEbits 0 1 -> -> 1 `i `uc ]
 "40
-[; ;hardware_config.c: 40:  T0IE = 0;
-[e = _T0IE -> -> 0 `i `b ]
+[; ;hardware_config.c: 40:  GIE = 0;
+[e = _GIE -> -> 0 `i `b ]
 "41
-[; ;hardware_config.c: 41:  TMR1IE = 0;
-[e = _TMR1IE -> -> 0 `i `b ]
+[; ;hardware_config.c: 41:  PEIE = 0;
+[e = _PEIE -> -> 0 `i `b ]
 "42
-[; ;hardware_config.c: 42:  TMR2IE = 0;
-[e = _TMR2IE -> -> 0 `i `b ]
-"43
-[; ;hardware_config.c: 43:  CCP1IE = 0;
-[e = _CCP1IE -> -> 0 `i `b ]
-"44
-[; ;hardware_config.c: 44:  CCP2IE = 0;
-[e = _CCP2IE -> -> 0 `i `b ]
-"45
-[; ;hardware_config.c: 45:  EEIE = 0;
-[e = _EEIE -> -> 0 `i `b ]
-"46
-[; ;hardware_config.c: 46:  SSPIE = 0;
-[e = _SSPIE -> -> 0 `i `b ]
-"47
-[; ;hardware_config.c: 47:  BCLIE = 0;
-[e = _BCLIE -> -> 0 `i `b ]
-"48
-[; ;hardware_config.c: 48:  ADIE = 0;
-[e = _ADIE -> -> 0 `i `b ]
-"49
-[; ;hardware_config.c: 49:  RBIE = 0;
+[; ;hardware_config.c: 42:  RBIE = 0;
 [e = _RBIE -> -> 0 `i `b ]
+"43
+[; ;hardware_config.c: 43:  T0IE = 0;
+[e = _T0IE -> -> 0 `i `b ]
+"44
+[; ;hardware_config.c: 44:  TMR1IE = 0;
+[e = _TMR1IE -> -> 0 `i `b ]
+"45
+[; ;hardware_config.c: 45:  TMR2IE = 0;
+[e = _TMR2IE -> -> 0 `i `b ]
+"46
+[; ;hardware_config.c: 46:  CCP1IE = 0;
+[e = _CCP1IE -> -> 0 `i `b ]
+"47
+[; ;hardware_config.c: 47:  CCP2IE = 0;
+[e = _CCP2IE -> -> 0 `i `b ]
+"48
+[; ;hardware_config.c: 48:  EEIE = 0;
+[e = _EEIE -> -> 0 `i `b ]
+"49
+[; ;hardware_config.c: 49:  SSPIE = 0;
+[e = _SSPIE -> -> 0 `i `b ]
 "50
-[; ;hardware_config.c: 50:  RCIE = 0;
-[e = _RCIE -> -> 0 `i `b ]
+[; ;hardware_config.c: 50:  BCLIE = 0;
+[e = _BCLIE -> -> 0 `i `b ]
 "51
-[; ;hardware_config.c: 51:     OSCCON = 0b01110010;
-[e = _OSCCON -> -> 114 `i `uc ]
+[; ;hardware_config.c: 51:  ADIE = 0;
+[e = _ADIE -> -> 0 `i `b ]
 "52
-[; ;hardware_config.c: 52:     OSCTUNE = 0b11011111;
-[e = _OSCTUNE -> -> 223 `i `uc ]
+[; ;hardware_config.c: 52:  RBIE = 0;
+[e = _RBIE -> -> 0 `i `b ]
+"53
+[; ;hardware_config.c: 53:  RCIE = 0;
+[e = _RCIE -> -> 0 `i `b ]
+"54
+[; ;hardware_config.c: 54:     OSCCON = 0b01110010;
+[e = _OSCCON -> -> 114 `i `uc ]
 "55
-[; ;hardware_config.c: 55:     SPIInit();
+[; ;hardware_config.c: 55:     OSCTUNE = 0b11011111;
+[e = _OSCTUNE -> -> 223 `i `uc ]
+"58
+[; ;hardware_config.c: 58:     SPIInit();
 [e ( _SPIInit ..  ]
-"56
-[; ;hardware_config.c: 56:     return;
+"59
+[; ;hardware_config.c: 59:     return;
 [e $UE 303  ]
-"57
-[; ;hardware_config.c: 57: }
+"60
+[; ;hardware_config.c: 60: }
 [e :UE 303 ]
 }

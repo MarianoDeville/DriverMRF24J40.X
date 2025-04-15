@@ -17,6 +17,13 @@
 /* Includes ------------------------------------------------------------------*/
 #include "../../redef_var.h"
 
+/* Definiciones de la configuración por defecto ------------------------------*/
+#define	DEFAULT_CHANNEL     CH_11
+#define DEFAULT_SEC_NUMBER  0X01
+#define	MY_DEFAULT_PAN_ID	0x1234
+#define	MY_DEFAULT_ADDRESS	0xDE11
+#define	BROADCAST		(0xFFFF)
+
 /* Prototipo de funciones públicas -------------------------------------------*/
 void MRF24J40Init(void);
 void EnviarDato(void);
