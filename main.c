@@ -13,7 +13,7 @@
 #include "main.h"
 #include "hardware_config.h"
 #include "redef_var.h"
-#include "drivers/inc/drv_mrf24j40.h"
+#include "drivers/inc/API_MRF24J40.h"
 
 /**
  * @brief  Main program
@@ -25,14 +25,14 @@ void main(void) {
     BoardInit();
     MRF24J40Init();
     SetMensajeSalida("Hola mundo.");
-    SetDireccionDestino(BROADCAST);
+    SetDireccionDestino(0x1111);
     SetPANIDDestino(0X1234);
     
     while(1) {
 
         CLRWDT();
         LED_VERDE = !LED_VERDE;
-        delayms_t(750);
+        delay_t(2500);
         EnviarDato();
     }
 }

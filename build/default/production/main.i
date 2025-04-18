@@ -5147,17 +5147,42 @@ void BoardInit(void);
 typedef _Bool bool_t;
 # 15 "main.c" 2
 
-# 1 "./drivers/inc/drv_mrf24j40.h" 1
-# 28 "./drivers/inc/drv_mrf24j40.h"
+# 1 "./drivers/inc/API_MRF24J40.h" 1
+# 22 "./drivers/inc/API_MRF24J40.h"
+typedef enum {
+
+    CH_11 = 0x03,
+    CH_12 = 0x13,
+    CH_13 = 0x23,
+ CH_14 = 0x33,
+ CH_15 = 0x43,
+ CH_16 = 0x53,
+ CH_17 = 0x63,
+ CH_18 = 0x73,
+ CH_19 = 0x83,
+ CH_20 = 0x93,
+ CH_21 = 0xA3,
+ CH_22 = 0xB3,
+ CH_23 = 0xC3,
+ CH_24 = 0xD3,
+ CH_25 = 0xE3,
+ CH_26 = 0xF3
+}channel_list;
+
+
 void MRF24J40Init(void);
-void EnviarDato(void);
-void EnviarComando();
-void EnviarDatoEncriptado(void);
-void ReciboPaquete(void);
-void BuscarDispositivos(void);
 void SetMensajeSalida(const char * mensaje);
 void SetDireccionDestino(uint16_t direccion);
 void SetPANIDDestino(uint16_t panid);
+void EnviarDato(void);
+bool_t MRF24IsNewMsg(void);
+void ReciboPaquete(void);
+char * GetMensajeEntrada(void);
+
+
+void EnviarComando();
+void EnviarDatoEncriptado(void);
+void BuscarDispositivos(void);
 # 16 "main.c" 2
 
 
@@ -5171,14 +5196,14 @@ void main(void) {
     BoardInit();
     MRF24J40Init();
     SetMensajeSalida("Hola mundo.");
-    SetDireccionDestino((0xFFFF));
+    SetDireccionDestino(0x1111);
     SetPANIDDestino(0X1234);
 
     while(1) {
 
         __asm(" clrwdt");
         LATEbits.LATE0 = !LATEbits.LATE0;
-        _delay((unsigned long)((750)*(16000000/4000.0)));;
+        _delay((unsigned long)((1500)*(16000000/4000.0)));;
         EnviarDato();
     }
 }

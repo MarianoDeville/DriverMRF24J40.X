@@ -10,7 +10,7 @@
  */
 
 /* Includes ------------------------------------------------------------------*/
-#include "../inc/drv_mrf24j40_port.h"
+#include "../inc/API_MRF24J40_port.h"
 #include "../../hardware_config.h"
 
 /**
@@ -61,6 +61,15 @@ void SetResetPin(bool_t estado){
     
     MRF24_RESET = estado;
     return;
+}
+
+/**
+ * @brief  Devuelvo el estado del pin interrup del módulo
+ * @retval Booleano
+ */
+bool_t IsMRF24Interrup(void) {
+
+	return MRF24_INT;
 }
 
 /**

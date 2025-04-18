@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=drivers/scr/drv_mrf24j40.c drivers/scr/drv_mrf24j40_port.c drivers/scr/drv_mspi_port.c main.c hardware_config.c
+SOURCEFILES_QUOTED_IF_SPACED=drivers/scr/drv_mspi_port.c main.c hardware_config.c drivers/scr/API_MRF24J40_port.c drivers/scr/API_MRF24J40.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/drivers/scr/drv_mrf24j40.p1 ${OBJECTDIR}/drivers/scr/drv_mrf24j40_port.p1 ${OBJECTDIR}/drivers/scr/drv_mspi_port.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/hardware_config.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/drivers/scr/drv_mrf24j40.p1.d ${OBJECTDIR}/drivers/scr/drv_mrf24j40_port.p1.d ${OBJECTDIR}/drivers/scr/drv_mspi_port.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/hardware_config.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/drivers/scr/drv_mspi_port.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/hardware_config.p1 ${OBJECTDIR}/drivers/scr/API_MRF24J40_port.p1 ${OBJECTDIR}/drivers/scr/API_MRF24J40.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/drivers/scr/drv_mspi_port.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/hardware_config.p1.d ${OBJECTDIR}/drivers/scr/API_MRF24J40_port.p1.d ${OBJECTDIR}/drivers/scr/API_MRF24J40.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/drivers/scr/drv_mrf24j40.p1 ${OBJECTDIR}/drivers/scr/drv_mrf24j40_port.p1 ${OBJECTDIR}/drivers/scr/drv_mspi_port.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/hardware_config.p1
+OBJECTFILES=${OBJECTDIR}/drivers/scr/drv_mspi_port.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/hardware_config.p1 ${OBJECTDIR}/drivers/scr/API_MRF24J40_port.p1 ${OBJECTDIR}/drivers/scr/API_MRF24J40.p1
 
 # Source Files
-SOURCEFILES=drivers/scr/drv_mrf24j40.c drivers/scr/drv_mrf24j40_port.c drivers/scr/drv_mspi_port.c main.c hardware_config.c
+SOURCEFILES=drivers/scr/drv_mspi_port.c main.c hardware_config.c drivers/scr/API_MRF24J40_port.c drivers/scr/API_MRF24J40.c
 
 
 
@@ -94,22 +94,6 @@ MP_PROCESSOR_OPTION=18F46K20
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/drivers/scr/drv_mrf24j40.p1: drivers/scr/drv_mrf24j40.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/drivers/scr" 
-	@${RM} ${OBJECTDIR}/drivers/scr/drv_mrf24j40.p1.d 
-	@${RM} ${OBJECTDIR}/drivers/scr/drv_mrf24j40.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/drivers/scr/drv_mrf24j40.p1 drivers/scr/drv_mrf24j40.c 
-	@-${MV} ${OBJECTDIR}/drivers/scr/drv_mrf24j40.d ${OBJECTDIR}/drivers/scr/drv_mrf24j40.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/drivers/scr/drv_mrf24j40.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/drivers/scr/drv_mrf24j40_port.p1: drivers/scr/drv_mrf24j40_port.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/drivers/scr" 
-	@${RM} ${OBJECTDIR}/drivers/scr/drv_mrf24j40_port.p1.d 
-	@${RM} ${OBJECTDIR}/drivers/scr/drv_mrf24j40_port.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/drivers/scr/drv_mrf24j40_port.p1 drivers/scr/drv_mrf24j40_port.c 
-	@-${MV} ${OBJECTDIR}/drivers/scr/drv_mrf24j40_port.d ${OBJECTDIR}/drivers/scr/drv_mrf24j40_port.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/drivers/scr/drv_mrf24j40_port.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
 ${OBJECTDIR}/drivers/scr/drv_mspi_port.p1: drivers/scr/drv_mspi_port.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/drivers/scr" 
 	@${RM} ${OBJECTDIR}/drivers/scr/drv_mspi_port.p1.d 
@@ -134,23 +118,23 @@ ${OBJECTDIR}/hardware_config.p1: hardware_config.c  nbproject/Makefile-${CND_CON
 	@-${MV} ${OBJECTDIR}/hardware_config.d ${OBJECTDIR}/hardware_config.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/hardware_config.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/drivers/scr/API_MRF24J40_port.p1: drivers/scr/API_MRF24J40_port.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/drivers/scr" 
+	@${RM} ${OBJECTDIR}/drivers/scr/API_MRF24J40_port.p1.d 
+	@${RM} ${OBJECTDIR}/drivers/scr/API_MRF24J40_port.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/drivers/scr/API_MRF24J40_port.p1 drivers/scr/API_MRF24J40_port.c 
+	@-${MV} ${OBJECTDIR}/drivers/scr/API_MRF24J40_port.d ${OBJECTDIR}/drivers/scr/API_MRF24J40_port.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/drivers/scr/API_MRF24J40_port.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/drivers/scr/API_MRF24J40.p1: drivers/scr/API_MRF24J40.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/drivers/scr" 
+	@${RM} ${OBJECTDIR}/drivers/scr/API_MRF24J40.p1.d 
+	@${RM} ${OBJECTDIR}/drivers/scr/API_MRF24J40.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/drivers/scr/API_MRF24J40.p1 drivers/scr/API_MRF24J40.c 
+	@-${MV} ${OBJECTDIR}/drivers/scr/API_MRF24J40.d ${OBJECTDIR}/drivers/scr/API_MRF24J40.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/drivers/scr/API_MRF24J40.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 else
-${OBJECTDIR}/drivers/scr/drv_mrf24j40.p1: drivers/scr/drv_mrf24j40.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/drivers/scr" 
-	@${RM} ${OBJECTDIR}/drivers/scr/drv_mrf24j40.p1.d 
-	@${RM} ${OBJECTDIR}/drivers/scr/drv_mrf24j40.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/drivers/scr/drv_mrf24j40.p1 drivers/scr/drv_mrf24j40.c 
-	@-${MV} ${OBJECTDIR}/drivers/scr/drv_mrf24j40.d ${OBJECTDIR}/drivers/scr/drv_mrf24j40.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/drivers/scr/drv_mrf24j40.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/drivers/scr/drv_mrf24j40_port.p1: drivers/scr/drv_mrf24j40_port.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/drivers/scr" 
-	@${RM} ${OBJECTDIR}/drivers/scr/drv_mrf24j40_port.p1.d 
-	@${RM} ${OBJECTDIR}/drivers/scr/drv_mrf24j40_port.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/drivers/scr/drv_mrf24j40_port.p1 drivers/scr/drv_mrf24j40_port.c 
-	@-${MV} ${OBJECTDIR}/drivers/scr/drv_mrf24j40_port.d ${OBJECTDIR}/drivers/scr/drv_mrf24j40_port.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/drivers/scr/drv_mrf24j40_port.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
 ${OBJECTDIR}/drivers/scr/drv_mspi_port.p1: drivers/scr/drv_mspi_port.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/drivers/scr" 
 	@${RM} ${OBJECTDIR}/drivers/scr/drv_mspi_port.p1.d 
@@ -174,6 +158,22 @@ ${OBJECTDIR}/hardware_config.p1: hardware_config.c  nbproject/Makefile-${CND_CON
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/hardware_config.p1 hardware_config.c 
 	@-${MV} ${OBJECTDIR}/hardware_config.d ${OBJECTDIR}/hardware_config.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/hardware_config.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/drivers/scr/API_MRF24J40_port.p1: drivers/scr/API_MRF24J40_port.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/drivers/scr" 
+	@${RM} ${OBJECTDIR}/drivers/scr/API_MRF24J40_port.p1.d 
+	@${RM} ${OBJECTDIR}/drivers/scr/API_MRF24J40_port.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/drivers/scr/API_MRF24J40_port.p1 drivers/scr/API_MRF24J40_port.c 
+	@-${MV} ${OBJECTDIR}/drivers/scr/API_MRF24J40_port.d ${OBJECTDIR}/drivers/scr/API_MRF24J40_port.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/drivers/scr/API_MRF24J40_port.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/drivers/scr/API_MRF24J40.p1: drivers/scr/API_MRF24J40.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/drivers/scr" 
+	@${RM} ${OBJECTDIR}/drivers/scr/API_MRF24J40.p1.d 
+	@${RM} ${OBJECTDIR}/drivers/scr/API_MRF24J40.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/drivers/scr/API_MRF24J40.p1 drivers/scr/API_MRF24J40.c 
+	@-${MV} ${OBJECTDIR}/drivers/scr/API_MRF24J40.d ${OBJECTDIR}/drivers/scr/API_MRF24J40.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/drivers/scr/API_MRF24J40.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

@@ -21,7 +21,7 @@
 typedef bool bool_t;
 
 /* Define --------------------------------------------------------------------*/
-#define delayms_t(x) __delay_ms(x);
+#define delay_t(x) __delay_ms(x);
 #define delayus_t(x) __delay_us(x);
 
 /* Macros --------------------------------------------------------------------*/
