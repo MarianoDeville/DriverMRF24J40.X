@@ -15,7 +15,7 @@
 #define	HEADER_DRV_MSPI_PORT_H
 
 /* Includes ------------------------------------------------------------------*/
-#include "../../redef_var.h"
+#include "../../compatibility.h"
 
 /* Prototipo de funciones públicas -------------------------------------------*/
 void SPIInit(void);

@@ -26,9 +26,11 @@
 #define SPI_SCK_IO      TRISCbits.TRISC3
 #define SPI_SDO_IO      TRISCbits.TRISC5
 #define SPI_SDI_IO      TRISCbits.TRISC4
+#define	PULSADOR_IO		TRISCbits.TRISC2
 #define	LED_VERDE_IO	TRISEbits.TRISE0
 #define	LED_ROJO_IO		TRISEbits.TRISE2
 #define	LED_AMARILLO_IO	TRISEbits.TRISE1
+#define	PULSADOR		PORTCbits.RC2
 #define	LED_VERDE		LATEbits.LATE0
 #define	LED_ROJO		LATEbits.LATE2
 #define	LED_AMARILLO	LATEbits.LATE1
@@ -36,7 +38,7 @@
 #define	MRF24_CS_IO 	TRISCbits.TRISC6
 #define	MRF24_WAKE_IO 	TRISCbits.TRISC7
 #define	MRF24_RESET_IO	TRISDbits.TRISD4
-#define MRF24_INT   	LATBbits.LATB0
+#define MRF24_INT   	PORTBbits.RB0
 #define	MRF24_CS        LATCbits.LATC6
 #define	MRF24_WAKE  	LATCbits.LATC7
 #define	MRF24_RESET 	LATDbits.LATD4
@@ -45,7 +47,7 @@
 #pragma config FOSC = INTIO67   // Internal oscillator block
 #pragma config FCMEN = OFF      // Fail-Safe Clock Monitor Enabled bit
 #pragma config IESO = OFF       // Internal External Switchover bit
-#pragma config PWRTEN = OFF     // Power-up Timer Enable bit
+//#pragma config PWRTEN = OFF     // Power-up Timer Enable bit
 #pragma config BOREN = OFF      // Brown Out Reset Selection bits
 #pragma config BORV = 22        // Brown-out Reset Selection bit
 #pragma config WDTEN = OFF      // Watchdog Timer
@@ -54,11 +56,11 @@
 #pragma config PBADEN = OFF     // PORTB<4:0> pins are configured as digital I/O
 #pragma config LPT1OSC = OFF    // Low Voltage Programming Enable bit
 #pragma config HFOFST = OFF     // System clock is held off until the HFINTOSC is stable.
-#pragma config MCLRE = OFF       // MCLR pin enabled; RE3 input pin disabled
+#pragma config MCLRE = OFF      // MCLR pin enabled; RE3 input pin disabled
 #pragma config STVREN = OFF     // Stack full/underflow will cause Reset
 #pragma config LVP = OFF        // Single-Supply ICSP enabled
 #pragma config XINST = OFF      // Instruction set extension (Legacy mode)
-#pragma config DEBUG = OFF       // In-Circuit Debugger Mode bit
+#pragma config DEBUG = OFF      // In-Circuit Debugger Mode bit
 #pragma config CP0 = OFF        // Code Protection bit
 #pragma config CP1 = OFF        // Code Protection bit
 #pragma config CP2 = OFF        // Code Protection bit

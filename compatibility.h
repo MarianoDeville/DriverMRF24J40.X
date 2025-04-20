@@ -15,7 +15,11 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include <stdbool.h>
+#include <stdint.h>
 #include "hardware_config.h"
+
+/* Macros --------------------------------------------------------------------*/
+#define VACIO           (0X00)
 
 /* Typedef -------------------------------------------------------------------*/
 typedef bool bool_t;
@@ -24,7 +28,16 @@ typedef bool bool_t;
 #define delay_t(x) __delay_ms(x);
 #define delayus_t(x) __delay_us(x);
 
-/* Macros --------------------------------------------------------------------*/
-#define VACIO           0X00
+/**
+ * Respuestas de las funciones de envío de datos.
+ */
+typedef enum {
+
+	OK,
+	BUFFER_VACIO,
+	SIN_DATOS,
+	ERROR_SIZE,
+	ERROR_TRANSMISION,
+}Estado_TX_RX;
 
 #endif

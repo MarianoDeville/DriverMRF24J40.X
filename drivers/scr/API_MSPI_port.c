@@ -11,7 +11,8 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "../../hardware_config.h"
-#include "../inc/drv_mspi_port.h"
+#include "../inc/API_MSPI_port.h"
+#include "../../compatibility.h"
 
 /* Definiciones de las velocidades del puerto --------------------------------*/
 #define MASTER_FOSC_4   0X00

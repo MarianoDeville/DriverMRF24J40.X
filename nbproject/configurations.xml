@@ -5,13 +5,15 @@
                    displayName="Header Files"
                    projectFiles="true">
       <logicalFolder name="f1" displayName="Drivers" projectFiles="true">
-        <itemPath>drivers/inc/drv_mspi_port.h</itemPath>
         <itemPath>drivers/inc/API_MRF24J40.h</itemPath>
         <itemPath>drivers/inc/API_MRF24J40_port.h</itemPath>
+        <itemPath>drivers/inc/API_MSPI_port.h</itemPath>
+        <itemPath>drivers/inc/API_delay.h</itemPath>
+        <itemPath>drivers/inc/API_debounce.h</itemPath>
       </logicalFolder>
-      <itemPath>redef_var.h</itemPath>
       <itemPath>main.h</itemPath>
       <itemPath>hardware_config.h</itemPath>
+      <itemPath>compatibility.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -21,12 +23,15 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="f1" displayName="Drivers" projectFiles="true">
-        <itemPath>drivers/scr/drv_mspi_port.c</itemPath>
         <itemPath>drivers/scr/API_MRF24J40_port.c</itemPath>
         <itemPath>drivers/scr/API_MRF24J40.c</itemPath>
+        <itemPath>drivers/scr/API_MSPI_port.c</itemPath>
+        <itemPath>drivers/scr/API_delay.c</itemPath>
+        <itemPath>drivers/scr/API_debounce.c</itemPath>
       </logicalFolder>
       <itemPath>main.c</itemPath>
       <itemPath>hardware_config.c</itemPath>
+      <itemPath>drivers/inc/interrupciones.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -52,7 +57,7 @@
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="PIC18F-K_DFP" vendor="Microchip" version="1.14.301"/>
+        <pack name="PIC18F-K_DFP" vendor="Microchip" version="1.4.87"/>
       </packs>
       <ScriptingSettings>
       </ScriptingSettings>
@@ -168,7 +173,10 @@
         <property key="ToolFirmwareFilePath"
                   value="Press to browse for a specific firmware version"/>
         <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
+        <property key="debugoptions.debug-startup" value="Use system settings"/>
+        <property key="debugoptions.reset-behaviour" value="Use system settings"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
+        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>
@@ -213,6 +221,7 @@
         <property key="debugoptions.debug-startup" value="Use system settings"/>
         <property key="debugoptions.reset-behaviour" value="Use system settings"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
+        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>

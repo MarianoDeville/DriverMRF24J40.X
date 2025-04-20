@@ -11,44 +11,53 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_9.o
-idloc IDLOC 5 200000 200000 8 1 1
-init CODE 0 0 0 4 1 2
-config CONFIG 4 300000 300000 E 1 1
 $dist/default/production\DriverMRF24J40.X.production.o
-cinit CODE 0 153E 153E 26 1 2
+cinit CODE 0 1882 1882 26 1 2
 idloc IDLOC 5 200000 200000 8 1 1
-text0 CODE 0 1332 1332 6E 1 2
-text1 CODE 0 1664 1664 A 1 2
-text2 CODE 0 160C 160C 12 1 2
-text3 CODE 0 14E4 14E4 30 1 2
-text4 CODE 0 166E 166E A 1 2
-text5 CODE 0 1026 1026 16A 1 2
-text6 CODE 0 1428 1428 42 1 2
-text7 CODE 0 1514 1514 2A 1 2
-text8 CODE 0 14AC 14AC 38 1 2
-text9 CODE 0 128A 128A A8 1 2
-text10 CODE 0 15AA 15AA 1C 1 2
-text11 CODE 0 161E 161E E 1 2
-text12 CODE 0 162C 162C E 1 2
-text13 CODE 0 1564 1564 26 1 2
-text14 CODE 0 13A0 13A0 44 1 2
-text15 CODE 0 1682 1682 6 1 2
-text16 CODE 0 15F6 15F6 16 1 2
-text17 CODE 0 1190 1190 FA 1 2
-text18 CODE 0 158A 158A 20 1 2
-text19 CODE 0 146A 146A 42 1 2
-text20 CODE 0 1678 1678 A 1 2
-text21 CODE 0 163A 163A E 1 2
-text22 CODE 0 1648 1648 E 1 2
-text23 CODE 0 15C6 15C6 18 1 2
-text24 CODE 0 1656 1656 E 1 2
-text25 CODE 0 13E4 13E4 44 1 2
-text26 CODE 0 15DE 15DE 18 1 2
-cstackCOMRAM COMRAM 1 2A 2A 13 1 1
+text0 CODE 0 142E 142E E8 1 2
+text1 CODE 0 11F4 11F4 13C 1 2
+text2 CODE 0 1800 1800 30 1 2
+text3 CODE 0 19DC 19DC A 1 2
+text4 CODE 0 1976 1976 12 1 2
+text5 CODE 0 17CC 17CC 34 1 2
+text6 CODE 0 19E6 19E6 A 1 2
+text7 CODE 0 102A 102A 1CA 1 2
+text8 CODE 0 1710 1710 42 1 2
+text9 CODE 0 1830 1830 2A 1 2
+text10 CODE 0 1794 1794 38 1 2
+text11 CODE 0 1516 1516 B0 1 2
+text12 CODE 0 1914 1914 1C 1 2
+text13 CODE 0 1988 1988 E 1 2
+text14 CODE 0 1996 1996 E 1 2
+text15 CODE 0 18A8 18A8 26 1 2
+text16 CODE 0 16CC 16CC 44 1 2
+text17 CODE 0 19FA 19FA 6 1 2
+text18 CODE 0 1960 1960 16 1 2
+text19 CODE 0 18CE 18CE 26 1 2
+text20 CODE 0 15C6 15C6 AC 1 2
+text21 CODE 0 19A4 19A4 E 1 2
+text22 CODE 0 185A 185A 28 1 2
+text23 CODE 0 1330 1330 FE 1 2
+text24 CODE 0 18F4 18F4 20 1 2
+text25 CODE 0 1752 1752 42 1 2
+text26 CODE 0 19F0 19F0 A 1 2
+text27 CODE 0 19B2 19B2 E 1 2
+text28 CODE 0 19C0 19C0 E 1 2
+text29 CODE 0 1930 1930 18 1 2
+text30 CODE 0 19CE 19CE E 1 2
+text31 CODE 0 1672 1672 5A 1 2
+text32 CODE 0 1948 1948 18 1 2
+cstackCOMRAM COMRAM 1 1 1 2F 1 1
+temp COMRAM 1 5D 5D 1 1 1
 bssBANK0 BANK0 1 60 60 38 1 1
-smallconst SMALLCONST 0 1000 1000 26 1 2
-bssCOMRAM COMRAM 1 1 1 29 1 1
+intcode CODE 0 8 8 38 1 2
+smallconst SMALLCONST 0 1000 1000 2A 1 2
+bssCOMRAM COMRAM 1 30 30 2D 1 1
+config CONFIG 4 300000 300000 E 1 1
+$C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_9.o
+idloc IDLOC 5 200000 200000 8 1 1
+init CODE 0 40 40 4 1 2
+reset_vec CODE 0 0 0 4 1 2
 config CONFIG 4 300000 300000 E 1 1
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
@@ -68,23 +77,25 @@ BANK6 600-6FF 1
 BANK7 700-7FF 1
 BANK8 800-8FF 1
 BANK9 900-9FF 1
-CONST 4-FFF 1
-CONST 1688-FFFF 1
-SMALLCONST 1688-FFFF 1
-CODE 4-FFF 1
-CODE 1688-FFFF 1
+CONST 4-7 1
+CONST 44-FFF 1
+CONST 1A00-FFFF 1
+SMALLCONST 1A00-FFFF 1
+CODE 4-7 1
+CODE 44-FFF 1
+CODE 1A00-FFFF 1
 BANK10 A00-AFF 1
 BANK11 B00-BFF 1
 BANK12 C00-CFF 1
 BANK13 D00-DFF 1
 BANK14 E00-EFF 1
 BANK15 F00-F5F 1
-BIGRAM 3D-5F 1
+BIGRAM 5E-5F 1
 BIGRAM 98-F5F 1
 BIGSFR F60-FFF 1
-COMRAM 3D-5F 1
+COMRAM 5E-5F 1
 EEDATA F00000-F003FF 1
-MEDIUMCONST 1688-FFFF 1
+MEDIUMCONST 1A00-FFFF 1
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -99,258 +110,348 @@ MEDIUMCONST 1688-FFFF 1
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\DriverMRF24J40.X.production.o
-15DE text26 CODE >29:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mspi_port.c
-15DE text26 CODE >31:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mspi_port.c
-15E0 text26 CODE >32:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mspi_port.c
-15E2 text26 CODE >33:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mspi_port.c
-15E4 text26 CODE >34:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mspi_port.c
-15E6 text26 CODE >35:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mspi_port.c
-15E8 text26 CODE >36:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mspi_port.c
-15EC text26 CODE >37:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mspi_port.c
-15EE text26 CODE >38:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mspi_port.c
-15F0 text26 CODE >39:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mspi_port.c
-15F2 text26 CODE >40:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mspi_port.c
-15F4 text26 CODE >42:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mspi_port.c
-13E4 text25 CODE >21:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
-13E4 text25 CODE >23:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
-13E6 text25 CODE >24:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
-13E8 text25 CODE >25:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
-13EA text25 CODE >26:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
-13EC text25 CODE >27:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
-13EE text25 CODE >30:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
-13F0 text25 CODE >31:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
-13F2 text25 CODE >32:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
-13F4 text25 CODE >33:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
-13F6 text25 CODE >34:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
-13F8 text25 CODE >35:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
-13FA text25 CODE >36:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
-13FC text25 CODE >37:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
-13FE text25 CODE >40:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
-1400 text25 CODE >41:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
-1402 text25 CODE >42:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
-1404 text25 CODE >43:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
-1406 text25 CODE >44:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
-1408 text25 CODE >45:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
-140A text25 CODE >46:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
-140C text25 CODE >47:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
-140E text25 CODE >48:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
-1410 text25 CODE >49:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
-1412 text25 CODE >50:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
-1414 text25 CODE >51:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
-1416 text25 CODE >52:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
-1418 text25 CODE >53:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
-141A text25 CODE >54:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
-141E text25 CODE >55:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
-1422 text25 CODE >58:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
-1426 text25 CODE >60:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
-1656 text24 CODE >38:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
-1658 text24 CODE >40:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
-1662 text24 CODE >42:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
-15C6 text23 CODE >49:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mspi_port.c
-15C8 text23 CODE >51:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mspi_port.c
-15CA text23 CODE >52:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mspi_port.c
-15CE text23 CODE >53:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mspi_port.c
-15DC text23 CODE >55:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mspi_port.c
-1648 text22 CODE >62:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mspi_port.c
-1648 text22 CODE >64:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mspi_port.c
-164E text22 CODE >65:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mspi_port.c
-1654 text22 CODE >67:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mspi_port.c
-163A text21 CODE >91:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
-163A text21 CODE >93:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
-1646 text21 CODE >95:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
-1678 text20 CODE >80:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
-167A text20 CODE >82:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
-1680 text20 CODE >84:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
-146A text19 CODE >601:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-146A text19 CODE >603:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-148C text19 CODE >604:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1492 text19 CODE >605:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-149E text19 CODE >606:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-14A4 text19 CODE >607:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-14AA text19 CODE >609:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-158A text18 CODE >570:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-158C text18 CODE >572:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1590 text18 CODE >573:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1596 text18 CODE >574:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-159C text18 CODE >575:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-15A2 text18 CODE >576:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-15A8 text18 CODE >578:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1190 text17 CODE >712:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1190 text17 CODE >714:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1192 text17 CODE >715:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1192 text17 CODE >716:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-11A4 text17 CODE >717:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-11B6 text17 CODE >718:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-11C6 text17 CODE >719:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-11D6 text17 CODE >720:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-11EC text17 CODE >721:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-11FC text17 CODE >722:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-120C text17 CODE >723:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-121C text17 CODE >724:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-122C text17 CODE >726:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1232 text17 CODE >728:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-124E text17 CODE >729:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-127E text17 CODE >730:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1288 text17 CODE >732:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-15F6 text16 CODE >74:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mspi_port.c
-15F6 text16 CODE >76:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mspi_port.c
-15F8 text16 CODE >77:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mspi_port.c
-15FA text16 CODE >78:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mspi_port.c
-1608 text16 CODE >79:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mspi_port.c
-160A text16 CODE >80:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/drv_mspi_port.c
-1682 text15 CODE >102:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
-1682 text15 CODE >104:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
-1686 text15 CODE >105:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
-13A0 text14 CODE >616:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-13A0 text14 CODE >619:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-13C2 text14 CODE >620:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-13C8 text14 CODE >621:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-13D4 text14 CODE >622:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-13DA text14 CODE >623:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-13E0 text14 CODE >624:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-13E2 text14 CODE >625:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1564 text13 CODE >585:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1566 text13 CODE >587:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1566 text13 CODE >588:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-156E text13 CODE >589:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1574 text13 CODE >590:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-157A text13 CODE >591:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1580 text13 CODE >592:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1586 text13 CODE >593:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1588 text13 CODE >594:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-162C text12 CODE >60:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
-162E text12 CODE >62:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
-1638 text12 CODE >64:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
-161E text11 CODE >49:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
-1620 text11 CODE >51:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
-162A text11 CODE >53:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
-15AA text10 CODE >21:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
-15AA text10 CODE >23:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
-15AC text10 CODE >24:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
-15AE text10 CODE >25:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
-15B0 text10 CODE >26:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
-15B2 text10 CODE >27:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
-15B8 text10 CODE >28:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
-15BE text10 CODE >29:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
-15C4 text10 CODE >31:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
-128A text9 CODE >544:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-128A text9 CODE >546:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1292 text9 CODE >548:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-12AE text9 CODE >549:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-12C6 text9 CODE >550:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-12DE text9 CODE >551:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-12FE text9 CODE >552:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1302 text9 CODE >553:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1306 text9 CODE >554:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1308 text9 CODE >555:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-130A text9 CODE >556:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1312 text9 CODE >557:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-131A text9 CODE >558:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1324 text9 CODE >559:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-132C text9 CODE >560:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-132E text9 CODE >561:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1330 text9 CODE >563:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-14AC text8 CODE >632:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-14AC text8 CODE >634:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-14BC text8 CODE >635:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-14C6 text8 CODE >636:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-14D0 text8 CODE >637:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-14E2 text8 CODE >639:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1514 text7 CODE >646:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1514 text7 CODE >648:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-151E text7 CODE >649:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1528 text7 CODE >650:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1532 text7 CODE >651:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-153C text7 CODE >653:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1428 text6 CODE >660:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1428 text6 CODE >662:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-142C text6 CODE >664:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1434 text6 CODE >666:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1448 text6 CODE >667:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1468 text6 CODE >669:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1026 text5 CODE >497:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1026 text5 CODE >500:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-102A text5 CODE >501:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-102E text5 CODE >502:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1040 text5 CODE >503:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1046 text5 CODE >504:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1058 text5 CODE >505:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1062 text5 CODE >508:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-106A text5 CODE >509:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1080 text5 CODE >510:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1092 text5 CODE >511:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-109C text5 CODE >512:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-10A0 text5 CODE >513:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-10A4 text5 CODE >514:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-10B4 text5 CODE >515:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-10C4 text5 CODE >516:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-10D4 text5 CODE >517:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-10E4 text5 CODE >518:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-10F4 text5 CODE >519:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1104 text5 CODE >520:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-110E text5 CODE >521:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1118 text5 CODE >522:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1122 text5 CODE >523:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-112C text5 CODE >524:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1136 text5 CODE >527:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1144 text5 CODE >528:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1156 text5 CODE >529:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1160 text5 CODE >530:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-116A text5 CODE >531:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-117A text5 CODE >532:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-117E text5 CODE >533:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1188 text5 CODE >534:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-118E text5 CODE >536:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-166E text4 CODE >690:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-166E text4 CODE >692:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1676 text4 CODE >694:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-14E4 text3 CODE >5:C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strlen.c
-14E4 text3 CODE >7:C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strlen.c
-14E8 text3 CODE >8:C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strlen.c
-14EC text3 CODE >9:C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strlen.c
-14EE text3 CODE >8:C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strlen.c
-1506 text3 CODE >11:C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strlen.c
-1512 text3 CODE >12:C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strlen.c
-160C text2 CODE >678:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-160C text2 CODE >680:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1610 text2 CODE >681:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-161C text2 CODE >683:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1664 text1 CODE >701:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1664 text1 CODE >703:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-166C text1 CODE >705:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-1332 text0 CODE >23:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
-1332 text0 CODE >25:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
-1336 text0 CODE >26:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
-133A text0 CODE >27:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
-1342 text0 CODE >28:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
-134E text0 CODE >29:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
-135A text0 CODE >31:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
-135A text0 CODE >33:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
-135C text0 CODE >34:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
-137A text0 CODE >35:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
-1394 text0 CODE >36:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
-153E cinit CODE >1790:C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_1.s
-153E cinit CODE >1792:C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_1.s
-153E cinit CODE >1795:C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_1.s
-153E cinit CODE >1816:C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_1.s
-1542 cinit CODE >1817:C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_1.s
-1544 cinit CODE >1818:C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_1.s
-1544 cinit CODE >1819:C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_1.s
-1546 cinit CODE >1820:C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_1.s
-1548 cinit CODE >1821:C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_1.s
-154A cinit CODE >1824:C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_1.s
-154E cinit CODE >1825:C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_1.s
-1550 cinit CODE >1826:C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_1.s
-1550 cinit CODE >1827:C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_1.s
-1552 cinit CODE >1828:C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_1.s
-1554 cinit CODE >1829:C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_1.s
-1556 cinit CODE >1835:C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_1.s
-1556 cinit CODE >1838:C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_1.s
-1558 cinit CODE >1839:C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_1.s
-155A cinit CODE >1840:C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_1.s
-155C cinit CODE >1841:C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_1.s
-155E cinit CODE >1842:C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_1.s
-1560 cinit CODE >1843:C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_1.s
+8 intcode CODE >7261:C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_1.s
+8 intcode CODE >5:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/inc/interrupciones.c
+A intcode CODE >7:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/inc/interrupciones.c
+26 intcode CODE >9:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/inc/interrupciones.c
+28 intcode CODE >10:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/inc/interrupciones.c
+2C intcode CODE >11:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/inc/interrupciones.c
+30 intcode CODE >12:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/inc/interrupciones.c
+3C intcode CODE >15:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/inc/interrupciones.c
+1948 text32 CODE >30:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MSPI_port.c
+1948 text32 CODE >32:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MSPI_port.c
+194A text32 CODE >33:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MSPI_port.c
+194C text32 CODE >34:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MSPI_port.c
+194E text32 CODE >35:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MSPI_port.c
+1950 text32 CODE >36:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MSPI_port.c
+1952 text32 CODE >37:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MSPI_port.c
+1956 text32 CODE >38:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MSPI_port.c
+1958 text32 CODE >39:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MSPI_port.c
+195A text32 CODE >40:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MSPI_port.c
+195C text32 CODE >41:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MSPI_port.c
+195E text32 CODE >43:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MSPI_port.c
+1672 text31 CODE >21:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+1672 text31 CODE >23:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+1674 text31 CODE >24:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+1676 text31 CODE >25:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+1678 text31 CODE >26:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+167A text31 CODE >27:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+167C text31 CODE >30:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+167E text31 CODE >31:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+1680 text31 CODE >32:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+1682 text31 CODE >33:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+1684 text31 CODE >34:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+1686 text31 CODE >35:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+1688 text31 CODE >36:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+168A text31 CODE >37:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+168C text31 CODE >38:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+168E text31 CODE >41:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+1690 text31 CODE >42:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+1692 text31 CODE >43:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+1694 text31 CODE >44:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+1696 text31 CODE >45:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+1698 text31 CODE >46:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+169A text31 CODE >47:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+169C text31 CODE >48:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+169E text31 CODE >49:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+16A0 text31 CODE >50:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+16A2 text31 CODE >51:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+16A4 text31 CODE >52:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+16A6 text31 CODE >53:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+16A8 text31 CODE >54:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+16AA text31 CODE >55:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+16AC text31 CODE >56:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+16AE text31 CODE >57:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+16B2 text31 CODE >58:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+16B6 text31 CODE >59:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+16B8 text31 CODE >62:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+16BA text31 CODE >63:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+16BC text31 CODE >64:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+16BE text31 CODE >65:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+16C0 text31 CODE >66:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+16C2 text31 CODE >67:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+16C4 text31 CODE >68:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+16C6 text31 CODE >71:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+16CA text31 CODE >73:E:\Embebidos\MPLAB\DriverMRF24J40.X\hardware_config.c
+19CE text30 CODE >38:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
+19D0 text30 CODE >40:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
+19DA text30 CODE >42:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
+1930 text29 CODE >50:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MSPI_port.c
+1932 text29 CODE >52:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MSPI_port.c
+1934 text29 CODE >53:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MSPI_port.c
+1938 text29 CODE >54:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MSPI_port.c
+1946 text29 CODE >56:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MSPI_port.c
+19C0 text28 CODE >63:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MSPI_port.c
+19C0 text28 CODE >65:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MSPI_port.c
+19C6 text28 CODE >66:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MSPI_port.c
+19CC text28 CODE >68:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MSPI_port.c
+19B2 text27 CODE >91:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
+19B2 text27 CODE >93:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
+19BE text27 CODE >95:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
+19F0 text26 CODE >80:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
+19F2 text26 CODE >82:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
+19F8 text26 CODE >84:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
+1752 text25 CODE >611:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1752 text25 CODE >613:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1774 text25 CODE >614:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+177A text25 CODE >615:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1786 text25 CODE >616:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+178C text25 CODE >617:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1792 text25 CODE >619:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+18F4 text24 CODE >580:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+18F6 text24 CODE >582:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+18FA text24 CODE >583:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1900 text24 CODE >584:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1906 text24 CODE >585:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+190C text24 CODE >586:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1912 text24 CODE >588:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1330 text23 CODE >722:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1330 text23 CODE >724:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1332 text23 CODE >725:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1332 text23 CODE >726:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1344 text23 CODE >727:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1356 text23 CODE >728:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1366 text23 CODE >729:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1376 text23 CODE >730:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+138C text23 CODE >731:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+139C text23 CODE >732:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+13AC text23 CODE >733:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+13BC text23 CODE >734:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+13CC text23 CODE >736:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+13D2 text23 CODE >738:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+13F2 text23 CODE >739:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1422 text23 CODE >740:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+142C text23 CODE >742:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+185A text22 CODE >22:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_delay.c
+185A text22 CODE >24:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_delay.c
+1874 text22 CODE >25:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_delay.c
+1880 text22 CODE >27:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_delay.c
+19A4 text21 CODE >83:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_delay.c
+19A4 text21 CODE >85:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_delay.c
+19B0 text21 CODE >86:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_delay.c
+15C6 text20 CODE >34:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_delay.c
+15C6 text20 CODE >36:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_delay.c
+15DE text20 CODE >38:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_delay.c
+15F4 text20 CODE >39:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_delay.c
+1602 text20 CODE >40:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_delay.c
+1606 text20 CODE >42:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_delay.c
+165C text20 CODE >44:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_delay.c
+1668 text20 CODE >45:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_delay.c
+166E text20 CODE >48:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_delay.c
+1670 text20 CODE >49:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_delay.c
+18CE text19 CODE >68:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_delay.c
+18CE text19 CODE >70:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_delay.c
+18E4 text19 CODE >71:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_delay.c
+18F2 text19 CODE >73:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_delay.c
+1960 text18 CODE >75:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MSPI_port.c
+1960 text18 CODE >77:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MSPI_port.c
+1962 text18 CODE >78:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MSPI_port.c
+1964 text18 CODE >79:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MSPI_port.c
+1972 text18 CODE >80:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MSPI_port.c
+1974 text18 CODE >81:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MSPI_port.c
+19FA text17 CODE >102:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
+19FA text17 CODE >104:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
+19FE text17 CODE >105:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
+16CC text16 CODE >626:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+16CC text16 CODE >629:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+16EE text16 CODE >630:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+16F4 text16 CODE >631:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1700 text16 CODE >632:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1706 text16 CODE >633:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+170C text16 CODE >634:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+170E text16 CODE >635:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+18A8 text15 CODE >595:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+18AA text15 CODE >597:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+18AA text15 CODE >598:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+18B2 text15 CODE >599:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+18B8 text15 CODE >600:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+18BE text15 CODE >601:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+18C4 text15 CODE >602:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+18CA text15 CODE >603:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+18CC text15 CODE >604:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1996 text14 CODE >60:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
+1998 text14 CODE >62:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
+19A2 text14 CODE >64:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
+1988 text13 CODE >49:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
+198A text13 CODE >51:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
+1994 text13 CODE >53:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
+1914 text12 CODE >21:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
+1914 text12 CODE >23:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
+1916 text12 CODE >24:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
+1918 text12 CODE >25:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
+191A text12 CODE >26:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
+191C text12 CODE >27:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
+1922 text12 CODE >28:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
+1928 text12 CODE >29:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
+192E text12 CODE >31:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
+1516 text11 CODE >554:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1516 text11 CODE >556:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+151E text11 CODE >558:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+153A text11 CODE >559:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1556 text11 CODE >560:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1572 text11 CODE >561:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1592 text11 CODE >562:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1596 text11 CODE >563:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+159A text11 CODE >564:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+159C text11 CODE >565:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+159E text11 CODE >566:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+15A6 text11 CODE >567:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+15AE text11 CODE >568:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+15B8 text11 CODE >569:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+15C0 text11 CODE >570:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+15C2 text11 CODE >571:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+15C4 text11 CODE >573:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1794 text10 CODE >642:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1794 text10 CODE >644:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+17A4 text10 CODE >645:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+17AE text10 CODE >646:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+17B8 text10 CODE >647:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+17CA text10 CODE >649:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1830 text9 CODE >656:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1830 text9 CODE >658:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+183A text9 CODE >659:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1844 text9 CODE >660:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+184E text9 CODE >661:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1858 text9 CODE >663:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1710 text8 CODE >670:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1710 text8 CODE >672:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1714 text8 CODE >674:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+171C text8 CODE >676:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1730 text8 CODE >677:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1750 text8 CODE >679:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+102A text7 CODE >499:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+102A text7 CODE >503:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1042 text7 CODE >504:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1046 text7 CODE >505:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+104A text7 CODE >506:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+105C text7 CODE >507:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1062 text7 CODE >508:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1074 text7 CODE >509:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+107E text7 CODE >510:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1086 text7 CODE >513:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+108E text7 CODE >514:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+10AA text7 CODE >516:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+10C0 text7 CODE >517:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+10D2 text7 CODE >518:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+10DC text7 CODE >519:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+10E0 text7 CODE >520:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+10E4 text7 CODE >521:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+10F4 text7 CODE >522:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1104 text7 CODE >523:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1114 text7 CODE >524:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1124 text7 CODE >525:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1134 text7 CODE >526:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1144 text7 CODE >527:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+114E text7 CODE >528:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1158 text7 CODE >529:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1162 text7 CODE >530:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+116C text7 CODE >531:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1176 text7 CODE >532:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+117E text7 CODE >535:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+118C text7 CODE >536:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+11A8 text7 CODE >538:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+11BA text7 CODE >539:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+11C4 text7 CODE >540:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+11CE text7 CODE >541:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+11DE text7 CODE >542:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+11E2 text7 CODE >543:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+11EC text7 CODE >544:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+11F2 text7 CODE >546:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+19E6 text6 CODE >700:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+19E6 text6 CODE >702:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+19EE text6 CODE >704:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+17CC text5 CODE >5:C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strlen.c
+17CC text5 CODE >7:C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strlen.c
+17D0 text5 CODE >8:C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strlen.c
+17D4 text5 CODE >9:C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strlen.c
+17D6 text5 CODE >8:C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strlen.c
+17F2 text5 CODE >11:C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strlen.c
+17FE text5 CODE >12:C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strlen.c
+1976 text4 CODE >688:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1976 text4 CODE >690:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+197A text4 CODE >691:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1986 text4 CODE >693:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+19DC text3 CODE >711:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+19DC text3 CODE >713:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+19E4 text3 CODE >715:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+1800 text2 CODE >19:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_debounce.c
+1800 text2 CODE >21:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_debounce.c
+180C text2 CODE >22:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_debounce.c
+1826 text2 CODE >23:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_debounce.c
+182E text2 CODE >24:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_debounce.c
+11F4 text1 CODE >34:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_debounce.c
+11F4 text1 CODE >36:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_debounce.c
+11F8 text1 CODE >40:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_debounce.c
+1208 text1 CODE >41:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_debounce.c
+121A text1 CODE >46:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_debounce.c
+1234 text1 CODE >48:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_debounce.c
+1244 text1 CODE >50:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_debounce.c
+1252 text1 CODE >51:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_debounce.c
+1258 text1 CODE >54:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_debounce.c
+1264 text1 CODE >55:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_debounce.c
+126A text1 CODE >62:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_debounce.c
+1284 text1 CODE >64:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_debounce.c
+1294 text1 CODE >66:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_debounce.c
+12A0 text1 CODE >67:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_debounce.c
+12A6 text1 CODE >70:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_debounce.c
+12B8 text1 CODE >78:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_debounce.c
+12C8 text1 CODE >79:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_debounce.c
+12DA text1 CODE >84:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_debounce.c
+12E2 text1 CODE >85:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_debounce.c
+12E8 text1 CODE >86:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_debounce.c
+12FC text1 CODE >86:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_debounce.c
+130A text1 CODE >86:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_debounce.c
+1312 text1 CODE >86:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_debounce.c
+131A text1 CODE >86:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_debounce.c
+1322 text1 CODE >86:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_debounce.c
+132C text1 CODE >87:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_debounce.c
+132E text1 CODE >88:E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_debounce.c
+142E text0 CODE >24:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
+142E text0 CODE >28:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
+1436 text0 CODE >29:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
+143A text0 CODE >30:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
+143E text0 CODE >31:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
+1456 text0 CODE >32:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
+1462 text0 CODE >33:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
+146E text0 CODE >35:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
+146E text0 CODE >37:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
+1470 text0 CODE >38:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
+1474 text0 CODE >40:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
+1474 text0 CODE >42:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
+1476 text0 CODE >43:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
+147E text0 CODE >44:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
+1482 text0 CODE >45:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
+1486 text0 CODE >47:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
+1486 text0 CODE >49:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
+1488 text0 CODE >50:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
+1494 text0 CODE >57:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
+14B8 text0 CODE >57:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
+14C6 text0 CODE >57:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
+14CE text0 CODE >57:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
+14D8 text0 CODE >59:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
+14F0 text0 CODE >60:E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
+1882 cinit CODE >2720:C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_1.s
+1882 cinit CODE >2722:C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_1.s
+1882 cinit CODE >2725:C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_1.s
+1882 cinit CODE >2749:C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_1.s
+1886 cinit CODE >2750:C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_1.s
+1888 cinit CODE >2751:C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_1.s
+1888 cinit CODE >2752:C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_1.s
+188A cinit CODE >2753:C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_1.s
+188C cinit CODE >2754:C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_1.s
+188E cinit CODE >2757:C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_1.s
+1892 cinit CODE >2758:C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_1.s
+1894 cinit CODE >2759:C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_1.s
+1894 cinit CODE >2760:C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_1.s
+1896 cinit CODE >2761:C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_1.s
+1898 cinit CODE >2762:C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_1.s
+189A cinit CODE >2768:C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_1.s
+189A cinit CODE >2770:C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_1.s
+189C cinit CODE >2771:C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_1.s
+189E cinit CODE >2773:C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_1.s
+18A0 cinit CODE >2774:C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_1.s
+18A2 cinit CODE >2775:C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_1.s
+18A4 cinit CODE >2776:C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_1.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -364,92 +465,117 @@ $dist/default/production\DriverMRF24J40.X.production.o
 # is the name of the object file in which the symbol was defined.
 %SYMTAB
 __Lmediumconst 0 0 MEDIUMCONST 0 mediumconst dist/default/production\DriverMRF24J40.X.production.o
-__Hspace_0 1688 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
+DelayInit@delay 1 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+__Hspace_0 1A00 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 __Hspace_1 98 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 __Hspace_2 0 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 __Hspace_4 60000E 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
-__end_of_ReadByteSPIPort 1688 0 CODE 0 text15 dist/default/production\DriverMRF24J40.X.production.o
+__end_of_ReadByteSPIPort 1A00 0 CODE 0 text17 dist/default/production\DriverMRF24J40.X.production.o
 __Hibigdata 0 0 CODE 0 ibigdata dist/default/production\DriverMRF24J40.X.production.o
-_mrf24_data_config 1 0 COMRAM 1 bssCOMRAM dist/default/production\DriverMRF24J40.X.production.o
-__mediumconst 0 0 MEDIUMCONST 0 mediumconst C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_9.o
-_SPIWriteByte 15C6 0 CODE 0 text23 dist/default/production\DriverMRF24J40.X.production.o
+_mrf24_data_config 30 0 COMRAM 1 bssCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+__mediumconst 0 0 MEDIUMCONST 0 mediumconst C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_9.o
+_SPIWriteByte 1930 0 CODE 0 text29 dist/default/production\DriverMRF24J40.X.production.o
 __Heeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production\DriverMRF24J40.X.production.o
 __L__absolute__ 0 0 ABS 0 __absolute__ dist/default/production\DriverMRF24J40.X.production.o
 __Lsmallconst 1000 0 SMALLCONST 0 smallconst dist/default/production\DriverMRF24J40.X.production.o
 _ADIE 7CEE 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 _EEIE 7D04 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
+_IPEN 7E87 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 _PEIE 7F96 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 _RBIE 7F93 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
+_RBPU 7F8F 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 _RCIE 7CED 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 _T0IE 7F95 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_9.o
-_main 1332 0 CODE 0 text0 dist/default/production\DriverMRF24J40.X.production.o
-_SPIWrite2Byte 1648 0 CODE 0 text22 dist/default/production\DriverMRF24J40.X.production.o
-___stack_hi 0 0 STACK 2 stack C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_9.o
-___stack_lo 0 0 STACK 2 stack C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_9.o
-start 0 0 CODE 0 init C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_9.o
-__end_of_MRF24J40Init 1190 0 CODE 0 text5 dist/default/production\DriverMRF24J40.X.production.o
-SetDireccionDestino@direccion 2A 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
-__end_of_SetLongAddr 14AC 0 CODE 0 text19 dist/default/production\DriverMRF24J40.X.production.o
-__end_of_EnviarDato 128A 0 CODE 0 text17 dist/default/production\DriverMRF24J40.X.production.o
+___sp 0 0 STACK 2 stack C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_9.o
+_main 142E 0 CODE 0 text0 dist/default/production\DriverMRF24J40.X.production.o
+btemp 5D 0 COMRAM 1 temp dist/default/production\DriverMRF24J40.X.production.o
+_SPIWrite2Byte 19C0 0 CODE 0 text28 dist/default/production\DriverMRF24J40.X.production.o
+___stack_hi 0 0 STACK 2 stack C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_9.o
+___stack_lo 0 0 STACK 2 stack C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_9.o
+start 40 0 CODE 0 init C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_9.o
+__end_of_MRF24J40Init 11F4 0 CODE 0 text7 dist/default/production\DriverMRF24J40.X.production.o
+SetDireccionDestino@direccion 1 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+__end_of_SetLongAddr 1794 0 CODE 0 text25 dist/default/production\DriverMRF24J40.X.production.o
+__end_of_EnviarDato 142E 0 CODE 0 text23 dist/default/production\DriverMRF24J40.X.production.o
 __HbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production\DriverMRF24J40.X.production.o
-SetShortAddr@reg_address 2D 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+MRF24J40Init@delay_time_out 11 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+SetShortAddr@reg_address 4 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
 __end_of_default_security_key 1011 0 SMALLCONST 0 smallconst dist/default/production\DriverMRF24J40.X.production.o
-_GetShortAddr 1564 0 CODE 0 text13 dist/default/production\DriverMRF24J40.X.production.o
-__Hpowerup 0 0 CODE 0 powerup dist/default/production\DriverMRF24J40.X.production.o
-InicializoVariables@i 2B 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
-GetLongAddr@respuesta 33 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
-__accesstop 60 0 ABS 0 - C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_9.o
-intlevel0 0 0 CODE 0 text C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_9.o
-intlevel1 0 0 CODE 0 text C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_9.o
-intlevel2 0 0 CODE 0 text C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_9.o
-intlevel3 0 0 CODE 0 text C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_9.o
-_ReadByteSPIPort 1682 0 CODE 0 text15 dist/default/production\DriverMRF24J40.X.production.o
+_GetShortAddr 18A8 0 CODE 0 text15 dist/default/production\DriverMRF24J40.X.production.o
+__Hpowerup 40 0 CODE 0 powerup dist/default/production\DriverMRF24J40.X.production.o
+InicializoVariables@i 2 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+GetLongAddr@respuesta A 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+_timeStamp 58 0 COMRAM 1 bssCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+ttemp5 5E 0 COMRAM 1 temp dist/default/production\DriverMRF24J40.X.production.o
+ttemp6 61 0 COMRAM 1 temp dist/default/production\DriverMRF24J40.X.production.o
+ttemp7 65 0 COMRAM 1 temp dist/default/production\DriverMRF24J40.X.production.o
+__accesstop 60 0 ABS 0 - C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_9.o
+intlevel0 0 0 CODE 0 text C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_9.o
+intlevel1 0 0 CODE 0 text C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_9.o
+intlevel2 0 0 CODE 0 text C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_9.o
+intlevel3 0 0 CODE 0 text C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_9.o
+_ReadByteSPIPort 19FA 0 CODE 0 text17 dist/default/production\DriverMRF24J40.X.production.o
 __LbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production\DriverMRF24J40.X.production.o
 __LnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production\DriverMRF24J40.X.production.o
+wtemp8 5E 0 COMRAM 1 temp dist/default/production\DriverMRF24J40.X.production.o
+debounceFSM_update@estado_pin 10 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
 __Hifardata 0 0 CODE 0 ifardata dist/default/production\DriverMRF24J40.X.production.o
 __Hclrtext 0 0 ABS 0 clrtext dist/default/production\DriverMRF24J40.X.production.o
-GetShortAddr@leido_spi 2C 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
-__end_of_SPIWriteByte 15DE 0 CODE 0 text23 dist/default/production\DriverMRF24J40.X.production.o
-__end_of_SetPANIDDestino 166E 0 CODE 0 text1 dist/default/production\DriverMRF24J40.X.production.o
-___inthi_sp 0 0 STACK 2 stack C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_9.o
-___intlo_sp 0 0 STACK 2 stack C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_9.o
+GetShortAddr@leido_spi 3 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+__end_of_SPIWriteByte 1948 0 CODE 0 text29 dist/default/production\DriverMRF24J40.X.production.o
+__end_of_SetPANIDDestino 19E6 0 CODE 0 text3 dist/default/production\DriverMRF24J40.X.production.o
+__end_of_DelayInit 1882 0 CODE 0 text22 dist/default/production\DriverMRF24J40.X.production.o
+__end_of_DelayRead 1672 0 CODE 0 text20 dist/default/production\DriverMRF24J40.X.production.o
+___inthi_sp 0 0 STACK 2 stack C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_9.o
+___intlo_sp 0 0 STACK 2 stack C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_9.o
 _CCP1IE 7CEA 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 _CCP2IE 7D00 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 __Hintcode_body 0 0 ABS 0 intcode_body dist/default/production\DriverMRF24J40.X.production.o
-_SetCSPin 1656 0 CODE 0 text24 dist/default/production\DriverMRF24J40.X.production.o
+_SetCSPin 19CE 0 CODE 0 text30 dist/default/production\DriverMRF24J40.X.production.o
 __Lintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/production\DriverMRF24J40.X.production.o
-Write2ByteSPIPort@dato 2D 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+Write2ByteSPIPort@dato 4 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
 __Hmediumconst 0 0 MEDIUMCONST 0 mediumconst dist/default/production\DriverMRF24J40.X.production.o
-__Hintcodelo 0 0 CODE 0 intcodelo dist/default/production\DriverMRF24J40.X.production.o
-__end_of_SetCSPin 1664 0 CODE 0 text24 dist/default/production\DriverMRF24J40.X.production.o
-_SetResetPin 162C 0 CODE 0 text12 dist/default/production\DriverMRF24J40.X.production.o
-__end_of_GetShortAddr 158A 0 CODE 0 text13 dist/default/production\DriverMRF24J40.X.production.o
-MRF24J40Init@lectura 36 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
-?_strlen 2A 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
-SetLongAddr@value 31 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
-_InicializoVariables 128A 0 CODE 0 text9 dist/default/production\DriverMRF24J40.X.production.o
-__Lintcodelo 0 0 CODE 0 intcodelo dist/default/production\DriverMRF24J40.X.production.o
-_SetPANIDDestino 1664 0 CODE 0 text1 dist/default/production\DriverMRF24J40.X.production.o
-start_initialization 153E 0 CODE 0 cinit dist/default/production\DriverMRF24J40.X.production.o
+__Hintcodelo 40 0 CODE 0 intcodelo dist/default/production\DriverMRF24J40.X.production.o
+__end_of_SetCSPin 19DC 0 CODE 0 text30 dist/default/production\DriverMRF24J40.X.production.o
+_SetResetPin 1996 0 CODE 0 text14 dist/default/production\DriverMRF24J40.X.production.o
+_DelayInit 185A 0 CODE 0 text22 dist/default/production\DriverMRF24J40.X.production.o
+_DelayRead 15C6 0 CODE 0 text20 dist/default/production\DriverMRF24J40.X.production.o
+__end_of_GetShortAddr 18CE 0 CODE 0 text15 dist/default/production\DriverMRF24J40.X.production.o
+debounceFSM_init@antirrebote_boton_n 6 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+MRF24J40Init@lectura 10 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+?_strlen 1 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+SetLongAddr@valor 8 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+_InicializoVariables 1516 0 CODE 0 text11 dist/default/production\DriverMRF24J40.X.production.o
+__Lintcodelo 40 0 CODE 0 intcodelo dist/default/production\DriverMRF24J40.X.production.o
+_SetPANIDDestino 19DC 0 CODE 0 text3 dist/default/production\DriverMRF24J40.X.production.o
+start_initialization 1882 0 CODE 0 cinit dist/default/production\DriverMRF24J40.X.production.o
 _OSCCON FD3 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 __HnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production\DriverMRF24J40.X.production.o
 _TRISBbits F93 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 _TRISCbits F94 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 _TRISDbits F95 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 _TRISEbits F96 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
-__end_of_SPIWrite2Byte 1656 0 CODE 0 text22 dist/default/production\DriverMRF24J40.X.production.o
+__end_of_SPIWrite2Byte 19CE 0 CODE 0 text28 dist/default/production\DriverMRF24J40.X.production.o
 ___rparam_used 1 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
-__end_of_BoardInit 1428 0 CODE 0 text25 dist/default/production\DriverMRF24J40.X.production.o
+__end_of_BoardInit 16CC 0 CODE 0 text31 dist/default/production\DriverMRF24J40.X.production.o
+_T1RD16 7E6F 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
+_T1SYNC 7E6A 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 _SSPBUF FC9 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
+debounceFSM_update@antirrebote_boton_n F 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+_TMR1CS 7E69 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 _TMR1IE 7CE8 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
+_TMR1IF 7CF0 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
+_TMR1ON 7E68 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 _TMR2IE 7CE9 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
-isa$xinst 0 0 ABS 0 - C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_9.o
-_SetShortAddr 158A 0 CODE 0 text18 dist/default/production\DriverMRF24J40.X.production.o
-GetShortAddr@reg_address 2D 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
-_WriteByteSPIPort 1678 0 CODE 0 text20 dist/default/production\DriverMRF24J40.X.production.o
-SetShortAddr@value 2C 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
-_SetDeviceMACAddress 1428 0 CODE 0 text6 dist/default/production\DriverMRF24J40.X.production.o
+isa$xinst 0 0 ABS 0 - C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_9.o
+main@delay_parpadeo 1C 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+_SetShortAddr 18F4 0 CODE 0 text24 dist/default/production\DriverMRF24J40.X.production.o
+GetShortAddr@reg_address 4 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+_WriteByteSPIPort 19F0 0 CODE 0 text26 dist/default/production\DriverMRF24J40.X.production.o
+SetShortAddr@valor 3 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+DelayIsRunning@delay 1 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+_SetDeviceMACAddress 1710 0 CODE 0 text8 dist/default/production\DriverMRF24J40.X.production.o
+_DelayReset 18CE 0 CODE 0 text19 dist/default/production\DriverMRF24J40.X.production.o
 __Hbank0 0 0 ABS 0 bank0 dist/default/production\DriverMRF24J40.X.production.o
 __Hbank1 0 0 ABS 0 bank1 dist/default/production\DriverMRF24J40.X.production.o
 __Hbank2 0 0 ABS 0 bank2 dist/default/production\DriverMRF24J40.X.production.o
@@ -462,7 +588,7 @@ __Hbank8 0 0 ABS 0 bank8 dist/default/production\DriverMRF24J40.X.production.o
 __Hbank9 0 0 ABS 0 bank9 dist/default/production\DriverMRF24J40.X.production.o
 __Hcinit 0 0 ABS 0 cinit dist/default/production\DriverMRF24J40.X.production.o
 __Hconst 0 0 CONST 0 const dist/default/production\DriverMRF24J40.X.production.o
-__end_of_strlen 1514 0 CODE 0 text3 dist/default/production\DriverMRF24J40.X.production.o
+__end_of_strlen 1800 0 CODE 0 text5 dist/default/production\DriverMRF24J40.X.production.o
 __Hidata 0 0 CODE 0 idata dist/default/production\DriverMRF24J40.X.production.o
 __Hidloc 200008 0 IDLOC 5 idloc dist/default/production\DriverMRF24J40.X.production.o
 __Hnvbit 0 0 COMRAM 1 nvbit dist/default/production\DriverMRF24J40.X.production.o
@@ -479,7 +605,7 @@ __Htext6 0 0 ABS 0 text6 dist/default/production\DriverMRF24J40.X.production.o
 __Htext7 0 0 ABS 0 text7 dist/default/production\DriverMRF24J40.X.production.o
 __Htext8 0 0 ABS 0 text8 dist/default/production\DriverMRF24J40.X.production.o
 __Htext9 0 0 ABS 0 text9 dist/default/production\DriverMRF24J40.X.production.o
-_BoardInit 13E4 0 CODE 0 text25 dist/default/production\DriverMRF24J40.X.production.o
+_BoardInit 1672 0 CODE 0 text31 dist/default/production\DriverMRF24J40.X.production.o
 __Hbank10 0 0 ABS 0 bank10 dist/default/production\DriverMRF24J40.X.production.o
 __Hbank11 0 0 ABS 0 bank11 dist/default/production\DriverMRF24J40.X.production.o
 __Hbank12 0 0 ABS 0 bank12 dist/default/production\DriverMRF24J40.X.production.o
@@ -489,10 +615,12 @@ __Hbank15 0 0 ABS 0 bank15 dist/default/production\DriverMRF24J40.X.production.o
 __Hbigbss 0 0 BIGRAM 1 bigbss dist/default/production\DriverMRF24J40.X.production.o
 __Hbigram 0 0 ABS 0 bigram dist/default/production\DriverMRF24J40.X.production.o
 __Hbigsfr 0 0 ABS 0 bigsfr dist/default/production\DriverMRF24J40.X.production.o
-__smallconst 1000 0 SMALLCONST 0 smallconst C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_9.o
-_GetLongAddr 13A0 0 CODE 0 text14 dist/default/production\DriverMRF24J40.X.production.o
+__smallconst 1000 0 SMALLCONST 0 smallconst C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_9.o
+_GetLongAddr 16CC 0 CODE 0 text16 dist/default/production\DriverMRF24J40.X.production.o
+DelayInit@duration 2 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
 __Hcomram 0 0 ABS 0 comram dist/default/production\DriverMRF24J40.X.production.o
 __Hconfig 30000E 0 CONFIG 4 config dist/default/production\DriverMRF24J40.X.production.o
+_DelayIsRunning 19A4 0 CODE 0 text21 dist/default/production\DriverMRF24J40.X.production.o
 __Lbank0 0 0 ABS 0 bank0 dist/default/production\DriverMRF24J40.X.production.o
 __Lbank1 0 0 ABS 0 bank1 dist/default/production\DriverMRF24J40.X.production.o
 __Lbank2 0 0 ABS 0 bank2 dist/default/production\DriverMRF24J40.X.production.o
@@ -523,52 +651,61 @@ __Ltext8 0 0 ABS 0 text8 dist/default/production\DriverMRF24J40.X.production.o
 __Ltext9 0 0 ABS 0 text9 dist/default/production\DriverMRF24J40.X.production.o
 _default_mac_address 1011 0 SMALLCONST 0 smallconst dist/default/production\DriverMRF24J40.X.production.o
 __Hfarbss 0 0 FARRAM 0 farbss dist/default/production\DriverMRF24J40.X.production.o
-_SetDeviceAddress 1514 0 CODE 0 text7 dist/default/production\DriverMRF24J40.X.production.o
+_SetDeviceAddress 1830 0 CODE 0 text9 dist/default/production\DriverMRF24J40.X.production.o
 __Lintcode_body 0 0 ABS 0 intcode_body dist/default/production\DriverMRF24J40.X.production.o
-SetPANIDDestino@panid 2A 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+_PORTBbits F81 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
+_PORTCbits F82 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
+SetPANIDDestino@panid 1 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
 __Habs1 0 0 ABS 0 abs1 dist/default/production\DriverMRF24J40.X.production.o
 __Hdata 0 0 ABS 0 data dist/default/production\DriverMRF24J40.X.production.o
 __Hheap 0 0 HEAP 7 heap dist/default/production\DriverMRF24J40.X.production.o
-__Hinit 4 0 CODE 0 init dist/default/production\DriverMRF24J40.X.production.o
+__Hinit 44 0 CODE 0 init dist/default/production\DriverMRF24J40.X.production.o
 __Hrbit 0 0 COMRAM 1 rbit dist/default/production\DriverMRF24J40.X.production.o
 __Hrbss 0 0 COMRAM 1 rbss dist/default/production\DriverMRF24J40.X.production.o
-__Htemp 0 0 COMRAM 1 temp dist/default/production\DriverMRF24J40.X.production.o
+__Htemp 5E 0 COMRAM 1 temp dist/default/production\DriverMRF24J40.X.production.o
 __Htext 0 0 ABS 0 text dist/default/production\DriverMRF24J40.X.production.o
-SPIWrite2Byte@dato 2B 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+SPIWrite2Byte@dato 2 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
 __Labs1 0 0 ABS 0 abs1 dist/default/production\DriverMRF24J40.X.production.o
 __Ldata 0 0 ABS 0 data dist/default/production\DriverMRF24J40.X.production.o
 __Lheap 0 0 HEAP 7 heap dist/default/production\DriverMRF24J40.X.production.o
-__Linit 0 0 CODE 0 init dist/default/production\DriverMRF24J40.X.production.o
+__Linit 40 0 CODE 0 init dist/default/production\DriverMRF24J40.X.production.o
 __Lrbit 0 0 COMRAM 1 rbit dist/default/production\DriverMRF24J40.X.production.o
 __Lrbss 0 0 COMRAM 1 rbss dist/default/production\DriverMRF24J40.X.production.o
-__Ltemp 0 0 COMRAM 1 temp dist/default/production\DriverMRF24J40.X.production.o
+__Ltemp 5D 0 COMRAM 1 temp dist/default/production\DriverMRF24J40.X.production.o
 __Ltext 0 0 ABS 0 text dist/default/production\DriverMRF24J40.X.production.o
+int$flags 5D 0 COMRAM 1 temp dist/default/production\DriverMRF24J40.X.production.o
 __HcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+__end_of_debounceFSM_update 1330 0 CODE 0 text1 dist/default/production\DriverMRF24J40.X.production.o
 __Hintret 0 0 ABS 0 intret dist/default/production\DriverMRF24J40.X.production.o
 __Hirdata 0 0 CODE 0 irdata dist/default/production\DriverMRF24J40.X.production.o
 _GIE 7F97 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
-__S0 1688 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
+__S0 1A00 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 __S1 98 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 __S4 0 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 __S5 0 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
-__end_of_InicializoVariables 1332 0 CODE 0 text9 dist/default/production\DriverMRF24J40.X.production.o
-__end_of_SPIInit 15F6 0 CODE 0 text26 dist/default/production\DriverMRF24J40.X.production.o
-__end_of_SPIRead 160C 0 CODE 0 text16 dist/default/production\DriverMRF24J40.X.production.o
-SetMensajeSalida@mensaje 2D 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+_isr 8 0 CODE 0 intcode dist/default/production\DriverMRF24J40.X.production.o
+__end_of_InicializoVariables 15C6 0 CODE 0 text11 dist/default/production\DriverMRF24J40.X.production.o
+__end_of_SPIInit 1960 0 CODE 0 text32 dist/default/production\DriverMRF24J40.X.production.o
+__end_of_SPIRead 1976 0 CODE 0 text18 dist/default/production\DriverMRF24J40.X.production.o
+SetMensajeSalida@mensaje 4 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
 _default_security_key 1001 0 SMALLCONST 0 smallconst dist/default/production\DriverMRF24J40.X.production.o
 __Lbigdata 0 0 BIGRAM 1 bigdata dist/default/production\DriverMRF24J40.X.production.o
 __Hnvrram 0 0 COMRAM 1 nvrram dist/default/production\DriverMRF24J40.X.production.o
-__end_of_SetShortAddr 15AA 0 CODE 0 text18 dist/default/production\DriverMRF24J40.X.production.o
-SPIWriteByte@dato 2A 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+__end_of_DelayReset 18F4 0 CODE 0 text19 dist/default/production\DriverMRF24J40.X.production.o
+__end_of_isr 40 0 CODE 0 intcode dist/default/production\DriverMRF24J40.X.production.o
+__end_of_SetShortAddr 1914 0 CODE 0 text24 dist/default/production\DriverMRF24J40.X.production.o
+SPIWriteByte@dato 1 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
 __Lintentry 0 0 ABS 0 intentry dist/default/production\DriverMRF24J40.X.production.o
+__end_of_DelayIsRunning 19B2 0 CODE 0 text21 dist/default/production\DriverMRF24J40.X.production.o
 __Hramtop 1000 0 RAM 0 ramtop dist/default/production\DriverMRF24J40.X.production.o
-strlen@a 2C 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
-strlen@s 2A 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
-WriteByteSPIPort@dato 2B 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
-__end_of_Write2ByteSPIPort 1648 0 CODE 0 text21 dist/default/production\DriverMRF24J40.X.production.o
+strlen@a 3 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+strlen@s 1 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+WriteByteSPIPort@dato 2 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+__end_of_Write2ByteSPIPort 19C0 0 CODE 0 text27 dist/default/production\DriverMRF24J40.X.production.o
 __Hrparam 0 0 COMRAM 1 rparam dist/default/production\DriverMRF24J40.X.production.o
-__end_of_WriteByteSPIPort 1682 0 CODE 0 text20 dist/default/production\DriverMRF24J40.X.production.o
-__activetblptr 1 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
+_debounceFSM_update 11F4 0 CODE 0 text1 dist/default/production\DriverMRF24J40.X.production.o
+__end_of_WriteByteSPIPort 19FA 0 CODE 0 text26 dist/default/production\DriverMRF24J40.X.production.o
+__activetblptr 2 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 __Hstruct 0 0 COMRAM 1 struct dist/default/production\DriverMRF24J40.X.production.o
 __LbssBANK0 0 0 ABS 0 bssBANK0 dist/default/production\DriverMRF24J40.X.production.o
 __Htext10 0 0 ABS 0 text10 dist/default/production\DriverMRF24J40.X.production.o
@@ -588,27 +725,39 @@ __Htext23 0 0 ABS 0 text23 dist/default/production\DriverMRF24J40.X.production.o
 __Htext24 0 0 ABS 0 text24 dist/default/production\DriverMRF24J40.X.production.o
 __Htext25 0 0 ABS 0 text25 dist/default/production\DriverMRF24J40.X.production.o
 __Htext26 0 0 ABS 0 text26 dist/default/production\DriverMRF24J40.X.production.o
-__end_of_SetDeviceMACAddress 146A 0 CODE 0 text6 dist/default/production\DriverMRF24J40.X.production.o
-GetLongAddr@reg_address 2F 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
-_SetMensajeSalida 160C 0 CODE 0 text2 dist/default/production\DriverMRF24J40.X.production.o
-_long_mac_address 29 0 COMRAM 1 bssCOMRAM dist/default/production\DriverMRF24J40.X.production.o
-__ptext10 15AA 0 CODE 0 text10 dist/default/production\DriverMRF24J40.X.production.o
-__ptext11 161E 0 CODE 0 text11 dist/default/production\DriverMRF24J40.X.production.o
-__ptext12 162C 0 CODE 0 text12 dist/default/production\DriverMRF24J40.X.production.o
-__ptext13 1564 0 CODE 0 text13 dist/default/production\DriverMRF24J40.X.production.o
-__ptext14 13A0 0 CODE 0 text14 dist/default/production\DriverMRF24J40.X.production.o
-__ptext15 1682 0 CODE 0 text15 dist/default/production\DriverMRF24J40.X.production.o
-__ptext16 15F6 0 CODE 0 text16 dist/default/production\DriverMRF24J40.X.production.o
-__ptext17 1190 0 CODE 0 text17 dist/default/production\DriverMRF24J40.X.production.o
-__ptext18 158A 0 CODE 0 text18 dist/default/production\DriverMRF24J40.X.production.o
-__ptext19 146A 0 CODE 0 text19 dist/default/production\DriverMRF24J40.X.production.o
-__ptext20 1678 0 CODE 0 text20 dist/default/production\DriverMRF24J40.X.production.o
-__ptext21 163A 0 CODE 0 text21 dist/default/production\DriverMRF24J40.X.production.o
-__ptext22 1648 0 CODE 0 text22 dist/default/production\DriverMRF24J40.X.production.o
-__ptext23 15C6 0 CODE 0 text23 dist/default/production\DriverMRF24J40.X.production.o
-__ptext24 1656 0 CODE 0 text24 dist/default/production\DriverMRF24J40.X.production.o
-__ptext25 13E4 0 CODE 0 text25 dist/default/production\DriverMRF24J40.X.production.o
-__ptext26 15DE 0 CODE 0 text26 dist/default/production\DriverMRF24J40.X.production.o
+__Htext27 0 0 ABS 0 text27 dist/default/production\DriverMRF24J40.X.production.o
+__Htext28 0 0 ABS 0 text28 dist/default/production\DriverMRF24J40.X.production.o
+__Htext29 0 0 ABS 0 text29 dist/default/production\DriverMRF24J40.X.production.o
+__Htext30 0 0 ABS 0 text30 dist/default/production\DriverMRF24J40.X.production.o
+__Htext31 0 0 ABS 0 text31 dist/default/production\DriverMRF24J40.X.production.o
+__Htext32 0 0 ABS 0 text32 dist/default/production\DriverMRF24J40.X.production.o
+__end_of_SetDeviceMACAddress 1752 0 CODE 0 text8 dist/default/production\DriverMRF24J40.X.production.o
+GetLongAddr@reg_address 6 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+_SetMensajeSalida 1976 0 CODE 0 text4 dist/default/production\DriverMRF24J40.X.production.o
+_long_mac_address 5C 0 COMRAM 1 bssCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+__ptext10 1794 0 CODE 0 text10 dist/default/production\DriverMRF24J40.X.production.o
+__ptext11 1516 0 CODE 0 text11 dist/default/production\DriverMRF24J40.X.production.o
+__ptext12 1914 0 CODE 0 text12 dist/default/production\DriverMRF24J40.X.production.o
+__ptext13 1988 0 CODE 0 text13 dist/default/production\DriverMRF24J40.X.production.o
+__ptext14 1996 0 CODE 0 text14 dist/default/production\DriverMRF24J40.X.production.o
+__ptext15 18A8 0 CODE 0 text15 dist/default/production\DriverMRF24J40.X.production.o
+__ptext16 16CC 0 CODE 0 text16 dist/default/production\DriverMRF24J40.X.production.o
+__ptext17 19FA 0 CODE 0 text17 dist/default/production\DriverMRF24J40.X.production.o
+__ptext18 1960 0 CODE 0 text18 dist/default/production\DriverMRF24J40.X.production.o
+__ptext19 18CE 0 CODE 0 text19 dist/default/production\DriverMRF24J40.X.production.o
+__ptext20 15C6 0 CODE 0 text20 dist/default/production\DriverMRF24J40.X.production.o
+__ptext21 19A4 0 CODE 0 text21 dist/default/production\DriverMRF24J40.X.production.o
+__ptext22 185A 0 CODE 0 text22 dist/default/production\DriverMRF24J40.X.production.o
+__ptext23 1330 0 CODE 0 text23 dist/default/production\DriverMRF24J40.X.production.o
+__ptext24 18F4 0 CODE 0 text24 dist/default/production\DriverMRF24J40.X.production.o
+__ptext25 1752 0 CODE 0 text25 dist/default/production\DriverMRF24J40.X.production.o
+__ptext26 19F0 0 CODE 0 text26 dist/default/production\DriverMRF24J40.X.production.o
+__ptext27 19B2 0 CODE 0 text27 dist/default/production\DriverMRF24J40.X.production.o
+__ptext28 19C0 0 CODE 0 text28 dist/default/production\DriverMRF24J40.X.production.o
+__ptext29 1930 0 CODE 0 text29 dist/default/production\DriverMRF24J40.X.production.o
+__ptext30 19CE 0 CODE 0 text30 dist/default/production\DriverMRF24J40.X.production.o
+__ptext31 1672 0 CODE 0 text31 dist/default/production\DriverMRF24J40.X.production.o
+__ptext32 1948 0 CODE 0 text32 dist/default/production\DriverMRF24J40.X.production.o
 __Lbank10 0 0 ABS 0 bank10 dist/default/production\DriverMRF24J40.X.production.o
 __Lbank11 0 0 ABS 0 bank11 dist/default/production\DriverMRF24J40.X.production.o
 __Lbank12 0 0 ABS 0 bank12 dist/default/production\DriverMRF24J40.X.production.o
@@ -618,64 +767,65 @@ __Lbank15 0 0 ABS 0 bank15 dist/default/production\DriverMRF24J40.X.production.o
 __Lbigbss 0 0 BIGRAM 1 bigbss dist/default/production\DriverMRF24J40.X.production.o
 __Lbigram 0 0 ABS 0 bigram dist/default/production\DriverMRF24J40.X.production.o
 __Lbigsfr 0 0 ABS 0 bigsfr dist/default/production\DriverMRF24J40.X.production.o
-__end_of_SetDeviceAddress 153E 0 CODE 0 text7 dist/default/production\DriverMRF24J40.X.production.o
+__end_of_SetDeviceAddress 185A 0 CODE 0 text9 dist/default/production\DriverMRF24J40.X.production.o
 __Lcomram 0 0 ABS 0 comram dist/default/production\DriverMRF24J40.X.production.o
 __Lconfig 0 0 CONFIG 4 config dist/default/production\DriverMRF24J40.X.production.o
-_LATBbits F8A 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 _LATCbits F8B 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 _LATDbits F8C 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 _LATEbits F8D 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
-__Lsivt_hi 0 0 CODE 0 sivt_hi dist/default/production\DriverMRF24J40.X.production.o
-__Lsivt_lo 0 0 CODE 0 sivt_lo dist/default/production\DriverMRF24J40.X.production.o
-__end_of_SetResetPin 163A 0 CODE 0 text12 dist/default/production\DriverMRF24J40.X.production.o
+__Lsivt_hi 0 0 ABS 0 sivt_hi dist/default/production\DriverMRF24J40.X.production.o
+__Lsivt_lo 0 0 ABS 0 sivt_lo dist/default/production\DriverMRF24J40.X.production.o
+__end_of_SetResetPin 19A4 0 CODE 0 text14 dist/default/production\DriverMRF24J40.X.production.o
 __end_of_default_mac_address 1019 0 SMALLCONST 0 smallconst dist/default/production\DriverMRF24J40.X.production.o
-__end_of_InicializoPines 15C6 0 CODE 0 text10 dist/default/production\DriverMRF24J40.X.production.o
+__end_of_InicializoPines 1930 0 CODE 0 text12 dist/default/production\DriverMRF24J40.X.production.o
 __Lfarbss 0 0 FARRAM 0 farbss dist/default/production\DriverMRF24J40.X.production.o
-___inthi_stack_hi 0 0 STACK 2 stack C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_9.o
-___inthi_stack_lo 0 0 STACK 2 stack C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_9.o
-_strlen 14E4 0 CODE 0 text3 dist/default/production\DriverMRF24J40.X.production.o
+___inthi_stack_hi 0 0 STACK 2 stack C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_9.o
+___inthi_stack_lo 0 0 STACK 2 stack C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_9.o
+_strlen 17CC 0 CODE 0 text5 dist/default/production\DriverMRF24J40.X.production.o
 __Lfardata 0 0 FARRAM 0 fardata dist/default/production\DriverMRF24J40.X.production.o
-isa$std 1 0 ABS 0 - C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_9.o
-_SetLongAddr 146A 0 CODE 0 text19 dist/default/production\DriverMRF24J40.X.production.o
-stackhi 0 0 ABS 0 - C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_9.o
-stacklo 0 0 ABS 0 - C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_9.o
-SetCSPin@estado 2A 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
-__Lintcode 0 0 CODE 0 intcode dist/default/production\DriverMRF24J40.X.production.o
+isa$std 1 0 ABS 0 - C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_9.o
+_SetLongAddr 1752 0 CODE 0 text25 dist/default/production\DriverMRF24J40.X.production.o
+stackhi 0 0 ABS 0 - C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_9.o
+stacklo 0 0 ABS 0 - C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_9.o
+SetCSPin@estado 1 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+__Lintcode 8 0 CODE 0 intcode dist/default/production\DriverMRF24J40.X.production.o
 _OSCTUNE F9B 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 __Lintret 0 0 ABS 0 intret dist/default/production\DriverMRF24J40.X.production.o
 __Lirdata 0 0 CODE 0 irdata dist/default/production\DriverMRF24J40.X.production.o
+main@boton1 25 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
 __Lspace_0 0 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 __Lspace_1 0 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 __Lspace_2 0 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 __Lspace_4 0 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
-__pbssCOMRAM 1 0 COMRAM 1 bssCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+__pbssCOMRAM 30 0 COMRAM 1 bssCOMRAM dist/default/production\DriverMRF24J40.X.production.o
 _PIR1bits F9E 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
-_SetDireccionDestino 166E 0 CODE 0 text4 dist/default/production\DriverMRF24J40.X.production.o
+_SetDireccionDestino 19E6 0 CODE 0 text6 dist/default/production\DriverMRF24J40.X.production.o
 __LcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
-EnviarDato@pos_memoria 3A 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
-end_of_initialization 1556 0 CODE 0 cinit dist/default/production\DriverMRF24J40.X.production.o
+EnviarDato@pos_memoria 11 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+end_of_initialization 189A 0 CODE 0 cinit dist/default/production\DriverMRF24J40.X.production.o
+_debounceFSM_init 1800 0 CODE 0 text2 dist/default/production\DriverMRF24J40.X.production.o
 __Lnvrram 0 0 COMRAM 1 nvrram dist/default/production\DriverMRF24J40.X.production.o
 __Hintentry 0 0 ABS 0 intentry dist/default/production\DriverMRF24J40.X.production.o
-_Write2ByteSPIPort 163A 0 CODE 0 text21 dist/default/production\DriverMRF24J40.X.production.o
-__Hreset_vec 0 0 CODE 0 reset_vec dist/default/production\DriverMRF24J40.X.production.o
+_Write2ByteSPIPort 19B2 0 CODE 0 text27 dist/default/production\DriverMRF24J40.X.production.o
+__Hreset_vec 4 0 CODE 0 reset_vec dist/default/production\DriverMRF24J40.X.production.o
 __HbssBANK0 0 0 ABS 0 bssBANK0 dist/default/production\DriverMRF24J40.X.production.o
 __Lramtop 1000 0 RAM 0 ramtop dist/default/production\DriverMRF24J40.X.production.o
 __Lrparam 0 0 COMRAM 1 rparam dist/default/production\DriverMRF24J40.X.production.o
-_InicializoPines 15AA 0 CODE 0 text10 dist/default/production\DriverMRF24J40.X.production.o
-__pcinit 153E 0 CODE 0 cinit dist/default/production\DriverMRF24J40.X.production.o
+_InicializoPines 1914 0 CODE 0 text12 dist/default/production\DriverMRF24J40.X.production.o
+__pcinit 1882 0 CODE 0 cinit dist/default/production\DriverMRF24J40.X.production.o
 _SSPCON1bits FC6 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
-__ptext0 1332 0 CODE 0 text0 dist/default/production\DriverMRF24J40.X.production.o
-__ptext1 1664 0 CODE 0 text1 dist/default/production\DriverMRF24J40.X.production.o
-__ptext2 160C 0 CODE 0 text2 dist/default/production\DriverMRF24J40.X.production.o
-__ptext3 14E4 0 CODE 0 text3 dist/default/production\DriverMRF24J40.X.production.o
-__ptext4 166E 0 CODE 0 text4 dist/default/production\DriverMRF24J40.X.production.o
-__ptext5 1026 0 CODE 0 text5 dist/default/production\DriverMRF24J40.X.production.o
-__ptext6 1428 0 CODE 0 text6 dist/default/production\DriverMRF24J40.X.production.o
-__ptext7 1514 0 CODE 0 text7 dist/default/production\DriverMRF24J40.X.production.o
-__ptext8 14AC 0 CODE 0 text8 dist/default/production\DriverMRF24J40.X.production.o
-__ptext9 128A 0 CODE 0 text9 dist/default/production\DriverMRF24J40.X.production.o
+__ptext0 142E 0 CODE 0 text0 dist/default/production\DriverMRF24J40.X.production.o
+__ptext1 11F4 0 CODE 0 text1 dist/default/production\DriverMRF24J40.X.production.o
+__ptext2 1800 0 CODE 0 text2 dist/default/production\DriverMRF24J40.X.production.o
+__ptext3 19DC 0 CODE 0 text3 dist/default/production\DriverMRF24J40.X.production.o
+__ptext4 1976 0 CODE 0 text4 dist/default/production\DriverMRF24J40.X.production.o
+__ptext5 17CC 0 CODE 0 text5 dist/default/production\DriverMRF24J40.X.production.o
+__ptext6 19E6 0 CODE 0 text6 dist/default/production\DriverMRF24J40.X.production.o
+__ptext7 102A 0 CODE 0 text7 dist/default/production\DriverMRF24J40.X.production.o
+__ptext8 1710 0 CODE 0 text8 dist/default/production\DriverMRF24J40.X.production.o
+__ptext9 1830 0 CODE 0 text9 dist/default/production\DriverMRF24J40.X.production.o
 __Lstruct 0 0 COMRAM 1 struct dist/default/production\DriverMRF24J40.X.production.o
-__end_of_SetMensajeSalida 161E 0 CODE 0 text2 dist/default/production\DriverMRF24J40.X.production.o
+__end_of_SetMensajeSalida 1988 0 CODE 0 text4 dist/default/production\DriverMRF24J40.X.production.o
 __Ltext10 0 0 ABS 0 text10 dist/default/production\DriverMRF24J40.X.production.o
 __Ltext11 0 0 ABS 0 text11 dist/default/production\DriverMRF24J40.X.production.o
 __Ltext12 0 0 ABS 0 text12 dist/default/production\DriverMRF24J40.X.production.o
@@ -693,42 +843,57 @@ __Ltext23 0 0 ABS 0 text23 dist/default/production\DriverMRF24J40.X.production.o
 __Ltext24 0 0 ABS 0 text24 dist/default/production\DriverMRF24J40.X.production.o
 __Ltext25 0 0 ABS 0 text25 dist/default/production\DriverMRF24J40.X.production.o
 __Ltext26 0 0 ABS 0 text26 dist/default/production\DriverMRF24J40.X.production.o
-__ramtop 1000 0 RAM 0 ramtop C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_9.o
-__Lpowerup 0 0 CODE 0 powerup dist/default/production\DriverMRF24J40.X.production.o
+__Ltext27 0 0 ABS 0 text27 dist/default/production\DriverMRF24J40.X.production.o
+__Ltext28 0 0 ABS 0 text28 dist/default/production\DriverMRF24J40.X.production.o
+__Ltext29 0 0 ABS 0 text29 dist/default/production\DriverMRF24J40.X.production.o
+__Ltext30 0 0 ABS 0 text30 dist/default/production\DriverMRF24J40.X.production.o
+__Ltext31 0 0 ABS 0 text31 dist/default/production\DriverMRF24J40.X.production.o
+__Ltext32 0 0 ABS 0 text32 dist/default/production\DriverMRF24J40.X.production.o
+__ramtop 1000 0 RAM 0 ramtop C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_9.o
+__Lpowerup 40 0 CODE 0 powerup dist/default/production\DriverMRF24J40.X.production.o
 __Leeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production\DriverMRF24J40.X.production.o
 __H__absolute__ 0 0 ABS 0 __absolute__ dist/default/production\DriverMRF24J40.X.production.o
-_SetWakePin 161E 0 CODE 0 text11 dist/default/production\DriverMRF24J40.X.production.o
+_SetWakePin 1988 0 CODE 0 text13 dist/default/production\DriverMRF24J40.X.production.o
 __psmallconst 1000 0 SMALLCONST 0 smallconst dist/default/production\DriverMRF24J40.X.production.o
 __Lreset_vec 0 0 CODE 0 reset_vec dist/default/production\DriverMRF24J40.X.production.o
-__end_of_GetLongAddr 13E4 0 CODE 0 text14 dist/default/production\DriverMRF24J40.X.production.o
-___heap_hi 0 0 ABS 0 - C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_9.o
-___heap_lo 0 0 ABS 0 - C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_9.o
+__end_of_GetLongAddr 1710 0 CODE 0 text16 dist/default/production\DriverMRF24J40.X.production.o
+___heap_hi 0 0 ABS 0 - C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_9.o
+___heap_lo 0 0 ABS 0 - C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_9.o
 ___param_bank 0 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
-___intlo_stack_hi 0 0 STACK 2 stack C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_9.o
-___intlo_stack_lo 0 0 STACK 2 stack C:\Users\maria\AppData\Local\Temp\xcAs27s.\driver_tmp_9.o
+___intlo_stack_hi 0 0 STACK 2 stack C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_9.o
+___intlo_stack_lo 0 0 STACK 2 stack C:\Users\maria\AppData\Local\Temp\xcAsako.\driver_tmp_9.o
 __Hbigdata 0 0 BIGRAM 1 bigdata dist/default/production\DriverMRF24J40.X.production.o
-__end_of__initialization 1556 0 CODE 0 cinit dist/default/production\DriverMRF24J40.X.production.o
+__end_of__initialization 189A 0 CODE 0 cinit dist/default/production\DriverMRF24J40.X.production.o
 __Libigdata 0 0 CODE 0 ibigdata dist/default/production\DriverMRF24J40.X.production.o
-_SetChannel 14AC 0 CODE 0 text8 dist/default/production\DriverMRF24J40.X.production.o
-SetResetPin@estado 2A 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+_SetChannel 1794 0 CODE 0 text10 dist/default/production\DriverMRF24J40.X.production.o
+SetResetPin@estado 1 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
 __Lclrtext 0 0 ABS 0 clrtext dist/default/production\DriverMRF24J40.X.production.o
-_SPIInit 15DE 0 CODE 0 text26 dist/default/production\DriverMRF24J40.X.production.o
-_SPIRead 15F6 0 CODE 0 text16 dist/default/production\DriverMRF24J40.X.production.o
+_SPIInit 1948 0 CODE 0 text32 dist/default/production\DriverMRF24J40.X.production.o
+_SPIRead 1960 0 CODE 0 text18 dist/default/production\DriverMRF24J40.X.production.o
+DelayRead@delay 2 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
 _mrf24_data_in 60 0 BANK0 1 bssBANK0 dist/default/production\DriverMRF24J40.X.production.o
-__pcstackCOMRAM 2A 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+_T1CKPS0 7E6C 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
+_T1CKPS1 7E6D 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
+__pcstackCOMRAM 1 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+_T1OSCEN 7E6B 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 _SSPCON1 FC6 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
-_mrf24_data_out 23 0 COMRAM 1 bssCOMRAM dist/default/production\DriverMRF24J40.X.production.o
-_MRF24J40Init 1026 0 CODE 0 text5 dist/default/production\DriverMRF24J40.X.production.o
-__end_of_main 13A0 0 CODE 0 text0 dist/default/production\DriverMRF24J40.X.production.o
+_mrf24_data_out 52 0 COMRAM 1 bssCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+__end_of_debounceFSM_init 1830 0 CODE 0 text2 dist/default/production\DriverMRF24J40.X.production.o
+_MRF24J40Init 102A 0 CODE 0 text7 dist/default/production\DriverMRF24J40.X.production.o
+__end_of_main 1516 0 CODE 0 text0 dist/default/production\DriverMRF24J40.X.production.o
+__pintcode 8 0 CODE 0 intcode dist/default/production\DriverMRF24J40.X.production.o
 _BCLIE 7D03 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
-__end_of_SetDireccionDestino 1678 0 CODE 0 text4 dist/default/production\DriverMRF24J40.X.production.o
+_INT0E 7F94 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
+__end_of_SetDireccionDestino 19F0 0 CODE 0 text6 dist/default/production\DriverMRF24J40.X.production.o
 _PORTA F80 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 _PORTB F81 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 _PORTC F82 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 _PORTD F83 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 _PORTE F84 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
-SetWakePin@estado 2A 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+SetWakePin@estado 1 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
 _SSPIE 7CEB 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
+_TMR1H FCF 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
+_TMR1L FCE 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 __HRAM 0 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 __Hbss 0 0 RAM 1 bss dist/default/production\DriverMRF24J40.X.production.o
 __Hram 0 0 ABS 0 ram dist/default/production\DriverMRF24J40.X.production.o
@@ -737,22 +902,23 @@ __LRAM 1 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
 __Lbss 0 0 RAM 1 bss dist/default/production\DriverMRF24J40.X.production.o
 __Lram 0 0 ABS 0 ram dist/default/production\DriverMRF24J40.X.production.o
 __Lsfr 0 0 ABS 0 sfr dist/default/production\DriverMRF24J40.X.production.o
-EnviarDato@i 39 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+EnviarDato@i 10 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
 _SSPSTATbits FC7 0 ABS 0 - dist/default/production\DriverMRF24J40.X.production.o
-__end_of_SetWakePin 162C 0 CODE 0 text11 dist/default/production\DriverMRF24J40.X.production.o
-_EnviarDato 1190 0 CODE 0 text17 dist/default/production\DriverMRF24J40.X.production.o
-__Hsivt_hi 0 0 CODE 0 sivt_hi dist/default/production\DriverMRF24J40.X.production.o
-__Hsivt_lo 0 0 CODE 0 sivt_lo dist/default/production\DriverMRF24J40.X.production.o
-__initialization 153E 0 CODE 0 cinit dist/default/production\DriverMRF24J40.X.production.o
+__end_of_SetWakePin 1996 0 CODE 0 text13 dist/default/production\DriverMRF24J40.X.production.o
+_EnviarDato 1330 0 CODE 0 text23 dist/default/production\DriverMRF24J40.X.production.o
+DelayReset@delay 1 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+__Hsivt_hi 0 0 ABS 0 sivt_hi dist/default/production\DriverMRF24J40.X.production.o
+__Hsivt_lo 0 0 ABS 0 sivt_lo dist/default/production\DriverMRF24J40.X.production.o
+__initialization 1882 0 CODE 0 cinit dist/default/production\DriverMRF24J40.X.production.o
 __pbssBANK0 60 0 BANK0 1 bssBANK0 dist/default/production\DriverMRF24J40.X.production.o
 __Hfardata 0 0 FARRAM 0 fardata dist/default/production\DriverMRF24J40.X.production.o
-__Hsmallconst 1026 0 SMALLCONST 0 smallconst dist/default/production\DriverMRF24J40.X.production.o
+__Hsmallconst 102A 0 SMALLCONST 0 smallconst dist/default/production\DriverMRF24J40.X.production.o
 __Lifardata 0 0 CODE 0 ifardata dist/default/production\DriverMRF24J40.X.production.o
-SetDeviceMACAddress@i 2E 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
-__end_of_SetChannel 14E4 0 CODE 0 text8 dist/default/production\DriverMRF24J40.X.production.o
-SetLongAddr@reg_address 2F 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+SetDeviceMACAddress@i 5 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
+__end_of_SetChannel 17CC 0 CODE 0 text10 dist/default/production\DriverMRF24J40.X.production.o
+SetLongAddr@reg_address 6 0 COMRAM 1 cstackCOMRAM dist/default/production\DriverMRF24J40.X.production.o
 __Hintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/production\DriverMRF24J40.X.production.o
-__Hintcode 0 0 CODE 0 intcode dist/default/production\DriverMRF24J40.X.production.o
+__Hintcode 40 0 CODE 0 intcode dist/default/production\DriverMRF24J40.X.production.o
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
 # The beginning of the section is indicated by %SPLITSTAB.
@@ -777,11 +943,12 @@ __Hintcode 0 0 CODE 0 intcode dist/default/production\DriverMRF24J40.X.productio
 # and size are in units of delta. The file address is in units of bytes.
 # All other numeric quantities are in decimal.
 %SEGMENTS
-text5 0 1026 1026 662 1
+text7 0 102A 102A 9D6 1
+cstackCOMRAM 1 1 1 5D 1
 reset_vec 0 0 0 4 1
 bssBANK0 1 60 60 38 1
-smallconst 0 1000 1000 26 1
-bssCOMRAM 1 1 1 3C 1
+intcode 0 8 8 3C 1
+smallconst 0 1000 1000 2A 1
 # %NOTES Section
 # This section contains data of all the note-psects.  The beginning of the section
 # is indicated by %NOTES. The first line indicates the name and decimal

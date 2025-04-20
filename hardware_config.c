@@ -11,7 +11,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "hardware_config.h"
-#include "drivers/inc//drv_mspi_port.h"
+#include "drivers/inc//API_MSPI_port.h"
 
 /**
  * @brief  Inicialización del hardware y periféricos del microcontrolador
@@ -32,16 +32,19 @@ void BoardInit(void) {
     LED_ROJO_IO = SALIDA;
     LED_VERDE_IO = SALIDA;
     LED_AMARILLO_IO = SALIDA;
+    PULSADOR_IO = ENTRADA;
     LED_ROJO = 1;
     LED_VERDE = 1;
     LED_AMARILLO = 1;
 
     /* Configuración de los registros del PIC --------------------------------*/
-	GIE = 0;
-	PEIE = 0;
+    IPEN = 0;
+	GIE = 1;
+	PEIE = 1;
+    INT0E = 0;
 	RBIE = 0;
 	T0IE = 0;
-	TMR1IE = 0;
+	TMR1IE = 1;
 	TMR2IE = 0;
 	CCP1IE = 0;
 	CCP2IE = 0;
@@ -53,6 +56,16 @@ void BoardInit(void) {
 	RCIE = 0;
     OSCCON = 0b01110010;
     OSCTUNE = 0b11011111;
+    RBPU = 1;
+    
+    /* TIMER 1 - Utilizado para generar un intervalo de medición. ------------*/
+    T1RD16 = 0;
+	T1CKPS0 = 1;
+	T1CKPS1 = 1;
+	T1SYNC = 0;
+	T1OSCEN = 0;
+	TMR1CS = 0;
+	TMR1ON = 1;
     
     /* Inicializo periféricos ------------------------------------------------*/
     SPIInit();

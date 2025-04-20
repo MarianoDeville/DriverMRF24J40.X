@@ -16,6 +16,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include <stdio.h>
 #include <xc.h>
-
+#include "compatibility.h"
 
 #endif

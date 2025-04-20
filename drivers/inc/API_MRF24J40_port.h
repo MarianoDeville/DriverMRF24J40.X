@@ -14,8 +14,8 @@
 #define INC_API_MRF24J40_PORT_H_
 
 /* Includes ------------------------------------------------------------------*/
-#include "drv_mspi_port.h"
-#include "../../redef_var.h"
+#include "API_MSPI_port.h"
+#include "../../compatibility.h"
 
 #define _1_BYTE			(0x01)
 #define _2_BYTES		(0x02)

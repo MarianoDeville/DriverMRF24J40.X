@@ -12,13 +12,13 @@
 #ifndef INC_API_MRF24J40_H_
 #define INC_API_MRF24J40_H_
 
-/* Includes ------------------------------------------------------------------*/
-#include "../../redef_var.h"
-
 /* Macros --------------------------------------------------------------------*/
 #define	BROADCAST		(0xFFFF)
+#define MRF_TIME_OUT	100
+#define ENABLE			true
+#define	DISABLE			false
 
-/* Canales disponibles para el IEEE 802.15.4 */
+/* Canales disponibles para el IEEE 802.15.4 ---------------------------------*/
 typedef enum {
 
     CH_11 = 0x03,
@@ -37,10 +37,19 @@ typedef enum {
 	CH_24 = 0xD3,
 	CH_25 = 0xE3,
 	CH_26 = 0xF3
-}channel_list;
+} channel_list;
+
+/* Respuesta de las funciones ------------------------------------------------*/
+typedef enum {
+
+	TRANSMISION_REALIZADA,
+	TIME_OUT_OCURRIDO,
+	OPERACION_NO_REALIZADA,
+	OPERACION_REALIZADA
+} MRF24_StateTypeDef;
 
 /* Prototipo de funciones públicas -------------------------------------------*/
-void MRF24J40Init(void);
+MRF24_StateTypeDef MRF24J40Init(void);
 void SetMensajeSalida(const char * mensaje);
 void SetDireccionDestino(uint16_t direccion);
 void SetPANIDDestino(uint16_t panid);

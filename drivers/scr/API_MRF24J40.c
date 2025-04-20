@@ -12,6 +12,8 @@
 /* Includes ------------------------------------------------------------------*/
 #include <string.h>
 #include <stdio.h>
+#include "../../compatibility.h"
+#include "../inc/API_delay.h"
 #include "../inc/API_MRF24J40.h"
 #include "../inc/API_MRF24J40_port.h"
 
@@ -19,7 +21,7 @@
 #define	DEFAULT_CHANNEL     CH_11
 #define DEFAULT_SEC_NUMBER  (0X01)
 #define	MY_DEFAULT_PAN_ID	(0x1234)
-#define	MY_DEFAULT_ADDRESS	(0xDADD)
+#define	MY_DEFAULT_ADDRESS	(0x1112)
 
 #define HEAD_LENGTH         (0X08)
 #define WRITE_16_BITS       (0X8010)
@@ -344,9 +346,9 @@ enum {	EADR0 = 0x05,
 #define	RXDECINV		(0X04)
 
 /* Definiciones del registro BBREG2 ------------------------------------------*/
-#define	CCA_Mode_3		(0XC0)
-#define	CCA_Mode_1		(0X80)
-#define	CCA_Mode_2		(0X40)
+#define	CCA_MODE_3		(0XC0)
+#define	CCA_MODE_1		(0X80)
+#define	CCA_MODE_2		(0X40)
 #define	CCACSTH3		(0X20)
 #define	CCACSTH2		(0X10)
 #define	CCACSTH1		(0X08)
@@ -481,8 +483,8 @@ enum {	EADR0 = 0x05,
 
 /* Prototipo de funciones privadas -------------------------------------------*/
 static void InicializoVariables(void);
-static void SetShortAddr(uint8_t reg_address, uint8_t value);
-static void SetLongAddr(uint16_t reg_address, uint8_t value);
+static void SetShortAddr(uint8_t reg_address, uint8_t valor);
+static void SetLongAddr(uint16_t reg_address, uint8_t valor);
 static uint8_t GetShortAddr(uint8_t reg_address);
 static uint8_t GetLongAddr(uint16_t reg_address);
 static void SetDeviceAddress(void);
@@ -494,18 +496,23 @@ static void SetDeviceMACAddress(void);
  * @param  None
  * @retval None
  */
-void MRF24J40Init(void) {
+MRF24_StateTypeDef MRF24J40Init(void) {
 
     uint8_t lectura;
+    delayNoBloqueanteData delay_time_out;
+    DelayInit(&delay_time_out, MRF_TIME_OUT);
     InicializoVariables();
     InicializoPines();
     delay_t(1);
     SetResetPin(1);
     delay_t(1);
     SetShortAddr(SOFTRST, RSTPWR | RSTBB | RSTMAC);
+    DelayReset(&delay_time_out);
 
     do {
         lectura = GetShortAddr(SOFTRST);
+		if(DelayRead(&delay_time_out))
+	        return TIME_OUT_OCURRIDO;
     }while((lectura & (RSTPWR | RSTBB | RSTMAC)) != VACIO);
     delay_t(1);
     SetShortAddr(RXFLUSH, RXFLUSH_RESET);
@@ -517,14 +524,17 @@ void MRF24J40Init(void) {
 	SetLongAddr(RFCON7, SLPCLK100KHZ);
 	SetLongAddr(RFCON8, RFVCO);
 	SetLongAddr(SLPCON1, CLKOUTDIS | SLPCLKDIV0);
-    SetShortAddr(BBREG2, CCA_Mode_1);
+    SetShortAddr(BBREG2, CCA_MODE_1);
     SetShortAddr(BBREG6, RSSIMODE2);
     SetShortAddr(CCAEDTH, CCAEDTH2 | CCAEDTH1);
     SetShortAddr(PACON2, FIFOEN | TXONTS2 | TXONTS1);
     SetShortAddr(TXSTBL, RFSTBL3 | RFSTBL0 | MSIFS2 | MSIFS0);
+    DelayReset(&delay_time_out);
 
     do {
 		lectura = GetLongAddr(RFSTATE);
+		if(DelayRead(&delay_time_out))
+	        return TIME_OUT_OCURRIDO;
 	}while(lectura != RX);
     SetShortAddr(MRFINTCON, SLPIE_DIS | WAKEIE_DIS | HSYMTMRIE_DIS | SECIE_DIS | TXG2IE_DIS | TXNIE_DIS);
 	SetShortAddr(ACKTMOUT, DRPACK | MAWD5 | MAWD4 | MAWD3 | MAWD0);
@@ -532,7 +542,7 @@ void MRF24J40Init(void) {
 	SetChannel();
 	SetShortAddr(RXMCR, VACIO);
 	(void)GetShortAddr(INTSTAT);
-	return;
+	return OPERACION_REALIZADA;
 }
 
 /* Funciones privadas --------------------------------------------------------*/
@@ -567,13 +577,13 @@ static void InicializoVariables(void) {
  * @param  Dirección del registro - 1 byte, dato - 1 byte
  * @retval None
  */
-static void SetShortAddr(uint8_t reg_address, uint8_t value) {
+static void SetShortAddr(uint8_t reg_address, uint8_t valor) {
 
     reg_address = (uint8_t) (reg_address << SHIFT_SHORT_ADDR) | WRITE_8_BITS;
-    SetCSPin(false);
+    SetCSPin(DISABLE);
 	WriteByteSPIPort(reg_address);
-	WriteByteSPIPort(value);
-    SetCSPin(true);
+	WriteByteSPIPort(valor);
+    SetCSPin(ENABLE);
 	return;
 }
 
@@ -586,10 +596,10 @@ static uint8_t GetShortAddr(uint8_t reg_address) {
 
    	uint8_t leido_spi = VACIO;
     reg_address = (uint8_t) (reg_address << SHIFT_SHORT_ADDR) & READ_8_BITS;
-    SetCSPin(false);
+    SetCSPin(DISABLE);
     WriteByteSPIPort(reg_address);
     leido_spi = ReadByteSPIPort();
-    SetCSPin(true);
+    SetCSPin(ENABLE);
 	return leido_spi;
 }
 
@@ -598,13 +608,13 @@ static uint8_t GetShortAddr(uint8_t reg_address) {
  * @param  Dirección del registro - 2 bytes, dato - 1 byte
  * @retval None
  */
-static void SetLongAddr(uint16_t reg_address, uint8_t value) {
+static void SetLongAddr(uint16_t reg_address, uint8_t valor) {
 
     reg_address = (reg_address << SHIFT_LONG_ADDR) | WRITE_16_BITS;
-    SetCSPin(false);
+    SetCSPin(DISABLE);
     Write2ByteSPIPort(reg_address);
-	WriteByteSPIPort(value);
-    SetCSPin(true);
+	WriteByteSPIPort(valor);
+    SetCSPin(ENABLE);
 	return;
 }
 
@@ -617,10 +627,10 @@ static uint8_t GetLongAddr(uint16_t reg_address) {
 
 	uint8_t respuesta;
     reg_address = (reg_address << SHIFT_LONG_ADDR) | READ_16_BITS;
-    SetCSPin(false);
+    SetCSPin(DISABLE);
     Write2ByteSPIPort(reg_address);
 	respuesta = ReadByteSPIPort();
-    SetCSPin(true);
+    SetCSPin(ENABLE);
 	return respuesta;
 }
 
@@ -746,19 +756,20 @@ bool_t MRF24IsNewMsg(void) {
  * @param  None
  * @retval None
  */
-void ReciboPaquete(void) {//////////////////////////////////////////////////////////// para que obtengo el rssi?
+void ReciboPaquete(void) {
 
-	uint8_t i;
+	uint8_t index;
 	uint8_t largo_mensaje;
 	SetLongAddr(BBREG1, RXDECINV);
 	SetShortAddr(RXFLUSH, DATAONLY);
 	largo_mensaje = GetLongAddr(RX_FIFO);
 
-	for(i = 0; i < largo_mensaje - 4; i++) { ////////////// 4 es el tamaño del FCS + LQI + RSSI
+	for(index = 0; index < largo_mensaje - 4; index++) { ////////////// 4 es el tamaño del FCS + LQI + RSSI
 
-		mrf24_data_in.buffer_entrada[i] = GetLongAddr(RX_FIFO + HEAD_LENGTH + i);
+		mrf24_data_in.buffer_entrada[index] = GetLongAddr(RX_FIFO + HEAD_LENGTH + index);
 	}
-	mrf24_data_in.buffer_entrada[i] = 0;
+//	mrf24_data_in.buffer_entrada[index] = 0;
+	mrf24_data_in.buffer_entrada[11] = NULL;
 	SetLongAddr(BBREG1, VACIO);
 	(void)GetShortAddr(INTSTAT);
 	return;
@@ -877,3 +888,4 @@ void BuscarDispositivos(void) {                                                 
 //	Envio_Dato(0x1234,BROADCAST,rs_str);
 	return;
 }
+
