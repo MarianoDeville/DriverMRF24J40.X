@@ -5323,6 +5323,7 @@ estadoPulsador_t DebounceFSMUpdate(debounceData_t * antirrebote_boton_n, bool_t 
 # 28 "main.c"
 void main(void) {
 
+    char respuesta[40];
     delayNoBloqueanteData delay_parpadeo;
     debounceData_t boton1;
  DebounceFSMInit(&boton1);
@@ -5339,14 +5340,12 @@ void main(void) {
 
    case PRESIONO_BOTON:
 
-                LATEbits.LATE2 = 0;
                 MRF24SetMensajeSalida("CMD:PLV");
                 MRF24TransmitirDato();
     break;
 
    case SUELTO_BOTON:
 
-                LATEbits.LATE2 = 1;
                 MRF24SetMensajeSalida("CMD:ALV");
                 MRF24TransmitirDato();
     break;
@@ -5359,23 +5358,28 @@ void main(void) {
         if(MRF24IsNewMsg()) {
 
             MRF24ReciboPaquete();
-            char cadena[50] ;
 
-            strcpy(cadena,MRF24GetMensajeEntrada() );
+   if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:PLA")) {
 
-
-            __nop();
-   if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:PLA"))
     LATEbits.LATE1 = 0;
+                MRF24SetMensajeSalida("Led encendido");
+   } else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:ALA")) {
 
-   else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:ALA"))
     LATEbits.LATE1 = 1;
+                MRF24SetMensajeSalida("Led apagado");
+            } else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:PLR")) {
 
-            else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:PLR"))
     LATEbits.LATE2 = 0;
+                MRF24SetMensajeSalida("Led encendido");
+            } else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:ALR")) {
 
-            else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:ALR"))
     LATEbits.LATE2 = 1;
+                MRF24SetMensajeSalida("Led apagado");
+            } else {
+
+                MRF24SetMensajeSalida("Cmd error.");
+            }
+            MRF24TransmitirDato();
   }
 
         if(DelayRead(&delay_parpadeo)) {

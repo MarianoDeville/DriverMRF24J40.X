@@ -27,6 +27,7 @@
  */
 void main(void) {
     
+    char respuesta[40];
     delayNoBloqueanteData delay_parpadeo;
     debounceData_t boton1;
 	DebounceFSMInit(&boton1);
@@ -43,14 +44,12 @@ void main(void) {
 
 			case PRESIONO_BOTON:
 
-                LED_ROJO = 0;
                 MRF24SetMensajeSalida("CMD:PLV");
                 MRF24TransmitirDato();
 				break;
 
 			case SUELTO_BOTON:
 
-                LED_ROJO = 1;
                 MRF24SetMensajeSalida("CMD:ALV");
                 MRF24TransmitirDato();
 				break;
@@ -64,17 +63,27 @@ void main(void) {
 
             MRF24ReciboPaquete();
 
-			if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:PLA"))
+			if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:PLA")) {
+                
 				LED_AMARILLO = ENCENDIDO;
-
-			else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:ALA"))
+                MRF24SetMensajeSalida("Led encendido");
+			} else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:ALA")) {
+                
 				LED_AMARILLO = APAGADO;
-
-            else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:PLR"))
+                MRF24SetMensajeSalida("Led apagado");
+            } else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:PLR")) {
+                
 				LED_ROJO = ENCENDIDO;
-            
-            else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:ALR"))
+                MRF24SetMensajeSalida("Led encendido");
+            } else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:ALR")) {
+                
 				LED_ROJO = APAGADO;
+                MRF24SetMensajeSalida("Led apagado");
+            } else {
+                
+                MRF24SetMensajeSalida("Cmd error.");
+            }
+            MRF24TransmitirDato();
 		}
         
         if(DelayRead(&delay_parpadeo)) {
