@@ -1,8 +1,12 @@
-/*
- * API_debounce.h
+/**
+******************************************************************************
+ * @file    API_debounce.h
+ * @author  Lcdo. Mariano Ariel Deville
+ * @brief   Archivo cabecera para la implementaciÛn driver antirrebote
+ *******************************************************************************
+ * @attention
  *
- *  Created on: Mar 28, 2025
- *      Author: Mariano Deville
+ *******************************************************************************
  */
 
 #ifndef API_INC_API_DEBOUNCE_H_
@@ -11,7 +15,7 @@
 #include "API_delay.h"
 
 /**
- * Estados posibles de la m√°quina de estados.
+ * Estados posibles de la m·quina de estados.
  */
 typedef enum {
 
@@ -22,7 +26,7 @@ typedef enum {
 } debounceState_t;
 
 /**
- * Respuestas de la m√°quina de estados.
+ * Respuestas de la m·quina de estados.
  */
 typedef enum {
 
@@ -35,7 +39,6 @@ typedef enum {
 
 /**
  * Estructura defina para el manejo del antirrebote.
- * Est√° definida en el header para poder utilizarla en cualquier parte del proyecto.
  */
 typedef struct {
 
@@ -45,9 +48,9 @@ typedef struct {
 } debounceData_t;
 
 /**
- * Prototipo de funciones p√∫blicas.
+ * Prototipo de funciones p˙blicas.
  */
-void debounceFSM_init(debounceData_t * antirrebote_boton_n);
-estadoPulsador_t debounceFSM_update(debounceData_t * antirrebote_boton_n, bool_t estado_pin);
+void DebounceFSMInit(debounceData_t * antirrebote_boton_n);
+estadoPulsador_t DebounceFSMUpdate(debounceData_t * antirrebote_boton_n, bool_t estado_pin);
 
 #endif /* API_INC_API_DEBOUNCE_H_ */

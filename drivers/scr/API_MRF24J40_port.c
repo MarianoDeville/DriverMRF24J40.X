@@ -20,10 +20,6 @@
  */
 void InicializoPines(void){
     
-    MRF24_INT_IO = ENTRADA;
-    MRF24_CS_IO = SALIDA;
-    MRF24_WAKE_IO = SALIDA;
-    MRF24_RESET_IO = SALIDA;
     SetCSPin(1);
     SetWakePin(1);
     SetResetPin(0);

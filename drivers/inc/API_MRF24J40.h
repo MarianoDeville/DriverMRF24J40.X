@@ -50,18 +50,13 @@ typedef enum {
 
 /* Prototipo de funciones públicas -------------------------------------------*/
 MRF24_StateTypeDef MRF24J40Init(void);
-void SetMensajeSalida(const char * mensaje);
-void SetDireccionDestino(uint16_t direccion);
-void SetPANIDDestino(uint16_t panid);
-void EnviarDato(void);
+void MRF24SetMensajeSalida(const char * mensaje);
+void MRF24SetDireccionDestino(uint16_t direccion);
+void MRF24SetPANIDDestino(uint16_t panid);
+void MRF24TransmitirDato(void);
 bool_t MRF24IsNewMsg(void);
-void ReciboPaquete(void);
-char * GetMensajeEntrada(void);
-
-
-void EnviarComando();
-void EnviarDatoEncriptado(void);
-void BuscarDispositivos(void);
-
+void MRF24ReciboPaquete(void);
+uint8_t * MRF24GetMensajeEntrada(void);
+void MRF24BuscarDispositivos(void);
 
 #endif /* INC_API_MRF24J40_H_ */

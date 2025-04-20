@@ -36,7 +36,11 @@ void BoardInit(void) {
     LED_ROJO = 1;
     LED_VERDE = 1;
     LED_AMARILLO = 1;
-
+    MRF24_INT_IO = ENTRADA;
+    MRF24_CS_IO = SALIDA;
+    MRF24_WAKE_IO = SALIDA;
+    MRF24_RESET_IO = SALIDA;
+    
     /* Configuración de los registros del PIC --------------------------------*/
     IPEN = 0;
 	GIE = 1;

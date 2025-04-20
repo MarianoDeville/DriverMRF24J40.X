@@ -5187,18 +5187,14 @@ typedef enum {
 
 
 MRF24_StateTypeDef MRF24J40Init(void);
-void SetMensajeSalida(const char * mensaje);
-void SetDireccionDestino(uint16_t direccion);
-void SetPANIDDestino(uint16_t panid);
-void EnviarDato(void);
+void MRF24SetMensajeSalida(const char * mensaje);
+void MRF24SetDireccionDestino(uint16_t direccion);
+void MRF24SetPANIDDestino(uint16_t panid);
+void MRF24TransmitirDato(void);
 bool_t MRF24IsNewMsg(void);
-void ReciboPaquete(void);
-char * GetMensajeEntrada(void);
-
-
-void EnviarComando();
-void EnviarDatoEncriptado(void);
-void BuscarDispositivos(void);
+void MRF24ReciboPaquete(void);
+uint8_t * MRF24GetMensajeEntrada(void);
+void MRF24BuscarDispositivos(void);
 # 15 "main.c" 2
 
 # 1 "./drivers/inc/API_delay.h" 1
@@ -5227,7 +5223,7 @@ void DelayReset( delayNoBloqueanteData * delay);
 # 16 "main.c" 2
 
 # 1 "./drivers/inc/API_debounce.h" 1
-# 16 "./drivers/inc/API_debounce.h"
+# 20 "./drivers/inc/API_debounce.h"
 typedef enum {
 
  BUTTON_UP,
@@ -5251,7 +5247,6 @@ typedef enum {
 
 
 
-
 typedef struct {
 
  bool_t tecla_fue_presionada;
@@ -5262,49 +5257,60 @@ typedef struct {
 
 
 
-void debounceFSM_init(debounceData_t * antirrebote_boton_n);
-estadoPulsador_t debounceFSM_update(debounceData_t * antirrebote_boton_n, bool_t estado_pin);
+void DebounceFSMInit(debounceData_t * antirrebote_boton_n);
+estadoPulsador_t DebounceFSMUpdate(debounceData_t * antirrebote_boton_n, bool_t estado_pin);
 # 17 "main.c" 2
-
-
-
-
-
-
-
+# 26 "main.c"
 void main(void) {
 
     delayNoBloqueanteData delay_parpadeo;
     debounceData_t boton1;
- debounceFSM_init(&boton1);
+ DebounceFSMInit(&boton1);
     BoardInit();
     MRF24J40Init();
     DelayInit(&delay_parpadeo, 1000);
-    SetDireccionDestino(0x1111);
-    SetPANIDDestino(0X1234);
+    MRF24SetDireccionDestino(0x1111);
+    MRF24SetPANIDDestino(0X1234);
 
     while(1) {
 
         __asm(" clrwdt");
-        switch(debounceFSM_update(&boton1,PORTCbits.RC2)) {
+        switch(DebounceFSMUpdate(&boton1,PORTCbits.RC2)) {
 
    case PRESIONO_BOTON:
 
                 LATEbits.LATE2 = 0;
-                SetMensajeSalida("CMD:PLV");
-                EnviarDato();
+                MRF24SetMensajeSalida("CMD:PLV");
+                MRF24TransmitirDato();
     break;
 
    case SUELTO_BOTON:
 
                 LATEbits.LATE2 = 1;
-                SetMensajeSalida("CMD:ALV");
-                EnviarDato();
+                MRF24SetMensajeSalida("CMD:ALV");
+                MRF24TransmitirDato();
     break;
 
    default:
 
                 break;
+  }
+
+        if(MRF24IsNewMsg()) {
+
+            MRF24ReciboPaquete();
+
+   if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:PLA"))
+    LATEbits.LATE0 = 1;
+
+   else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:ALA"))
+    LATEbits.LATE0 = 1;
+
+            else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:PLR"))
+    LATEbits.LATE0 = 1;
+
+            else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:ALR"))
+    LATEbits.LATE0 = 1;
   }
 
         if(DelayRead(&delay_parpadeo)) {

@@ -5031,6 +5031,10 @@ void BoardInit(void) {
     LATEbits.LATE2 = 1;
     LATEbits.LATE0 = 1;
     LATEbits.LATE1 = 1;
+    TRISBbits.TRISB0 = 1;
+    TRISCbits.TRISC6 = 0;
+    TRISCbits.TRISC7 = 0;
+    TRISDbits.TRISD4 = 0;
 
 
     IPEN = 0;

@@ -16,6 +16,8 @@
 #include "drivers/inc/API_delay.h"
 #include "drivers/inc/API_debounce.h"
 
+#define ENCENDIDO   1
+#define APAGADO     0
 /**
  * @brief  Main program
  * @param  None
@@ -25,35 +27,52 @@ void main(void) {
     
     delayNoBloqueanteData delay_parpadeo;
     debounceData_t boton1;
-	debounceFSM_init(&boton1);
+	DebounceFSMInit(&boton1);
     BoardInit();
     MRF24J40Init();
     DelayInit(&delay_parpadeo, 1000);
-    SetDireccionDestino(0x1111);
-    SetPANIDDestino(0X1234);
+    MRF24SetDireccionDestino(0x1111);
+    MRF24SetPANIDDestino(0X1234);
     
     while(1) {
 
         CLRWDT();
-        switch(debounceFSM_update(&boton1,PULSADOR)) {
+        switch(DebounceFSMUpdate(&boton1,PULSADOR)) {
 
 			case PRESIONO_BOTON:
 
                 LED_ROJO = 0;
-                SetMensajeSalida("CMD:PLV");
-                EnviarDato();
+                MRF24SetMensajeSalida("CMD:PLV");
+                MRF24TransmitirDato();
 				break;
 
 			case SUELTO_BOTON:
 
                 LED_ROJO = 1;
-                SetMensajeSalida("CMD:ALV");
-                EnviarDato();
+                MRF24SetMensajeSalida("CMD:ALV");
+                MRF24TransmitirDato();
 				break;
 
 			default:
                 
                 break;
+		}
+        
+        if(MRF24IsNewMsg()) {
+
+            MRF24ReciboPaquete();
+
+			if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:PLA"))
+				LED_VERDE = ENCENDIDO;
+
+			else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:ALA"))
+				LED_VERDE = ENCENDIDO;
+
+            else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:PLR"))
+				LED_VERDE = ENCENDIDO;
+            
+            else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:ALR"))
+				LED_VERDE = ENCENDIDO;
 		}
         
         if(DelayRead(&delay_parpadeo)) {

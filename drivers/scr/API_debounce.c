@@ -16,7 +16,7 @@
   * @param  Puntero a la estructura que contiene las variabes.
   * @retval None
   */
-void debounceFSM_init(debounceData_t * antirrebote_boton_n) {
+void DebounceFSMInit(debounceData_t * antirrebote_boton_n) {
 
 	antirrebote_boton_n->estadoActual = BUTTON_UP;
 	DelayInit(&antirrebote_boton_n->delay_anti_rebote, TIEMPO_ANTI_REBOTE);
@@ -31,7 +31,7 @@ void debounceFSM_init(debounceData_t * antirrebote_boton_n) {
   * @note	En el enunciado la función no posee parámetros, pero de esta forma independizo totalmente
   * 		el driver del hardware en donde lo implemento.
   */
-estadoPulsador_t debounceFSM_update(debounceData_t * antirrebote_boton_n, bool_t estado_pin) {
+estadoPulsador_t DebounceFSMUpdate(debounceData_t * antirrebote_boton_n, bool_t estado_pin) {
 
 	switch(antirrebote_boton_n->estadoActual) {
 
@@ -81,7 +81,7 @@ estadoPulsador_t debounceFSM_update(debounceData_t * antirrebote_boton_n, bool_t
 
 		default:
 
-			debounceFSM_init(antirrebote_boton_n);
+			DebounceFSMInit(antirrebote_boton_n);
 			return ERROR_ANTI_REBOTE;
 	}
 	return BOTON_SIN_CAMBIOS;

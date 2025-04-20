@@ -4,7 +4,8 @@
  * @author  Lcdo. Mariano Ariel Deville
  * @brief   Implementación driver módulo MRF24J40MA
  *******************************************************************************
- * @attention
+ * @attention Driver independiente de la plataforma de uso y del compilardor.
+ *            Escrito en C.
  *
  *******************************************************************************
  */
@@ -31,6 +32,7 @@
 #define SHIFT_LONG_ADDR		(0X05)
 #define SHIFT_SHORT_ADDR	(0X01)
 #define SHIFT_BYTE			(0X08)
+#define FCS_LQI_RSSI		(0x04)
 
 /* Variables privadas --------------------------------------------------------*/
 /* MAC address por defecto del dispositivo */
@@ -85,7 +87,7 @@ static struct {	uint16_t source_panid;
 				uint16_t source_address;
 				uint8_t tamano_mensaje;
 				uint8_t rssi;
-				char buffer_entrada[50];
+				uint8_t buffer_entrada[50];
 }mrf24_data_in;
 
 enum {	EADR0 = 0x05,
@@ -685,7 +687,7 @@ static void SetDeviceMACAddress(void) {
  * @param  None
  * @retval None
  */
-void SetMensajeSalida(const char * mensaje) {
+void MRF24SetMensajeSalida(const char * mensaje) {
 
     mrf24_data_out.buffer_salida = mensaje;
     mrf24_data_out.largo_mensaje = (uint8_t) strlen(mensaje);
@@ -697,7 +699,7 @@ void SetMensajeSalida(const char * mensaje) {
  * @param  None
  * @retval None
  */
-void SetDireccionDestino(uint16_t direccion) {
+void MRF24SetDireccionDestino(uint16_t direccion) {
 
     mrf24_data_out.destinity_address = direccion;
     return;
@@ -708,7 +710,7 @@ void SetDireccionDestino(uint16_t direccion) {
  * @param  None
  * @retval None
  */
-void SetPANIDDestino(uint16_t panid) {
+void MRF24SetPANIDDestino(uint16_t panid) {
 
     mrf24_data_out.destinity_panid = panid;
     return;
@@ -719,7 +721,7 @@ void SetPANIDDestino(uint16_t panid) {
  * @param  None
  * @retval None
  */
-void EnviarDato(void) {
+void MRF24TransmitirDato(void) {
 
 	uint8_t pos_memoria = 0;
 	uint8_t largo_cabecera = HEAD_LENGTH;
@@ -737,6 +739,7 @@ void EnviarDato(void) {
 
 		SetLongAddr(pos_memoria++, mrf24_data_out.buffer_salida[i]);
 	}
+    SetLongAddr(pos_memoria++, VACIO);
 	SetShortAddr(TXNCON, TXNACKREQ | TXNTRIG);
 	return;
 }
@@ -756,7 +759,7 @@ bool_t MRF24IsNewMsg(void) {
  * @param  None
  * @retval None
  */
-void ReciboPaquete(void) {
+void MRF24ReciboPaquete(void) {
 
 	uint8_t index;
 	uint8_t largo_mensaje;
@@ -764,12 +767,10 @@ void ReciboPaquete(void) {
 	SetShortAddr(RXFLUSH, DATAONLY);
 	largo_mensaje = GetLongAddr(RX_FIFO);
 
-	for(index = 0; index < largo_mensaje - 4; index++) { ////////////// 4 es el tamaño del FCS + LQI + RSSI
+	for(index = 0; index < largo_mensaje - FCS_LQI_RSSI; index++) {
 
 		mrf24_data_in.buffer_entrada[index] = GetLongAddr(RX_FIFO + HEAD_LENGTH + index);
 	}
-//	mrf24_data_in.buffer_entrada[index] = 0;
-	mrf24_data_in.buffer_entrada[11] = NULL;
 	SetLongAddr(BBREG1, VACIO);
 	(void)GetShortAddr(INTSTAT);
 	return;
@@ -780,7 +781,7 @@ void ReciboPaquete(void) {
  * @param  None
  * @retval
  */
-char * GetMensajeEntrada(void){
+uint8_t * MRF24GetMensajeEntrada(void){
 
 	return mrf24_data_in.buffer_entrada;
 }
@@ -788,104 +789,14 @@ char * GetMensajeEntrada(void){
 
 
 
-
-
-
-
-
-/**
- * @brief  Envío la información almacenada en la estructura de salida encriptada
- * @param  None
- * @retval None
-  ******************************************************************************
- * @attention
- *					 LSB.
- *	DATA | ACK | MAC_COMM | SECURITY | FRAME_PEND | ACK_REQ | INTRA_PAN
- *					 MSB.
- *	SHORT_D_ADD | LONG_D_ADD | SHORT_S_ADD | LONG_S_ADD
-  ******************************************************************************
- */
-void EnviarDatoEncriptado(void) {
-
-	uint16_t pos_memoria = 0;
-	SetLongAddr(pos_memoria++, 0X15);                                               // Longitud de la cabecera.
-	SetLongAddr(pos_memoria++, 0X15 + 0X0B + 5);                                    // Longitud del paquete.
-	SetLongAddr(pos_memoria++, DATA|ACK_REQ|INTRA_PAN | SECURITY);      // LSB.
-	SetLongAddr(pos_memoria++, LONG_S_ADD | SHORT_D_ADD);               // MSB.
-	SetLongAddr(pos_memoria++, mrf24_data_config.sequence_number++);
-	SetLongAddr(pos_memoria++, (uint8_t) (mrf24_data_out.destinity_panid));
-	SetLongAddr(pos_memoria++, (uint8_t) (mrf24_data_out.destinity_panid >> SHIFT_BYTE));
-
-	SetLongAddr(pos_memoria++, 0x01);
-	SetLongAddr(pos_memoria++, 0x00);
-	SetLongAddr(pos_memoria++, 0x00);
-	SetLongAddr(pos_memoria++, 0x00);
-	SetLongAddr(pos_memoria++, 0x00);			// Mi número de clave.
-
-	for(uint16_t i = 0; i < 16; i++) {
-
-		SetLongAddr(TX_SEC_KEY + i, mrf24_data_config.security_key[i + 1]);
-	}
-	SetLongAddr(SECCON0, TX_AES_CCM_32);
-
-	for(uint16_t i = 0; i < mrf24_data_out.largo_mensaje; i++) {
-
-		SetLongAddr(pos_memoria++, *mrf24_data_out.buffer_salida++);
-	}
-	SetShortAddr(TXNCON, TXNACKREQ | TXNSECEN | TXNTRIG);
-	return;
-}
-
-
-
-/**
- * @brief  Envío un comando almacenado en la estructura de salida
- * @param  None
- * @retval None
-  ******************************************************************************
- * @attention
- *					 LSB.
- *	DATA | ACK | MAC_COMM | SECURITY | FRAME_PEND | ACK_REQ | INTRA_PAN
- *					 MSB.
- *	SHORT_D_ADD | LONG_D_ADD | SHORT_S_ADD | LONG_S_ADD
-  ******************************************************************************
- */
-void EnviarComando(void) {
-
-	uint8_t pos = 0;
-	uint16_t i;
-	SetLongAddr(pos++, 0x0f);			// Longitud de la cabecera.
-	SetLongAddr(pos++, 0x13);			//
-	SetLongAddr(pos++, 0x43);			// LSB.
-	SetLongAddr(pos++, 0xc8);			// MSB.
-	SetLongAddr(pos++, mrf24_data_config.sequence_number++);
-	SetLongAddr(pos++, (uint8_t) mrf24_data_out.destinity_panid);
-	SetLongAddr(pos++, (uint8_t) (mrf24_data_out.destinity_panid >> SHIFT_BYTE));
-	SetLongAddr(pos++, (uint8_t) mrf24_data_out.destinity_address);
-	SetLongAddr(pos++, (uint8_t) (mrf24_data_out.destinity_address >> SHIFT_BYTE));
-	for(i = 0; i < 8; i++)					// MAC address de origen.
-	{
-		SetLongAddr(pos++, mrf24_data_config.my_mac[i]);
-	}
-	SetLongAddr(pos++, 0x81);
-	SetLongAddr(pos++, 0x18);
-	SetLongAddr(pos++, 0x09);
-	SetLongAddr(pos++, 0x01);
-//	SetShortAddr(TXNCON, TXNSECEN | TXNTRIG);
-	SetShortAddr(TXNCON, TXNACKREQ | TXNTRIG);
-	return;
-}
-
-
 /**
  * @brief  Buscar dispositivos en la cercanía
  * @param  None
  * @retval None
  */
-void BuscarDispositivos(void) {                                                    // acá debería devolver una estructura con los dispositivos encontrados
+void MRF24BuscarDispositivos(void) {                                                    // acá debería devolver una estructura con los dispositivos encontrados
 
 //	SetChannel(DEF_CH);
 //	Envio_Dato(0x1234,BROADCAST,rs_str);
 	return;
 }
-
