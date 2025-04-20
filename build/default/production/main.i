@@ -8,21 +8,87 @@
 # 2 "<built-in>" 2
 # 1 "main.c" 2
 # 13 "main.c"
-# 1 "./main.h" 1
-# 17 "./main.h"
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\stdio.h" 1 3
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\string.h" 1 3
 
 
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\musl_xc8.h" 1 3
-# 5 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\stdio.h" 2 3
+# 5 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\string.h" 2 3
 
 
 
 
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\features.h" 1 3
-# 11 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\stdio.h" 2 3
+# 11 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\string.h" 2 3
+# 25 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\string.h" 3
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\bits/alltypes.h" 1 3
+# 128 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef unsigned size_t;
+# 174 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef __int24 int24_t;
+# 210 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef __uint24 uint24_t;
+# 421 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef struct __locale_struct * locale_t;
+# 26 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\string.h" 2 3
+
+void *memcpy (void *restrict, const void *restrict, size_t);
+void *memmove (void *, const void *, size_t);
+void *memset (void *, int, size_t);
+int memcmp (const void *, const void *, size_t);
+void *memchr (const void *, int, size_t);
+
+char *strcpy (char *restrict, const char *restrict);
+char *strncpy (char *restrict, const char *restrict, size_t);
+
+char *strcat (char *restrict, const char *restrict);
+char *strncat (char *restrict, const char *restrict, size_t);
+
+int strcmp (const char *, const char *);
+int strncmp (const char *, const char *, size_t);
+
+int strcoll (const char *, const char *);
+size_t strxfrm (char *restrict, const char *restrict, size_t);
+
+char *strchr (const char *, int);
+char *strrchr (const char *, int);
+
+size_t strcspn (const char *, const char *);
+size_t strspn (const char *, const char *);
+char *strpbrk (const char *, const char *);
+char *strstr (const char *, const char *);
+char *strtok (char *restrict, const char *restrict);
+
+size_t strlen (const char *);
+
+char *strerror (int);
+
+
+
+
+char *strtok_r (char *restrict, const char *restrict, char **restrict);
+int strerror_r (int, char *, size_t);
+char *stpcpy(char *restrict, const char *restrict);
+char *stpncpy(char *restrict, const char *restrict, size_t);
+size_t strnlen (const char *, size_t);
+char *strdup (const char *);
+char *strndup (const char *, size_t);
+char *strsignal(int);
+char *strerror_l (int, locale_t);
+int strcoll_l (const char *, const char *, locale_t);
+size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
+
+
+
+
+void *memccpy (void *restrict, const void *restrict, int, size_t);
+# 13 "main.c" 2
+
+
+# 1 "./main.h" 1
+# 17 "./main.h"
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\stdio.h" 1 3
 # 24 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\stdio.h" 3
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\bits/alltypes.h" 1 3
 # 12 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\bits/alltypes.h" 3
@@ -32,14 +98,8 @@ typedef void * va_list[1];
 
 
 typedef void * __isoc_va_list[1];
-# 128 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef unsigned size_t;
 # 143 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\bits/alltypes.h" 3
 typedef __int24 ssize_t;
-# 174 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef __int24 int24_t;
-# 210 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef __uint24 uint24_t;
 # 255 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\bits/alltypes.h" 3
 typedef long long off_t;
 # 409 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\bits/alltypes.h" 3
@@ -5151,7 +5211,7 @@ typedef enum {
  ERROR_TRANSMISION,
 }Estado_TX_RX;
 # 19 "./main.h" 2
-# 13 "main.c" 2
+# 15 "main.c" 2
 
 
 # 1 "./drivers/inc/API_MRF24J40.h" 1
@@ -5195,7 +5255,7 @@ bool_t MRF24IsNewMsg(void);
 void MRF24ReciboPaquete(void);
 uint8_t * MRF24GetMensajeEntrada(void);
 void MRF24BuscarDispositivos(void);
-# 15 "main.c" 2
+# 17 "main.c" 2
 
 # 1 "./drivers/inc/API_delay.h" 1
 # 13 "./drivers/inc/API_delay.h"
@@ -5220,7 +5280,7 @@ void DelayInit(delayNoBloqueanteData * delay, tick_t duration);
 bool_t DelayRead(delayNoBloqueanteData * delay );
 void DelayWrite(delayNoBloqueanteData * delay, tick_t duration);
 void DelayReset( delayNoBloqueanteData * delay);
-# 16 "main.c" 2
+# 18 "main.c" 2
 
 # 1 "./drivers/inc/API_debounce.h" 1
 # 20 "./drivers/inc/API_debounce.h"
@@ -5259,8 +5319,8 @@ typedef struct {
 
 void DebounceFSMInit(debounceData_t * antirrebote_boton_n);
 estadoPulsador_t DebounceFSMUpdate(debounceData_t * antirrebote_boton_n, bool_t estado_pin);
-# 17 "main.c" 2
-# 26 "main.c"
+# 19 "main.c" 2
+# 28 "main.c"
 void main(void) {
 
     delayNoBloqueanteData delay_parpadeo;
@@ -5299,18 +5359,23 @@ void main(void) {
         if(MRF24IsNewMsg()) {
 
             MRF24ReciboPaquete();
+            char cadena[50] ;
 
+            strcpy(cadena,MRF24GetMensajeEntrada() );
+
+
+            __nop();
    if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:PLA"))
-    LATEbits.LATE0 = 1;
+    LATEbits.LATE1 = 0;
 
    else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:ALA"))
-    LATEbits.LATE0 = 1;
+    LATEbits.LATE1 = 1;
 
             else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:PLR"))
-    LATEbits.LATE0 = 1;
+    LATEbits.LATE2 = 0;
 
             else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:ALR"))
-    LATEbits.LATE0 = 1;
+    LATEbits.LATE2 = 1;
   }
 
         if(DelayRead(&delay_parpadeo)) {

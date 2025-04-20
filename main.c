@@ -10,14 +10,16 @@
  */
 
 /* Includes ------------------------------------------------------------------*/
+#include <string.h>
+
 #include "main.h"
 #include "hardware_config.h"
 #include "drivers/inc/API_MRF24J40.h"
 #include "drivers/inc/API_delay.h"
 #include "drivers/inc/API_debounce.h"
 
-#define ENCENDIDO   1
-#define APAGADO     0
+#define ENCENDIDO   0
+#define APAGADO     1
 /**
  * @brief  Main program
  * @param  None
@@ -63,16 +65,16 @@ void main(void) {
             MRF24ReciboPaquete();
 
 			if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:PLA"))
-				LED_VERDE = ENCENDIDO;
+				LED_AMARILLO = ENCENDIDO;
 
 			else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:ALA"))
-				LED_VERDE = ENCENDIDO;
+				LED_AMARILLO = APAGADO;
 
             else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:PLR"))
-				LED_VERDE = ENCENDIDO;
+				LED_ROJO = ENCENDIDO;
             
             else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:ALR"))
-				LED_VERDE = ENCENDIDO;
+				LED_ROJO = APAGADO;
 		}
         
         if(DelayRead(&delay_parpadeo)) {

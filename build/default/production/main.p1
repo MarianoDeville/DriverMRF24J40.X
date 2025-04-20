@@ -2,31 +2,31 @@ Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
 "20 ./drivers/inc/API_delay.h
 [; ;./drivers/inc/API_delay.h: 20: typedef struct{
-[s S305 `ul 1 `ul 1 `a 1 ]
-[n S305 . startTime duration running ]
-"29 main.c
-[; ;main.c: 29:     debounceData_t boton1;
-[c E3114 0 1 2 3 .. ]
-[n E3114 . BUTTON_UP BUTTON_FALLING BUTTON_DOWN BUTTON_RAISING  ]
+[s S306 `ul 1 `ul 1 `a 1 ]
+[n S306 . startTime duration running ]
+"31 main.c
+[; ;main.c: 31:     debounceData_t boton1;
+[c E3281 0 1 2 3 .. ]
+[n E3281 . BUTTON_UP BUTTON_FALLING BUTTON_DOWN BUTTON_RAISING  ]
 "43 ./drivers/inc/API_debounce.h
 [; ;./drivers/inc/API_debounce.h: 43: typedef struct {
-[s S306 `a 1 `E3114 1 `S305 1 ]
-[n S306 . tecla_fue_presionada estadoActual delay_anti_rebote ]
+[s S307 `a 1 `E3281 1 `S306 1 ]
+[n S307 . tecla_fue_presionada estadoActual delay_anti_rebote ]
 "53
 [; ;./drivers/inc/API_debounce.h: 53: void DebounceFSMInit(debounceData_t * antirrebote_boton_n);
-[v _DebounceFSMInit `(v ~T0 @X0 0 ef1`*S306 ]
+[v _DebounceFSMInit `(v ~T0 @X0 0 ef1`*S307 ]
 "80 ./hardware_config.h
 [v _BoardInit `(v ~T0 @X0 0 ef ]
-"32 main.c
-[; ;main.c: 32:     MRF24J40Init();
-[c E3080 0 1 2 3 .. ]
-[n E3080 . TRANSMISION_REALIZADA TIME_OUT_OCURRIDO OPERACION_NO_REALIZADA OPERACION_REALIZADA  ]
+"34 main.c
+[; ;main.c: 34:     MRF24J40Init();
+[c E3247 0 1 2 3 .. ]
+[n E3247 . TRANSMISION_REALIZADA TIME_OUT_OCURRIDO OPERACION_NO_REALIZADA OPERACION_REALIZADA  ]
 "52 ./drivers/inc/API_MRF24J40.h
 [; ;./drivers/inc/API_MRF24J40.h: 52: MRF24_StateTypeDef MRF24J40Init(void);
-[v _MRF24J40Init `(E3080 ~T0 @X0 0 ef ]
+[v _MRF24J40Init `(E3247 ~T0 @X0 0 ef ]
 "30 ./drivers/inc/API_delay.h
 [; ;./drivers/inc/API_delay.h: 30: void DelayInit(delayNoBloqueanteData * delay, tick_t duration);
-[v _DelayInit `(v ~T0 @X0 0 ef2`*S305`ul ]
+[v _DelayInit `(v ~T0 @X0 0 ef2`*S306`ul ]
 "54 ./drivers/inc/API_MRF24J40.h
 [; ;./drivers/inc/API_MRF24J40.h: 54: void MRF24SetDireccionDestino(uint16_t direccion);
 [v _MRF24SetDireccionDestino `(v ~T0 @X0 0 ef1`us ]
@@ -35,78 +35,84 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _MRF24SetPANIDDestino `(v ~T0 @X0 0 ef1`us ]
 "1986 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f46k20.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f46k20.h: 1986:     struct {
-[s S83 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S83 . LATE0 LATE1 LATE2 ]
+[s S84 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S84 . LATE0 LATE1 LATE2 ]
 "1991
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f46k20.h: 1991:     struct {
-[s S84 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S84 . LE0 LE1 LE2 ]
+[s S85 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S85 . LE0 LE1 LE2 ]
 "1985
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f46k20.h: 1985: typedef union {
-[u S82 `S83 1 `S84 1 ]
-[n S82 . . . ]
+[u S83 `S84 1 `S85 1 ]
+[n S83 . . . ]
 "1997
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f46k20.h: 1997: extern volatile LATEbits_t LATEbits __attribute__((address(0xF8D)));
-[v _LATEbits `VS82 ~T0 @X0 0 e@3981 ]
+[v _LATEbits `VS83 ~T0 @X0 0 e@3981 ]
 "53 ./drivers/inc/API_MRF24J40.h
 [; ;./drivers/inc/API_MRF24J40.h: 53: void MRF24SetMensajeSalida(const char * mensaje);
 [v _MRF24SetMensajeSalida `(v ~T0 @X0 0 ef1`*Cuc ]
 "56
 [; ;./drivers/inc/API_MRF24J40.h: 56: void MRF24TransmitirDato(void);
 [v _MRF24TransmitirDato `(v ~T0 @X0 0 ef ]
-"59 main.c
-[; ;main.c: 59:   }
-[c E3120 0 1 2 3 4 .. ]
-[n E3120 . ERROR_ANTI_REBOTE PRESIONO_BOTON SUELTO_BOTON BOTON_SIN_CAMBIOS RUIDO  ]
+"61 main.c
+[; ;main.c: 61:   }
+[c E3287 0 1 2 3 4 .. ]
+[n E3287 . ERROR_ANTI_REBOTE PRESIONO_BOTON SUELTO_BOTON BOTON_SIN_CAMBIOS RUIDO  ]
 "54 ./drivers/inc/API_debounce.h
 [; ;./drivers/inc/API_debounce.h: 54: estadoPulsador_t DebounceFSMUpdate(debounceData_t * antirrebote_boton_n, bool_t estado_pin);
-[v _DebounceFSMUpdate `(E3120 ~T0 @X0 0 ef2`*S306`a ]
+[v _DebounceFSMUpdate `(E3287 ~T0 @X0 0 ef2`*S307`a ]
 "1002 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f46k20.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f46k20.h: 1002:     struct {
-[s S47 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S47 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
+[s S48 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S48 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
 "1012
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f46k20.h: 1012:     struct {
-[s S48 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S48 . T1OSO T1OSI CCP1 SCK SDI SDO TX RX ]
+[s S49 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S49 . T1OSO T1OSI CCP1 SCK SDI SDO TX RX ]
 "1022
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f46k20.h: 1022:     struct {
-[s S49 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S49 . T13CKI CCP2 P1A SCL SDA . CK DT ]
+[s S50 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S50 . T13CKI CCP2 P1A SCL SDA . CK DT ]
 "1032
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f46k20.h: 1032:     struct {
-[s S50 :1 `uc 1 ]
-[n S50 . T1CKI ]
+[s S51 :1 `uc 1 ]
+[n S51 . T1CKI ]
 "1035
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f46k20.h: 1035:     struct {
-[s S51 :1 `uc 1 ]
-[n S51 . T3CKI ]
+[s S52 :1 `uc 1 ]
+[n S52 . T3CKI ]
 "1038
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f46k20.h: 1038:     struct {
-[s S52 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S52 . . PA2 PA1 ]
+[s S53 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S53 . . PA2 PA1 ]
 "1001
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f46k20.h: 1001: typedef union {
-[u S46 `S47 1 `S48 1 `S49 1 `S50 1 `S51 1 `S52 1 ]
-[n S46 . . . . . . . ]
+[u S47 `S48 1 `S49 1 `S50 1 `S51 1 `S52 1 `S53 1 ]
+[n S47 . . . . . . . ]
 "1044
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f46k20.h: 1044: extern volatile PORTCbits_t PORTCbits __attribute__((address(0xF82)));
-[v _PORTCbits `VS46 ~T0 @X0 0 e@3970 ]
+[v _PORTCbits `VS47 ~T0 @X0 0 e@3970 ]
 "57 ./drivers/inc/API_MRF24J40.h
 [; ;./drivers/inc/API_MRF24J40.h: 57: bool_t MRF24IsNewMsg(void);
 [v _MRF24IsNewMsg `(a ~T0 @X0 0 ef ]
 "58
 [; ;./drivers/inc/API_MRF24J40.h: 58: void MRF24ReciboPaquete(void);
 [v _MRF24ReciboPaquete `(v ~T0 @X0 0 ef ]
-"65 main.c
-[; ;main.c: 65:    if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:PLA"))
-[v _strcmp `(i ~T0 @X0 0 e? ]
+"33 C:\Program Files\Microchip\xc8\v2.50\pic\include\c99\string.h
+[; ;C:\Program Files\Microchip\xc8\v2.50\pic\include\c99\string.h: 33: char *strcpy (char *restrict, const char *restrict);
+[v _strcpy `(*uc ~T0 @X0 0 ef2`*uc`*Cuc ]
 "59 ./drivers/inc/API_MRF24J40.h
 [; ;./drivers/inc/API_MRF24J40.h: 59: uint8_t * MRF24GetMensajeEntrada(void);
 [v _MRF24GetMensajeEntrada `(*uc ~T0 @X0 0 ef ]
+"50 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\pic18.h
+[v ___nop `(v ~T0 @X0 0 ef ]
+[p i ___nop ]
+"39 C:\Program Files\Microchip\xc8\v2.50\pic\include\c99\string.h
+[; ;C:\Program Files\Microchip\xc8\v2.50\pic\include\c99\string.h: 39: int strcmp (const char *, const char *);
+[v _strcmp `(i ~T0 @X0 0 ef2`*Cuc`*Cuc ]
 "31 ./drivers/inc/API_delay.h
 [; ;./drivers/inc/API_delay.h: 31: bool_t DelayRead(delayNoBloqueanteData * delay );
-[v _DelayRead `(a ~T0 @X0 0 ef1`*S305 ]
+[v _DelayRead `(a ~T0 @X0 0 ef1`*S306 ]
 "54 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f46k20.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f46k20.h: 54: __asm("SSPMSK equ 0F77h");
 [; <" SSPMSK equ 0F77h ;# ">
@@ -609,157 +615,166 @@ Version 4.0 HI-TECH Software Intermediate Code
 "77
 [p x EBTRB  =  OFF       ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"26 main.c
-[; ;main.c: 26: void main(void) {
+"28 main.c
+[; ;main.c: 28: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"28
-[; ;main.c: 28:     delayNoBloqueanteData delay_parpadeo;
-[v _delay_parpadeo `S305 ~T0 @X0 1 a ]
-"29
-[; ;main.c: 29:     debounceData_t boton1;
-[v _boton1 `S306 ~T0 @X0 1 a ]
 "30
-[; ;main.c: 30:  DebounceFSMInit(&boton1);
-[e ( _DebounceFSMInit (1 &U _boton1 ]
+[; ;main.c: 30:     delayNoBloqueanteData delay_parpadeo;
+[v _delay_parpadeo `S306 ~T0 @X0 1 a ]
 "31
-[; ;main.c: 31:     BoardInit();
-[e ( _BoardInit ..  ]
+[; ;main.c: 31:     debounceData_t boton1;
+[v _boton1 `S307 ~T0 @X0 1 a ]
 "32
-[; ;main.c: 32:     MRF24J40Init();
-[e ( _MRF24J40Init ..  ]
+[; ;main.c: 32:  DebounceFSMInit(&boton1);
+[e ( _DebounceFSMInit (1 &U _boton1 ]
 "33
-[; ;main.c: 33:     DelayInit(&delay_parpadeo, 1000);
-[e ( _DelayInit (2 , &U _delay_parpadeo -> -> -> 1000 `i `l `ul ]
+[; ;main.c: 33:     BoardInit();
+[e ( _BoardInit ..  ]
 "34
-[; ;main.c: 34:     MRF24SetDireccionDestino(0x1111);
-[e ( _MRF24SetDireccionDestino (1 -> -> 4369 `i `us ]
+[; ;main.c: 34:     MRF24J40Init();
+[e ( _MRF24J40Init ..  ]
 "35
-[; ;main.c: 35:     MRF24SetPANIDDestino(0X1234);
-[e ( _MRF24SetPANIDDestino (1 -> -> 4660 `i `us ]
+[; ;main.c: 35:     DelayInit(&delay_parpadeo, 1000);
+[e ( _DelayInit (2 , &U _delay_parpadeo -> -> -> 1000 `i `l `ul ]
+"36
+[; ;main.c: 36:     MRF24SetDireccionDestino(0x1111);
+[e ( _MRF24SetDireccionDestino (1 -> -> 4369 `i `us ]
 "37
-[; ;main.c: 37:     while(1) {
-[e :U 309 ]
-{
+[; ;main.c: 37:     MRF24SetPANIDDestino(0X1234);
+[e ( _MRF24SetPANIDDestino (1 -> -> 4660 `i `us ]
 "39
-[; ;main.c: 39:         __asm(" clrwdt");
-[; <"  clrwdt ;# ">
-"40
-[; ;main.c: 40:         switch(DebounceFSMUpdate(&boton1,PORTCbits.RC2)) {
-[e $U 312  ]
-{
-"42
-[; ;main.c: 42:    case PRESIONO_BOTON:
-[e :U 313 ]
-"44
-[; ;main.c: 44:                 LATEbits.LATE2 = 0;
-[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
-"45
-[; ;main.c: 45:                 MRF24SetMensajeSalida("CMD:PLV");
-[e ( _MRF24SetMensajeSalida (1 :s 1C ]
-"46
-[; ;main.c: 46:                 MRF24TransmitirDato();
-[e ( _MRF24TransmitirDato ..  ]
-"47
-[; ;main.c: 47:     break;
-[e $U 311  ]
-"49
-[; ;main.c: 49:    case SUELTO_BOTON:
-[e :U 314 ]
-"51
-[; ;main.c: 51:                 LATEbits.LATE2 = 1;
-[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
-"52
-[; ;main.c: 52:                 MRF24SetMensajeSalida("CMD:ALV");
-[e ( _MRF24SetMensajeSalida (1 :s 2C ]
-"53
-[; ;main.c: 53:                 MRF24TransmitirDato();
-[e ( _MRF24TransmitirDato ..  ]
-"54
-[; ;main.c: 54:     break;
-[e $U 311  ]
-"56
-[; ;main.c: 56:    default:
-[e :U 315 ]
-"58
-[; ;main.c: 58:                 break;
-[e $U 311  ]
-"59
-[; ;main.c: 59:   }
-}
-[e $U 311  ]
-[e :U 312 ]
-[e [\ -> ( _DebounceFSMUpdate (2 , &U _boton1 -> . . _PORTCbits 0 2 `a `ui , $ -> . `E3120 1 `ui 313
- , $ -> . `E3120 2 `ui 314
- 315 ]
-[e :U 311 ]
-"61
-[; ;main.c: 61:         if(MRF24IsNewMsg()) {
-[e $ ! != -> ( _MRF24IsNewMsg ..  `i -> 0 `i 316  ]
-{
-"63
-[; ;main.c: 63:             MRF24ReciboPaquete();
-[e ( _MRF24ReciboPaquete ..  ]
-"65
-[; ;main.c: 65:    if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:PLA"))
-[e $ ! ! != ( _strcmp , -> ( _MRF24GetMensajeEntrada ..  `*uc :s 4C -> 0 `i 317  ]
-"66
-[; ;main.c: 66:     LATEbits.LATE0 = 1;
-[e = . . _LATEbits 0 0 -> -> 1 `i `uc ]
-[e $U 318  ]
-"68
-[; ;main.c: 68:    else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:ALA"))
-[e :U 317 ]
-[e $ ! ! != ( _strcmp , -> ( _MRF24GetMensajeEntrada ..  `*uc :s 6C -> 0 `i 319  ]
-"69
-[; ;main.c: 69:     LATEbits.LATE0 = 1;
-[e = . . _LATEbits 0 0 -> -> 1 `i `uc ]
-[e $U 320  ]
-"71
-[; ;main.c: 71:             else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:PLR"))
-[e :U 319 ]
-[e $ ! ! != ( _strcmp , -> ( _MRF24GetMensajeEntrada ..  `*uc :s 8C -> 0 `i 321  ]
-"72
-[; ;main.c: 72:     LATEbits.LATE0 = 1;
-[e = . . _LATEbits 0 0 -> -> 1 `i `uc ]
-[e $U 322  ]
-"74
-[; ;main.c: 74:             else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:ALR"))
-[e :U 321 ]
-[e $ ! ! != ( _strcmp , -> ( _MRF24GetMensajeEntrada ..  `*uc :s 10C -> 0 `i 323  ]
-"75
-[; ;main.c: 75:     LATEbits.LATE0 = 1;
-[e = . . _LATEbits 0 0 -> -> 1 `i `uc ]
-[e :U 323 ]
-[e :U 322 ]
-[e :U 320 ]
-[e :U 318 ]
-"76
-[; ;main.c: 76:   }
-}
-[e :U 316 ]
-"78
-[; ;main.c: 78:         if(DelayRead(&delay_parpadeo)) {
-[e $ ! != -> ( _DelayRead (1 &U _delay_parpadeo `i -> 0 `i 324  ]
-{
-"79
-[; ;main.c: 79:             LATEbits.LATE0 = !LATEbits.LATE0;
-[e = . . _LATEbits 0 0 -> -> ! != -> . . _LATEbits 0 0 `i -> 0 `i `i `uc ]
-"80
-[; ;main.c: 80:         }
-}
-[e :U 324 ]
-"81
-[; ;main.c: 81:     }
-}
-[e :U 308 ]
-[e $U 309  ]
+[; ;main.c: 39:     while(1) {
 [e :U 310 ]
+{
+"41
+[; ;main.c: 41:         __asm(" clrwdt");
+[; <"  clrwdt ;# ">
+"42
+[; ;main.c: 42:         switch(DebounceFSMUpdate(&boton1,PORTCbits.RC2)) {
+[e $U 313  ]
+{
+"44
+[; ;main.c: 44:    case PRESIONO_BOTON:
+[e :U 314 ]
+"46
+[; ;main.c: 46:                 LATEbits.LATE2 = 0;
+[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
+"47
+[; ;main.c: 47:                 MRF24SetMensajeSalida("CMD:PLV");
+[e ( _MRF24SetMensajeSalida (1 :s 1C ]
+"48
+[; ;main.c: 48:                 MRF24TransmitirDato();
+[e ( _MRF24TransmitirDato ..  ]
+"49
+[; ;main.c: 49:     break;
+[e $U 312  ]
+"51
+[; ;main.c: 51:    case SUELTO_BOTON:
+[e :U 315 ]
+"53
+[; ;main.c: 53:                 LATEbits.LATE2 = 1;
+[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
+"54
+[; ;main.c: 54:                 MRF24SetMensajeSalida("CMD:ALV");
+[e ( _MRF24SetMensajeSalida (1 :s 2C ]
+"55
+[; ;main.c: 55:                 MRF24TransmitirDato();
+[e ( _MRF24TransmitirDato ..  ]
+"56
+[; ;main.c: 56:     break;
+[e $U 312  ]
+"58
+[; ;main.c: 58:    default:
+[e :U 316 ]
+"60
+[; ;main.c: 60:                 break;
+[e $U 312  ]
+"61
+[; ;main.c: 61:   }
+}
+[e $U 312  ]
+[e :U 313 ]
+[e [\ -> ( _DebounceFSMUpdate (2 , &U _boton1 -> . . _PORTCbits 0 2 `a `ui , $ -> . `E3287 1 `ui 314
+ , $ -> . `E3287 2 `ui 315
+ 316 ]
+[e :U 312 ]
+"63
+[; ;main.c: 63:         if(MRF24IsNewMsg()) {
+[e $ ! != -> ( _MRF24IsNewMsg ..  `i -> 0 `i 317  ]
+{
+"65
+[; ;main.c: 65:             MRF24ReciboPaquete();
+[e ( _MRF24ReciboPaquete ..  ]
+"66
+[; ;main.c: 66:             char cadena[50] ;
+[v _cadena `uc ~T0 @X0 -> 50 `i a ]
+"68
+[; ;main.c: 68:             strcpy(cadena,MRF24GetMensajeEntrada() );
+[e ( _strcpy (2 , &U _cadena -> ( _MRF24GetMensajeEntrada ..  `*Cuc ]
+"71
+[; ;main.c: 71:             __nop();
+[e ( ___nop ..  ]
+"72
+[; ;main.c: 72:    if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:PLA"))
+[e $ ! ! != ( _strcmp (2 , -> -> ( _MRF24GetMensajeEntrada ..  `*uc `*Cuc :s 4C -> 0 `i 318  ]
+"73
+[; ;main.c: 73:     LATEbits.LATE1 = 0;
+[e = . . _LATEbits 0 1 -> -> 0 `i `uc ]
+[e $U 319  ]
+"75
+[; ;main.c: 75:    else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:ALA"))
+[e :U 318 ]
+[e $ ! ! != ( _strcmp (2 , -> -> ( _MRF24GetMensajeEntrada ..  `*uc `*Cuc :s 6C -> 0 `i 320  ]
+"76
+[; ;main.c: 76:     LATEbits.LATE1 = 1;
+[e = . . _LATEbits 0 1 -> -> 1 `i `uc ]
+[e $U 321  ]
+"78
+[; ;main.c: 78:             else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:PLR"))
+[e :U 320 ]
+[e $ ! ! != ( _strcmp (2 , -> -> ( _MRF24GetMensajeEntrada ..  `*uc `*Cuc :s 8C -> 0 `i 322  ]
+"79
+[; ;main.c: 79:     LATEbits.LATE2 = 0;
+[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
+[e $U 323  ]
+"81
+[; ;main.c: 81:             else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:ALR"))
+[e :U 322 ]
+[e $ ! ! != ( _strcmp (2 , -> -> ( _MRF24GetMensajeEntrada ..  `*uc `*Cuc :s 10C -> 0 `i 324  ]
 "82
-[; ;main.c: 82: }
-[e :UE 307 ]
+[; ;main.c: 82:     LATEbits.LATE2 = 1;
+[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
+[e :U 324 ]
+[e :U 323 ]
+[e :U 321 ]
+[e :U 319 ]
+"83
+[; ;main.c: 83:   }
+}
+[e :U 317 ]
+"85
+[; ;main.c: 85:         if(DelayRead(&delay_parpadeo)) {
+[e $ ! != -> ( _DelayRead (1 &U _delay_parpadeo `i -> 0 `i 325  ]
+{
+"86
+[; ;main.c: 86:             LATEbits.LATE0 = !LATEbits.LATE0;
+[e = . . _LATEbits 0 0 -> -> ! != -> . . _LATEbits 0 0 `i -> 0 `i `i `uc ]
+"87
+[; ;main.c: 87:         }
+}
+[e :U 325 ]
+"88
+[; ;main.c: 88:     }
+}
+[e :U 309 ]
+[e $U 310  ]
+[e :U 311 ]
+"89
+[; ;main.c: 89: }
+[e :UE 308 ]
 }
 [a 1C 67 77 68 58 80 76 86 0 ]
 [a 2C 67 77 68 58 65 76 86 0 ]
