@@ -5,7 +5,6 @@
  * @brief	Archivo cabecera para el archivo API_MRF24J40.c
  *******************************************************************************
  * @attention Driver independiente de la plataforma de uso y del compilardor.
- *            Escrito en C.
  *
  *******************************************************************************
  */
@@ -17,6 +16,9 @@
 #define MRF_TIME_OUT	100
 #define ENABLE			true
 #define	DISABLE			false
+#define LARGE_MAC_SIZE	8
+#define SEC_KEY_SIZE	16
+#define WAIT_1_MS		1
 
 /* Canales disponibles para el IEEE 802.15.4 ---------------------------------*/
 typedef enum {
@@ -42,20 +44,25 @@ typedef enum {
 /* Respuesta de las funciones ------------------------------------------------*/
 typedef enum {
 
+	INICIALIZACION_OK,
 	TRANSMISION_REALIZADA,
+	MSG_PRESENTE,
+	MSG_NO_PRESENTE,
+	MSG_LEIDO,
 	TIME_OUT_OCURRIDO,
 	OPERACION_NO_REALIZADA,
-	OPERACION_REALIZADA
-} MRF24_StateTypeDef;
+	OPERACION_REALIZADA,
+	ERROR_INESPERADO,
+} MRF24_State_t;
 
 /* Prototipo de funciones públicas -------------------------------------------*/
-MRF24_StateTypeDef MRF24J40Init(void);
-void MRF24SetMensajeSalida(const char * mensaje);
-void MRF24SetDireccionDestino(uint16_t direccion);
-void MRF24SetPANIDDestino(uint16_t panid);
-void MRF24TransmitirDato(void);
-bool_t MRF24IsNewMsg(void);
-void MRF24ReciboPaquete(void);
+MRF24_State_t MRF24J40Init(void);
+MRF24_State_t MRF24SetMensajeSalida(const char * mensaje);
+MRF24_State_t MRF24SetDireccionDestino(uint16_t direccion);
+MRF24_State_t MRF24SetPANIDDestino(uint16_t panid);
+MRF24_State_t MRF24TransmitirDato(void);
+volatile MRF24_State_t MRF24IsNewMsg(void);
+MRF24_State_t MRF24ReciboPaquete(void);
 uint8_t * MRF24GetMensajeEntrada(void);
 uint16_t MRF24GetMiPANID(void);
 

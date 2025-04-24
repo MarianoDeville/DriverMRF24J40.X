@@ -27,7 +27,6 @@
  */
 void main(void) {
     
-    char respuesta[40];
     delayNoBloqueanteData delay_parpadeo;
     debounceData_t boton1;
 	DebounceFSMInit(&boton1);

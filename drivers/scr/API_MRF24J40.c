@@ -5,7 +5,6 @@
  * @brief   Implementación driver módulo MRF24J40MA
  *******************************************************************************
  * @attention Driver independiente de la plataforma de uso y del compilardor.
- *            Escrito en C.
  *
  *******************************************************************************
  */
@@ -19,22 +18,23 @@
 #include "../inc/API_MRF24J40_port.h"
 
 /* Definiciones de la configuración por defecto ------------------------------*/
-#define	DEFAULT_CHANNEL     CH_11
-#define DEFAULT_SEC_NUMBER  (0X01)
+#define	DEFAULT_CHANNEL		CH_11
+#define DEFAULT_SEC_NUMBER	(0X01)
 #define	MY_DEFAULT_PAN_ID	(0x1234)
-#define	MY_DEFAULT_ADDRESS	(0x1112)
+#define	MY_DEFAULT_ADDRESS	(0x1111)
 
-#define HEAD_LENGTH         (0X08)
-#define WRITE_16_BITS       (0X8010)
-#define READ_16_BITS        (0X8000)
-#define WRITE_8_BITS        (0x01)
-#define READ_8_BITS         (0x7E)
+#define HEAD_LENGTH			(0X08)
+#define WRITE_16_BITS		(0X8010)
+#define READ_16_BITS		(0X8000)
+#define WRITE_8_BITS		(0x01)
+#define READ_8_BITS			(0x7E)
 #define SHIFT_LONG_ADDR		(0X05)
 #define SHIFT_SHORT_ADDR	(0X01)
 #define SHIFT_BYTE			(0X08)
 #define FCS_LQI_RSSI		(0x04)
 
 /* Variables privadas --------------------------------------------------------*/
+static MRF24_State_t estadoActual;
 /* MAC address por defecto del dispositivo */
 static const uint8_t default_mac_address[] = {0x11,
                                               0x28,
@@ -138,7 +138,7 @@ enum {	EADR0 = 0x05,
 #define	TXSTBL			(0x2E)
 #define	RXSR			(0x30)
 #define	INTSTAT			(0x31)
-#define MRFINTCON       (0x32)
+#define MRFINTCON		(0x32)
 #define	GPIO			(0x33)
 #define	TRISGPIO		(0x34)
 #define	SLPACK			(0x35)
@@ -485,6 +485,7 @@ enum {	EADR0 = 0x05,
 
 /* Prototipo de funciones privadas -------------------------------------------*/
 static void InicializoVariables(void);
+static MRF24_State_t InicializoMRF24(void);
 static void SetShortAddr(uint8_t reg_address, uint8_t valor);
 static void SetLongAddr(uint16_t reg_address, uint8_t valor);
 static uint8_t GetShortAddr(uint8_t reg_address);
@@ -492,60 +493,6 @@ static uint8_t GetLongAddr(uint16_t reg_address);
 static void SetDeviceAddress(void);
 static void SetChannel(void);
 static void SetDeviceMACAddress(void);
-
-/**
- * @brief  Inicialización del módulo MRF24J40MA
- * @param  None
- * @retval None
- */
-MRF24_StateTypeDef MRF24J40Init(void) {
-
-    uint8_t lectura;
-    delayNoBloqueanteData delay_time_out;
-    DelayInit(&delay_time_out, MRF_TIME_OUT);
-    InicializoVariables();
-    InicializoPines();
-    delay_t(1);
-    SetResetPin(1);
-    delay_t(1);
-    SetShortAddr(SOFTRST, RSTPWR | RSTBB | RSTMAC);
-    DelayReset(&delay_time_out);
-
-    do {
-        lectura = GetShortAddr(SOFTRST);
-		if(DelayRead(&delay_time_out))
-	        return TIME_OUT_OCURRIDO;
-    }while((lectura & (RSTPWR | RSTBB | RSTMAC)) != VACIO);
-    delay_t(1);
-    SetShortAddr(RXFLUSH, RXFLUSH_RESET);
-    SetDeviceAddress();
-    SetDeviceMACAddress();
-    SetLongAddr(RFCON2, PLLEN);
-    SetLongAddr(RFCON3, P30dBm | P6_3dBm);
-	SetLongAddr(RFCON6, TXFIL | _20MRECVR);
-	SetLongAddr(RFCON7, SLPCLK100KHZ);
-	SetLongAddr(RFCON8, RFVCO);
-	SetLongAddr(SLPCON1, CLKOUTDIS | SLPCLKDIV0);
-    SetShortAddr(BBREG2, CCA_MODE_1);
-    SetShortAddr(BBREG6, RSSIMODE2);
-    SetShortAddr(CCAEDTH, CCAEDTH2 | CCAEDTH1);
-    SetShortAddr(PACON2, FIFOEN | TXONTS2 | TXONTS1);
-    SetShortAddr(TXSTBL, RFSTBL3 | RFSTBL0 | MSIFS2 | MSIFS0);
-    DelayReset(&delay_time_out);
-
-    do {
-		lectura = GetLongAddr(RFSTATE);
-		if(DelayRead(&delay_time_out))
-	        return TIME_OUT_OCURRIDO;
-	}while(lectura != RX);
-    SetShortAddr(MRFINTCON, SLPIE_DIS | WAKEIE_DIS | HSYMTMRIE_DIS | SECIE_DIS | TXG2IE_DIS | TXNIE_DIS);
-	SetShortAddr(ACKTMOUT, DRPACK | MAWD5 | MAWD4 | MAWD3 | MAWD0);
- 	SetLongAddr(RFCON1, VCOOPT1 | VCOOPT0);
-	SetChannel();
-	SetShortAddr(RXMCR, VACIO);
-	(void)GetShortAddr(INTSTAT);
-	return OPERACION_REALIZADA;
-}
 
 /* Funciones privadas --------------------------------------------------------*/
 /**
@@ -555,88 +502,155 @@ MRF24_StateTypeDef MRF24J40Init(void) {
  */
 static void InicializoVariables(void) {
 
-    for(int i = 0; i < 16; i++){
+	for(int i = 0; i < SEC_KEY_SIZE; i++){
 
-        if(i < 8)
-            mrf24_data_config.my_mac[i] = default_mac_address[i];
-        mrf24_data_config.security_key[i] = default_security_key[i];
-    }
-    mrf24_data_config.sequence_number = DEFAULT_SEC_NUMBER;
-    mrf24_data_config.my_channel = DEFAULT_CHANNEL;
-    mrf24_data_config.get_new_msg = false;
-    mrf24_data_config.put_new_msg = false;
-    mrf24_data_config.my_panid = MY_DEFAULT_PAN_ID;
-    mrf24_data_config.my_address = MY_DEFAULT_ADDRESS;
-    mrf24_data_in.source_address = VACIO;
-    mrf24_data_in.source_panid = VACIO;
-    mrf24_data_in.tamano_mensaje = VACIO;
-    mrf24_data_in.buffer_entrada[0] = VACIO;
-    mrf24_data_out.destinity_panid = VACIO;
-    mrf24_data_out.destinity_address = VACIO;
-    mrf24_data_out.largo_mensaje = VACIO;
-    mrf24_data_out.buffer_salida = NULL;
-    return;
+		if(i < LARGE_MAC_SIZE)
+			mrf24_data_config.my_mac[i] = default_mac_address[i];
+		mrf24_data_config.security_key[i] = default_security_key[i];
+	}
+	mrf24_data_config.sequence_number = DEFAULT_SEC_NUMBER;
+	mrf24_data_config.my_channel = DEFAULT_CHANNEL;
+	mrf24_data_config.get_new_msg = false;
+	mrf24_data_config.put_new_msg = false;
+	mrf24_data_config.my_panid = MY_DEFAULT_PAN_ID;
+	mrf24_data_config.my_address = MY_DEFAULT_ADDRESS;
+	mrf24_data_in.source_address = VACIO;
+	mrf24_data_in.source_panid = VACIO;
+	mrf24_data_in.tamano_mensaje = VACIO;
+	mrf24_data_in.buffer_entrada[0] = VACIO;
+	mrf24_data_out.destinity_panid = VACIO;
+	mrf24_data_out.destinity_address = VACIO;
+	mrf24_data_out.largo_mensaje = VACIO;
+	mrf24_data_out.buffer_salida = NULL;
+	return;
 }
 
 /**
- * @brief  Escribo de en registro de 1 byte un dato de 1 byte
- * @param  Dirección del registro - 1 byte, dato - 1 byte
+ * @brief  Inicialización del módulo MRF24J40MA
+ * @param  None
+ * @retval Estado de la operación (TIME_OUT_OCURRIDO, INICIALIZACION_OK)
+ */
+static MRF24_State_t InicializoMRF24(void) {
+
+	uint8_t lectura;
+	delayNoBloqueanteData delay_time_out;
+	DelayInit(&delay_time_out, MRF_TIME_OUT);
+	SetShortAddr(SOFTRST, RSTPWR | RSTBB | RSTMAC);
+	DelayReset(&delay_time_out);
+
+	do {
+
+		lectura = GetShortAddr(SOFTRST);
+		if(DelayRead(&delay_time_out))
+			return TIME_OUT_OCURRIDO;
+	}while((lectura & (RSTPWR | RSTBB | RSTMAC)) != VACIO);
+	delay_t(WAIT_1_MS);
+	SetShortAddr(RXFLUSH, RXFLUSH_RESET);
+	SetDeviceAddress();
+	SetDeviceMACAddress();
+	SetLongAddr(RFCON2, PLLEN);
+	SetLongAddr(RFCON3, P30dBm | P6_3dBm);
+	SetLongAddr(RFCON6, TXFIL | _20MRECVR);
+	SetLongAddr(RFCON7, SLPCLK100KHZ);
+	SetLongAddr(RFCON8, RFVCO);
+	SetLongAddr(SLPCON1, CLKOUTDIS | SLPCLKDIV0);
+	SetShortAddr(BBREG2, CCA_MODE_1);
+	SetShortAddr(BBREG6, RSSIMODE2);
+	SetShortAddr(CCAEDTH, CCAEDTH2 | CCAEDTH1);
+	SetShortAddr(PACON2, FIFOEN | TXONTS2 | TXONTS1);
+	SetShortAddr(TXSTBL, RFSTBL3 | RFSTBL0 | MSIFS2 | MSIFS0);
+	DelayReset(&delay_time_out);
+
+	do {
+
+		lectura = GetLongAddr(RFSTATE);
+		if(DelayRead(&delay_time_out))
+			return TIME_OUT_OCURRIDO;
+	}while(lectura != RX);
+	SetShortAddr(MRFINTCON, SLPIE_DIS | WAKEIE_DIS | HSYMTMRIE_DIS | SECIE_DIS | TXG2IE_DIS | TXNIE_DIS);
+	SetShortAddr(ACKTMOUT, DRPACK | MAWD5 | MAWD4 | MAWD3 | MAWD0);
+	SetLongAddr(RFCON1, VCOOPT1 | VCOOPT0);
+	SetChannel();
+	SetShortAddr(RXMCR, VACIO);
+	(void)GetShortAddr(INTSTAT);
+	return INICIALIZACION_OK;
+}
+
+/**
+ * @brief  Escribo en registro de 1 byte un dato de 1 byte
+ * @param  Dirección del registro - 1 byte
+ * @param  Dato - 1 byte
  * @retval None
  */
 static void SetShortAddr(uint8_t reg_address, uint8_t valor) {
 
-    reg_address = (uint8_t) (reg_address << SHIFT_SHORT_ADDR) | WRITE_8_BITS;
-    SetCSPin(DISABLE);
+	// Al escribir direcciones cortas (SHORT ADDRESS REGISTER) se comienza con el MSB
+	// en 0 indicando una dirección corta, 6 bits con la dirección del registro, y 1 bit
+	// indicando la lectura o escritura.
+	reg_address = (uint8_t) (reg_address << SHIFT_SHORT_ADDR) | WRITE_8_BITS;
+	SetCSPin(DISABLE);
 	WriteByteSPIPort(reg_address);
 	WriteByteSPIPort(valor);
-    SetCSPin(ENABLE);
+	SetCSPin(ENABLE);
 	return;
 }
 
 /**
  * @brief  Leo en registro de 1 byte un dato de 1 byte
- * @param  Dirección del registro - 1 byte, dato - 1 byte
+ * @param  Dirección del registro - 1 byte
+ * @param  Dato - 1 byte
  * @retval Valor devuelto por el módulo - 1 byte
  */
 static uint8_t GetShortAddr(uint8_t reg_address) {
 
-   	uint8_t leido_spi = VACIO;
-    reg_address = (uint8_t) (reg_address << SHIFT_SHORT_ADDR) & READ_8_BITS;
-    SetCSPin(DISABLE);
-    WriteByteSPIPort(reg_address);
-    leido_spi = ReadByteSPIPort();
-    SetCSPin(ENABLE);
+	// Al escribir direcciones cortas (SHORT ADDRESS REGISTER) se comienza con el MSB
+	// en 0 indicando una dirección corta, 6 bits con la dirección del registro, y 1 bit
+	// indicando la lectura o escritura.
+	uint8_t leido_spi = VACIO;
+	reg_address = (uint8_t) (reg_address << SHIFT_SHORT_ADDR) & READ_8_BITS;
+	SetCSPin(DISABLE);
+	WriteByteSPIPort(reg_address);
+	leido_spi = ReadByteSPIPort();
+	SetCSPin(ENABLE);
 	return leido_spi;
 }
 
 /**
  * @brief  Escribo de en registro de 2 bytes un dato de 1 byte
- * @param  Dirección del registro - 2 bytes, dato - 1 byte
+ * @param  Dirección del registro - 2 bytes
+ * @param  Dato - 1 byte
  * @retval None
  */
 static void SetLongAddr(uint16_t reg_address, uint8_t valor) {
 
-    reg_address = (reg_address << SHIFT_LONG_ADDR) | WRITE_16_BITS;
-    SetCSPin(DISABLE);
-    Write2ByteSPIPort(reg_address);
+	// Al escribir direcciones largas (LONG ADDRESS REGISTER) se comienza con el MSB
+	// en 1 indicando una dirección larga, 10 bits con la dirección del registro, y 1 bit
+	// indicando la lectura o escritura. En los 4 bits restantes (LSB) no importa el valor.
+	reg_address = (reg_address << SHIFT_LONG_ADDR) | WRITE_16_BITS;
+	SetCSPin(DISABLE);
+	Write2ByteSPIPort(reg_address);
 	WriteByteSPIPort(valor);
-    SetCSPin(ENABLE);
+	SetCSPin(ENABLE);
 	return;
 }
 
 /**
  * @brief  Leo en registro de 2 bytes un dato de 1 byte
- * @param  Dirección del registro - 2 bytes, dato - 1 byte
+ * @param  Dirección del registro - 2 bytes
+ * @param  Dato - 1 byte
  * @retval Valor devuelto por el módulo - 1 byte
  */
 static uint8_t GetLongAddr(uint16_t reg_address) {
 
+	// Al escribir direcciones largas (LONG ADDRESS REGISTER) se comienza con el MSB
+	// en 1 indicando una dirección larga, 10 bits con la dirección del registro, y 1 bit
+	// indicando la lectura o escritura. En los 4 bits restantes (LSB) no importa el valor.
 	uint8_t respuesta;
-    reg_address = (reg_address << SHIFT_LONG_ADDR) | READ_16_BITS;
-    SetCSPin(DISABLE);
-    Write2ByteSPIPort(reg_address);
+	reg_address = (reg_address << SHIFT_LONG_ADDR) | READ_16_BITS;
+	SetCSPin(DISABLE);
+	Write2ByteSPIPort(reg_address);
 	respuesta = ReadByteSPIPort();
-    SetCSPin(ENABLE);
+	SetCSPin(ENABLE);
 	return respuesta;
 }
 
@@ -650,7 +664,7 @@ static void SetChannel(void) {
 	SetLongAddr(RFCON0, mrf24_data_config.my_channel);
 	SetShortAddr(RFCTL, RFRST_HOLD);
 	SetShortAddr(RFCTL, VACIO);
-	delay_t(1);
+	delay_t(WAIT_1_MS);
 	return;
 }
 
@@ -669,64 +683,87 @@ static void SetDeviceAddress(void) {
 }
 
 /**
- * @brief  Seteo en el módulo la dirección mac guardada en mrf24_data_config
- * @param  None
- * @retval None
+ * @brief  Seteo en el módulo la dirección mac guardada en mrf24_data_config.
+ * @param  None.
+ * @retval None.
  */
 static void SetDeviceMACAddress(void) {
 
-    long_mac_address = EADR0;
+	long_mac_address = EADR0;
 
-    for(int i = 0; i < 8; i++) {
+	for(int i = 0; i < 8; i++) {
 
-        SetShortAddr(long_mac_address++, mrf24_data_config.my_mac[i]);
-    }
+		SetShortAddr(long_mac_address++, mrf24_data_config.my_mac[i]);
+	}
 	return;
 }
 
 /* Funciones públicas --------------------------------------------------------*/
+/**
+ * @brief  Inicialización del módulo MRF24J40MA.
+ * @param  None.
+ * @retval Estado de la operación (TIME_OUT_OCURRIDO, INICIALIZACION_OK).
+ */
+MRF24_State_t MRF24J40Init(void) {
+
+	InicializoVariables();
+	InicializoPines();
+	delay_t(WAIT_1_MS);
+	SetResetPin(1);
+	delay_t(WAIT_1_MS);
+	estadoActual = InicializoMRF24();
+	return estadoActual;
+}
 
 /**
  * @brief   Paso por referencia la dirección del mensaje a enviar.
  * @param   Puntero al mensaje.
- * @retval  None
+ * @retval  Estado de la operación (ERROR_INESPERADO, OPERACION_REALIZADA).
  */
-void MRF24SetMensajeSalida(const char * mensaje) {
+MRF24_State_t MRF24SetMensajeSalida(const char * mensaje) {
 
-    mrf24_data_out.buffer_salida = mensaje;
-    mrf24_data_out.largo_mensaje = (uint8_t) strlen(mensaje);
-    return;
+	if(strlen(mensaje) == VACIO || estadoActual != INICIALIZACION_OK)
+		return ERROR_INESPERADO;
+	mrf24_data_out.buffer_salida = mensaje;
+	mrf24_data_out.largo_mensaje = (uint8_t) strlen(mensaje);
+	return OPERACION_REALIZADA;
 }
 
 /**
  * @brief   Configuro la dirección corta del dispositivo con el que me comunicaré.
- * @param   Dirección corta del dispositivo, 2 bytes.
- * @retval  None
+ * @param   Dirección corta del dispositivo - 2 bytes.
+ * @retval  Estado de la operación (OPERACION_NO_REALIZADA, OPERACION_REALIZADA).
  */
-void MRF24SetDireccionDestino(uint16_t direccion) {
+MRF24_State_t MRF24SetDireccionDestino(uint16_t direccion) {
 
-    mrf24_data_out.destinity_address = direccion;
-    return;
+	if(estadoActual != INICIALIZACION_OK)
+		return OPERACION_NO_REALIZADA;
+	mrf24_data_out.destinity_address = direccion;
+	return OPERACION_REALIZADA;
 }
 
 /**
  * @brief   Configuro la PANID del dispositivo con el que me comunicaré.
  * @param   Dirección PANID de dos bytes.
- * @retval  None
+ * @retval  Estado de la operación (OPERACION_NO_REALIZADA, OPERACION_REALIZADA).
  */
-void MRF24SetPANIDDestino(uint16_t panid) {
+MRF24_State_t MRF24SetPANIDDestino(uint16_t panid) {
 
-    mrf24_data_out.destinity_panid = panid;
-    return;
+	if(estadoActual != INICIALIZACION_OK)
+		return OPERACION_NO_REALIZADA;
+	mrf24_data_out.destinity_panid = panid;
+	return OPERACION_REALIZADA;
 }
 
 /**
- * @brief   Envío la información almacenada en la estructura de salida
- * @param   None
- * @retval  None
+ * @brief   Envío la información almacenada en la estructura de salida.
+ * @param   None.
+ * @retval  Estado de la operación (OPERACION_NO_REALIZADA, TRANSMISION_REALIZADA).
  */
-void MRF24TransmitirDato(void) {
+MRF24_State_t MRF24TransmitirDato(void) {
 
+	if(estadoActual != INICIALIZACION_OK)
+		return OPERACION_NO_REALIZADA;
 	uint8_t pos_memoria = 0;
 	uint8_t largo_cabecera = HEAD_LENGTH;
 	SetLongAddr(pos_memoria++, largo_cabecera);
@@ -739,32 +776,39 @@ void MRF24TransmitirDato(void) {
 	SetLongAddr(pos_memoria++, (uint8_t) mrf24_data_out.destinity_address);
 	SetLongAddr(pos_memoria++, (uint8_t) (mrf24_data_out.destinity_address >> SHIFT_BYTE));
 
-    for(int8_t i = 0; i < mrf24_data_out.largo_mensaje; i++) {
+	for(int8_t i = 0; i < mrf24_data_out.largo_mensaje; i++) {
 
 		SetLongAddr(pos_memoria++, mrf24_data_out.buffer_salida[i]);
 	}
-    SetLongAddr(pos_memoria++, VACIO);
+	SetLongAddr(pos_memoria++, VACIO);
 	SetShortAddr(TXNCON, TXNACKREQ | TXNTRIG);
-	return;
+	return TRANSMISION_REALIZADA;
 }
 
 /**
  * @brief   Consulto si se levantó la bandera indicando la llegada de un mensaje.
- * @param   None
- * @retval  Booleano indicando si hay un mensaje.
+ * @param   None.
+ * @retval  Estado de la operación (ERROR_INESPERADO, MSG_PRESENTE, MSG_NO_PRESENTE).
  */
-bool_t MRF24IsNewMsg(void) {
+volatile MRF24_State_t MRF24IsNewMsg(void) {
 
-	return !IsMRF24Interrup();
+	if(estadoActual != INICIALIZACION_OK)
+		return ERROR_INESPERADO;
+
+	if(!IsMRF24Interrup())
+		return MSG_PRESENTE;
+	return MSG_NO_PRESENTE;
 }
 
 /**
- * @brief   Recibir un paquete y dejarlo en el bufer de entrada de mrf24_data_config
- * @param   None
- * @retval  None
+ * @brief   Recibir un paquete y dejarlo en el bufer de entrada de mrf24_data_config.
+ * @param   None.
+ * @retval  Estado de la operación (OPERACION_NO_REALIZADA, MSG_LEIDO).
  */
-void MRF24ReciboPaquete(void) {
+MRF24_State_t MRF24ReciboPaquete(void) {
 
+	if(estadoActual != INICIALIZACION_OK)
+		return OPERACION_NO_REALIZADA;
 	uint8_t index;
 	uint8_t largo_mensaje;
 	SetLongAddr(BBREG1, RXDECINV);
@@ -777,23 +821,23 @@ void MRF24ReciboPaquete(void) {
 	}
 	SetLongAddr(BBREG1, VACIO);
 	(void)GetShortAddr(INTSTAT);
-	return;
+	return MSG_LEIDO;
 }
 
 /**
  * @brief   Devuelvo un puntero al mensaje recibido por RF.
- * @param   None
+ * @param   None.
  * @retval  Puntero a la cadena recibida.
  */
-uint8_t * MRF24GetMensajeEntrada(void){
+uint8_t * MRF24GetMensajeEntrada(void) {
 
 	return mrf24_data_in.buffer_entrada;
 }
 
 /**
  * @brief   Obtengo el PANID en el que estoy.
- * @param   None
- * @retval  La dirección de 2 bytes de mi PANID
+ * @param   None.
+ * @retval  La dirección de 2 bytes de mi PANID.
  */
 uint16_t MRF24GetMiPANID(void) {
 

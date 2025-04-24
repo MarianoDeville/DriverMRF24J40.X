@@ -5215,7 +5215,7 @@ typedef enum {
 
 
 # 1 "./drivers/inc/API_MRF24J40.h" 1
-# 22 "./drivers/inc/API_MRF24J40.h"
+# 24 "./drivers/inc/API_MRF24J40.h"
 typedef enum {
 
     CH_11 = 0x03,
@@ -5239,22 +5239,27 @@ typedef enum {
 
 typedef enum {
 
+ INICIALIZACION_OK,
  TRANSMISION_REALIZADA,
+ MSG_PRESENTE,
+ MSG_NO_PRESENTE,
+ MSG_LEIDO,
  TIME_OUT_OCURRIDO,
  OPERACION_NO_REALIZADA,
- OPERACION_REALIZADA
-} MRF24_StateTypeDef;
+ OPERACION_REALIZADA,
+ ERROR_INESPERADO,
+} MRF24_State_t;
 
 
-MRF24_StateTypeDef MRF24J40Init(void);
-void MRF24SetMensajeSalida(const char * mensaje);
-void MRF24SetDireccionDestino(uint16_t direccion);
-void MRF24SetPANIDDestino(uint16_t panid);
-void MRF24TransmitirDato(void);
-bool_t MRF24IsNewMsg(void);
-void MRF24ReciboPaquete(void);
+MRF24_State_t MRF24J40Init(void);
+MRF24_State_t MRF24SetMensajeSalida(const char * mensaje);
+MRF24_State_t MRF24SetDireccionDestino(uint16_t direccion);
+MRF24_State_t MRF24SetPANIDDestino(uint16_t panid);
+MRF24_State_t MRF24TransmitirDato(void);
+volatile MRF24_State_t MRF24IsNewMsg(void);
+MRF24_State_t MRF24ReciboPaquete(void);
 uint8_t * MRF24GetMensajeEntrada(void);
-void MRF24BuscarDispositivos(void);
+uint16_t MRF24GetMiPANID(void);
 # 17 "main.c" 2
 
 # 1 "./drivers/inc/API_delay.h" 1
@@ -5323,7 +5328,6 @@ estadoPulsador_t DebounceFSMUpdate(debounceData_t * antirrebote_boton_n, bool_t 
 # 28 "main.c"
 void main(void) {
 
-    char respuesta[40];
     delayNoBloqueanteData delay_parpadeo;
     debounceData_t boton1;
  DebounceFSMInit(&boton1);
