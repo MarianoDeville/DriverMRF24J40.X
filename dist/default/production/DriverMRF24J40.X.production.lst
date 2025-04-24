@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.50 build 20240725155939 
-                                                                                               Thu Apr 24 12:42:42 2025
+                                                                                               Thu Apr 24 13:27:12 2025
 
 Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1 
      1                           	processor	18F46K20
@@ -1889,10 +1889,10 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   1868   001112  EF8B  F008         	goto	l2151
   1869   001116                     l2151:
   1870                           
-  1871                           ;main.c: 61:         if(MRF24IsNewMsg()) {
+  1871                           ;main.c: 61:         if(MRF24IsNewMsg() == MSG_PRESENTE) {
   1872   001116  EC5B  F00D         	call	_MRF24IsNewMsg	;wreg free
-  1873   00111A  0900               	iorlw	0
-  1874   00111C  B4D8               	btfsc	status,2,c
+  1873   00111A  0A02               	xorlw	2
+  1874   00111C  A4D8               	btfss	status,2,c
   1875   00111E  EF93  F008         	goto	u801
   1876   001122  EF95  F008         	goto	u800
   1877   001126                     u801:
@@ -3010,10 +3010,10 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   2927   0016B6  0E34               	movlw	52
   2928   0016B8  6E4D               	movwf	(_mrf24_data_config+28)^0,c
   2929                           
-  2930                           ;drivers/scr/API_MRF24J40.c: 516:  mrf24_data_config.my_address = (0x1111);
+  2930                           ;drivers/scr/API_MRF24J40.c: 516:  mrf24_data_config.my_address = (0x1112);
   2931   0016BA  0E11               	movlw	17
   2932   0016BC  6E50               	movwf	(_mrf24_data_config+31)^0,c
-  2933   0016BE  0E11               	movlw	17
+  2933   0016BE  0E12               	movlw	18
   2934   0016C0  6E4F               	movwf	(_mrf24_data_config+30)^0,c
   2935                           
   2936                           ;drivers/scr/API_MRF24J40.c: 517:  mrf24_data_in.source_address = (0X00);
@@ -6401,7 +6401,7 @@ DATA                 0      0     150      0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.50 build 20240725155939 
-Symbol Table                                                                                   Thu Apr 24 12:42:42 2025
+Symbol Table                                                                                   Thu Apr 24 13:27:12 2025
 
                          _SSPSTATbits 0FC7                                    l21 1C92  
                                   l30 1CC2                                    l24 1CEC  

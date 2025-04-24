@@ -58,7 +58,7 @@ void main(void) {
                 break;
 		}
         
-        if(MRF24IsNewMsg()) {
+        if(MRF24IsNewMsg() == MSG_PRESENTE) {
 
             MRF24ReciboPaquete();
 

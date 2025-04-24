@@ -690,8 +690,8 @@ Version 4.0 HI-TECH Software Intermediate Code
  316 ]
 [e :U 312 ]
 "61
-[; ;main.c: 61:         if(MRF24IsNewMsg()) {
-[e $ ! != -> ( _MRF24IsNewMsg ..  `ui -> -> 0 `i `ui 317  ]
+[; ;main.c: 61:         if(MRF24IsNewMsg() == MSG_PRESENTE) {
+[e $ ! == -> ( _MRF24IsNewMsg ..  `ui -> . `E3247 2 `ui 317  ]
 {
 "63
 [; ;main.c: 63:             MRF24ReciboPaquete();
