@@ -44,7 +44,8 @@ void main(void) {
 			case PRESIONO_BOTON:
 
                 MRF24SetMensajeSalida("CMD:PLV");
-                MRF24TransmitirDato();
+                if(MRF24TransmitirDato() == ACK_NO_RECIBIDO)
+                    LED_AMARILLO = !LED_AMARILLO;
 				break;
 
 			case SUELTO_BOTON:

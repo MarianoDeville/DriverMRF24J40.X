@@ -4,8 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/E:/Embebidos/MPLAB/DriverMRF24J40.X/main.c</file>
-            <file>file:/E:/Embebidos/MPLAB/DriverMRF24J40.X/drivers/scr/API_MSPI_port.c</file>
+            <file>file:/E:/Embebidos/MPLAB/DriverMRF24J40.X/drivers/inc/API_MRF24J40_registers.h</file>
             <file>file:/E:/Embebidos/MPLAB/DriverMRF24J40.X/drivers/scr/API_MRF24J40.c</file>
+            <file>file:/E:/Embebidos/MPLAB/DriverMRF24J40.X/drivers/inc/API_MRF24J40.h</file>
             <file>file:/E:/Embebidos/MPLAB/DriverMRF24J40.X/hardware_config.c</file>
         </group>
     </open-files>

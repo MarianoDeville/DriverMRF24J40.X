@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=drivers/scr/API_MRF24J40_port.c drivers/scr/API_MRF24J40.c drivers/scr/API_MSPI_port.c main.c hardware_config.c drivers/inc/interrupciones.c drivers/scr/API_delay.c drivers/scr/API_debounce.c
+SOURCEFILES_QUOTED_IF_SPACED=drivers/scr/API_MRF24J40_port.c drivers/scr/API_MRF24J40.c drivers/scr/API_MSPI_port.c drivers/scr/API_delay.c drivers/scr/API_debounce.c main.c hardware_config.c drivers/inc/interrupciones.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/drivers/scr/API_MRF24J40_port.p1 ${OBJECTDIR}/drivers/scr/API_MRF24J40.p1 ${OBJECTDIR}/drivers/scr/API_MSPI_port.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/hardware_config.p1 ${OBJECTDIR}/drivers/inc/interrupciones.p1 ${OBJECTDIR}/drivers/scr/API_delay.p1 ${OBJECTDIR}/drivers/scr/API_debounce.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/drivers/scr/API_MRF24J40_port.p1.d ${OBJECTDIR}/drivers/scr/API_MRF24J40.p1.d ${OBJECTDIR}/drivers/scr/API_MSPI_port.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/hardware_config.p1.d ${OBJECTDIR}/drivers/inc/interrupciones.p1.d ${OBJECTDIR}/drivers/scr/API_delay.p1.d ${OBJECTDIR}/drivers/scr/API_debounce.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/drivers/scr/API_MRF24J40_port.p1 ${OBJECTDIR}/drivers/scr/API_MRF24J40.p1 ${OBJECTDIR}/drivers/scr/API_MSPI_port.p1 ${OBJECTDIR}/drivers/scr/API_delay.p1 ${OBJECTDIR}/drivers/scr/API_debounce.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/hardware_config.p1 ${OBJECTDIR}/drivers/inc/interrupciones.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/drivers/scr/API_MRF24J40_port.p1.d ${OBJECTDIR}/drivers/scr/API_MRF24J40.p1.d ${OBJECTDIR}/drivers/scr/API_MSPI_port.p1.d ${OBJECTDIR}/drivers/scr/API_delay.p1.d ${OBJECTDIR}/drivers/scr/API_debounce.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/hardware_config.p1.d ${OBJECTDIR}/drivers/inc/interrupciones.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/drivers/scr/API_MRF24J40_port.p1 ${OBJECTDIR}/drivers/scr/API_MRF24J40.p1 ${OBJECTDIR}/drivers/scr/API_MSPI_port.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/hardware_config.p1 ${OBJECTDIR}/drivers/inc/interrupciones.p1 ${OBJECTDIR}/drivers/scr/API_delay.p1 ${OBJECTDIR}/drivers/scr/API_debounce.p1
+OBJECTFILES=${OBJECTDIR}/drivers/scr/API_MRF24J40_port.p1 ${OBJECTDIR}/drivers/scr/API_MRF24J40.p1 ${OBJECTDIR}/drivers/scr/API_MSPI_port.p1 ${OBJECTDIR}/drivers/scr/API_delay.p1 ${OBJECTDIR}/drivers/scr/API_debounce.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/hardware_config.p1 ${OBJECTDIR}/drivers/inc/interrupciones.p1
 
 # Source Files
-SOURCEFILES=drivers/scr/API_MRF24J40_port.c drivers/scr/API_MRF24J40.c drivers/scr/API_MSPI_port.c main.c hardware_config.c drivers/inc/interrupciones.c drivers/scr/API_delay.c drivers/scr/API_debounce.c
+SOURCEFILES=drivers/scr/API_MRF24J40_port.c drivers/scr/API_MRF24J40.c drivers/scr/API_MSPI_port.c drivers/scr/API_delay.c drivers/scr/API_debounce.c main.c hardware_config.c drivers/inc/interrupciones.c
 
 
 
@@ -118,6 +118,22 @@ ${OBJECTDIR}/drivers/scr/API_MSPI_port.p1: drivers/scr/API_MSPI_port.c  nbprojec
 	@-${MV} ${OBJECTDIR}/drivers/scr/API_MSPI_port.d ${OBJECTDIR}/drivers/scr/API_MSPI_port.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/drivers/scr/API_MSPI_port.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/drivers/scr/API_delay.p1: drivers/scr/API_delay.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/drivers/scr" 
+	@${RM} ${OBJECTDIR}/drivers/scr/API_delay.p1.d 
+	@${RM} ${OBJECTDIR}/drivers/scr/API_delay.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/drivers/scr/API_delay.p1 drivers/scr/API_delay.c 
+	@-${MV} ${OBJECTDIR}/drivers/scr/API_delay.d ${OBJECTDIR}/drivers/scr/API_delay.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/drivers/scr/API_delay.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/drivers/scr/API_debounce.p1: drivers/scr/API_debounce.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/drivers/scr" 
+	@${RM} ${OBJECTDIR}/drivers/scr/API_debounce.p1.d 
+	@${RM} ${OBJECTDIR}/drivers/scr/API_debounce.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/drivers/scr/API_debounce.p1 drivers/scr/API_debounce.c 
+	@-${MV} ${OBJECTDIR}/drivers/scr/API_debounce.d ${OBJECTDIR}/drivers/scr/API_debounce.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/drivers/scr/API_debounce.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 ${OBJECTDIR}/main.p1: main.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/main.p1.d 
@@ -141,22 +157,6 @@ ${OBJECTDIR}/drivers/inc/interrupciones.p1: drivers/inc/interrupciones.c  nbproj
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/drivers/inc/interrupciones.p1 drivers/inc/interrupciones.c 
 	@-${MV} ${OBJECTDIR}/drivers/inc/interrupciones.d ${OBJECTDIR}/drivers/inc/interrupciones.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/drivers/inc/interrupciones.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/drivers/scr/API_delay.p1: drivers/scr/API_delay.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/drivers/scr" 
-	@${RM} ${OBJECTDIR}/drivers/scr/API_delay.p1.d 
-	@${RM} ${OBJECTDIR}/drivers/scr/API_delay.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/drivers/scr/API_delay.p1 drivers/scr/API_delay.c 
-	@-${MV} ${OBJECTDIR}/drivers/scr/API_delay.d ${OBJECTDIR}/drivers/scr/API_delay.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/drivers/scr/API_delay.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/drivers/scr/API_debounce.p1: drivers/scr/API_debounce.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/drivers/scr" 
-	@${RM} ${OBJECTDIR}/drivers/scr/API_debounce.p1.d 
-	@${RM} ${OBJECTDIR}/drivers/scr/API_debounce.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/drivers/scr/API_debounce.p1 drivers/scr/API_debounce.c 
-	@-${MV} ${OBJECTDIR}/drivers/scr/API_debounce.d ${OBJECTDIR}/drivers/scr/API_debounce.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/drivers/scr/API_debounce.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 else
 ${OBJECTDIR}/drivers/scr/API_MRF24J40_port.p1: drivers/scr/API_MRF24J40_port.c  nbproject/Makefile-${CND_CONF}.mk 
@@ -183,6 +183,22 @@ ${OBJECTDIR}/drivers/scr/API_MSPI_port.p1: drivers/scr/API_MSPI_port.c  nbprojec
 	@-${MV} ${OBJECTDIR}/drivers/scr/API_MSPI_port.d ${OBJECTDIR}/drivers/scr/API_MSPI_port.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/drivers/scr/API_MSPI_port.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/drivers/scr/API_delay.p1: drivers/scr/API_delay.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/drivers/scr" 
+	@${RM} ${OBJECTDIR}/drivers/scr/API_delay.p1.d 
+	@${RM} ${OBJECTDIR}/drivers/scr/API_delay.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/drivers/scr/API_delay.p1 drivers/scr/API_delay.c 
+	@-${MV} ${OBJECTDIR}/drivers/scr/API_delay.d ${OBJECTDIR}/drivers/scr/API_delay.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/drivers/scr/API_delay.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/drivers/scr/API_debounce.p1: drivers/scr/API_debounce.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/drivers/scr" 
+	@${RM} ${OBJECTDIR}/drivers/scr/API_debounce.p1.d 
+	@${RM} ${OBJECTDIR}/drivers/scr/API_debounce.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/drivers/scr/API_debounce.p1 drivers/scr/API_debounce.c 
+	@-${MV} ${OBJECTDIR}/drivers/scr/API_debounce.d ${OBJECTDIR}/drivers/scr/API_debounce.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/drivers/scr/API_debounce.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 ${OBJECTDIR}/main.p1: main.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/main.p1.d 
@@ -206,22 +222,6 @@ ${OBJECTDIR}/drivers/inc/interrupciones.p1: drivers/inc/interrupciones.c  nbproj
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/drivers/inc/interrupciones.p1 drivers/inc/interrupciones.c 
 	@-${MV} ${OBJECTDIR}/drivers/inc/interrupciones.d ${OBJECTDIR}/drivers/inc/interrupciones.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/drivers/inc/interrupciones.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/drivers/scr/API_delay.p1: drivers/scr/API_delay.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/drivers/scr" 
-	@${RM} ${OBJECTDIR}/drivers/scr/API_delay.p1.d 
-	@${RM} ${OBJECTDIR}/drivers/scr/API_delay.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/drivers/scr/API_delay.p1 drivers/scr/API_delay.c 
-	@-${MV} ${OBJECTDIR}/drivers/scr/API_delay.d ${OBJECTDIR}/drivers/scr/API_delay.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/drivers/scr/API_delay.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/drivers/scr/API_debounce.p1: drivers/scr/API_debounce.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/drivers/scr" 
-	@${RM} ${OBJECTDIR}/drivers/scr/API_debounce.p1.d 
-	@${RM} ${OBJECTDIR}/drivers/scr/API_debounce.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/drivers/scr/API_debounce.p1 drivers/scr/API_debounce.c 
-	@-${MV} ${OBJECTDIR}/drivers/scr/API_debounce.d ${OBJECTDIR}/drivers/scr/API_debounce.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/drivers/scr/API_debounce.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

@@ -10,6 +10,7 @@
         <itemPath>drivers/inc/API_MSPI_port.h</itemPath>
         <itemPath>drivers/inc/API_delay.h</itemPath>
         <itemPath>drivers/inc/API_debounce.h</itemPath>
+        <itemPath>drivers/inc/API_MRF24J40_registers.h</itemPath>
       </logicalFolder>
       <itemPath>main.h</itemPath>
       <itemPath>hardware_config.h</itemPath>

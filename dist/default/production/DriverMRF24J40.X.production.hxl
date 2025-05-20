@@ -1,7 +1,7 @@
 ### HEXMate logfile and output summary ###
 
 ### Command-line arguments ###
- C:\Users\maria\AppData\Local\Temp\xcAshho.\driver_tmp_3.o
+ C:\Users\maria\AppData\Local\Temp\xcAsi28.\driver_tmp_3.o
  -Odist/default/production\DriverMRF24J40.X.production.hex
  -logfile=dist/default/production\DriverMRF24J40.X.production.hxl
  -addressing=1
@@ -9,23 +9,23 @@
 
 ### Memory Usage ###
  Input file ranges:
-  0h - 3h		(C:\Users\maria\AppData\Local\Temp\xcAshho.\driver_tmp_3.o)
-  8h - 43h		(C:\Users\maria\AppData\Local\Temp\xcAshho.\driver_tmp_3.o)
-  1000h - 106Eh		(C:\Users\maria\AppData\Local\Temp\xcAshho.\driver_tmp_3.o)
-  1070h - 1D11h		(C:\Users\maria\AppData\Local\Temp\xcAshho.\driver_tmp_3.o)
-  200000h - 200007h		(C:\Users\maria\AppData\Local\Temp\xcAshho.\driver_tmp_3.o)
-  300000h - 30000Dh		(C:\Users\maria\AppData\Local\Temp\xcAshho.\driver_tmp_3.o)
+  0h - 3h		(C:\Users\maria\AppData\Local\Temp\xcAsi28.\driver_tmp_3.o)
+  8h - 43h		(C:\Users\maria\AppData\Local\Temp\xcAsi28.\driver_tmp_3.o)
+  1000h - 106Eh		(C:\Users\maria\AppData\Local\Temp\xcAsi28.\driver_tmp_3.o)
+  1070h - 1D69h		(C:\Users\maria\AppData\Local\Temp\xcAsi28.\driver_tmp_3.o)
+  200000h - 200007h		(C:\Users\maria\AppData\Local\Temp\xcAsi28.\driver_tmp_3.o)
+  300000h - 30000Dh		(C:\Users\maria\AppData\Local\Temp\xcAsi28.\driver_tmp_3.o)
  Unused ranges:
   4h - 7h
   44h - FFFh
   106Fh - 106Fh
-  1D12h - 1FFFFFh
+  1D6Ah - 1FFFFFh
   200008h - 2FFFFFh
 
 ### Hex Memory Map ###
  Legend:
   -- = Unused memory
-  H1 = Input file             (C:\Users\maria\AppData\Local\Temp\xcAshho.\driver_tmp_3.o)
+  H1 = Input file             (C:\Users\maria\AppData\Local\Temp\xcAsi28.\driver_tmp_3.o)
 ----------------------------------------------------------
          | 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
 ----------------------------------------------------------
@@ -244,7 +244,12 @@
 00001CE0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00001CF0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00001D00 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-00001D10 | H1 H1 -- -- -- -- -- -- -- -- -- -- -- -- -- --
+00001D10 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00001D20 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00001D30 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00001D40 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00001D50 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00001D60 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 -- -- -- -- -- --
 ----------------------------------------------------------
 00200000 | H1 H1 H1 H1 H1 H1 H1 H1 -- -- -- -- -- -- -- --
 ----------------------------------------------------------
