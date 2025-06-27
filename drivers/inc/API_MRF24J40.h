@@ -73,7 +73,7 @@ uint8_t * MRF24GetMensajeEntrada(void);
 uint16_t MRF24GetMiPANID(void);
 
 
-MRF24_discover_nearby_t * MRF24BuscarDispositivos(void);
+MRF24_State_t MRF24BuscarDispositivos(void);
 MRF24_State_t MRF24TransmitirDatoEncriptado(void);
 
 #endif /* INC_API_MRF24J40_H_ */

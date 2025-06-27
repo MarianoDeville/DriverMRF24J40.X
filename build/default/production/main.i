@@ -5238,7 +5238,7 @@ typedef enum { CH_11 = 0x03,
 
 typedef enum { INICIALIZACION_OK,
                TRANSMISION_REALIZADA,
-               MSG_NO_RECIBIDO,
+               ACK_NO_RECIBIDO,
                MSG_PRESENTE,
                MSG_NO_PRESENTE,
                MSG_LEIDO,
@@ -5268,7 +5268,7 @@ uint8_t * MRF24GetMensajeEntrada(void);
 uint16_t MRF24GetMiPANID(void);
 
 
-MRF24_discover_nearby_t * MRF24BuscarDispositivos(void);
+MRF24_State_t MRF24BuscarDispositivos(void);
 MRF24_State_t MRF24TransmitirDatoEncriptado(void);
 # 17 "main.c" 2
 
@@ -5355,8 +5355,9 @@ void main(void) {
    case PRESIONO_BOTON:
 
                 MRF24SetMensajeSalida("CMD:PLV");
-                if(MRF24TransmitirDato() == MSG_NO_RECIBIDO)
-                    LATEbits.LATE1 = !LATEbits.LATE1;
+
+
+MRF24BuscarDispositivos();
     break;
 
    case SUELTO_BOTON:

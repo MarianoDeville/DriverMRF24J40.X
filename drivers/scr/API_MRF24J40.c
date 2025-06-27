@@ -373,9 +373,8 @@ MRF24_State_t MRF24TransmitirDato(void) {
 	if(estadoActual != INICIALIZACION_OK)
 		return OPERACION_NO_REALIZADA;
 	uint8_t pos_memoria = 0;
-	uint8_t largo_cabecera = HEAD_LENGTH;
-	SetLongAddr(pos_memoria++, largo_cabecera);
-	SetLongAddr(pos_memoria++, mrf24_data_out_s.largo_mensaje + largo_cabecera);
+	SetLongAddr(pos_memoria++, HEAD_LENGTH);
+	SetLongAddr(pos_memoria++, mrf24_data_out_s.largo_mensaje + HEAD_LENGTH);
 	SetLongAddr(pos_memoria++, DATA|ACK_REQ|INTRA_PAN);         // LSB.
 	SetLongAddr(pos_memoria++, LONG_S_ADD|SHORT_D_ADD);         // MSB.
 	SetLongAddr(pos_memoria++, mrf24_data_config_s.sequence_number++);
@@ -454,10 +453,36 @@ uint16_t MRF24GetMiPANID(void) {
 	return mrf24_data_config_s.my_panid;
 }
 
-MRF24_discover_nearby_t * MRF24BuscarDispositivos(void) {
+MRF24_State_t MRF24BuscarDispositivos(void) {
     
-    static MRF24_discover_nearby_t algo;
+    static MRF24_discover_nearby_t algo[10];
+    
+    if(estadoActual != INICIALIZACION_OK)
+		return OPERACION_NO_REALIZADA;
     
     
-    return &algo;
+    mrf24_data_out_s.destinity_address = 1;
+    
+    
+	uint8_t pos_memoria = 0;
+	SetLongAddr(pos_memoria++, HEAD_LENGTH);
+	SetLongAddr(pos_memoria++, mrf24_data_out_s.largo_mensaje + HEAD_LENGTH);
+	SetLongAddr(pos_memoria++, DATA|INTRA_PAN);         // LSB.
+	SetLongAddr(pos_memoria++, LONG_S_ADD|SHORT_D_ADD);         // MSB.
+	SetLongAddr(pos_memoria++, mrf24_data_config_s.sequence_number++);
+	SetLongAddr(pos_memoria++, (uint8_t) mrf24_data_out_s.destinity_panid);
+	SetLongAddr(pos_memoria++, (uint8_t) (mrf24_data_out_s.destinity_panid >> SHIFT_BYTE));
+	SetLongAddr(pos_memoria++, (uint8_t) mrf24_data_out_s.destinity_address);
+	SetLongAddr(pos_memoria++, (uint8_t) (mrf24_data_out_s.destinity_address >> SHIFT_BYTE));
+
+	for(int8_t i = 0; i < mrf24_data_out_s.largo_mensaje; i++) {
+
+		SetLongAddr(pos_memoria++, mrf24_data_out_s.buffer_salida[i]);
+	}
+	SetLongAddr(pos_memoria++, VACIO);
+	SetShortAddr(TXNCON, TXNACKREQ | TXNTRIG);
+
+    
+    
+	return MSG_LEIDO;
 }
