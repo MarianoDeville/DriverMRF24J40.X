@@ -5215,7 +5215,7 @@ typedef enum {
 
 
 # 1 "./drivers/inc/API_MRF24J40.h" 1
-# 24 "./drivers/inc/API_MRF24J40.h"
+# 25 "./drivers/inc/API_MRF24J40.h"
 typedef enum { CH_11 = 0x03,
                CH_12 = 0x13,
                CH_13 = 0x23,
@@ -5355,9 +5355,7 @@ void main(void) {
    case PRESIONO_BOTON:
 
                 MRF24SetMensajeSalida("CMD:PLV");
-
-
-MRF24BuscarDispositivos();
+                MRF24TransmitirDato();
     break;
 
    case SUELTO_BOTON:

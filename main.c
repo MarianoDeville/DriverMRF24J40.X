@@ -44,9 +44,7 @@ void main(void) {
 			case PRESIONO_BOTON:
 
                 MRF24SetMensajeSalida("CMD:PLV");
-//                if(MRF24TransmitirDato() == ACK_NO_RECIBIDO)
-//                    LED_AMARILLO = !LED_AMARILLO;
-MRF24BuscarDispositivos();
+                MRF24TransmitirDato();
 				break;
 
 			case SUELTO_BOTON:
@@ -86,7 +84,7 @@ MRF24BuscarDispositivos();
             }
             MRF24TransmitirDato();
 		}
-        
+
         if(DelayRead(&delay_parpadeo)) {
             LED_VERDE = !LED_VERDE;
         }

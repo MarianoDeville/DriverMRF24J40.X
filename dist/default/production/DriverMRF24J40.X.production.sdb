@@ -27,7 +27,7 @@ OPERACION_NO_REALIZADA 7
 OPERACION_REALIZADA 8
 ERROR_INESPERADO 9
 ]
-"120
+"116
 [e E3245 . `uc
 CH_11 3
 CH_12 19
@@ -82,7 +82,7 @@ OPERACION_NO_REALIZADA 7
 OPERACION_REALIZADA 8
 ERROR_INESPERADO 9
 ]
-"61
+"59
 [e E3303 . `uc
 ERROR_ANTI_REBOTE 0
 PRESIONO_BOTON 1
@@ -114,6 +114,8 @@ RUIDO 4
 [v _strcmp strcmp `(i  1 e 2 0 ]
 "5 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strlen.c
 [v _strlen strlen `(ui  1 e 2 0 ]
+"3 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strncpy.c
+[v _strncpy strncpy `(*.30uc  1 e 2 0 ]
 "15 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\Umul32.c
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\Umul64.c
@@ -134,40 +136,38 @@ RUIDO 4
 [v _DelayIsRunning DelayIsRunning `(a  1 s 1 DelayIsRunning ]
 "111 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
 [v _InicializoVariables InicializoVariables `(v  1 s 1 InicializoVariables ]
-"141
+"137
 [v _InicializoMRF24 InicializoMRF24 `(E3264  1 s 1 InicializoMRF24 ]
-"193
+"189
 [v _SetShortAddr SetShortAddr `(v  1 s 1 SetShortAddr ]
-"212
+"208
 [v _GetShortAddr GetShortAddr `(uc  1 s 1 GetShortAddr ]
-"232
+"228
 [v _SetLongAddr SetLongAddr `(v  1 s 1 SetLongAddr ]
-"251
+"247
 [v _GetLongAddr GetLongAddr `(uc  1 s 1 GetLongAddr ]
-"270
+"266
 [v _SetChannel SetChannel `(v  1 s 1 SetChannel ]
-"284
+"280
 [v _SetDeviceAddress SetDeviceAddress `(v  1 s 1 SetDeviceAddress ]
-"298
+"294
 [v _SetDeviceMACAddress SetDeviceMACAddress `(v  1 s 1 SetDeviceMACAddress ]
-"315
+"309
 [v _MRF24J40Init MRF24J40Init `(E3264  1 e 1 0 ]
-"331
+"325
 [v _MRF24SetMensajeSalida MRF24SetMensajeSalida `(E3264  1 e 1 0 ]
-"345
+"339
 [v _MRF24SetDireccionDestino MRF24SetDireccionDestino `(E3264  1 e 1 0 ]
-"358
+"352
 [v _MRF24SetPANIDDestino MRF24SetPANIDDestino `(E3264  1 e 1 0 ]
-"371
+"365
 [v _MRF24TransmitirDato MRF24TransmitirDato `(E3264  1 e 1 0 ]
-"402
+"396
 [v _MRF24IsNewMsg MRF24IsNewMsg `(VEE3264  1 e 1 0 ]
-"417
+"411
 [v _MRF24ReciboPaquete MRF24ReciboPaquete `(E3264  1 e 1 0 ]
-"441
+"435
 [v _MRF24GetMensajeEntrada MRF24GetMensajeEntrada `(*.30uc  1 e 2 0 ]
-"456
-[v _MRF24BuscarDispositivos MRF24BuscarDispositivos `(E3264  1 e 1 0 ]
 "21 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
 [v _InicializoPines InicializoPines `(v  1 e 1 0 ]
 "34
@@ -245,7 +245,7 @@ RUIDO 4
 [v _PORTBbits PORTBbits `VES159  1 e 1 @3969 ]
 "996
 [v _PORTC PORTC `VEuc  1 e 1 @3970 ]
-[s S484 . 1 `uc 1 RC0 1 0 :1:0 
+[s S483 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -255,7 +255,7 @@ RUIDO 4
 `uc 1 RC7 1 0 :1:7 
 ]
 "1044
-[s S871 . 1 `uc 1 T1OSO 1 0 :1:0 
+[s S869 . 1 `uc 1 T1OSO 1 0 :1:0 
 `uc 1 T1OSI 1 0 :1:1 
 `uc 1 CCP1 1 0 :1:2 
 `uc 1 SCK 1 0 :1:3 
@@ -264,7 +264,7 @@ RUIDO 4
 `uc 1 TX 1 0 :1:6 
 `uc 1 RX 1 0 :1:7 
 ]
-[s S880 . 1 `uc 1 T13CKI 1 0 :1:0 
+[s S878 . 1 `uc 1 T13CKI 1 0 :1:0 
 `uc 1 CCP2 1 0 :1:1 
 `uc 1 P1A 1 0 :1:2 
 `uc 1 SCL 1 0 :1:3 
@@ -273,16 +273,16 @@ RUIDO 4
 `uc 1 CK 1 0 :1:6 
 `uc 1 DT 1 0 :1:7 
 ]
-[s S889 . 1 `uc 1 T1CKI 1 0 :1:0 
+[s S887 . 1 `uc 1 T1CKI 1 0 :1:0 
 ]
-[s S891 . 1 `uc 1 T3CKI 1 0 :1:0 
+[s S889 . 1 `uc 1 T3CKI 1 0 :1:0 
 ]
-[s S893 . 1 `uc 1 . 1 0 :1:0 
+[s S891 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 PA2 1 0 :1:1 
 `uc 1 PA1 1 0 :1:2 
 ]
-[u S897 . 1 `S484 1 . 1 0 `S871 1 . 1 0 `S880 1 . 1 0 `S889 1 . 1 0 `S891 1 . 1 0 `S893 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES897  1 e 1 @3970 ]
+[u S895 . 1 `S483 1 . 1 0 `S869 1 . 1 0 `S878 1 . 1 0 `S887 1 . 1 0 `S889 1 . 1 0 `S891 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES895  1 e 1 @3970 ]
 "1184
 [v _PORTD PORTD `VEuc  1 e 1 @3971 ]
 "1326
@@ -329,18 +329,18 @@ RUIDO 4
 ]
 [u S97 . 1 `S79 1 . 1 0 `S88 1 . 1 0 ]
 [v _LATDbits LATDbits `VES97  1 e 1 @3980 ]
-[s S949 . 1 `uc 1 LATE0 1 0 :1:0 
+[s S947 . 1 `uc 1 LATE0 1 0 :1:0 
 `uc 1 LATE1 1 0 :1:1 
 `uc 1 LATE2 1 0 :1:2 
 ]
 "1997
-[s S953 . 1 `uc 1 LE0 1 0 :1:0 
+[s S951 . 1 `uc 1 LE0 1 0 :1:0 
 `uc 1 LE1 1 0 :1:1 
 `uc 1 LE2 1 0 :1:2 
 ]
-[u S957 . 1 `S949 1 . 1 0 `S953 1 . 1 0 ]
-[v _LATEbits LATEbits `VES957  1 e 1 @3981 ]
-[s S1026 . 1 `uc 1 TRISB0 1 0 :1:0 
+[u S955 . 1 `S947 1 . 1 0 `S951 1 . 1 0 ]
+[v _LATEbits LATEbits `VES955  1 e 1 @3981 ]
+[s S1023 . 1 `uc 1 TRISB0 1 0 :1:0 
 `uc 1 TRISB1 1 0 :1:1 
 `uc 1 TRISB2 1 0 :1:2 
 `uc 1 TRISB3 1 0 :1:3 
@@ -350,9 +350,9 @@ RUIDO 4
 `uc 1 TRISB7 1 0 :1:7 
 ]
 "2286
-[u S1044 . 1 `S1026 1 . 1 0 `S119 1 . 1 0 ]
-[v _TRISBbits TRISBbits `VES1044  1 e 1 @3987 ]
-[s S475 . 1 `uc 1 TRISC0 1 0 :1:0 
+[u S1041 . 1 `S1023 1 . 1 0 `S119 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES1041  1 e 1 @3987 ]
+[s S474 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -362,9 +362,9 @@ RUIDO 4
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "2508
-[u S493 . 1 `S475 1 . 1 0 `S484 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES493  1 e 1 @3988 ]
-[s S1130 . 1 `uc 1 TRISD0 1 0 :1:0 
+[u S492 . 1 `S474 1 . 1 0 `S483 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES492  1 e 1 @3988 ]
+[s S1127 . 1 `uc 1 TRISD0 1 0 :1:0 
 `uc 1 TRISD1 1 0 :1:1 
 `uc 1 TRISD2 1 0 :1:2 
 `uc 1 TRISD3 1 0 :1:3 
@@ -374,7 +374,7 @@ RUIDO 4
 `uc 1 TRISD7 1 0 :1:7 
 ]
 "2730
-[s S1139 . 1 `uc 1 RD0 1 0 :1:0 
+[s S1136 . 1 `uc 1 RD0 1 0 :1:0 
 `uc 1 RD1 1 0 :1:1 
 `uc 1 RD2 1 0 :1:2 
 `uc 1 RD3 1 0 :1:3 
@@ -383,9 +383,9 @@ RUIDO 4
 `uc 1 RD6 1 0 :1:6 
 `uc 1 RD7 1 0 :1:7 
 ]
-[u S1148 . 1 `S1130 1 . 1 0 `S1139 1 . 1 0 ]
-[v _TRISDbits TRISDbits `VES1148  1 e 1 @3989 ]
-[s S1066 . 1 `uc 1 TRISE0 1 0 :1:0 
+[u S1145 . 1 `S1127 1 . 1 0 `S1136 1 . 1 0 ]
+[v _TRISDbits TRISDbits `VES1145  1 e 1 @3989 ]
+[s S1063 . 1 `uc 1 TRISE0 1 0 :1:0 
 `uc 1 TRISE1 1 0 :1:1 
 `uc 1 TRISE2 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -395,15 +395,15 @@ RUIDO 4
 `uc 1 IBF 1 0 :1:7 
 ]
 "2947
-[s S1075 . 1 `uc 1 RE0 1 0 :1:0 
+[s S1072 . 1 `uc 1 RE0 1 0 :1:0 
 `uc 1 RE1 1 0 :1:1 
 `uc 1 RE2 1 0 :1:2 
 ]
-[u S1079 . 1 `S1066 1 . 1 0 `S1075 1 . 1 0 ]
-[v _TRISEbits TRISEbits `VES1079  1 e 1 @3990 ]
+[u S1076 . 1 `S1063 1 . 1 0 `S1072 1 . 1 0 ]
+[v _TRISEbits TRISEbits `VES1076  1 e 1 @3990 ]
 "3072
 [v _OSCTUNE OSCTUNE `VEuc  1 e 1 @3995 ]
-[s S677 . 1 `uc 1 TMR1IF 1 0 :1:0 
+[s S676 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 CCP1IF 1 0 :1:2 
 `uc 1 SSPIF 1 0 :1:3 
@@ -413,36 +413,36 @@ RUIDO 4
 `uc 1 PSPIF 1 0 :1:7 
 ]
 "3241
-[s S686 . 1 `uc 1 . 1 0 :4:0 
+[s S685 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 TX1IF 1 0 :1:4 
 `uc 1 RC1IF 1 0 :1:5 
 ]
-[u S690 . 1 `S677 1 . 1 0 `S686 1 . 1 0 ]
-[v _PIR1bits PIR1bits `VES690  1 e 1 @3998 ]
+[u S689 . 1 `S676 1 . 1 0 `S685 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES689  1 e 1 @3998 ]
 "5403
 [v _SSPCON1 SSPCON1 `VEuc  1 e 1 @4038 ]
-[s S651 . 1 `uc 1 SSPM 1 0 :4:0 
+[s S650 . 1 `uc 1 SSPM 1 0 :4:0 
 `uc 1 CKP 1 0 :1:4 
 `uc 1 SSPEN 1 0 :1:5 
 `uc 1 SSPOV 1 0 :1:6 
 `uc 1 WCOL 1 0 :1:7 
 ]
 "5423
-[s S657 . 1 `uc 1 SSPM0 1 0 :1:0 
+[s S656 . 1 `uc 1 SSPM0 1 0 :1:0 
 `uc 1 SSPM1 1 0 :1:1 
 `uc 1 SSPM2 1 0 :1:2 
 `uc 1 SSPM3 1 0 :1:3 
 ]
-[u S662 . 1 `S651 1 . 1 0 `S657 1 . 1 0 ]
-[v _SSPCON1bits SSPCON1bits `VES662  1 e 1 @4038 ]
-[s S515 . 1 `uc 1 . 1 0 :2:0 
+[u S661 . 1 `S650 1 . 1 0 `S656 1 . 1 0 ]
+[v _SSPCON1bits SSPCON1bits `VES661  1 e 1 @4038 ]
+[s S514 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_NOT_W 1 0 :1:2 
 ]
 "5553
-[s S518 . 1 `uc 1 . 1 0 :5:0 
+[s S517 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 D_NOT_A 1 0 :1:5 
 ]
-[s S521 . 1 `uc 1 BF 1 0 :1:0 
+[s S520 . 1 `uc 1 BF 1 0 :1:0 
 `uc 1 UA 1 0 :1:1 
 `uc 1 R_nW 1 0 :1:2 
 `uc 1 S 1 0 :1:3 
@@ -451,53 +451,53 @@ RUIDO 4
 `uc 1 CKE 1 0 :1:6 
 `uc 1 SMP 1 0 :1:7 
 ]
-[s S530 . 1 `uc 1 . 1 0 :2:0 
+[s S529 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D 1 0 :1:5 
 ]
-[s S535 . 1 `uc 1 . 1 0 :2:0 
+[s S534 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 A 1 0 :1:5 
 ]
-[s S540 . 1 `uc 1 . 1 0 :2:0 
+[s S539 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA 1 0 :1:5 
 ]
-[s S545 . 1 `uc 1 . 1 0 :2:0 
+[s S544 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A 1 0 :1:5 
 ]
-[s S550 . 1 `uc 1 . 1 0 :2:0 
+[s S549 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_WRITE 1 0 :1:2 
 ]
-[s S553 . 1 `uc 1 . 1 0 :5:0 
+[s S552 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 NOT_ADDRESS 1 0 :1:5 
 ]
-[s S556 . 1 `uc 1 . 1 0 :2:0 
+[s S555 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS 1 0 :1:5 
 ]
-[s S561 . 1 `uc 1 . 1 0 :3:0 
+[s S560 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 START 1 0 :1:3 
 `uc 1 STOP 1 0 :1:4 
 ]
-[s S565 . 1 `uc 1 . 1 0 :2:0 
+[s S564 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 RW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 DA 1 0 :1:5 
 ]
-[s S570 . 1 `uc 1 . 1 0 :2:0 
+[s S569 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 NOT_A 1 0 :1:5 
 ]
-[u S575 . 1 `S515 1 . 1 0 `S518 1 . 1 0 `S521 1 . 1 0 `S530 1 . 1 0 `S535 1 . 1 0 `S540 1 . 1 0 `S545 1 . 1 0 `S550 1 . 1 0 `S553 1 . 1 0 `S556 1 . 1 0 `S561 1 . 1 0 `S565 1 . 1 0 `S570 1 . 1 0 ]
-[v _SSPSTATbits SSPSTATbits `VES575  1 e 1 @4039 ]
+[u S574 . 1 `S514 1 . 1 0 `S517 1 . 1 0 `S520 1 . 1 0 `S529 1 . 1 0 `S534 1 . 1 0 `S539 1 . 1 0 `S544 1 . 1 0 `S549 1 . 1 0 `S552 1 . 1 0 `S555 1 . 1 0 `S560 1 . 1 0 `S564 1 . 1 0 `S569 1 . 1 0 ]
+[v _SSPSTATbits SSPSTATbits `VES574  1 e 1 @4039 ]
 "5705
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @4041 ]
 "6010
@@ -556,8 +556,6 @@ RUIDO 4
 [v _TMR2IE TMR2IE `VEb  1 e 0 @31977 ]
 "3 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/inc/interrupciones.c
 [v _timeStamp timeStamp `ul  1 e 4 0 ]
-"22 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/inc/API_MRF24J40_registers.h
-[v _long_mac_address_e long_mac_address_e `E3316  1 e 1 0 ]
 "38 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
 [v _estadoActual estadoActual `E3264  1 s 1 estadoActual ]
 "40
@@ -566,23 +564,23 @@ RUIDO 4
 [v _default_security_key default_security_key `C[16]uc  1 s 16 default_security_key ]
 [s S278 . 34 `a 1 get_new_msg 1 0 `a 1 put_new_msg 1 1 `uc 1 sequence_number 1 2 `uc 1 my_channel 1 3 `[16]uc 1 security_key 16 4 `[8]uc 1 my_mac 8 20 `us 1 my_panid 2 28 `us 1 my_address 2 30 `us 1 intervalo 2 32 ]
 "77
-[v _mrf24_data_config_s mrf24_data_config_s `S278  1 s 34 mrf24_data_config_s ]
-[s S288 . 6 `us 1 destinity_panid 2 0 `us 1 destinity_address 2 2 `uc 1 largo_mensaje 1 4 `*.31Cuc 1 buffer_salida 1 5 ]
+[v _data_config_s data_config_s `S278  1 s 34 data_config_s ]
+[s S288 . 6 `us 1 destinity_panid 2 0 `us 1 destinity_address 2 2 `uc 1 largo_mensaje 1 4 `*.31Cuc 1 buffer 1 5 ]
 "84
-[v _mrf24_data_out_s mrf24_data_out_s `S288  1 s 6 mrf24_data_out_s ]
-[s S293 . 56 `us 1 source_panid 2 0 `us 1 source_address 2 2 `uc 1 tamano_mensaje 1 4 `uc 1 rssi 1 5 `[50]uc 1 buffer_entrada 50 6 ]
+[v _data_out_s data_out_s `S288  1 s 6 data_out_s ]
+[s S293 . 56 `us 1 source_panid 2 0 `us 1 source_address 2 2 `uc 1 tamano_mensaje 1 4 `uc 1 rssi 1 5 `[50]uc 1 buffer 50 6 ]
 "92
-[v _mrf24_data_in_s mrf24_data_in_s `S293  1 s 56 mrf24_data_in_s ]
+[v _data_in_s data_in_s `S293  1 s 56 data_in_s ]
 "28 E:\Embebidos\MPLAB\DriverMRF24J40.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-[s S317 . 9 `ul 1 startTime 4 0 `ul 1 duration 4 4 `a 1 running 1 8 ]
+[s S324 . 9 `ul 1 startTime 4 0 `ul 1 duration 4 4 `a 1 running 1 8 ]
 "31
-[s S789 . 11 `a 1 tecla_fue_presionada 1 0 `E2757 1 estadoActual 1 1 `S317 1 delay_anti_rebote 9 2 ]
-[v main@boton1 boton1 `S789  1 a 11 37 ]
+[s S788 . 11 `a 1 tecla_fue_presionada 1 0 `E2757 1 estadoActual 1 1 `S324 1 delay_anti_rebote 9 2 ]
+[v main@boton1 boton1 `S788  1 a 11 38 ]
 "30
-[v main@delay_parpadeo delay_parpadeo `S317  1 a 9 28 ]
-"94
+[v main@delay_parpadeo delay_parpadeo `S324  1 a 9 29 ]
+"92
 } 0
 "3 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strcmp.c
 [v _strcmp strcmp `(i  1 e 2 0 ]
@@ -591,26 +589,26 @@ RUIDO 4
 [v strcmp@r r `*.31Cuc  1 p 1 3 ]
 "7
 } 0
-"371 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+"365 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
 [v _MRF24TransmitirDato MRF24TransmitirDato `(E3264  1 e 1 0 ]
 {
-"386
+"382
 [v MRF24TransmitirDato@i i `c  1 a 1 15 ]
-"375
-[v MRF24TransmitirDato@pos_memoria pos_memoria `uc  1 a 1 16 ]
-"395
+"369
+[v MRF24TransmitirDato@pos_mem pos_mem `uc  1 a 1 16 ]
+"389
 } 0
-"358
+"352
 [v _MRF24SetPANIDDestino MRF24SetPANIDDestino `(E3264  1 e 1 0 ]
 {
 [v MRF24SetPANIDDestino@panid panid `us  1 p 2 0 ]
-"364
+"358
 } 0
-"331
+"325
 [v _MRF24SetMensajeSalida MRF24SetMensajeSalida `(E3264  1 e 1 0 ]
 {
 [v MRF24SetMensajeSalida@mensaje mensaje `*.31Cuc  1 p 1 3 ]
-"338
+"332
 } 0
 "5 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strlen.c
 [v _strlen strlen `(ui  1 e 2 0 ]
@@ -621,32 +619,41 @@ RUIDO 4
 [v strlen@s s `*.31Cuc  1 p 1 0 ]
 "12
 } 0
-"345 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+"339 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
 [v _MRF24SetDireccionDestino MRF24SetDireccionDestino `(E3264  1 e 1 0 ]
 {
 [v MRF24SetDireccionDestino@direccion direccion `us  1 p 2 0 ]
-"351
+"345
 } 0
-"417
+"411
 [v _MRF24ReciboPaquete MRF24ReciboPaquete `(E3264  1 e 1 0 ]
 {
-"421
+"415
 [v MRF24ReciboPaquete@index index `uc  1 a 1 16 ]
-"422
+"416
 [v MRF24ReciboPaquete@largo_mensaje largo_mensaje `uc  1 a 1 15 ]
-"434
+"428
 } 0
-"315
+"309
 [v _MRF24J40Init MRF24J40Init `(E3264  1 e 1 0 ]
 {
-"324
+"318
 } 0
 "111
 [v _InicializoVariables InicializoVariables `(v  1 s 1 InicializoVariables ]
 {
-"113
-[v InicializoVariables@i i `i  1 a 2 1 ]
-"134
+"130
+} 0
+"3 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strncpy.c
+[v _strncpy strncpy `(*.30uc  1 e 2 0 ]
+{
+"5
+[v strncpy@cp cp `*.30uc  1 a 1 5 ]
+"3
+[v strncpy@d d `*.30uc  1 p 1 0 ]
+[v strncpy@s s `*.31Cuc  1 p 1 1 ]
+[v strncpy@n n `ui  1 p 2 2 ]
+"15
 } 0
 "21 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
 [v _InicializoPines InicializoPines `(v  1 e 1 0 ]
@@ -671,110 +678,60 @@ RUIDO 4
 [v SetResetPin@estado estado `a  1 p 1 0 ]
 "60
 } 0
-"141 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+"137 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
 [v _InicializoMRF24 InicializoMRF24 `(E3264  1 s 1 InicializoMRF24 ]
 {
-[s S317 . 9 `ul 1 startTime 4 0 `ul 1 duration 4 4 `a 1 running 1 8 ]
-"144
-[v InicializoMRF24@delay_time_out delay_time_out `S317  1 a 9 16 ]
-"143
-[v InicializoMRF24@lectura lectura `uc  1 a 1 15 ]
-"185
+[s S324 . 9 `ul 1 startTime 4 0 `ul 1 duration 4 4 `a 1 running 1 8 ]
+"140
+[v InicializoMRF24@delay_time_out delay_time_out `S324  1 a 9 17 ]
+"139
+[v InicializoMRF24@lectura lectura `uc  1 a 1 16 ]
+"181
 } 0
-"298
+"294
 [v _SetDeviceMACAddress SetDeviceMACAddress `(v  1 s 1 SetDeviceMACAddress ]
 {
-"302
-[v SetDeviceMACAddress@i i `i  1 a 2 4 ]
-"307
+"296
+[v SetDeviceMACAddress@i i `uc  1 a 1 4 ]
+"301
 } 0
-"284
+"280
 [v _SetDeviceAddress SetDeviceAddress `(v  1 s 1 SetDeviceAddress ]
 {
-"291
+"287
 } 0
-"270
+"266
 [v _SetChannel SetChannel `(v  1 s 1 SetChannel ]
 {
-"277
+"273
 } 0
-"212
-[v _GetShortAddr GetShortAddr `(uc  1 s 1 GetShortAddr ]
-{
-[v GetShortAddr@reg_address reg_address `uc  1 p 1 wreg ]
-"217
-[v GetShortAddr@leido_spi leido_spi `uc  1 a 1 2 ]
-"212
-[v GetShortAddr@reg_address reg_address `uc  1 p 1 wreg ]
-[v GetShortAddr@reg_address reg_address `uc  1 p 1 3 ]
-"224
-} 0
-"251
-[v _GetLongAddr GetLongAddr `(uc  1 s 1 GetLongAddr ]
-{
-"256
-[v GetLongAddr@respuesta respuesta `uc  1 a 1 9 ]
-"251
-[v GetLongAddr@reg_address reg_address `us  1 p 2 5 ]
-"263
-} 0
-"98 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
-[v _ReadByteSPIPort ReadByteSPIPort `(uc  1 e 1 0 ]
-{
-"101
-} 0
-"75 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MSPI_port.c
-[v _SPIRead SPIRead `(uc  1 e 1 0 ]
-{
-"81
-} 0
-"68 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_delay.c
-[v _DelayReset DelayReset `(v  1 e 1 0 ]
-{
-[s S317 . 9 `ul 1 startTime 4 0 `ul 1 duration 4 4 `a 1 running 1 8 ]
-[v DelayReset@delay delay `*.30S317  1 p 1 0 ]
-"73
-} 0
-"402 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-[v _MRF24IsNewMsg MRF24IsNewMsg `(VEE3264  1 e 1 0 ]
-{
-"410
-} 0
-"66 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
-[v _IsMRF24Interrup IsMRF24Interrup `(a  1 e 1 0 ]
-{
-"69
-} 0
-"441 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
-[v _MRF24GetMensajeEntrada MRF24GetMensajeEntrada `(*.30uc  1 e 2 0 ]
-{
-"444
-} 0
-"456
-[v _MRF24BuscarDispositivos MRF24BuscarDispositivos `(E3264  1 e 1 0 ]
-{
-"478
-[v MRF24BuscarDispositivos@i i `c  1 a 1 15 ]
-"467
-[v MRF24BuscarDispositivos@pos_memoria pos_memoria `uc  1 a 1 16 ]
-"488
-} 0
-"193
+"189
 [v _SetShortAddr SetShortAddr `(v  1 s 1 SetShortAddr ]
 {
 [v SetShortAddr@reg_address reg_address `uc  1 p 1 wreg ]
 [v SetShortAddr@reg_address reg_address `uc  1 p 1 wreg ]
 [v SetShortAddr@valor valor `uc  1 p 1 2 ]
-"198
+"194
 [v SetShortAddr@reg_address reg_address `uc  1 p 1 3 ]
-"204
+"200
 } 0
-"232
+"228
 [v _SetLongAddr SetLongAddr `(v  1 s 1 SetLongAddr ]
 {
 [v SetLongAddr@reg_address reg_address `us  1 p 2 5 ]
 [v SetLongAddr@valor valor `uc  1 p 1 7 ]
-"243
+"239
+} 0
+"208
+[v _GetShortAddr GetShortAddr `(uc  1 s 1 GetShortAddr ]
+{
+[v GetShortAddr@reg_address reg_address `uc  1 p 1 wreg ]
+"213
+[v GetShortAddr@leido_spi leido_spi `uc  1 a 1 2 ]
+"208
+[v GetShortAddr@reg_address reg_address `uc  1 p 1 wreg ]
+[v GetShortAddr@reg_address reg_address `uc  1 p 1 3 ]
+"220
 } 0
 "76 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
 [v _WriteByteSPIPort WriteByteSPIPort `(v  1 e 1 0 ]
@@ -785,7 +742,16 @@ RUIDO 4
 [v WriteByteSPIPort@dato dato `uc  1 p 1 1 ]
 "80
 } 0
-"87
+"247 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+[v _GetLongAddr GetLongAddr `(uc  1 s 1 GetLongAddr ]
+{
+"252
+[v GetLongAddr@respuesta respuesta `uc  1 a 1 9 ]
+"247
+[v GetLongAddr@reg_address reg_address `us  1 p 2 5 ]
+"259
+} 0
+"87 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
 [v _Write2ByteSPIPort Write2ByteSPIPort `(v  1 e 1 0 ]
 {
 [v Write2ByteSPIPort@dato dato `us  1 p 2 3 ]
@@ -815,42 +781,74 @@ RUIDO 4
 [v SetCSPin@estado estado `a  1 p 1 0 ]
 "38
 } 0
+"98
+[v _ReadByteSPIPort ReadByteSPIPort `(uc  1 e 1 0 ]
+{
+"101
+} 0
+"75 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MSPI_port.c
+[v _SPIRead SPIRead `(uc  1 e 1 0 ]
+{
+"81
+} 0
+"68 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_delay.c
+[v _DelayReset DelayReset `(v  1 e 1 0 ]
+{
+[s S324 . 9 `ul 1 startTime 4 0 `ul 1 duration 4 4 `a 1 running 1 8 ]
+[v DelayReset@delay delay `*.30S324  1 p 1 0 ]
+"73
+} 0
+"396 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+[v _MRF24IsNewMsg MRF24IsNewMsg `(VEE3264  1 e 1 0 ]
+{
+"404
+} 0
+"66 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40_port.c
+[v _IsMRF24Interrup IsMRF24Interrup `(a  1 e 1 0 ]
+{
+"69
+} 0
+"435 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_MRF24J40.c
+[v _MRF24GetMensajeEntrada MRF24GetMensajeEntrada `(*.30uc  1 e 2 0 ]
+{
+"438
+} 0
 "34 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_debounce.c
 [v _DebounceFSMUpdate DebounceFSMUpdate `(E2763  1 e 1 0 ]
 {
-[s S317 . 9 `ul 1 startTime 4 0 `ul 1 duration 4 4 `a 1 running 1 8 ]
-[s S789 . 11 `a 1 tecla_fue_presionada 1 0 `E2757 1 estadoActual 1 1 `S317 1 delay_anti_rebote 9 2 ]
-[v DebounceFSMUpdate@antirrebote_boton_n antirrebote_boton_n `*.30S789  1 p 1 14 ]
+[s S324 . 9 `ul 1 startTime 4 0 `ul 1 duration 4 4 `a 1 running 1 8 ]
+[s S788 . 11 `a 1 tecla_fue_presionada 1 0 `E2757 1 estadoActual 1 1 `S324 1 delay_anti_rebote 9 2 ]
+[v DebounceFSMUpdate@antirrebote_boton_n antirrebote_boton_n `*.30S788  1 p 1 14 ]
 [v DebounceFSMUpdate@estado_pin estado_pin `a  1 p 1 15 ]
 "88
 } 0
 "34 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_delay.c
 [v _DelayRead DelayRead `(a  1 e 1 0 ]
 {
-[s S317 . 9 `ul 1 startTime 4 0 `ul 1 duration 4 4 `a 1 running 1 8 ]
-[v DelayRead@delay delay `*.30S317  1 p 1 1 ]
+[s S324 . 9 `ul 1 startTime 4 0 `ul 1 duration 4 4 `a 1 running 1 8 ]
+[v DelayRead@delay delay `*.30S324  1 p 1 1 ]
 "49
 } 0
 "83
 [v _DelayIsRunning DelayIsRunning `(a  1 s 1 DelayIsRunning ]
 {
-[s S317 . 9 `ul 1 startTime 4 0 `ul 1 duration 4 4 `a 1 running 1 8 ]
-[v DelayIsRunning@delay delay `*.30S317  1 p 1 0 ]
+[s S324 . 9 `ul 1 startTime 4 0 `ul 1 duration 4 4 `a 1 running 1 8 ]
+[v DelayIsRunning@delay delay `*.30S324  1 p 1 0 ]
 "86
 } 0
 "19 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_debounce.c
 [v _DebounceFSMInit DebounceFSMInit `(v  1 e 1 0 ]
 {
-[s S317 . 9 `ul 1 startTime 4 0 `ul 1 duration 4 4 `a 1 running 1 8 ]
-[s S789 . 11 `a 1 tecla_fue_presionada 1 0 `E2757 1 estadoActual 1 1 `S317 1 delay_anti_rebote 9 2 ]
-[v DebounceFSMInit@antirrebote_boton_n antirrebote_boton_n `*.30S789  1 p 1 5 ]
+[s S324 . 9 `ul 1 startTime 4 0 `ul 1 duration 4 4 `a 1 running 1 8 ]
+[s S788 . 11 `a 1 tecla_fue_presionada 1 0 `E2757 1 estadoActual 1 1 `S324 1 delay_anti_rebote 9 2 ]
+[v DebounceFSMInit@antirrebote_boton_n antirrebote_boton_n `*.30S788  1 p 1 5 ]
 "24
 } 0
 "22 E:\Embebidos\MPLAB\DriverMRF24J40.X\drivers/scr/API_delay.c
 [v _DelayInit DelayInit `(v  1 e 1 0 ]
 {
-[s S317 . 9 `ul 1 startTime 4 0 `ul 1 duration 4 4 `a 1 running 1 8 ]
-[v DelayInit@delay delay `*.30S317  1 p 1 0 ]
+[s S324 . 9 `ul 1 startTime 4 0 `ul 1 duration 4 4 `a 1 running 1 8 ]
+[v DelayInit@delay delay `*.30S324  1 p 1 0 ]
 [v DelayInit@duration duration `ul  1 p 4 1 ]
 "27
 } 0
