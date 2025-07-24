@@ -5261,11 +5261,13 @@ MRF24_State_t MRF24J40Init(void);
 MRF24_State_t MRF24SetMensajeSalida(const char * mensaje);
 MRF24_State_t MRF24SetDireccionDestino(uint16_t direccion);
 MRF24_State_t MRF24SetPANIDDestino(uint16_t panid);
+MRF24_State_t MRF24SetDireccionOrigen(uint16_t direccion);
 MRF24_State_t MRF24TransmitirDato(void);
 volatile MRF24_State_t MRF24IsNewMsg(void);
 MRF24_State_t MRF24ReciboPaquete(void);
 uint8_t * MRF24GetMensajeEntrada(void);
 uint16_t MRF24GetMiPANID(void);
+uint16_t MRF24GetMiAddr(void);
 
 
 MRF24_State_t MRF24BuscarDispositivos(void);
@@ -5346,6 +5348,7 @@ void main(void) {
     DelayInit(&delay_parpadeo, 1000);
     MRF24SetDireccionDestino(0x1111);
     MRF24SetPANIDDestino(0X1234);
+    MRF24SetDireccionOrigen(MRF24GetMiAddr());
 
     while(1) {
 

@@ -35,6 +35,7 @@ void main(void) {
     DelayInit(&delay_parpadeo, 1000);
     MRF24SetDireccionDestino(0x1111);
     MRF24SetPANIDDestino(0X1234);
+    MRF24SetDireccionOrigen(MRF24GetMyAddr());
     
     while(1) {
 
