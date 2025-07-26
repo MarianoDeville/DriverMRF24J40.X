@@ -5216,62 +5216,100 @@ typedef enum {
 
 # 1 "./drivers/inc/API_MRF24J40.h" 1
 # 25 "./drivers/inc/API_MRF24J40.h"
-typedef enum { CH_11 = 0x03,
-               CH_12 = 0x13,
-               CH_13 = 0x23,
-               CH_14 = 0x33,
-               CH_15 = 0x43,
-               CH_16 = 0x53,
-               CH_17 = 0x63,
-               CH_18 = 0x73,
-               CH_19 = 0x83,
-               CH_20 = 0x93,
-               CH_21 = 0xA3,
-               CH_22 = 0xB3,
-               CH_23 = 0xC3,
-               CH_24 = 0xD3,
-               CH_25 = 0xE3,
-               CH_26 = 0xF3,
-               ALL = 0x00,
+typedef enum {
+
+    CH_11 = 0x03,
+    CH_12 = 0x13,
+    CH_13 = 0x23,
+ CH_14 = 0x33,
+ CH_15 = 0x43,
+ CH_16 = 0x53,
+ CH_17 = 0x63,
+ CH_18 = 0x73,
+ CH_19 = 0x83,
+ CH_20 = 0x93,
+ CH_21 = 0xA3,
+ CH_22 = 0xB3,
+ CH_23 = 0xC3,
+ CH_24 = 0xD3,
+ CH_25 = 0xE3,
+ CH_26 = 0xF3
 } channel_list_t;
 
 
-typedef enum { INICIALIZACION_OK,
-               TRANSMISION_REALIZADA,
-               ACK_NO_RECIBIDO,
-               MSG_PRESENTE,
-               MSG_NO_PRESENTE,
-               MSG_LEIDO,
-               TIME_OUT_OCURRIDO,
-               OPERACION_NO_REALIZADA,
-               OPERACION_REALIZADA,
-               ERROR_INESPERADO,
-} MRF24_State_t;
+
+typedef enum {
+
+ INICIALIZACION_OK,
+ TRANSMISION_REALIZADA,
+ MSG_PRESENTE,
+ MSG_NO_PRESENTE,
+ MSG_LEIDO,
+ TIME_OUT_OCURRIDO,
+ OPERACION_NO_REALIZADA,
+ OPERACION_REALIZADA,
+ ERROR_INESPERADO,
+ NO_DIRECCION,
+} mrf24_state_t;
 
 
-typedef struct { uint8_t channel;
-                 uint16_t panid;
-                 uint8_t long_address[8];
-                 uint16_t short_address;
-                 uint8_t rssi;
+typedef struct {
+
+ uint8_t sequence_number;
+ uint8_t my_channel;
+ uint8_t security_key[16];
+ uint8_t my_mac[8];
+ uint16_t my_panid;
+ uint16_t my_address;
+ uint16_t intervalo;
+}mrf24_data_config_t;
+
+
+typedef struct {
+
+ uint16_t dest_panid;
+ uint16_t dest_address;
+ uint16_t origin_address;
+ char buffer[50];
+}mrf24_data_out_t;
+
+
+typedef struct {
+
+ uint16_t source_panid;
+ uint16_t source_address;
+ uint8_t tamano_mensaje;
+ uint8_t rssi;
+ char buffer[50];
+}mrf24_data_in_t;
+
+
+typedef struct {
+
+ uint8_t channel;
+ uint16_t panid;
+ uint8_t long_address[8];
+ uint16_t short_address;
+ uint8_t rssi;
 } MRF24_discover_nearby_t;
 
 
-MRF24_State_t MRF24J40Init(void);
-MRF24_State_t MRF24SetMensajeSalida(const char * mensaje);
-MRF24_State_t MRF24SetDireccionDestino(uint16_t direccion);
-MRF24_State_t MRF24SetPANIDDestino(uint16_t panid);
-MRF24_State_t MRF24SetDireccionOrigen(uint16_t direccion);
-MRF24_State_t MRF24TransmitirDato(void);
-volatile MRF24_State_t MRF24IsNewMsg(void);
-MRF24_State_t MRF24ReciboPaquete(void);
-uint8_t * MRF24GetMensajeEntrada(void);
-uint16_t MRF24GetMiPANID(void);
-uint16_t MRF24GetMiAddr(void);
 
 
-MRF24_State_t MRF24BuscarDispositivos(void);
-MRF24_State_t MRF24TransmitirDatoEncriptado(void);
+mrf24_state_t MRF24J40Init(void);
+mrf24_data_config_t * MRF24GetConfig(void);
+
+
+mrf24_state_t MRF24TransmitirDato(mrf24_data_out_t * p_info_out_s);
+
+
+volatile mrf24_state_t MRF24IsNewMsg(void);
+mrf24_state_t MRF24ReciboPaquete(void);
+mrf24_data_in_t * MRF24GetDataIn(void);
+
+
+mrf24_state_t MRF24BuscarDispositivos(void);
+mrf24_state_t MRF24TransmitirDatoEncriptado(void);
 # 17 "main.c" 2
 
 # 1 "./drivers/inc/API_delay.h" 1
@@ -5337,7 +5375,7 @@ typedef struct {
 void DebounceFSMInit(debounceData_t * antirrebote_boton_n);
 estadoPulsador_t DebounceFSMUpdate(debounceData_t * antirrebote_boton_n, bool_t estado_pin);
 # 19 "main.c" 2
-# 28 "main.c"
+# 30 "main.c"
 void main(void) {
 
     delayNoBloqueanteData delay_parpadeo;
@@ -5346,9 +5384,11 @@ void main(void) {
     BoardInit();
     MRF24J40Init();
     DelayInit(&delay_parpadeo, 1000);
-    MRF24SetDireccionDestino(0x1111);
-    MRF24SetPANIDDestino(0X1234);
-    MRF24SetDireccionOrigen(MRF24GetMiAddr());
+
+    mrf24_data_out_t data_out_s;
+ data_out_s.dest_address = (0x1111);
+ data_out_s.dest_panid = 0x1234;
+ data_out_s.origin_address = 0x4567;
 
     while(1) {
 
@@ -5357,14 +5397,14 @@ void main(void) {
 
    case PRESIONO_BOTON:
 
-                MRF24SetMensajeSalida("CMD:PLV");
-                MRF24TransmitirDato();
+                strcpy(data_out_s.buffer, "CMD:PLV");
+                MRF24TransmitirDato(&data_out_s);
     break;
 
    case SUELTO_BOTON:
 
-                MRF24SetMensajeSalida("CMD:ALV");
-                MRF24TransmitirDato();
+                strcpy(data_out_s.buffer, "CMD:ALV");
+                MRF24TransmitirDato(&data_out_s);
     break;
 
    default:
@@ -5374,29 +5414,30 @@ void main(void) {
 
         if(MRF24IsNewMsg() == MSG_PRESENTE) {
 
+            mrf24_data_in_t * mrf24_data_in = MRF24GetDataIn();
             MRF24ReciboPaquete();
 
-   if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:PLA")) {
+   if(!strcmp(mrf24_data_in->buffer,"CMD:PLA")) {
 
     LATEbits.LATE1 = 0;
-                MRF24SetMensajeSalida("Led encendido");
-   } else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:ALA")) {
+                strcpy(data_out_s.buffer, "Led encendido");
+   } else if(!strcmp(mrf24_data_in->buffer,"CMD:ALA")) {
 
     LATEbits.LATE1 = 1;
-                MRF24SetMensajeSalida("Led apagado");
-            } else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:PLR")) {
+                strcpy(data_out_s.buffer, "Led apagado");
+            } else if(!strcmp(mrf24_data_in->buffer,"CMD:PLR")) {
 
     LATEbits.LATE2 = 0;
-                MRF24SetMensajeSalida("Led encendido");
-            } else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:ALR")) {
+                strcpy(data_out_s.buffer, "Led encendido");
+            } else if(!strcmp(mrf24_data_in->buffer,"CMD:ALR")){
 
     LATEbits.LATE2 = 1;
-                MRF24SetMensajeSalida("Led apagado");
+                strcpy(data_out_s.buffer, "Led apagado");
             } else {
 
-                MRF24SetMensajeSalida("Cmd error.");
+                strcpy(data_out_s.buffer, "Cmd error.");
             }
-            MRF24TransmitirDato();
+            MRF24TransmitirDato(&data_out_s);
   }
 
         if(DelayRead(&delay_parpadeo)) {

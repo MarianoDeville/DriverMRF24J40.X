@@ -20,6 +20,8 @@
 
 #define ENCENDIDO   0
 #define APAGADO     1
+
+#define LOW_END_ADDR	(0x1111)
 /**
  * @brief  Main program
  * @param  None
@@ -33,9 +35,11 @@ void main(void) {
     BoardInit();
     MRF24J40Init();
     DelayInit(&delay_parpadeo, 1000);
-    MRF24SetDireccionDestino(0x1111);
-    MRF24SetPANIDDestino(0X1234);
-    MRF24SetDireccionOrigen(MRF24GetMyAddr());
+    
+    mrf24_data_out_t data_out_s;
+	data_out_s.dest_address = LOW_END_ADDR;
+	data_out_s.dest_panid = 0x1234;
+	data_out_s.origin_address = 0x4567;
     
     while(1) {
 
@@ -44,14 +48,14 @@ void main(void) {
 
 			case PRESIONO_BOTON:
 
-                MRF24SetMensajeSalida("CMD:PLV");
-                MRF24TransmitirDato();
+                strcpy(data_out_s.buffer, "CMD:PLV");
+                MRF24TransmitirDato(&data_out_s);
 				break;
 
 			case SUELTO_BOTON:
 
-                MRF24SetMensajeSalida("CMD:ALV");
-                MRF24TransmitirDato();
+                strcpy(data_out_s.buffer, "CMD:ALV");
+                MRF24TransmitirDato(&data_out_s);
 				break;
 
 			default:
@@ -61,29 +65,30 @@ void main(void) {
         
         if(MRF24IsNewMsg() == MSG_PRESENTE) {
 
+            mrf24_data_in_t * mrf24_data_in = MRF24GetDataIn();
             MRF24ReciboPaquete();
 
-			if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:PLA")) {
+			if(!strcmp(mrf24_data_in->buffer,"CMD:PLA")) {
                 
 				LED_AMARILLO = ENCENDIDO;
-                MRF24SetMensajeSalida("Led encendido");
-			} else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:ALA")) {
+                strcpy(data_out_s.buffer, "Led encendido");
+			} else if(!strcmp(mrf24_data_in->buffer,"CMD:ALA")) {
                 
 				LED_AMARILLO = APAGADO;
-                MRF24SetMensajeSalida("Led apagado");
-            } else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:PLR")) {
+                strcpy(data_out_s.buffer, "Led apagado");
+            } else if(!strcmp(mrf24_data_in->buffer,"CMD:PLR")) {
                 
 				LED_ROJO = ENCENDIDO;
-                MRF24SetMensajeSalida("Led encendido");
-            } else if(!strcmp((char *)MRF24GetMensajeEntrada(),"CMD:ALR")) {
+                strcpy(data_out_s.buffer, "Led encendido");
+            } else if(!strcmp(mrf24_data_in->buffer,"CMD:ALR")){
                 
 				LED_ROJO = APAGADO;
-                MRF24SetMensajeSalida("Led apagado");
+                strcpy(data_out_s.buffer, "Led apagado");
             } else {
                 
-                MRF24SetMensajeSalida("Cmd error.");
+                strcpy(data_out_s.buffer, "Cmd error.");
             }
-            MRF24TransmitirDato();
+            MRF24TransmitirDato(&data_out_s);
 		}
 
         if(DelayRead(&delay_parpadeo)) {
