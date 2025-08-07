@@ -20,8 +20,9 @@
 
 #define ENCENDIDO   0
 #define APAGADO     1
-
 #define LOW_END_ADDR	(0x1111)
+
+static void envio(void);
 /**
  * @brief  Main program
  * @param  None
@@ -29,7 +30,7 @@
  */
 void main(void) {
     
-    delayNoBloqueanteData delay_parpadeo;
+    delayNoBloqueanteData_t delay_parpadeo;
     debounceData_t boton1;
 	DebounceFSMInit(&boton1);
     BoardInit();
@@ -47,19 +48,10 @@ void main(void) {
         switch(DebounceFSMUpdate(&boton1,PULSADOR)) {
 
 			case PRESIONO_BOTON:
-
-                strcpy(data_out_s.buffer, "CMD:PLV");
-                MRF24TransmitirDato(&data_out_s);
-				break;
-
-			case SUELTO_BOTON:
-
-                strcpy(data_out_s.buffer, "CMD:ALV");
-                MRF24TransmitirDato(&data_out_s);
+                envio();
 				break;
 
 			default:
-                
                 break;
 		}
         
@@ -67,7 +59,7 @@ void main(void) {
 
             mrf24_data_in_t * mrf24_data_in = MRF24GetDataIn();
             MRF24ReciboPaquete();
-
+/*
 			if(!strcmp(mrf24_data_in->buffer,"CMD:PLA")) {
                 
 				LED_AMARILLO = ENCENDIDO;
@@ -89,10 +81,25 @@ void main(void) {
                 strcpy(data_out_s.buffer, "Cmd error.");
             }
             MRF24TransmitirDato(&data_out_s);
-		}
+*/		}
 
         if(DelayRead(&delay_parpadeo)) {
             LED_VERDE = !LED_VERDE;
         }
     }
+}
+
+static void envio(void) {
+    
+    mrf24_data_out_t data_out_s;
+	data_out_s.dest_address = LOW_END_ADDR;
+	data_out_s.dest_panid = 0x1234;
+	data_out_s.origin_address = 0x4567;
+    
+    
+    strcpy(data_out_s.buffer, "CMD:PLV");
+    MRF24TransmitirDato(&data_out_s);
+
+    return;
+    
 }

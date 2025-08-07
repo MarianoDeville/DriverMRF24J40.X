@@ -44,7 +44,7 @@ typedef struct {
 
 	bool_t tecla_fue_presionada;
 	debounceState_t estadoActual;
-	delayNoBloqueanteData delay_anti_rebote;
+	delayNoBloqueanteData_t delay_anti_rebote;
 } debounceData_t;
 
 /**

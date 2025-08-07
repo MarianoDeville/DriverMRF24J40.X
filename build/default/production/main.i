@@ -5326,15 +5326,15 @@ typedef struct{
  tick_t startTime;
  tick_t duration;
  bool_t running;
-} delayNoBloqueanteData;
+} delayNoBloqueanteData_t;
 
 
 
 
-void DelayInit(delayNoBloqueanteData * delay, tick_t duration);
-bool_t DelayRead(delayNoBloqueanteData * delay );
-void DelayWrite(delayNoBloqueanteData * delay, tick_t duration);
-void DelayReset( delayNoBloqueanteData * delay);
+void DelayInit(delayNoBloqueanteData_t * delay, tick_t duration);
+bool_t DelayRead(delayNoBloqueanteData_t * delay );
+void DelayWrite(delayNoBloqueanteData_t * delay, tick_t duration);
+void DelayReset( delayNoBloqueanteData_t * delay);
 # 18 "main.c" 2
 
 # 1 "./drivers/inc/API_debounce.h" 1
@@ -5366,7 +5366,7 @@ typedef struct {
 
  bool_t tecla_fue_presionada;
  debounceState_t estadoActual;
- delayNoBloqueanteData delay_anti_rebote;
+ delayNoBloqueanteData_t delay_anti_rebote;
 } debounceData_t;
 
 
@@ -5375,10 +5375,21 @@ typedef struct {
 void DebounceFSMInit(debounceData_t * antirrebote_boton_n);
 estadoPulsador_t DebounceFSMUpdate(debounceData_t * antirrebote_boton_n, bool_t estado_pin);
 # 19 "main.c" 2
-# 30 "main.c"
+
+
+
+
+
+
+static void envio(void);
+
+
+
+
+
 void main(void) {
 
-    delayNoBloqueanteData delay_parpadeo;
+    delayNoBloqueanteData_t delay_parpadeo;
     debounceData_t boton1;
  DebounceFSMInit(&boton1);
     BoardInit();
@@ -5396,19 +5407,10 @@ void main(void) {
         switch(DebounceFSMUpdate(&boton1,PORTCbits.RC2)) {
 
    case PRESIONO_BOTON:
-
-                strcpy(data_out_s.buffer, "CMD:PLV");
-                MRF24TransmitirDato(&data_out_s);
-    break;
-
-   case SUELTO_BOTON:
-
-                strcpy(data_out_s.buffer, "CMD:ALV");
-                MRF24TransmitirDato(&data_out_s);
+                envio();
     break;
 
    default:
-
                 break;
   }
 
@@ -5416,32 +5418,26 @@ void main(void) {
 
             mrf24_data_in_t * mrf24_data_in = MRF24GetDataIn();
             MRF24ReciboPaquete();
-
-   if(!strcmp(mrf24_data_in->buffer,"CMD:PLA")) {
-
-    LATEbits.LATE1 = 0;
-                strcpy(data_out_s.buffer, "Led encendido");
-   } else if(!strcmp(mrf24_data_in->buffer,"CMD:ALA")) {
-
-    LATEbits.LATE1 = 1;
-                strcpy(data_out_s.buffer, "Led apagado");
-            } else if(!strcmp(mrf24_data_in->buffer,"CMD:PLR")) {
-
-    LATEbits.LATE2 = 0;
-                strcpy(data_out_s.buffer, "Led encendido");
-            } else if(!strcmp(mrf24_data_in->buffer,"CMD:ALR")){
-
-    LATEbits.LATE2 = 1;
-                strcpy(data_out_s.buffer, "Led apagado");
-            } else {
-
-                strcpy(data_out_s.buffer, "Cmd error.");
-            }
-            MRF24TransmitirDato(&data_out_s);
-  }
+# 84 "main.c"
+    }
 
         if(DelayRead(&delay_parpadeo)) {
             LATEbits.LATE0 = !LATEbits.LATE0;
         }
     }
+}
+
+static void envio(void) {
+
+    mrf24_data_out_t data_out_s;
+ data_out_s.dest_address = (0x1111);
+ data_out_s.dest_panid = 0x1234;
+ data_out_s.origin_address = 0x4567;
+
+
+    strcpy(data_out_s.buffer, "CMD:PLV");
+    MRF24TransmitirDato(&data_out_s);
+
+    return;
+
 }

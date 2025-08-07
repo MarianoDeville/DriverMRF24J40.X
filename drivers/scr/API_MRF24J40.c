@@ -112,7 +112,7 @@ static void InicializoVariables(void) {
 static mrf24_state_t InicializoMRF24(void) {
 
 	uint8_t lectura;
-	delayNoBloqueanteData delay_time_out;
+	delayNoBloqueanteData_t delay_time_out;
 	DelayInit(&delay_time_out, MRF_TIME_OUT);
 	SetShortAddr(SOFTRST, RSTPWR | RSTBB | RSTMAC);
 	DelayReset(&delay_time_out);
