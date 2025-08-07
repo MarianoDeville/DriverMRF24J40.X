@@ -88,7 +88,7 @@ static void SetDeviceMACAddress(void);
  */
 static void InicializoVariables(void) {
 
-	if(data_config_s.my_address == 0 || data_config_s.my_panid == 0) {
+	if(VACIO == data_config_s.my_address || VACIO == data_config_s.my_panid) {
 
 		strncpy((char *)data_config_s.security_key,
 				(char *) default_security_key,
@@ -121,8 +121,8 @@ static mrf24_state_t InicializoMRF24(void) {
 
 		lectura = GetShortAddr(SOFTRST);
 		if(DelayRead(&delay_time_out))
-			return TIME_OUT_OCURRIDO;
-	}while((lectura & (RSTPWR | RSTBB | RSTMAC)) != VACIO);
+			return TIME_OUT_OCURRED;
+	}while(VACIO != (lectura & (RSTPWR | RSTBB | RSTMAC)));
 	delay_t(WAIT_50_MS);
 	SetShortAddr(RXFLUSH, RXFLUSH_RESET);
 	SetDeviceAddress();
@@ -145,15 +145,15 @@ static mrf24_state_t InicializoMRF24(void) {
 
 		lectura = GetLongAddr(RFSTATE) & RX;
 		if(DelayRead(&delay_time_out))
-			return TIME_OUT_OCURRIDO;
-	}while(lectura != RX);
+			return TIME_OUT_OCURRED;
+	}while(RX != lectura);
 	SetShortAddr(MRFINTCON, SLPIE_DIS | WAKEIE_DIS | HSYMTMRIE_DIS | SECIE_DIS
 					| TXG2IE_DIS | TXNIE_DIS);
 	SetShortAddr(ACKTMOUT, DRPACK | MAWD5 | MAWD4 | MAWD3 | MAWD0);
 	SetChannel();
 	SetShortAddr(RXMCR, VACIO);
 	(void)GetShortAddr(INTSTAT);
-	return INICIALIZACION_OK;
+	return INITIALIZATION_OK;
 }
 
 /**
@@ -306,6 +306,68 @@ mrf24_data_config_t * MRF24GetConfig(void) {
 	return &data_config_s;
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * @brief
+ * @param
+ * @retval
+ */
+mrf24_state_t MRF24SetChannel(channel_list_t ch) {
+
+	if(VACIO == ch)
+		return INVALID_VALUE;
+	data_config_s.my_channel = ch;
+	return OPERATION_OK;
+}
+//***********************************************************************************************************************************
+/**
+ * @brief
+ * @param
+ * @retval
+ */
+mrf24_state_t MRF24SetPanId(uint16_t pan_id) {
+
+	if(VACIO == pan_id)
+		return INVALID_VALUE;
+	data_config_s.my_panid = pan_id;
+	return OPERATION_OK;
+}
+//***********************************************************************************************************************************
+/**
+ * @brief
+ * @param
+ * @retval
+ */
+mrf24_state_t MRF24SetAdd(uint16_t add) {
+
+	if(VACIO == add)
+		return INVALID_VALUE;
+	data_config_s.my_address = add;
+	return OPERATION_OK;
+}
+//***********************************************************************************************************************************
+/**
+ * @brief
+ * @param
+ * @retval
+ */
+mrf24_state_t MRF24SetInter(uint16_t sec) {
+
+
+
+
+	return INITIALIZATION_OK;
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 /**
  * @brief   Envío la información almacenada en la estructura de salida.
  * @param   None.
@@ -314,41 +376,43 @@ mrf24_data_config_t * MRF24GetConfig(void) {
  */
 mrf24_state_t MRF24TransmitirDato(mrf24_data_out_t * p_info_out_s) {
 
-	if(estadoActual != INICIALIZACION_OK)
-		return OPERACION_NO_REALIZADA;
+	if(INITIALIZATION_OK != estadoActual)
+		return OPERATION_FAIL;
 
-	if(p_info_out_s->dest_address == VACIO)
-		return NO_DIRECCION;
+	if(VACIO == p_info_out_s->dest_address)
+		return DIRECTION_EMPTY;
+
+	if(VACIO == p_info_out_s->buffer_size)
+		return BUFFER_EMPTY;
+
+	if(BUFFER_SIZE > p_info_out_s->buffer_size)
+		return TO_LONG_MSG;
 	uint8_t pos_mem = 0;
-	unsigned largo_mensaje = strlen(p_info_out_s->buffer);
-
-	if(largo_mensaje == 0)
-		return MSG_NO_PRESENTE;
 	SetLongAddr(pos_mem++, HEAD_LENGTH);
-	SetLongAddr(pos_mem++, (uint8_t)largo_mensaje + HEAD_LENGTH);
+	SetLongAddr(pos_mem++, p_info_out_s->buffer_size + HEAD_LENGTH);
 	SetLongAddr(pos_mem++, DATA | ACK_REQ | INTRA_PAN);			// LSB.
 	SetLongAddr(pos_mem++, SHORT_S_ADD | SHORT_D_ADD);			// MSB.
 	SetLongAddr(pos_mem++, data_config_s.sequence_number++);
 
-	if(p_info_out_s->dest_panid == VACIO)
+	if(VACIO == p_info_out_s->dest_panid)
 		p_info_out_s->dest_panid = data_config_s.my_panid;
 	SetLongAddr(pos_mem++, (uint8_t) p_info_out_s->dest_panid);
 	SetLongAddr(pos_mem++, (uint8_t) (p_info_out_s->dest_panid >> SHIFT_BYTE));
 	SetLongAddr(pos_mem++, (uint8_t) p_info_out_s->dest_address);
 	SetLongAddr(pos_mem++, (uint8_t) (p_info_out_s->dest_address >> SHIFT_BYTE));
 
-	if(p_info_out_s->origin_address == VACIO)
+	if(VACIO == p_info_out_s->origin_address)
 		p_info_out_s->origin_address = data_config_s.my_address;
 	SetLongAddr(pos_mem++, (uint8_t) p_info_out_s->origin_address);
 	SetLongAddr(pos_mem++, (uint8_t) (p_info_out_s->origin_address >> SHIFT_BYTE));
 
-	for(int8_t i = 0; i < largo_mensaje; i++) {
+	for(int8_t i = 0; i < p_info_out_s->buffer_size; i++) {
 
 		SetLongAddr(pos_mem++, p_info_out_s->buffer[i]);
 	}
 	SetLongAddr(pos_mem++, VACIO);
 	SetShortAddr(TXNCON, TXNACKREQ | TXNTRIG);
-	return TRANSMISION_REALIZADA;
+	return TRANSMISSION_COMPLETED;
 }
 
 /**
@@ -359,17 +423,17 @@ mrf24_state_t MRF24TransmitirDato(mrf24_data_out_t * p_info_out_s) {
  */
 volatile mrf24_state_t MRF24IsNewMsg(void) {
 
-	if(estadoActual != INICIALIZACION_OK)
-		return ERROR_INESPERADO;
+	if(INITIALIZATION_OK != estadoActual)
+		return UNEXPECTED_ERROR;
 
 	if(!IsMRF24Interrup())
-		return MSG_PRESENTE;
-	return MSG_NO_PRESENTE;
+		return MSG_PRESENT;
+	return BUFFER_EMPTY;
 }
 
 /**
- * @brief   Recibir un paquete y dejarlo en el bufer de entrada de
- *          mrf24_data_config.
+ * @brief   Recibir un paquete y dejarlo en el bufer de entrada en
+ *          la estructura data_in_s.
  * @param   None.
  * @retval  Estado de la operación (OPERACION_NO_REALIZADA, MSG_LEIDO).
  */
@@ -386,22 +450,22 @@ mrf24_state_t MRF24ReciboPaquete(void) {
 	 */
 
 
-	if(estadoActual != INICIALIZACION_OK)
-		return OPERACION_NO_REALIZADA;
+	if(INITIALIZATION_OK != estadoActual)
+		return OPERATION_FAIL;
 	SetLongAddr(BBREG1, RXDECINV);
 	SetShortAddr(RXFLUSH, DATAONLY);
-	uint8_t largo_mensaje = GetLongAddr(RX_FIFO);
+	data_in_s.buffer_size = GetLongAddr(RX_FIFO);
 	uint16_t add = GetLongAddr(RX_FIFO + 9);
 	add = (add << SHIFT_BYTE) | GetLongAddr(RX_FIFO + 8);
 	data_in_s.source_address = add;
 
-	for(uint8_t i = 0; i < largo_mensaje - FCS_LQI_RSSI; i++) {
+	for(uint8_t i = 0; i < data_in_s.buffer_size - FCS_LQI_RSSI; i++) {
 
 		data_in_s.buffer[i] = GetLongAddr(RX_FIFO + HEAD_LENGTH + i - 1);
 	}
 	SetLongAddr(BBREG1, VACIO);
 	(void)GetShortAddr(INTSTAT);
-	return MSG_LEIDO;
+	return MSG_READ;
 }
 
 /**
@@ -424,8 +488,8 @@ mrf24_state_t MRF24BuscarDispositivos(void) {
 
 //   static MRF24_discover_nearby_t algo[10];
 
-    if(estadoActual != INICIALIZACION_OK)
-		return OPERACION_NO_REALIZADA;
+	if(INITIALIZATION_OK != estadoActual)
+		return OPERATION_FAIL;
 
 
     data_out_s.dest_address = 1;
@@ -435,6 +499,6 @@ mrf24_state_t MRF24BuscarDispositivos(void) {
 
 
 
-	return MSG_LEIDO;
+	return MSG_READ;
 }
 

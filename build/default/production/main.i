@@ -5215,7 +5215,7 @@ typedef enum {
 
 
 # 1 "./drivers/inc/API_MRF24J40.h" 1
-# 25 "./drivers/inc/API_MRF24J40.h"
+# 26 "./drivers/inc/API_MRF24J40.h"
 typedef enum {
 
     CH_11 = 0x03,
@@ -5240,28 +5240,30 @@ typedef enum {
 
 typedef enum {
 
- INICIALIZACION_OK,
- TRANSMISION_REALIZADA,
- MSG_PRESENTE,
- MSG_NO_PRESENTE,
- MSG_LEIDO,
- TIME_OUT_OCURRIDO,
- OPERACION_NO_REALIZADA,
- OPERACION_REALIZADA,
- ERROR_INESPERADO,
- NO_DIRECCION,
+ INITIALIZATION_OK,
+ TRANSMISSION_COMPLETED,
+ DIRECTION_EMPTY,
+ MSG_PRESENT,
+ MSG_READ,
+ TO_LONG_MSG,
+ BUFFER_EMPTY,
+ TIME_OUT_OCURRED,
+ OPERATION_FAIL,
+ OPERATION_OK,
+ UNEXPECTED_ERROR,
+ INVALID_VALUE,
 } mrf24_state_t;
 
 
 typedef struct {
 
- uint8_t sequence_number;
- uint8_t my_channel;
- uint8_t security_key[16];
- uint8_t my_mac[8];
- uint16_t my_panid;
+ channel_list_t my_channel;
+    uint16_t my_panid;
  uint16_t my_address;
  uint16_t intervalo;
+ uint8_t sequence_number;
+    uint8_t my_mac[8];
+ uint8_t security_key[16];
 }mrf24_data_config_t;
 
 
@@ -5270,7 +5272,8 @@ typedef struct {
  uint16_t dest_panid;
  uint16_t dest_address;
  uint16_t origin_address;
- char buffer[50];
+ uint8_t buffer[64];
+ uint8_t buffer_size;
 }mrf24_data_out_t;
 
 
@@ -5278,9 +5281,9 @@ typedef struct {
 
  uint16_t source_panid;
  uint16_t source_address;
- uint8_t tamano_mensaje;
  uint8_t rssi;
- char buffer[50];
+ uint8_t buffer[64];
+ uint8_t buffer_size;
 }mrf24_data_in_t;
 
 
@@ -5298,6 +5301,10 @@ typedef struct {
 
 mrf24_state_t MRF24J40Init(void);
 mrf24_data_config_t * MRF24GetConfig(void);
+mrf24_state_t MRF24SetChannel(channel_list_t ch);
+mrf24_state_t MRF24SetPanId(uint16_t pan_id);
+mrf24_state_t MRF24SetAdd(uint16_t add);
+mrf24_state_t MRF24SetInter(uint16_t sec);
 
 
 mrf24_state_t MRF24TransmitirDato(mrf24_data_out_t * p_info_out_s);
@@ -5381,6 +5388,7 @@ estadoPulsador_t DebounceFSMUpdate(debounceData_t * antirrebote_boton_n, bool_t 
 
 
 
+
 static void envio(void);
 
 
@@ -5414,11 +5422,11 @@ void main(void) {
                 break;
   }
 
-        if(MRF24IsNewMsg() == MSG_PRESENTE) {
+        if(MRF24IsNewMsg() == MSG_PRESENT) {
 
             mrf24_data_in_t * mrf24_data_in = MRF24GetDataIn();
             MRF24ReciboPaquete();
-# 84 "main.c"
+# 85 "main.c"
     }
 
         if(DelayRead(&delay_parpadeo)) {
@@ -5429,15 +5437,29 @@ void main(void) {
 
 static void envio(void) {
 
-    mrf24_data_out_t data_out_s;
- data_out_s.dest_address = (0x1111);
+    mrf24_data_out_t data_out_s = {0};
+    mrf24_data_config_t data_config_s = {0};
+
+    data_out_s.dest_address = (0x1111);
  data_out_s.dest_panid = 0x1234;
  data_out_s.origin_address = 0x4567;
 
+    data_config_s.my_channel = CH_11;
+    data_config_s.my_address = (0x1111);
+    data_config_s.my_panid = 0x1234;
+    data_config_s.intervalo = 0xf7;
+    char buuf[sizeof(data_config_s) + 10] = {"MRFCNF:"};
 
-    strcpy(data_out_s.buffer, "CMD:PLV");
+    uint8_t size = strlen(buuf);
+
+    memcpy(buuf + size, &data_config_s, sizeof(data_config_s));
+
+    size += sizeof(data_config_s);
+
+    memcpy(data_out_s.buffer, buuf, size);
+    data_out_s.buffer_size = size;
+
     MRF24TransmitirDato(&data_out_s);
-
     return;
 
 }

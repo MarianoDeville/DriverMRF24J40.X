@@ -21,6 +21,7 @@
 #define ENCENDIDO   0
 #define APAGADO     1
 #define LOW_END_ADDR	(0x1111)
+#define MAX_LONG_CMD    10
 
 static void envio(void);
 /**
@@ -55,7 +56,7 @@ void main(void) {
                 break;
 		}
         
-        if(MRF24IsNewMsg() == MSG_PRESENTE) {
+        if(MRF24IsNewMsg() == MSG_PRESENT) {
 
             mrf24_data_in_t * mrf24_data_in = MRF24GetDataIn();
             MRF24ReciboPaquete();
@@ -91,15 +92,29 @@ void main(void) {
 
 static void envio(void) {
     
-    mrf24_data_out_t data_out_s;
-	data_out_s.dest_address = LOW_END_ADDR;
+    mrf24_data_out_t data_out_s = {0};
+    mrf24_data_config_t data_config_s = {0};
+    // DATOS DE ENVÍO
+    data_out_s.dest_address = LOW_END_ADDR;
 	data_out_s.dest_panid = 0x1234;
 	data_out_s.origin_address = 0x4567;
+    // CONFIGURACIÓN A ENVIAR
+    data_config_s.my_channel = CH_11;
+    data_config_s.my_address = LOW_END_ADDR;
+    data_config_s.my_panid = 0x1234;
+    data_config_s.intervalo = 0xf7;
+    char buuf[sizeof(data_config_s) + MAX_LONG_CMD] = {"MRFCNF:"};
     
+    uint8_t size = strlen(buuf);
     
-    strcpy(data_out_s.buffer, "CMD:PLV");
+    memcpy(buuf + size, &data_config_s, sizeof(data_config_s));
+    
+    size += sizeof(data_config_s);
+    // CARGO EN EL BUFFER DE SALIDA LA ESTRUCTURA
+    memcpy(data_out_s.buffer, buuf, size);
+    data_out_s.buffer_size = size;
+    
     MRF24TransmitirDato(&data_out_s);
-
     return;
     
 }
