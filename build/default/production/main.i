@@ -5240,6 +5240,7 @@ typedef enum {
 
 typedef enum {
 
+ INITIALIZATION_FAIL,
  INITIALIZATION_OK,
  TRANSMISSION_COMPLETED,
  DIRECTION_EMPTY,
@@ -5416,6 +5417,7 @@ void main(void) {
 
    case PRESIONO_BOTON:
                 envio();
+
     break;
 
    default:
@@ -5426,7 +5428,7 @@ void main(void) {
 
             mrf24_data_in_t * mrf24_data_in = MRF24GetDataIn();
             MRF24ReciboPaquete();
-# 85 "main.c"
+# 86 "main.c"
     }
 
         if(DelayRead(&delay_parpadeo)) {
@@ -5448,18 +5450,21 @@ static void envio(void) {
     data_config_s.my_address = (0x1111);
     data_config_s.my_panid = 0x1234;
     data_config_s.intervalo = 0xf7;
+
     char buuf[sizeof(data_config_s) + 10] = {"MRFCNF:"};
 
-    uint8_t size = strlen(buuf);
+    uint8_t size = (uint8_t)strlen(buuf);
 
     memcpy(buuf + size, &data_config_s, sizeof(data_config_s));
 
     size += sizeof(data_config_s);
 
+
     memcpy(data_out_s.buffer, buuf, size);
     data_out_s.buffer_size = size;
 
-    MRF24TransmitirDato(&data_out_s);
+    if(MRF24TransmitirDato(&data_out_s) != TRANSMISSION_COMPLETED)
+        LATEbits.LATE2 = !LATEbits.LATE2;
     return;
 
 }

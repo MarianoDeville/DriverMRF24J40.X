@@ -50,6 +50,7 @@ void main(void) {
 
 			case PRESIONO_BOTON:
                 envio();
+   //             LED_AMARILLO = !LED_AMARILLO;
 				break;
 
 			default:
@@ -103,18 +104,21 @@ static void envio(void) {
     data_config_s.my_address = LOW_END_ADDR;
     data_config_s.my_panid = 0x1234;
     data_config_s.intervalo = 0xf7;
+    
     char buuf[sizeof(data_config_s) + MAX_LONG_CMD] = {"MRFCNF:"};
     
-    uint8_t size = strlen(buuf);
+    uint8_t size = (uint8_t)strlen(buuf);
     
     memcpy(buuf + size, &data_config_s, sizeof(data_config_s));
     
     size += sizeof(data_config_s);
+    
     // CARGO EN EL BUFFER DE SALIDA LA ESTRUCTURA
     memcpy(data_out_s.buffer, buuf, size);
     data_out_s.buffer_size = size;
     
-    MRF24TransmitirDato(&data_out_s);
+    if(MRF24TransmitirDato(&data_out_s) != TRANSMISSION_COMPLETED)
+        LED_ROJO = !LED_ROJO;
     return;
     
 }

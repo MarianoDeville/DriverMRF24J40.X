@@ -35,11 +35,10 @@
 #define FCS_LQI_RSSI		(0x04)
 
 /* Variables privadas --------------------------------------------------------*/
-static mrf24_state_t estadoActual;
+static mrf24_state_t estadoActual = INITIALIZATION_FAIL;
+static mrf24_data_config_t data_config_s = {0};
 static mrf24_data_out_t data_out_s = {0};
 static mrf24_data_in_t data_in_s = {0};
-static mrf24_data_config_t data_config_s = {0};
-
 
 /* MAC address por defecto del dispositivo */
 static const uint8_t default_mac_address[] = {0x11,
@@ -385,7 +384,7 @@ mrf24_state_t MRF24TransmitirDato(mrf24_data_out_t * p_info_out_s) {
 	if(VACIO == p_info_out_s->buffer_size)
 		return BUFFER_EMPTY;
 
-	if(BUFFER_SIZE > p_info_out_s->buffer_size)
+	if(BUFFER_SIZE < p_info_out_s->buffer_size)
 		return TO_LONG_MSG;
 	uint8_t pos_mem = 0;
 	SetLongAddr(pos_mem++, HEAD_LENGTH);

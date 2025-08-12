@@ -47,6 +47,7 @@ typedef enum {
 /* Respuesta de las funciones ------------------------------------------------*/
 typedef enum {
 
+	INITIALIZATION_FAIL,
 	INITIALIZATION_OK,
 	TRANSMISSION_COMPLETED,
 	DIRECTION_EMPTY,
