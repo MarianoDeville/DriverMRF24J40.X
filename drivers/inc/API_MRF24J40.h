@@ -20,7 +20,7 @@
 #define SEC_KEY_SIZE	16
 #define WAIT_1_MS		1
 #define WAIT_50_MS		50
-#define BUFFER_SIZE		64
+#define BUFFER_SIZE		128
 
 /* Canales disponibles para el IEEE 802.15.4 ---------------------------------*/
 typedef enum {
@@ -43,7 +43,6 @@ typedef enum {
 	CH_26 = 0xF3
 } channel_list_t;
 
-
 /* Respuesta de las funciones ------------------------------------------------*/
 typedef enum {
 
@@ -65,36 +64,36 @@ typedef enum {
 /* Estructura con la información del dispositivo */
 typedef struct {
 
-	channel_list_t my_channel;
-    uint16_t my_panid;
-	uint16_t my_address;
-	uint16_t intervalo;
+	channel_list_t channel;
 	uint8_t sequence_number;
-    uint8_t my_mac[8];
+    uint16_t panid;
+	uint16_t address;
+	uint16_t intervalo;
+    uint8_t mac[8];
 	uint8_t security_key[16];
 }mrf24_data_config_t;
 
-/* Estructura con la información de transmisión ------------------------------*/
+/* Estructura con la información de transmisión */
 typedef struct {
 
 	uint16_t dest_panid;
 	uint16_t dest_address;
 	uint16_t origin_address;
-	uint8_t buffer[BUFFER_SIZE];
+	char buffer[BUFFER_SIZE];
 	uint8_t buffer_size;
 }mrf24_data_out_t;
 
-/* Estructura con la información de recepción --------------------------------*/
+/* Estructura con la información de recepción */
 typedef struct {
 
-	uint16_t source_panid;
-	uint16_t source_address;
+	uint16_t panid;
+	uint16_t address;
 	uint8_t rssi;
 	uint8_t buffer[BUFFER_SIZE];
 	uint8_t buffer_size;
 }mrf24_data_in_t;
 
-/* Estructura con la lista de dispositivos cercanos --------------------------*/
+/* Estructura con la lista de dispositivos cercanos */
 typedef struct {
 
 	uint8_t channel;
@@ -104,15 +103,15 @@ typedef struct {
 	uint8_t rssi;
 } MRF24_discover_nearby_t;
 
-
 /* Prototipo de funciones públicas -------------------------------------------*/
 // Configuración del módulo
 mrf24_state_t MRF24J40Init(void);
-mrf24_data_config_t * MRF24GetConfig(void);
 mrf24_state_t MRF24SetChannel(channel_list_t ch);
 mrf24_state_t MRF24SetPanId(uint16_t pan_id);
 mrf24_state_t MRF24SetAdd(uint16_t add);
 mrf24_state_t MRF24SetInter(uint16_t sec);
+mrf24_state_t MRF24SetMAC(uint8_t mac[8]);
+mrf24_state_t MRF24SetSecurityKey(uint8_t security_key[16]);
 
 // Mensajes salientes
 mrf24_state_t MRF24TransmitirDato(mrf24_data_out_t * p_info_out_s);
@@ -126,5 +125,4 @@ mrf24_data_in_t * MRF24GetDataIn(void);
 mrf24_state_t MRF24BuscarDispositivos(void);
 mrf24_state_t MRF24TransmitirDatoEncriptado(void);
 
-
-#endif /* INC_API_MRF24J40_H_ */
+#endif /* INC_DRV_MRF24J40_H_ */

@@ -23,7 +23,19 @@
 #define LOW_END_ADDR	(0x1111)
 #define MAX_LONG_CMD    10
 
+typedef struct {
+
+	char playa[20];
+	char sector[20];
+	char box[10];
+	char piso[10];
+}system_config_t;
+
 static void envio(void);
+void configuro_mrf(void);
+void configuro_sistema(void);
+void cierro_configuracion(void);
+
 /**
  * @brief  Main program
  * @param  None
@@ -93,32 +105,81 @@ void main(void) {
 
 static void envio(void) {
     
+    configuro_mrf();
+    delay_t(500);
+    configuro_sistema();
+    delay_t(500);
+    cierro_configuracion();
+    return;
+}
+
+void configuro_mrf(void) {
+    
     mrf24_data_out_t data_out_s = {0};
     mrf24_data_config_t data_config_s = {0};
     // DATOS DE ENVÍO
-    data_out_s.dest_address = LOW_END_ADDR;
-	data_out_s.dest_panid = 0x1234;
+    data_out_s.dest_address = 0xFFFE;
+	data_out_s.dest_panid = 0x9999;
 	data_out_s.origin_address = 0x4567;
     // CONFIGURACIÓN A ENVIAR
-    data_config_s.my_channel = CH_11;
-    data_config_s.my_address = LOW_END_ADDR;
-    data_config_s.my_panid = 0x1234;
-    data_config_s.intervalo = 0xf7;
+    data_config_s.channel = CH_11;
+    data_config_s.panid = 0x1234;
+    data_config_s.address = LOW_END_ADDR;//(0x1111)
+    data_config_s.intervalo = 0x58f7;
+    data_config_s.sequence_number = 99;
+    
+    memcpy(data_config_s.mac, "00147", strlen("00147"));
+    memcpy(data_config_s.security_key, "582m  ", strlen("582m  "));
     
     char buuf[sizeof(data_config_s) + MAX_LONG_CMD] = {"MRFCNF:"};
-    
     uint8_t size = (uint8_t)strlen(buuf);
-    
     memcpy(buuf + size, &data_config_s, sizeof(data_config_s));
-    
     size += sizeof(data_config_s);
-    
-    // CARGO EN EL BUFFER DE SALIDA LA ESTRUCTURA
+        // CARGO EN EL BUFFER DE SALIDA LA ESTRUCTURA
     memcpy(data_out_s.buffer, buuf, size);
     data_out_s.buffer_size = size;
     
     if(MRF24TransmitirDato(&data_out_s) != TRANSMISSION_COMPLETED)
         LED_ROJO = !LED_ROJO;
-    return;
+}
+
+void configuro_sistema(void) {
     
+    mrf24_data_out_t data_out_s = {0};
+    system_config_t config_sistema = {0};
+    // DATOS DE ENVÍO
+    data_out_s.dest_address = 0xFFFE;
+	data_out_s.dest_panid = 0x9999;
+	data_out_s.origin_address = 0x4567;
+    // CONFIGURACIÓN A ENVIAR
+    strcpy(config_sistema.playa, "aun no se");
+    strcpy(config_sistema.box, "12");
+    strcpy(config_sistema.sector, "naranja");
+    
+    char buuf[sizeof(system_config_t) + MAX_LONG_CMD] = {"SYSCNF:"};
+    uint8_t size = (uint8_t)strlen(buuf);
+    memcpy(buuf + size, &config_sistema, sizeof(system_config_t));
+    size += sizeof(system_config_t);
+       // CARGO EN EL BUFFER DE SALIDA LA ESTRUCTURA
+    memcpy(data_out_s.buffer, buuf, size);
+    data_out_s.buffer_size = size;
+    
+    if(MRF24TransmitirDato(&data_out_s) != TRANSMISSION_COMPLETED)
+        LED_AMARILLO = !LED_AMARILLO;
+}
+
+void cierro_configuracion(void) {
+    
+    mrf24_data_out_t data_out_s = {0};
+    system_config_t config_sistema = {0};
+    // DATOS DE ENVÍO
+    data_out_s.dest_address = 0xFFFE;
+	data_out_s.dest_panid = 0x9999;
+	data_out_s.origin_address = 0x4567;
+    // CONFIGURACIÓN A ENVIAR
+    uint8_t size = strlen("ENDCNF:");
+    memcpy(data_out_s.buffer, "ENDCNF:", size);
+    data_out_s.buffer_size = size;
+    
+    MRF24TransmitirDato(&data_out_s);
 }

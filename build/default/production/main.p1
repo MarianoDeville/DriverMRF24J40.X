@@ -4,43 +4,43 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./drivers/inc/API_delay.h: 20: typedef struct{
 [s S310 `ul 1 `ul 1 `a 1 ]
 [n S310 . startTime duration running ]
-"35 main.c
-[; ;main.c: 35:     debounceData_t boton1;
-[c E3325 0 1 2 3 .. ]
-[n E3325 . BUTTON_UP BUTTON_FALLING BUTTON_DOWN BUTTON_RAISING  ]
+"47 main.c
+[; ;main.c: 47:     debounceData_t boton1;
+[c E3328 0 1 2 3 .. ]
+[n E3328 . BUTTON_UP BUTTON_FALLING BUTTON_DOWN BUTTON_RAISING  ]
 "43 ./drivers/inc/API_debounce.h
 [; ;./drivers/inc/API_debounce.h: 43: typedef struct {
-[s S311 `a 1 `E3325 1 `S310 1 ]
+[s S311 `a 1 `E3328 1 `S310 1 ]
 [n S311 . tecla_fue_presionada estadoActual delay_anti_rebote ]
 "53
 [; ;./drivers/inc/API_debounce.h: 53: void DebounceFSMInit(debounceData_t * antirrebote_boton_n);
 [v _DebounceFSMInit `(v ~T0 @X0 0 ef1`*S311 ]
 "80 ./hardware_config.h
 [v _BoardInit `(v ~T0 @X0 0 ef ]
-"38 main.c
-[; ;main.c: 38:     MRF24J40Init();
+"50 main.c
+[; ;main.c: 50:     MRF24J40Init();
 [c E3247 0 1 2 3 4 5 6 7 8 9 10 11 12 .. ]
 [n E3247 . INITIALIZATION_FAIL INITIALIZATION_OK TRANSMISSION_COMPLETED DIRECTION_EMPTY MSG_PRESENT MSG_READ TO_LONG_MSG BUFFER_EMPTY TIME_OUT_OCURRED OPERATION_FAIL OPERATION_OK UNEXPECTED_ERROR INVALID_VALUE  ]
-"110 ./drivers/inc/API_MRF24J40.h
-[; ;./drivers/inc/API_MRF24J40.h: 110: mrf24_state_t MRF24J40Init(void);
+"108 ./drivers/inc/API_MRF24J40.h
+[; ;./drivers/inc/API_MRF24J40.h: 108: mrf24_state_t MRF24J40Init(void);
 [v _MRF24J40Init `(E3247 ~T0 @X0 0 ef ]
 "30 ./drivers/inc/API_delay.h
 [; ;./drivers/inc/API_delay.h: 30: void DelayInit(delayNoBloqueanteData_t * delay, tick_t duration);
 [v _DelayInit `(v ~T0 @X0 0 ef2`*S310`ul ]
-"78 ./drivers/inc/API_MRF24J40.h
-[; ;./drivers/inc/API_MRF24J40.h: 78: typedef struct {
-[s S307 `us 1 `us 1 `us 1 `uc -> 64 `i `uc 1 ]
+"77 ./drivers/inc/API_MRF24J40.h
+[; ;./drivers/inc/API_MRF24J40.h: 77: typedef struct {
+[s S307 `us 1 `us 1 `us 1 `uc -> 128 `i `uc 1 ]
 [n S307 . dest_panid dest_address origin_address buffer buffer_size ]
-"26 main.c
-[; ;main.c: 26: static void envio(void);
+"34 main.c
+[; ;main.c: 34: static void envio(void);
 [v _envio `(v ~T0 @X0 0 sf ]
-"58
-[; ;main.c: 58:   }
-[c E3331 0 1 2 3 4 .. ]
-[n E3331 . ERROR_ANTI_REBOTE PRESIONO_BOTON SUELTO_BOTON BOTON_SIN_CAMBIOS RUIDO  ]
+"70
+[; ;main.c: 70:   }
+[c E3334 0 1 2 3 4 .. ]
+[n E3334 . ERROR_ANTI_REBOTE PRESIONO_BOTON SUELTO_BOTON BOTON_SIN_CAMBIOS RUIDO  ]
 "54 ./drivers/inc/API_debounce.h
 [; ;./drivers/inc/API_debounce.h: 54: estadoPulsador_t DebounceFSMUpdate(debounceData_t * antirrebote_boton_n, bool_t estado_pin);
-[v _DebounceFSMUpdate `(E3331 ~T0 @X0 0 ef2`*S311`a ]
+[v _DebounceFSMUpdate `(E3334 ~T0 @X0 0 ef2`*S311`a ]
 "1002 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f46k20.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f46k20.h: 1002:     struct {
 [s S48 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -72,18 +72,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1044
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f46k20.h: 1044: extern volatile PORTCbits_t PORTCbits __attribute__((address(0xF82)));
 [v _PORTCbits `VS47 ~T0 @X0 0 e@3970 ]
-"121 ./drivers/inc/API_MRF24J40.h
-[; ;./drivers/inc/API_MRF24J40.h: 121: volatile mrf24_state_t MRF24IsNewMsg(void);
+"120 ./drivers/inc/API_MRF24J40.h
+[; ;./drivers/inc/API_MRF24J40.h: 120: volatile mrf24_state_t MRF24IsNewMsg(void);
 [v _MRF24IsNewMsg `(VE3247 ~T0 @X0 0 ef ]
-"88
-[; ;./drivers/inc/API_MRF24J40.h: 88: typedef struct {
-[s S308 `us 1 `us 1 `uc 1 `uc -> 64 `i `uc 1 ]
-[n S308 . source_panid source_address rssi buffer buffer_size ]
-"123
-[; ;./drivers/inc/API_MRF24J40.h: 123: mrf24_data_in_t * MRF24GetDataIn(void);
-[v _MRF24GetDataIn `(*S308 ~T0 @X0 0 ef ]
+"87
+[; ;./drivers/inc/API_MRF24J40.h: 87: typedef struct {
+[s S308 `us 1 `us 1 `uc 1 `uc -> 128 `i `uc 1 ]
+[n S308 . panid address rssi buffer buffer_size ]
 "122
-[; ;./drivers/inc/API_MRF24J40.h: 122: mrf24_state_t MRF24ReciboPaquete(void);
+[; ;./drivers/inc/API_MRF24J40.h: 122: mrf24_data_in_t * MRF24GetDataIn(void);
+[v _MRF24GetDataIn `(*S308 ~T0 @X0 0 ef ]
+"121
+[; ;./drivers/inc/API_MRF24J40.h: 121: mrf24_state_t MRF24ReciboPaquete(void);
 [v _MRF24ReciboPaquete `(E3247 ~T0 @X0 0 ef ]
 "31 ./drivers/inc/API_delay.h
 [; ;./drivers/inc/API_delay.h: 31: bool_t DelayRead(delayNoBloqueanteData_t * delay );
@@ -103,23 +103,43 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1997
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f46k20.h: 1997: extern volatile LATEbits_t LATEbits __attribute__((address(0xF8D)));
 [v _LATEbits `VS83 ~T0 @X0 0 e@3981 ]
-"97 main.c
-[; ;main.c: 97:     mrf24_data_config_t data_config_s = {0};
+"35 main.c
+[; ;main.c: 35: void configuro_mrf(void);
+[v _configuro_mrf `(v ~T0 @X0 0 ef ]
+[v F3180 `(v ~T0 @X0 1 tf1`ul ]
+"203 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\pic18.h
+[v __delay `JF3180 ~T0 @X0 0 e ]
+[p i __delay ]
+"36 main.c
+[; ;main.c: 36: void configuro_sistema(void);
+[v _configuro_sistema `(v ~T0 @X0 0 ef ]
+"37
+[; ;main.c: 37: void cierro_configuracion(void);
+[v _cierro_configuracion `(v ~T0 @X0 0 ef ]
+"119
+[; ;main.c: 119:     mrf24_data_config_t data_config_s = {0};
 [c E3229 3 19 35 51 67 83 99 115 131 147 163 179 195 211 227 243 .. ]
 [n E3229 . CH_11 CH_12 CH_13 CH_14 CH_15 CH_16 CH_17 CH_18 CH_19 CH_20 CH_21 CH_22 CH_23 CH_24 CH_25 CH_26  ]
-"66 ./drivers/inc/API_MRF24J40.h
-[; ;./drivers/inc/API_MRF24J40.h: 66: typedef struct {
-[s S306 `E3229 1 `us 1 `us 1 `us 1 `uc 1 `uc -> 8 `i `uc -> 16 `i ]
-[n S306 . my_channel my_panid my_address intervalo sequence_number my_mac security_key ]
-"54 C:\Program Files\Microchip\xc8\v2.50\pic\include\c99\string.h
-[; ;C:\Program Files\Microchip\xc8\v2.50\pic\include\c99\string.h: 54: size_t strlen (const char *);
-[v _strlen `(ui ~T0 @X0 0 ef1`*Cuc ]
-"27
+"65 ./drivers/inc/API_MRF24J40.h
+[; ;./drivers/inc/API_MRF24J40.h: 65: typedef struct {
+[s S306 `E3229 1 `uc 1 `us 1 `us 1 `us 1 `uc -> 8 `i `uc -> 16 `i ]
+[n S306 . channel sequence_number panid address intervalo mac security_key ]
+"27 C:\Program Files\Microchip\xc8\v2.50\pic\include\c99\string.h
 [; ;C:\Program Files\Microchip\xc8\v2.50\pic\include\c99\string.h: 27: void *memcpy (void *restrict, const void *restrict, size_t);
 [v _memcpy `(*v ~T0 @X0 0 ef3`*v`*Cv`ui ]
-"118 ./drivers/inc/API_MRF24J40.h
-[; ;./drivers/inc/API_MRF24J40.h: 118: mrf24_state_t MRF24TransmitirDato(mrf24_data_out_t * p_info_out_s);
+"54
+[; ;C:\Program Files\Microchip\xc8\v2.50\pic\include\c99\string.h: 54: size_t strlen (const char *);
+[v _strlen `(ui ~T0 @X0 0 ef1`*Cuc ]
+"117 ./drivers/inc/API_MRF24J40.h
+[; ;./drivers/inc/API_MRF24J40.h: 117: mrf24_state_t MRF24TransmitirDato(mrf24_data_out_t * p_info_out_s);
 [v _MRF24TransmitirDato `(E3247 ~T0 @X0 0 ef1`*S307 ]
+"26 main.c
+[; ;main.c: 26: typedef struct {
+[s S312 `uc -> 20 `i `uc -> 20 `i `uc -> 10 `i `uc -> 10 `i ]
+[n S312 . playa sector box piso ]
+"33 C:\Program Files\Microchip\xc8\v2.50\pic\include\c99\string.h
+[; ;C:\Program Files\Microchip\xc8\v2.50\pic\include\c99\string.h: 33: char *strcpy (char *restrict, const char *restrict);
+[v _strcpy `(*uc ~T0 @X0 0 ef2`*uc`*Cuc ]
 "54 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f46k20.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f46k20.h: 54: __asm("SSPMSK equ 0F77h");
 [; <" SSPMSK equ 0F77h ;# ">
@@ -622,168 +642,205 @@ Version 4.0 HI-TECH Software Intermediate Code
 "77
 [p x EBTRB  =  OFF       ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"32 main.c
-[; ;main.c: 32: void main(void) {
+"44 main.c
+[; ;main.c: 44: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"34
-[; ;main.c: 34:     delayNoBloqueanteData_t delay_parpadeo;
-[v _delay_parpadeo `S310 ~T0 @X0 1 a ]
-"35
-[; ;main.c: 35:     debounceData_t boton1;
-[v _boton1 `S311 ~T0 @X0 1 a ]
-"36
-[; ;main.c: 36:  DebounceFSMInit(&boton1);
-[e ( _DebounceFSMInit (1 &U _boton1 ]
-"37
-[; ;main.c: 37:     BoardInit();
-[e ( _BoardInit ..  ]
-"38
-[; ;main.c: 38:     MRF24J40Init();
-[e ( _MRF24J40Init ..  ]
-"39
-[; ;main.c: 39:     DelayInit(&delay_parpadeo, 1000);
-[e ( _DelayInit (2 , &U _delay_parpadeo -> -> -> 1000 `i `l `ul ]
-"41
-[; ;main.c: 41:     mrf24_data_out_t data_out_s;
-[v _data_out_s `S307 ~T0 @X0 1 a ]
-"42
-[; ;main.c: 42:  data_out_s.dest_address = (0x1111);
-[e = . _data_out_s 1 -> -> 4369 `i `us ]
-"43
-[; ;main.c: 43:  data_out_s.dest_panid = 0x1234;
-[e = . _data_out_s 0 -> -> 4660 `i `us ]
-"44
-[; ;main.c: 44:  data_out_s.origin_address = 0x4567;
-[e = . _data_out_s 2 -> -> 17767 `i `us ]
 "46
-[; ;main.c: 46:     while(1) {
-[e :U 314 ]
-{
+[; ;main.c: 46:     delayNoBloqueanteData_t delay_parpadeo;
+[v _delay_parpadeo `S310 ~T0 @X0 1 a ]
+"47
+[; ;main.c: 47:     debounceData_t boton1;
+[v _boton1 `S311 ~T0 @X0 1 a ]
 "48
-[; ;main.c: 48:         __asm(" clrwdt");
-[; <"  clrwdt ;# ">
+[; ;main.c: 48:  DebounceFSMInit(&boton1);
+[e ( _DebounceFSMInit (1 &U _boton1 ]
 "49
-[; ;main.c: 49:         switch(DebounceFSMUpdate(&boton1,PORTCbits.RC2)) {
-[e $U 317  ]
-{
+[; ;main.c: 49:     BoardInit();
+[e ( _BoardInit ..  ]
+"50
+[; ;main.c: 50:     MRF24J40Init();
+[e ( _MRF24J40Init ..  ]
 "51
-[; ;main.c: 51:    case PRESIONO_BOTON:
-[e :U 318 ]
-"52
-[; ;main.c: 52:                 envio();
-[e ( _envio ..  ]
+[; ;main.c: 51:     DelayInit(&delay_parpadeo, 1000);
+[e ( _DelayInit (2 , &U _delay_parpadeo -> -> -> 1000 `i `l `ul ]
+"53
+[; ;main.c: 53:     mrf24_data_out_t data_out_s;
+[v _data_out_s `S307 ~T0 @X0 1 a ]
 "54
-[; ;main.c: 54:     break;
-[e $U 316  ]
+[; ;main.c: 54:  data_out_s.dest_address = (0x1111);
+[e = . _data_out_s 1 -> -> 4369 `i `us ]
+"55
+[; ;main.c: 55:  data_out_s.dest_panid = 0x1234;
+[e = . _data_out_s 0 -> -> 4660 `i `us ]
 "56
-[; ;main.c: 56:    default:
-[e :U 319 ]
-"57
-[; ;main.c: 57:                 break;
-[e $U 316  ]
+[; ;main.c: 56:  data_out_s.origin_address = 0x4567;
+[e = . _data_out_s 2 -> -> 17767 `i `us ]
 "58
-[; ;main.c: 58:   }
-}
-[e $U 316  ]
-[e :U 317 ]
-[e [\ -> ( _DebounceFSMUpdate (2 , &U _boton1 -> . . _PORTCbits 0 2 `a `ui , $ -> . `E3331 1 `ui 318
- 319 ]
-[e :U 316 ]
-"60
-[; ;main.c: 60:         if(MRF24IsNewMsg() == MSG_PRESENT) {
-[e $ ! == -> ( _MRF24IsNewMsg ..  `ui -> . `E3247 4 `ui 320  ]
+[; ;main.c: 58:     while(1) {
+[e :U 315 ]
 {
-"62
-[; ;main.c: 62:             mrf24_data_in_t * mrf24_data_in = MRF24GetDataIn();
+"60
+[; ;main.c: 60:         __asm(" clrwdt");
+[; <"  clrwdt ;# ">
+"61
+[; ;main.c: 61:         switch(DebounceFSMUpdate(&boton1,PORTCbits.RC2)) {
+[e $U 318  ]
+{
+"63
+[; ;main.c: 63:    case PRESIONO_BOTON:
+[e :U 319 ]
+"64
+[; ;main.c: 64:                 envio();
+[e ( _envio ..  ]
+"66
+[; ;main.c: 66:     break;
+[e $U 317  ]
+"68
+[; ;main.c: 68:    default:
+[e :U 320 ]
+"69
+[; ;main.c: 69:                 break;
+[e $U 317  ]
+"70
+[; ;main.c: 70:   }
+}
+[e $U 317  ]
+[e :U 318 ]
+[e [\ -> ( _DebounceFSMUpdate (2 , &U _boton1 -> . . _PORTCbits 0 2 `a `ui , $ -> . `E3334 1 `ui 319
+ 320 ]
+[e :U 317 ]
+"72
+[; ;main.c: 72:         if(MRF24IsNewMsg() == MSG_PRESENT) {
+[e $ ! == -> ( _MRF24IsNewMsg ..  `ui -> . `E3247 4 `ui 321  ]
+{
+"74
+[; ;main.c: 74:             mrf24_data_in_t * mrf24_data_in = MRF24GetDataIn();
 [v _mrf24_data_in `*S308 ~T0 @X0 1 a ]
 [e = _mrf24_data_in ( _MRF24GetDataIn ..  ]
-"63
-[; ;main.c: 63:             MRF24ReciboPaquete();
+"75
+[; ;main.c: 75:             MRF24ReciboPaquete();
 [e ( _MRF24ReciboPaquete ..  ]
-"86
-[; ;main.c: 86:     }
-}
-[e :U 320 ]
-"88
-[; ;main.c: 88:         if(DelayRead(&delay_parpadeo)) {
-[e $ ! != -> ( _DelayRead (1 &U _delay_parpadeo `i -> 0 `i 321  ]
-{
-"89
-[; ;main.c: 89:             LATEbits.LATE0 = !LATEbits.LATE0;
-[e = . . _LATEbits 0 0 -> -> ! != -> . . _LATEbits 0 0 `i -> 0 `i `i `uc ]
-"90
-[; ;main.c: 90:         }
+"98
+[; ;main.c: 98:     }
 }
 [e :U 321 ]
-"91
-[; ;main.c: 91:     }
+"100
+[; ;main.c: 100:         if(DelayRead(&delay_parpadeo)) {
+[e $ ! != -> ( _DelayRead (1 &U _delay_parpadeo `i -> 0 `i 322  ]
+{
+"101
+[; ;main.c: 101:             LATEbits.LATE0 = !LATEbits.LATE0;
+[e = . . _LATEbits 0 0 -> -> ! != -> . . _LATEbits 0 0 `i -> 0 `i `i `uc ]
+"102
+[; ;main.c: 102:         }
 }
-[e :U 313 ]
-[e $U 314  ]
-[e :U 315 ]
-"92
-[; ;main.c: 92: }
-[e :UE 312 ]
+[e :U 322 ]
+"103
+[; ;main.c: 103:     }
 }
-"94
-[; ;main.c: 94: static void envio(void) {
+[e :U 314 ]
+[e $U 315  ]
+[e :U 316 ]
+"104
+[; ;main.c: 104: }
+[e :UE 313 ]
+}
+"106
+[; ;main.c: 106: static void envio(void) {
 [v _envio `(v ~T0 @X0 1 sf ]
 {
 [e :U _envio ]
 [f ]
-[v F3355 `S307 ~T0 @X0 1 s ]
-[i F3355
+"108
+[; ;main.c: 108:     configuro_mrf();
+[e ( _configuro_mrf ..  ]
+"109
+[; ;main.c: 109:     _delay((unsigned long)((500)*(16000000/4000.0)));;
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"110
+[; ;main.c: 110:     configuro_sistema();
+[e ( _configuro_sistema ..  ]
+"111
+[; ;main.c: 111:     _delay((unsigned long)((500)*(16000000/4000.0)));;
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"112
+[; ;main.c: 112:     cierro_configuracion();
+[e ( _cierro_configuracion ..  ]
+"113
+[; ;main.c: 113:     return;
+[e $UE 323  ]
+"114
+[; ;main.c: 114: }
+[e :UE 323 ]
+}
+"116
+[; ;main.c: 116: void configuro_mrf(void) {
+[v _configuro_mrf `(v ~T0 @X0 1 ef ]
+{
+[e :U _configuro_mrf ]
+[f ]
+[v F3368 `S307 ~T0 @X0 1 s ]
+[i F3368
 :U ..
 :U ..
-"96
-[; ;main.c: 96:     mrf24_data_out_t data_out_s = {0};
+"118
+[; ;main.c: 118:     mrf24_data_out_t data_out_s = {0};
 -> -> 0 `i `us
 ..
 ..
 ]
 [v _data_out_s `S307 ~T0 @X0 1 a ]
-[e = _data_out_s F3355 ]
-[v F3357 `S306 ~T0 @X0 1 s ]
-[i F3357
+[e = _data_out_s F3368 ]
+[v F3370 `S306 ~T0 @X0 1 s ]
+[i F3370
 :U ..
 :U ..
-"97
-[; ;main.c: 97:     mrf24_data_config_t data_config_s = {0};
+"119
+[; ;main.c: 119:     mrf24_data_config_t data_config_s = {0};
 -> -> 0 `i `E3229
 ..
 ..
 ]
 [v _data_config_s `S306 ~T0 @X0 1 a ]
-[e = _data_config_s F3357 ]
-"99
-[; ;main.c: 99:     data_out_s.dest_address = (0x1111);
-[e = . _data_out_s 1 -> -> 4369 `i `us ]
-"100
-[; ;main.c: 100:  data_out_s.dest_panid = 0x1234;
-[e = . _data_out_s 0 -> -> 4660 `i `us ]
-"101
-[; ;main.c: 101:  data_out_s.origin_address = 0x4567;
+[e = _data_config_s F3370 ]
+"121
+[; ;main.c: 121:     data_out_s.dest_address = 0xFFFE;
+[e = . _data_out_s 1 -> -> 65534 `ui `us ]
+"122
+[; ;main.c: 122:  data_out_s.dest_panid = 0x9999;
+[e = . _data_out_s 0 -> -> 39321 `ui `us ]
+"123
+[; ;main.c: 123:  data_out_s.origin_address = 0x4567;
 [e = . _data_out_s 2 -> -> 17767 `i `us ]
-"103
-[; ;main.c: 103:     data_config_s.my_channel = CH_11;
+"125
+[; ;main.c: 125:     data_config_s.channel = CH_11;
 [e = . _data_config_s 0 . `E3229 0 ]
-"104
-[; ;main.c: 104:     data_config_s.my_address = (0x1111);
-[e = . _data_config_s 2 -> -> 4369 `i `us ]
-"105
-[; ;main.c: 105:     data_config_s.my_panid = 0x1234;
-[e = . _data_config_s 1 -> -> 4660 `i `us ]
-"106
-[; ;main.c: 106:     data_config_s.intervalo = 0xf7;
-[e = . _data_config_s 3 -> -> 247 `i `us ]
-[v F3359 `uc ~T0 @X0 -> 43 `i s ]
-[i F3359
+"126
+[; ;main.c: 126:     data_config_s.panid = 0x1234;
+[e = . _data_config_s 2 -> -> 4660 `i `us ]
+"127
+[; ;main.c: 127:     data_config_s.address = (0x1111);
+[e = . _data_config_s 3 -> -> 4369 `i `us ]
+"128
+[; ;main.c: 128:     data_config_s.intervalo = 0x58f7;
+[e = . _data_config_s 4 -> -> 22775 `i `us ]
+"129
+[; ;main.c: 129:     data_config_s.sequence_number = 99;
+[e = . _data_config_s 1 -> -> 99 `i `uc ]
+"131
+[; ;main.c: 131:     memcpy(data_config_s.mac, "00147", strlen("00147"));
+[e ( _memcpy (3 , , -> &U . _data_config_s 5 `*v :s 1C ( _strlen (1 :s 2C ]
+"132
+[; ;main.c: 132:     memcpy(data_config_s.security_key, "582m  ", strlen("582m  "));
+[e ( _memcpy (3 , , -> &U . _data_config_s 6 `*v :s 3C ( _strlen (1 :s 4C ]
+[v F3372 `uc ~T0 @X0 -> 43 `i s ]
+[i F3372
 :U ..
-"108
-[; ;main.c: 108:     char buuf[sizeof(data_config_s) + 10] = {"MRFCNF:"};
+"134
+[; ;main.c: 134:     char buuf[sizeof(data_config_s) + 10] = {"MRFCNF:"};
 -> 77 `c
 -> 82 `c
 -> 70 `c
@@ -795,34 +852,192 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _buuf `uc ~T0 @X0 -> 43 `i a ]
-[e = _buuf F3359 ]
-"110
-[; ;main.c: 110:     uint8_t size = (uint8_t)strlen(buuf);
+[e = _buuf F3372 ]
+"135
+[; ;main.c: 135:     uint8_t size = (uint8_t)strlen(buuf);
 [v _size `uc ~T0 @X0 1 a ]
 [e = _size -> ( _strlen (1 -> &U _buuf `*Cuc `uc ]
-"112
-[; ;main.c: 112:     memcpy(buuf + size, &data_config_s, sizeof(data_config_s));
+"136
+[; ;main.c: 136:     memcpy(buuf + size, &data_config_s, sizeof(data_config_s));
 [e ( _memcpy (3 , , -> + &U _buuf * -> -> _size `i `x -> -> # *U &U _buuf `i `x `*v -> &U _data_config_s `*Cv -> # _data_config_s `ui ]
-"114
-[; ;main.c: 114:     size += sizeof(data_config_s);
+"137
+[; ;main.c: 137:     size += sizeof(data_config_s);
 [e =+ _size -> -> # _data_config_s `ui `uc ]
-"117
-[; ;main.c: 117:     memcpy(data_out_s.buffer, buuf, size);
+"139
+[; ;main.c: 139:     memcpy(data_out_s.buffer, buuf, size);
 [e ( _memcpy (3 , , -> &U . _data_out_s 3 `*v -> &U _buuf `*Cv -> _size `ui ]
-"118
-[; ;main.c: 118:     data_out_s.buffer_size = size;
+"140
+[; ;main.c: 140:     data_out_s.buffer_size = size;
 [e = . _data_out_s 4 _size ]
-"120
-[; ;main.c: 120:     if(MRF24TransmitirDato(&data_out_s) != TRANSMISSION_COMPLETED)
-[e $ ! != -> ( _MRF24TransmitirDato (1 &U _data_out_s `ui -> . `E3247 2 `ui 323  ]
-"121
-[; ;main.c: 121:         LATEbits.LATE2 = !LATEbits.LATE2;
+"142
+[; ;main.c: 142:     if(MRF24TransmitirDato(&data_out_s) != TRANSMISSION_COMPLETED)
+[e $ ! != -> ( _MRF24TransmitirDato (1 &U _data_out_s `ui -> . `E3247 2 `ui 325  ]
+"143
+[; ;main.c: 143:         LATEbits.LATE2 = !LATEbits.LATE2;
 [e = . . _LATEbits 0 2 -> -> ! != -> . . _LATEbits 0 2 `i -> 0 `i `i `uc ]
-[e :U 323 ]
-"122
-[; ;main.c: 122:     return;
-[e $UE 322  ]
-"124
-[; ;main.c: 124: }
-[e :UE 322 ]
+[e :U 325 ]
+"144
+[; ;main.c: 144: }
+[e :UE 324 ]
 }
+"146
+[; ;main.c: 146: void configuro_sistema(void) {
+[v _configuro_sistema `(v ~T0 @X0 1 ef ]
+{
+[e :U _configuro_sistema ]
+[f ]
+[v F3376 `S307 ~T0 @X0 1 s ]
+[i F3376
+:U ..
+:U ..
+"148
+[; ;main.c: 148:     mrf24_data_out_t data_out_s = {0};
+-> -> 0 `i `us
+..
+..
+]
+[v _data_out_s `S307 ~T0 @X0 1 a ]
+[e = _data_out_s F3376 ]
+[v F3378 `S312 ~T0 @X0 1 s ]
+[i F3378
+:U ..
+:U ..
+:U ..
+"149
+[; ;main.c: 149:     system_config_t config_sistema = {0};
+-> -> 0 `i `uc
+..
+..
+..
+]
+[v _config_sistema `S312 ~T0 @X0 1 a ]
+[e = _config_sistema F3378 ]
+"151
+[; ;main.c: 151:     data_out_s.dest_address = 0xFFFE;
+[e = . _data_out_s 1 -> -> 65534 `ui `us ]
+"152
+[; ;main.c: 152:  data_out_s.dest_panid = 0x9999;
+[e = . _data_out_s 0 -> -> 39321 `ui `us ]
+"153
+[; ;main.c: 153:  data_out_s.origin_address = 0x4567;
+[e = . _data_out_s 2 -> -> 17767 `i `us ]
+"155
+[; ;main.c: 155:     strcpy(config_sistema.playa, "aun no se");
+[e ( _strcpy (2 , &U . _config_sistema 0 :s 5C ]
+"156
+[; ;main.c: 156:     strcpy(config_sistema.box, "12");
+[e ( _strcpy (2 , &U . _config_sistema 2 :s 6C ]
+"157
+[; ;main.c: 157:     strcpy(config_sistema.sector, "naranja");
+[e ( _strcpy (2 , &U . _config_sistema 1 :s 7C ]
+[v F3380 `uc ~T0 @X0 -> 70 `i s ]
+[i F3380
+:U ..
+"159
+[; ;main.c: 159:     char buuf[sizeof(system_config_t) + 10] = {"SYSCNF:"};
+-> 83 `c
+-> 89 `c
+-> 83 `c
+-> 67 `c
+-> 78 `c
+-> 70 `c
+-> 58 `c
+-> 0 `c
+..
+]
+[v _buuf `uc ~T0 @X0 -> 70 `i a ]
+[e = _buuf F3380 ]
+"160
+[; ;main.c: 160:     uint8_t size = (uint8_t)strlen(buuf);
+[v _size `uc ~T0 @X0 1 a ]
+[e = _size -> ( _strlen (1 -> &U _buuf `*Cuc `uc ]
+"161
+[; ;main.c: 161:     memcpy(buuf + size, &config_sistema, sizeof(system_config_t));
+[e ( _memcpy (3 , , -> + &U _buuf * -> -> _size `i `x -> -> # *U &U _buuf `i `x `*v -> &U _config_sistema `*Cv -> # `S312 `ui ]
+"162
+[; ;main.c: 162:     size += sizeof(system_config_t);
+[e =+ _size -> -> # `S312 `ui `uc ]
+"164
+[; ;main.c: 164:     memcpy(data_out_s.buffer, buuf, size);
+[e ( _memcpy (3 , , -> &U . _data_out_s 3 `*v -> &U _buuf `*Cv -> _size `ui ]
+"165
+[; ;main.c: 165:     data_out_s.buffer_size = size;
+[e = . _data_out_s 4 _size ]
+"167
+[; ;main.c: 167:     if(MRF24TransmitirDato(&data_out_s) != TRANSMISSION_COMPLETED)
+[e $ ! != -> ( _MRF24TransmitirDato (1 &U _data_out_s `ui -> . `E3247 2 `ui 327  ]
+"168
+[; ;main.c: 168:         LATEbits.LATE1 = !LATEbits.LATE1;
+[e = . . _LATEbits 0 1 -> -> ! != -> . . _LATEbits 0 1 `i -> 0 `i `i `uc ]
+[e :U 327 ]
+"169
+[; ;main.c: 169: }
+[e :UE 326 ]
+}
+"171
+[; ;main.c: 171: void cierro_configuracion(void) {
+[v _cierro_configuracion `(v ~T0 @X0 1 ef ]
+{
+[e :U _cierro_configuracion ]
+[f ]
+[v F3384 `S307 ~T0 @X0 1 s ]
+[i F3384
+:U ..
+:U ..
+"173
+[; ;main.c: 173:     mrf24_data_out_t data_out_s = {0};
+-> -> 0 `i `us
+..
+..
+]
+[v _data_out_s `S307 ~T0 @X0 1 a ]
+[e = _data_out_s F3384 ]
+[v F3386 `S312 ~T0 @X0 1 s ]
+[i F3386
+:U ..
+:U ..
+:U ..
+"174
+[; ;main.c: 174:     system_config_t config_sistema = {0};
+-> -> 0 `i `uc
+..
+..
+..
+]
+[v _config_sistema `S312 ~T0 @X0 1 a ]
+[e = _config_sistema F3386 ]
+"176
+[; ;main.c: 176:     data_out_s.dest_address = 0xFFFE;
+[e = . _data_out_s 1 -> -> 65534 `ui `us ]
+"177
+[; ;main.c: 177:  data_out_s.dest_panid = 0x9999;
+[e = . _data_out_s 0 -> -> 39321 `ui `us ]
+"178
+[; ;main.c: 178:  data_out_s.origin_address = 0x4567;
+[e = . _data_out_s 2 -> -> 17767 `i `us ]
+"180
+[; ;main.c: 180:     uint8_t size = strlen("ENDCNF:");
+[v _size `uc ~T0 @X0 1 a ]
+[e = _size -> ( _strlen (1 :s 8C `uc ]
+"181
+[; ;main.c: 181:     memcpy(data_out_s.buffer, "ENDCNF:", size);
+[e ( _memcpy (3 , , -> &U . _data_out_s 3 `*v :s 9C -> _size `ui ]
+"182
+[; ;main.c: 182:     data_out_s.buffer_size = size;
+[e = . _data_out_s 4 _size ]
+"184
+[; ;main.c: 184:     MRF24TransmitirDato(&data_out_s);
+[e ( _MRF24TransmitirDato (1 &U _data_out_s ]
+"185
+[; ;main.c: 185: }
+[e :UE 328 ]
+}
+[a 5C 97 117 110 32 110 111 32 115 101 0 ]
+[a 7C 110 97 114 97 110 106 97 0 ]
+[a 8C 69 78 68 67 78 70 58 0 ]
+[a 9C 69 78 68 67 78 70 58 0 ]
+[a 1C 48 48 49 52 55 0 ]
+[a 2C 48 48 49 52 55 0 ]
+[a 6C 49 50 0 ]
+[a 3C 53 56 50 109 32 32 0 ]
+[a 4C 53 56 50 109 32 32 0 ]

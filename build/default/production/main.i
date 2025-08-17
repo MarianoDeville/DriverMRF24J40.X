@@ -5237,7 +5237,6 @@ typedef enum {
 } channel_list_t;
 
 
-
 typedef enum {
 
  INITIALIZATION_FAIL,
@@ -5258,12 +5257,12 @@ typedef enum {
 
 typedef struct {
 
- channel_list_t my_channel;
-    uint16_t my_panid;
- uint16_t my_address;
- uint16_t intervalo;
+ channel_list_t channel;
  uint8_t sequence_number;
-    uint8_t my_mac[8];
+    uint16_t panid;
+ uint16_t address;
+ uint16_t intervalo;
+    uint8_t mac[8];
  uint8_t security_key[16];
 }mrf24_data_config_t;
 
@@ -5273,17 +5272,17 @@ typedef struct {
  uint16_t dest_panid;
  uint16_t dest_address;
  uint16_t origin_address;
- uint8_t buffer[64];
+ char buffer[128];
  uint8_t buffer_size;
 }mrf24_data_out_t;
 
 
 typedef struct {
 
- uint16_t source_panid;
- uint16_t source_address;
+ uint16_t panid;
+ uint16_t address;
  uint8_t rssi;
- uint8_t buffer[64];
+ uint8_t buffer[128];
  uint8_t buffer_size;
 }mrf24_data_in_t;
 
@@ -5299,13 +5298,13 @@ typedef struct {
 
 
 
-
 mrf24_state_t MRF24J40Init(void);
-mrf24_data_config_t * MRF24GetConfig(void);
 mrf24_state_t MRF24SetChannel(channel_list_t ch);
 mrf24_state_t MRF24SetPanId(uint16_t pan_id);
 mrf24_state_t MRF24SetAdd(uint16_t add);
 mrf24_state_t MRF24SetInter(uint16_t sec);
+mrf24_state_t MRF24SetMAC(uint8_t mac[8]);
+mrf24_state_t MRF24SetSecurityKey(uint8_t security_key[16]);
 
 
 mrf24_state_t MRF24TransmitirDato(mrf24_data_out_t * p_info_out_s);
@@ -5390,7 +5389,19 @@ estadoPulsador_t DebounceFSMUpdate(debounceData_t * antirrebote_boton_n, bool_t 
 
 
 
+typedef struct {
+
+ char playa[20];
+ char sector[20];
+ char box[10];
+ char piso[10];
+}system_config_t;
+
 static void envio(void);
+void configuro_mrf(void);
+void configuro_sistema(void);
+void cierro_configuracion(void);
+
 
 
 
@@ -5428,7 +5439,7 @@ void main(void) {
 
             mrf24_data_in_t * mrf24_data_in = MRF24GetDataIn();
             MRF24ReciboPaquete();
-# 86 "main.c"
+# 98 "main.c"
     }
 
         if(DelayRead(&delay_parpadeo)) {
@@ -5439,32 +5450,81 @@ void main(void) {
 
 static void envio(void) {
 
+    configuro_mrf();
+    _delay((unsigned long)((500)*(16000000/4000.0)));;
+    configuro_sistema();
+    _delay((unsigned long)((500)*(16000000/4000.0)));;
+    cierro_configuracion();
+    return;
+}
+
+void configuro_mrf(void) {
+
     mrf24_data_out_t data_out_s = {0};
     mrf24_data_config_t data_config_s = {0};
 
-    data_out_s.dest_address = (0x1111);
- data_out_s.dest_panid = 0x1234;
+    data_out_s.dest_address = 0xFFFE;
+ data_out_s.dest_panid = 0x9999;
  data_out_s.origin_address = 0x4567;
 
-    data_config_s.my_channel = CH_11;
-    data_config_s.my_address = (0x1111);
-    data_config_s.my_panid = 0x1234;
-    data_config_s.intervalo = 0xf7;
+    data_config_s.channel = CH_11;
+    data_config_s.panid = 0x1234;
+    data_config_s.address = (0x1111);
+    data_config_s.intervalo = 0x58f7;
+    data_config_s.sequence_number = 99;
+
+    memcpy(data_config_s.mac, "00147", strlen("00147"));
+    memcpy(data_config_s.security_key, "582m  ", strlen("582m  "));
 
     char buuf[sizeof(data_config_s) + 10] = {"MRFCNF:"};
-
     uint8_t size = (uint8_t)strlen(buuf);
-
     memcpy(buuf + size, &data_config_s, sizeof(data_config_s));
-
     size += sizeof(data_config_s);
-
 
     memcpy(data_out_s.buffer, buuf, size);
     data_out_s.buffer_size = size;
 
     if(MRF24TransmitirDato(&data_out_s) != TRANSMISSION_COMPLETED)
         LATEbits.LATE2 = !LATEbits.LATE2;
-    return;
+}
 
+void configuro_sistema(void) {
+
+    mrf24_data_out_t data_out_s = {0};
+    system_config_t config_sistema = {0};
+
+    data_out_s.dest_address = 0xFFFE;
+ data_out_s.dest_panid = 0x9999;
+ data_out_s.origin_address = 0x4567;
+
+    strcpy(config_sistema.playa, "aun no se");
+    strcpy(config_sistema.box, "12");
+    strcpy(config_sistema.sector, "naranja");
+
+    char buuf[sizeof(system_config_t) + 10] = {"SYSCNF:"};
+    uint8_t size = (uint8_t)strlen(buuf);
+    memcpy(buuf + size, &config_sistema, sizeof(system_config_t));
+    size += sizeof(system_config_t);
+
+    memcpy(data_out_s.buffer, buuf, size);
+    data_out_s.buffer_size = size;
+
+    if(MRF24TransmitirDato(&data_out_s) != TRANSMISSION_COMPLETED)
+        LATEbits.LATE1 = !LATEbits.LATE1;
+}
+
+void cierro_configuracion(void) {
+
+    mrf24_data_out_t data_out_s = {0};
+    system_config_t config_sistema = {0};
+
+    data_out_s.dest_address = 0xFFFE;
+ data_out_s.dest_panid = 0x9999;
+ data_out_s.origin_address = 0x4567;
+
+    uint8_t size = strlen("ENDCNF:");
+    memcpy(data_out_s.buffer, "ENDCNF:", size);
+    data_out_s.buffer_size = size;
+
+    MRF24TransmitirDato(&data_out_s);
 }
